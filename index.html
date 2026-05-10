@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maalem Education - Empower Your Future</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <video autoplay muted playsinline id="preloaderVideo">
+            <source src="identity/Logo Animation/Maalem.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <header>
+        <div class="container">
+            <nav>
+                <img src="identity/Logo/SVG/Blue.svg" alt="Maalem Logo" class="logo-img">
+                <ul class="nav-links">
+                    <li><a href="#home" data-i18n="nav_home">Home</a></li>
+                    <li><a href="about.html" data-i18n="nav_about">About Us</a></li>
+                    <li><a href="#courses" data-i18n="nav_courses">Courses</a></li>
+
+                    <li><a href="#pricing" data-i18n="nav_pricing">Pricing</a></li>
+                    <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+                </ul>
+                <div class="nav-actions" style="display: none;">
+                    <button class="lang-toggle" id="langToggle" title="Toggle Language"><i class="fas fa-globe"></i></button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <!-- Rotating Circle -->
+            <div class="rotating-circle" id="rotatingCircle"></div>
+            
+            <div class="decor-wavy">
+                <svg viewBox="0 0 100 100" fill="none" stroke="var(--secondary-color)" stroke-width="1">
+                    <path d="M10,50 Q20,40 30,50 T50,50 T70,50 T90,50" />
+                    <path d="M10,60 Q20,50 30,60 T50,60 T70,60 T90,60" />
+                </svg>
+            </div>
+
+            <!-- Static Right Image -->
+            <div class="hero-right" style="position: absolute; top: 0; right: 0; height: 100%; width: 50%; z-index: 5;">
+                <div class="hero-image-container">
+                    <div class="hero-image" style="background-image: url('assets/Pic1.jpeg');"></div>
+                </div>
+            </div>
+
+            <!-- Slides (Text Only) -->
+            <div class="hero-slider" id="heroSlider" style="z-index: 6;">
+                <!-- Slide 1 -->
+                <div class="hero-slide active">
+                    <div class="hero-left">
+                        <div class="hero-content">
+                            <h1 data-i18n="hero_title_1">Shaping Tomorrow’s <span>Landmarks</span></h1>
+                            <p data-i18n="hero_desc_1">Education is the most powerful weapon which you can use to change the world.</p>
+                            <a href="#courses" class="btn btn-primary btn-lg" data-i18n="hero_cta">GET STARTED <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="hero-right" style="opacity: 0; pointer-events: none;"></div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="hero-slide">
+                    <div class="hero-left">
+                        <div class="hero-content">
+                            <h1 data-i18n="hero_title_2">Unlock Your Potential with <span>Expert Mentors</span></h1>
+                            <p data-i18n="hero_desc_2">Learn from industry leaders and gain practical skills that prepare you for the real world.</p>
+                            <a href="#courses" class="btn btn-primary btn-lg" data-i18n="hero_cta">GET STARTED <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="hero-right" style="opacity: 0; pointer-events: none;"></div>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- Vision & Mission -->
+        <section class="section vision-section">
+            <div class="container vision-container">
+                <div class="vision-left reveal">
+                    <div class="image-stack">
+                        <div class="img-back" style="background-image: url('assets/Mision-1.jpeg');"></div>
+                        <div class="img-front" style="background-image: url('assets/Mission-2.jpeg');"></div>
+                        <div class="dotted-pattern"></div>
+                    </div>
+                </div>
+                <div class="vision-right reveal">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                        <i class="fas fa-book-open" style="color: var(--primary-color); font-size: 1.2rem;"></i>
+                        <span data-i18n="vision_subtitle" style="font-weight: 700; color: var(--primary-color); text-transform: uppercase; letter-spacing: 1px;">Get To Know About Us</span>
+                    </div>
+                    <h2 data-i18n="vision_title" style="font-size: 2.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 1.5rem;">Benefit From Our Educational Expertise</h2>
+                    <p data-i18n="vision_desc" style="color: var(--text-light); margin-bottom: 2rem;">Maalem Education Services is dedicated to transforming education through strategic operations, continuous professional development, and global accreditation support.</p>
+                    
+                    <div class="mission-vision-grid">
+                        <div class="mv-item">
+                            <h3 data-i18n="mission_h" style="font-size: 1.2rem; margin-bottom: 0.5rem; text-transform: uppercase;">Our Mission:</h3>
+                            <p data-i18n="mission_p" style="color: var(--text-light); font-size: 0.95rem; line-height: 1.6;">We partner with schools to design and implement sustainable models of academic excellence, leadership growth, and operational efficiency — ensuring every learner and educator thrives in a forward-thinking, inclusive environment.</p>
+                        </div>
+                        <div class="mv-item">
+                            <h3 data-i18n="vision_h" style="font-size: 1.2rem; margin-bottom: 0.5rem; text-transform: uppercase;">Our Vision:</h3>
+                            <p data-i18n="vision_p" style="color: var(--text-light); font-size: 0.95rem; line-height: 1.6;">To be a leading educational services provider that empowers schools and educators to achieve international standards of excellence, innovation, and holistic development.</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Values -->
+        <section class="section category-section" style="padding: 6rem 0; background-color: var(--bg-alt);">
+            <div class="container">
+                <div class="category-header reveal" style="text-align: center; margin-bottom: 4rem;">
+                    <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 10px;">
+                        <i class="fas fa-star" style="color: var(--primary-color); font-size: 1.2rem;"></i>
+                        <span data-i18n="values_subtitle" style="font-weight: 700; color: var(--primary-color); text-transform: uppercase; letter-spacing: 1px;">Our Principles</span>
+                    </div>
+                    <h2 data-i18n="values_title" style="font-size: 2.5rem; font-weight: 700;">Core Values</h2>
+                </div>
+
+                <div class="category-carousel-wrapper reveal">
+                    <button class="cat-nav-btn prev" id="catPrev"><i class="fas fa-arrow-left"></i></button>
+                    
+                    <div class="category-carousel" id="catCarousel">
+                        <div class="cat-card">
+                            <div class="cat-icon"><i class="fas fa-medal"></i></div>
+                            <h3 data-i18n="val1_h">Excellence</h3>
+                            <p data-i18n="val1_p">We commit to the highest standards of teaching, leadership, and operations.</p>
+                        </div>
+                        
+                        <div class="cat-card">
+                            <div class="cat-icon"><i class="fas fa-lightbulb"></i></div>
+                            <h3 data-i18n="val2_h">Innovation</h3>
+                            <p data-i18n="val2_p">We embrace modern methodologies, technology, and creative problem-solving.</p>
+                        </div>
+
+                        <div class="cat-card">
+                            <div class="cat-icon"><i class="fas fa-shield-alt"></i></div>
+                            <h3 data-i18n="val3_h">Integrity</h3>
+                            <p data-i18n="val3_p">We uphold transparency, ethics, and accountability in all operations.</p>
+                        </div>
+
+                        <div class="cat-card">
+                            <div class="cat-icon"><i class="fas fa-hands-helping"></i></div>
+                            <h3 data-i18n="val4_h">Collaboration</h3>
+                            <p data-i18n="val4_p">We work hand-in-hand with educators, leaders, and communities.</p>
+                        </div>
+                        
+                        <div class="cat-card">
+                            <div class="cat-icon"><i class="fas fa-users"></i></div>
+                            <h3 data-i18n="val5_h">Inclusivity</h3>
+                            <p data-i18n="val5_p">We ensure accessible, equitable, and diverse educational experiences.</p>
+                        </div>
+
+                        <div class="cat-card">
+                            <div class="cat-icon"><i class="fas fa-chart-line"></i></div>
+                            <h3 data-i18n="val6_h">Continuous Growth</h3>
+                            <p data-i18n="val6_p">We believe in lifelong learning and consistent improvement.</p>
+                        </div>
+
+                        <div class="cat-card">
+                            <div class="cat-icon"><i class="fas fa-globe"></i></div>
+                            <h3 data-i18n="val7_h">Global Alignment</h3>
+                            <p data-i18n="val7_p">We align with Cognia, IB, Cambridge, Oxford AQA, and Pearson Edexcel.</p>
+                        </div>
+                    </div>
+                    
+                    <button class="cat-nav-btn next" id="catNext"><i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Challenges -->
+        <section class="challenges-section" id="challenges">
+            <div class="container">
+                <div class="challenges-header reveal">
+                    <div class="challenges-subtitle">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span data-i18n="challenges_subtitle">The Reality</span>
+                    </div>
+                    <h2 data-i18n="challenges_title" style="font-size: 3rem; font-weight: 800; line-height: 1.1;">Core Problem in Many Schools</h2>
+                    <p data-i18n="challenges_desc" style="color: var(--text-light); max-width: 700px; margin: 1.5rem auto 0; font-size: 1.1rem;">Identifying the structural and operational hurdles that prevent schools from reaching their full potential.</p>
+                </div>
+
+                <div class="challenges-grid reveal">
+                    <!-- Problem 1 -->
+                    <div class="challenge-card">
+                        <div class="challenge-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <h3 data-i18n="prob1_h">High cost vs Limited quality</h3>
+                        <p>High operational expenses without the expected return in educational excellence and outcomes.</p>
+                    </div>
+
+                    <!-- Problem 2 -->
+                    <div class="challenge-card">
+                        <div class="challenge-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h3 data-i18n="prob2_h">No system dependency</h3>
+                        <p>Over-reliance on specific individuals rather than sustainable, documented institutional systems.</p>
+                    </div>
+
+                    <!-- Problem 3 -->
+                    <div class="challenge-card">
+                        <div class="challenge-icon">
+                            <i class="fas fa-users-cog"></i>
+                        </div>
+                        <h3 data-i18n="prob3_h">Owner involvement in operations</h3>
+                        <p>Micromanagement of daily tasks that distracts from strategic leadership and expansion.</p>
+                    </div>
+
+                    <!-- Problem 4 -->
+                    <div class="challenge-card">
+                        <div class="challenge-icon">
+                            <i class="fas fa-user-clock"></i>
+                        </div>
+                        <h3 data-i18n="prob4_h">High teacher turnover</h3>
+                        <p>Frequent staff changes that disrupt learning continuity and organizational culture.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <!-- Why Maalem Section (Ecosystem) -->
+        <section class="ecosystem-section" id="why-maalem" style="background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%); border-radius: 60px; margin: 4rem 2rem; padding: 8rem 0; position: relative; overflow: hidden; border: 1px solid rgba(0,0,0,0.05);">
+            <!-- Mesh Gradient Overlay -->
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(at 0% 0%, hsla(210,100%,95%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(225,100%,98%,1) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(339,49%,90%,1) 0, transparent 50%); opacity: 0.8; z-index: 1;"></div>
+            
+            <div class="container" style="position: relative; z-index: 2; text-align: center;">
+                <div class="section-title reveal">
+                    <span data-i18n="why_subtitle" style="font-weight: 800; color: #1d63dc; text-transform: uppercase; letter-spacing: 2px; font-size: 1rem; display: block; margin-bottom: 1rem;">Why Maalem Education</span>
+                    <h2 data-i18n="why_title" style="font-size: 3.5rem; font-weight: 900; color: #1f2937; line-height: 1.1; margin-bottom: 2rem;">Maalem is not only an <span>operator</span></h2>
+                    <div style="width: 80px; height: 4px; background: #1d63dc; margin: 2rem auto; border-radius: 2px;"></div>
+                    <p data-i18n="why_desc" style="font-size: 1.8rem; color: #4b5563; max-width: 800px; margin: 0 auto; font-weight: 500;">It is a complete <strong>education ecosystem.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Who We Are Section -->
+        <section class="section admission-section" id="who-we-are" style="position: relative; overflow: hidden; background-color: var(--white);">
+           
+            <div class="container" style="position: relative; z-index: 2;">
+                <div class="section-title reveal" style="text-align: center; margin-bottom: 4rem;">
+                    <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 10px;">
+                        <i class="fas fa-fingerprint" style="color: #1d63dc; font-size: 1.5rem;"></i>
+                        <span data-i18n="who_subtitle" style="font-weight: 700; color: #6B7280; text-transform: uppercase; letter-spacing: 1px;">Our Identity</span>
+                    </div>
+                    <h2 data-i18n="who_title" style="font-size: 2.5rem; font-weight: 700;">Who We Are</h2>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                    <!-- Point 1 -->
+                    <div class="hex-card-wrapper reveal">
+                        <div class="hex-card bg-mint">
+                            <div class="hex-img">
+                                <i class="fas fa-school"></i>
+                            </div>
+                            <h3 data-i18n="who_step1_h">School operator</h3>
+                            <p data-i18n="who_step1_p">Not only consultancy – we take active leadership in school operations.</p>
+                        </div>
+                    </div>
+
+                    <!-- Point 2 -->
+                    <div class="hex-card-wrapper reveal">
+                        <div class="hex-card bg-gray">
+                            <div class="hex-img">
+                                <i class="fas fa-globe-americas"></i>
+                            </div>
+                            <h3 data-i18n="who_step2_h">International expertise</h3>
+                            <p data-i18n="who_step2_p">Multi-system expertise across diverse educational systems and curricula.</p>
+                        </div>
+                    </div>
+
+                    <!-- Point 3 -->
+                    <div class="hex-card-wrapper reveal">
+                        <div class="hex-card bg-purple">
+                            <div class="hex-img">
+                                <i class="fas fa-layer-group"></i>
+                            </div>
+                            <h3 data-i18n="who_step3_h">Centralized frameworks</h3>
+                            <p data-i18n="who_step3_p">Integrated systems that ensure consistency and excellence across institutions.</p>
+                        </div>
+                    </div>
+
+                    <!-- Point 4 -->
+                    <div class="hex-card-wrapper reveal">
+                        <div class="hex-card bg-mint">
+                            <div class="hex-img">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <h3 data-i18n="who_step4_h">Partnership mindset</h3>
+                            <p data-i18n="who_step4_p">A long-term mindset focused on sustainable growth and partnership.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service 1: Running & Operating Schools -->
+        <section class="services-section" id="service-1" style="padding: 8rem 0; background: var(--white);">
+            <div class="container escul-container">
+                <div class="escul-left reveal">
+                    <div class="image-grid-escul">
+                        <div class="escul-img-1" style="background-image: url('assets/Hero-2.jpeg');"></div>
+                        <div class="escul-img-2" style="background-image: url('assets/Hero-4.jpeg');"></div>
+                        <div class="escul-img-3" style="background-image: url('assets/Pic1.jpeg');"></div>
+                        <div class="student-badge-escul">
+                            <div class="badge-inner">
+                                <h3 data-i18n="faq_students_count">50k</h3>
+                                <p data-i18n="faq_students">Active Students</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="escul-right reveal">
+                    <div class="escul-badge">
+                        <i class="fas fa-school-flag"></i>
+                        <span data-i18n="services_subtitle">OUR EXPERTISE</span>
+                    </div>
+                    <h2 class="escul-title" data-i18n="service1_h">Running & Operating Schools</h2>
+                    <ul class="escul-list">
+                        <li><i class="far fa-check-circle"></i> <span data-i18n="service1_f1">Full academic and operational school management</span></li>
+                        <li><i class="far fa-check-circle"></i> <span data-i18n="service1_f2">Governance, leadership, quality assurance, and growth strategy Hybrid-centralized Model.</span></li>
+                        <li><i class="far fa-check-circle"></i> <span data-i18n="service1_f3">Board members with 20+ years of successful school operation experience</span></li>
+                        <li><i class="far fa-check-circle"></i> <span data-i18n="service1_f4">Proven expansion track record with 300%+ growth success rate</span></li>
+                        <li><i class="far fa-check-circle"></i> <span data-i18n="service1_f5">Sustainable systems</span></li>
+                    </ul>
+                    <a href="form1.html" class="btn-escul">Enquire Now <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service 2: Educational Consulting Services -->
+        <section class="services-section" id="service-2" style="padding: 8rem 0; background: var(--bg-alt);">
+            <div class="container escul-container" style="flex-direction: row-reverse;">
+                <div class="escul-left reveal">
+                    <div class="image-grid-escul">
+                        <div class="escul-img-1" style="background-image: url('assets/Mission-2.jpeg');"></div>
+                        <div class="escul-img-2" style="background-image: url('assets/Mision-1.jpeg');"></div>
+                        <div class="escul-img-3" style="background-image: url('assets/hero-student-1.png');"></div>
+                    </div>
+                </div>
+                <div class="escul-right reveal">
+                    <div class="escul-badge">
+                        <i class="fas fa-chess"></i>
+                        <span data-i18n="services_subtitle">OUR EXPERTISE</span>
+                    </div>
+                    <h2 class="escul-title" data-i18n="service2_h">Educational Consulting Services</h2>
+                    <ul class="escul-list">
+                        <li><i class="far fa-check-circle"></i> <span data-i18n="service2_f1">School setup & strategic planning</span></li>
+                        <li><i class="far fa-check-circle"></i> <span data-i18n="service2_f2">Academic system design</span></li>
+                        <li><i class="far fa-check-circle"></i> <span data-i18n="service2_f3">Accreditation readiness (IB / American / British)</span></li>
+                        <li><i class="far fa-check-circle"></i> <span data-i18n="service2_f4">Leadership restructuring & governance support</span></li>
+                        <li><i class="far fa-check-circle"></i> <span data-i18n="service2_f5">Performance improvement & transformation programs</span></li>
+                        <li><i class="far fa-check-circle"></i> <span data-i18n="service2_f6">Comprehensive marketing strategies that drive school growth</span></li>
+                    </ul>
+                    <a href="form2.html" class="btn-escul">Consult With Us <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service 3: Teacher Training Diploma -->
+        <section class="services-section" id="service-3" style="padding: 8rem 0; background: var(--white);">
+            <div class="container escul-container">
+                <div class="escul-left reveal">
+                    <div class="image-grid-escul">
+                        <div class="escul-img-1" style="background-image: url('assets/hero-student-1.png');"></div>
+                        <div class="escul-img-2" style="background-image: url('assets/hero-student-2.png');"></div>
+                        <div class="escul-img-3" style="background-image: url('assets/faq_student_1_1778408799723.png');"></div>
+                    </div>
+                </div>
+                <div class="escul-right reveal">
+                    <div class="escul-badge">
+                        <i class="fas fa-certificate"></i>
+                        <span data-i18n="services_subtitle">OUR EXPERTISE</span>
+                    </div>
+                    <h2 class="escul-title" data-i18n="service3_h">Teacher Training Diploma</h2>
+                    <ul class="escul-list">
+                        <li><i class="far fa-check-circle"></i> <span data-i18n="service3_f1">Structured professional diploma program</span></li>
+                        <li><i class="far fa-check-circle"></i> <span data-i18n="service3_f2">Four development pathways: Grads, Teachers, Coordinators, Leaders</span></li>
+                        <li><i class="far fa-check-circle"></i> <span data-i18n="service3_f3">Practical, applied training model</span></li>
+                        <li><i class="far fa-check-circle"></i> <span data-i18n="service3_f4">Currently under academic review for certification</span></li>
+                    </ul>
+                    <a href="form3.html" class="btn-escul">Get Certified <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Courses -->
+        <section id="courses" class="section bg-alt" style="padding: 6rem 0;">
+            <div class="container">
+                <div class="section-title reveal" style="text-align: center; margin-bottom: 4rem;">
+                    <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 10px;">
+                        <i class="fas fa-book-open" style="color: var(--primary-color); font-size: 1.2rem;"></i>
+                        <span data-i18n="courses_subtitle" style="font-weight: 700; color: var(--primary-color); text-transform: uppercase; letter-spacing: 1px;">Our Courses</span>
+                    </div>
+                    <h2 data-i18n="courses_title" style="font-size: 2.5rem; font-weight: 700;">Our Featured Courses</h2>
+                </div>
+
+                <div class="course-carousel-wrapper reveal">
+                    
+                    <div class="course-carousel" id="courseCarousel">
+                        <!-- Course 1: Teaching Excellence -->
+                        <div class="new-course-card">
+                            <div class="course-img-wrap">
+                                <div class="course-img" style="background-image: url('assets/teaching_excellence_pathway_1778411860463.png');"></div>
+                                <div class="course-badge">Diploma</div>
+                            </div>
+                            <div class="course-content">
+                                <h3 data-i18n="course1_name">Pathway One: Teaching Excellence</h3>
+                                <p data-i18n="course1_desc" style="color: var(--text-light); font-size: 0.95rem; margin-bottom: 1.5rem;">A 3-level comprehensive certification for classroom practitioners, from foundations to instructional leadership.</p>
+                                <div class="course-stats">
+                                    <div class="stat-box">
+                                        <i class="far fa-clock"></i>
+                                        <div>
+                                            <span class="stat-label" data-i18n="course_duration">Duration:</span>
+                                            <span class="stat-val">Up to 120 Hrs</span>
+                                        </div>
+                                    </div>
+                                    <div class="stat-divider"></div>
+                                    <div class="stat-box">
+                                        <i class="fas fa-layer-group"></i>
+                                        <div>
+                                            <span class="stat-label" data-i18n="course_levels">Levels:</span>
+                                            <span class="stat-val">3 Levels</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="course-footer">
+                                    <div class="instructor">
+                                        <i class="fas fa-user-graduate" style="color: var(--primary-color);"></i>
+                                        <span data-i18n="course_tag1">Certified Program</span>
+                                    </div>
+                                    <a href="course-teaching.html" class="view-details" data-i18n="course_view">VIEW DETAILS <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Course 2: Educational Leadership -->
+                        <div class="new-course-card">
+                            <div class="course-img-wrap">
+                                <div class="course-img" style="background-image: url('assets/educational_leadership_pathway_1778411874245.png');"></div>
+                                <div class="course-badge">Executive</div>
+                            </div>
+                            <div class="course-content">
+                                <h3 data-i18n="course2_name">Pathway Two: Educational Leadership</h3>
+                                <p data-i18n="course2_desc" style="color: var(--text-light); font-size: 0.95rem; margin-bottom: 1.5rem;">Empowering current and future school leaders with strategic, data-driven, and compassionate leadership skills.</p>
+                                <div class="course-stats">
+                                    <div class="stat-box">
+                                        <i class="far fa-calendar-alt"></i>
+                                        <div>
+                                            <span class="stat-label" data-i18n="course_duration">Duration:</span>
+                                            <span class="stat-val">12–15 Months</span>
+                                        </div>
+                                    </div>
+                                    <div class="stat-divider"></div>
+                                    <div class="stat-box">
+                                        <i class="fas fa-certificate"></i>
+                                        <div>
+                                            <span class="stat-label" data-i18n="course_total">Total:</span>
+                                            <span class="stat-val">300 Hours</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="course-footer">
+                                    <div class="instructor">
+                                        <i class="fas fa-award" style="color: var(--primary-color);"></i>
+                                        <span data-i18n="course_tag2">Capstone Project</span>
+                                    </div>
+                                    <a href="course-leadership.html" class="view-details" data-i18n="course_view">VIEW DETAILS <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Course 3: School Operations -->
+                        <div class="new-course-card">
+                            <div class="course-img-wrap">
+                                <div class="course-img" style="background-image: url('assets/school_operations_pathway_1778411887223.png');"></div>
+                                <div class="course-badge">Operational</div>
+                            </div>
+                            <div class="course-content">
+                                <h3 data-i18n="course3_name">Pathway Three: School Operations & Administration</h3>
+                                <p data-i18n="course3_desc" style="color: var(--text-light); font-size: 0.95rem; margin-bottom: 1.5rem;">Targeted professional tracks for HR, Finance, Marketing, and Student Affairs in school environments.</p>
+                                <div class="course-stats">
+                                    <div class="stat-box">
+                                        <i class="fas fa-sitemap"></i>
+                                        <div>
+                                            <span class="stat-label" data-i18n="course_focus">Focus:</span>
+                                            <span class="stat-val">4 Core Tracks</span>
+                                        </div>
+                                    </div>
+                                    <div class="stat-divider"></div>
+                                    <div class="stat-box">
+                                        <i class="fas fa-tools"></i>
+                                        <div>
+                                            <span class="stat-label" data-i18n="course_applied">Applied:</span>
+                                            <span class="stat-val">Project Based</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="course-footer">
+                                    <div class="instructor">
+                                        <i class="fas fa-users-cog" style="color: var(--primary-color);"></i>
+                                        <span data-i18n="course_tag3">Expert Led</span>
+                                    </div>
+                                    <a href="course-operations.html" class="view-details" data-i18n="course_view">VIEW DETAILS <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <section class="mooc-section" id="mooc" style="padding: 10rem 0; background: var(--white);">
+            <div class="container mooc-container" style="display: flex; align-items: center; gap: 5rem;">
+                <div class="mooc-content reveal" style="flex: 1.2; text-align: left;">
+                    <div class="mooc-header" style="margin-bottom: 3rem;">
+                        <h2 class="mooc-title" data-i18n="mooc_title" style="font-size: 3rem; margin-bottom: 1.5rem;">MOOC Integration Model</h2>
+                        <p class="mooc-desc" data-i18n="mooc_desc" style="font-size: 1.1rem; line-height: 1.7; color: var(--text-light);">Integrating facilitated MOOC study groups to enhance technology and AI learning tracks.</p>
+                    </div>
+                    
+                    <div class="mooc-list" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem;">
+                        <div class="mooc-item">
+                            <i class="fas fa-globe"></i>
+                            <span data-i18n="mooc_item1">Curated Coursera / EdX courses</span>
+                        </div>
+                        <div class="mooc-item">
+                            <i class="fas fa-users"></i>
+                            <span data-i18n="mooc_item2">Facilitated study groups</span>
+                        </div>
+                        <div class="mooc-item">
+                            <i class="fas fa-language"></i>
+                            <span data-i18n="mooc_item3">Arabic academic support</span>
+                        </div>
+                        <div class="mooc-item">
+                            <i class="fas fa-tasks"></i>
+                            <span data-i18n="mooc_item4">Assignment guidance</span>
+                        </div>
+                        <div class="mooc-item">
+                            <i class="fas fa-certificate"></i>
+                            <span data-i18n="mooc_item5">International certification</span>
+                        </div>
+                        <div class="mooc-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span data-i18n="mooc_footer">Global benchmarking exposure</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mooc-visual reveal" style="flex: 0.8;">
+                    <div class="mooc-image-card" style="border-radius: 40px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.1);">
+                        <img src="assets/mooc_integration_visual_1778412150376.png" alt="MOOC Integration" style="width: 100%; height: auto; display: block;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mentors -->
+        <section id="mentors" class="mentors-section">
+            <!-- Decorative Elements -->
+
+            <div class="container">
+                <div class="section-title reveal" style="text-align: center; margin-bottom: 4rem;">
+                    <h2 data-i18n="teachers_title" style="font-size: 2.8rem; font-weight: 800;">Biographies</h2>
+                </div>
+
+                <div class="teachers-grid-new reveal">
+                    <!-- Teacher 1 -->
+                    <a href="mentor-details.html?id=dina" class="teacher-card-new">
+                        <div class="teacher-avatar-new" style="background-image: url('identity/Logo/SVG/Blue.svg'); background-size: 60%; background-repeat: no-repeat; background-color: #f8fafc;"></div>
+                        <h3>Dr. Dina El Odessy</h3>
+                        <span class="role">Educational Director</span>
+                    </a>
+
+                    <!-- Teacher 2 -->
+                    <a href="mentor-details.html?id=omar" class="teacher-card-new">
+                        <div class="teacher-avatar-new" style="background-image: url('identity/Logo/SVG/Blue.svg'); background-size: 60%; background-repeat: no-repeat; background-color: #f8fafc;"></div>
+                        <h3>Eng. Omar El Odessy</h3>
+                        <span class="role">Chairman of the Board</span>
+                    </a>
+
+                    <!-- Teacher 3 -->
+                    <a href="mentor-details.html?id=karim" class="teacher-card-new">
+                        <div class="teacher-avatar-new" style="background-image: url('identity/Logo/SVG/Blue.svg'); background-size: 60%; background-repeat: no-repeat; background-color: #f8fafc;"></div>
+                        <h3>Mr. Karim El Sarnagawi</h3>
+                        <span class="role">CEO of Pyramakerz</span>
+                    </a>
+
+                    <!-- Teacher 4 -->
+                    <a href="mentor-details.html?id=nourhan" class="teacher-card-new">
+                        <div class="teacher-avatar-new" style="background-image: url('identity/Logo/SVG/Blue.svg'); background-size: 60%; background-repeat: no-repeat; background-color: #f8fafc;"></div>
+                        <h3>Mrs. Nourhan Soudan</h3>
+                        <span class="role">CEO of LOIS Company</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing -->
+        <section id="pricing" class="section" style="padding: 6rem 0; position: relative; overflow: hidden; background: #fdfdfd;">
+            <!-- Decorative Elements -->
+          
+
+            <div class="container">
+                <div class="section-title reveal" style="text-align: center; margin-bottom: 3rem;">
+                    <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 10px;">
+                        <i class="fas fa-book-open" style="color: var(--primary-color); font-size: 1.2rem;"></i>
+                        <span style="font-weight: 700; color: var(--primary-color); text-transform: uppercase; letter-spacing: 1px;">Pricing Plans</span>
+                    </div>
+                    <h2 style="font-size: 2.8rem; font-weight: 800; max-width: 600px; margin: 0 auto; line-height: 1.2;">Our Educational Pricing And Membership Plans</h2>
+                </div>
+
+                <div class="pricing-grid reveal">
+                    <!-- Card 1 -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <span class="plan-name">Starter</span>
+                            <div class="plan-price"><h2>$0</h2><span>/month</span></div>
+                            <p class="plan-desc">Perfect For Small Teams</p>
+                            <a href="#" class="btn-dark">GET STARTED</a>
+                        </div>
+                        <div class="pricing-body">
+                            <ul class="plan-features">
+                                <li><i class="far fa-check-circle"></i> Individual Course</li>
+                                <li><i class="far fa-check-circle"></i> Course Learning Checks</li>
+                                <li><i class="far fa-check-circle"></i> Offline Learning</li>
+                                <li><i class="far fa-check-circle"></i> Course Discussions</li>
+                                <li><i class="far fa-check-circle"></i> One to One Guidance</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span class="plan-name" style="margin-bottom: 0;">Pro</span>
+                                <span class="plan-rec">Recommended</span>
+                            </div>
+                            <div class="plan-price"><h2>$36</h2><span>/month</span></div>
+                            <p class="plan-desc">Great for Growing Teams</p>
+                            <a href="#" class="btn-dark">GET STARTED</a>
+                        </div>
+                        <div class="pricing-body">
+                            <ul class="plan-features">
+                                <li><i class="far fa-check-circle"></i> Standard Course</li>
+                                <li><i class="far fa-check-circle"></i> Regular Learning Checks</li>
+                                <li><i class="far fa-check-circle"></i> Limited Access Learning</li>
+                                <li><i class="far fa-check-circle"></i> Group Discussions</li>
+                                <li><i class="far fa-check-circle"></i> Email Support</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <span class="plan-name">Professional</span>
+                            <div class="plan-price"><h2>$25</h2><span>/month</span></div>
+                            <p class="plan-desc">Ideal For Growing Teams</p>
+                            <a href="#" class="btn-dark">JOIN NOW</a>
+                        </div>
+                        <div class="pricing-body">
+                            <ul class="plan-features">
+                                <li><i class="far fa-check-circle"></i> Group Course</li>
+                                <li><i class="far fa-check-circle"></i> Peer Learning Checks</li>
+                                <li><i class="far fa-check-circle"></i> Hybrid Learning</li>
+                                <li><i class="far fa-check-circle"></i> Group Discussions</li>
+                                <li><i class="far fa-check-circle"></i> Expert Mentorship</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <span class="plan-name">Enterprise</span>
+                            <div class="plan-price"><h2>$50</h2><span>/month</span></div>
+                            <p class="plan-desc">Best For Large Organizations</p>
+                            <a href="#" class="btn-dark">SIGN UP TODAY</a>
+                        </div>
+                        <div class="pricing-body">
+                            <ul class="plan-features">
+                                <li><i class="far fa-check-circle"></i> Custom Course</li>
+                                <li><i class="far fa-check-circle"></i> Advanced Learning Checks</li>
+                                <li><i class="far fa-check-circle"></i> Full Access Learning</li>
+                                <li><i class="far fa-check-circle"></i> Team Discussions</li>
+                                <li><i class="far fa-check-circle"></i> Dedicated Support</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section" id="faq">
+            <!-- Decorative Yellow Wavy -->
+            <div class="decor-wavy-yellow">
+                <svg viewBox="0 0 40 200" fill="none" stroke="#facc15" stroke-width="4">
+                    <path d="M20,0 Q30,25 20,50 T20,100 T20,150 T20,200" />
+                </svg>
+            </div>
+
+            <div class="container">
+                <div class="faq-container">
+                    <!-- Left Images -->
+                    <div class="faq-images-left reveal">
+                        <div class="faq-img-card faq-img-1">
+                            <img src="assets/faq_student_2_1778408826051.png" alt="Student studying">
+                        </div>
+                        <div class="faq-img-card faq-img-2">
+                            <img src="assets/faq_student_1_1778408799723.png" alt="Student learning online">
+                        </div>
+                        
+                        <!-- Stats Badge -->
+                        <div class="faq-stats-badge">
+                            <div class="faq-user-avatars">
+                                <img src="assets/hero-student-1.png" alt="User">
+                                <img src="assets/hero-student-2.png" alt="User">
+                                <img src="assets/hero-student-1.png" alt="User">
+                            </div>
+                            <div class="faq-stats-text">
+                                <span>10K +</span>
+                                <p data-i18n="faq_students">Active students</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Accordion -->
+                    <div class="faq-content-right reveal">
+                        <div class="faq-label">
+                            <i class="fas fa-book"></i>
+                            <span data-i18n="faq_label">Faq's</span>
+                        </div>
+                        <h2 data-i18n="faq_title">Frequently Asked Have Any Questions?</h2>
+                        
+                        <div class="faq-accordion">
+                            <div class="faq-item active">
+                                <div class="faq-header">
+                                    <span data-i18n="faq1_q">What is online education learning?</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="faq-body">
+                                    <p data-i18n="faq1_a">Online education allows students to learn through digital platforms using the internet. It includes video lessons, live classes, assignments, and discussions — all accessible anytime, anywhere.</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <div class="faq-header">
+                                    <span data-i18n="faq2_q">Do I need to attend classes at specific times?</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="faq-body">
+                                    <p data-i18n="faq2_a">We offer both synchronous live sessions and asynchronous recorded materials. You can choose the pace that fits your schedule best.</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <div class="faq-header">
+                                    <span data-i18n="faq3_q">Are online courses recognized by employers?</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="faq-body">
+                                    <p data-i18n="faq3_a">Yes, our certificates are recognized across the industry, and we partner with top employers to ensure our curriculum meets market demands.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <img src="identity/Logo/SVG/White.svg" alt="Maalem Logo" class="logo-img" style="margin-bottom: 1rem; filter: brightness(0) invert(1);">
+                    <p data-i18n="footer_desc">Maalem is the leading platform for professional education in the region.</p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 1rem;">Quick Links</h4>
+                    <ul>
+                        <li><a href="#" data-i18n="nav_home">Home</a></li>
+                        <li><a href="#" data-i18n="nav_courses">Courses</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer_copy">© 2026 Maalem Education. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/translations.js"></script>
+    <script src="js/bios.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

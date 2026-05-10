@@ -57,6 +57,8 @@ img {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
+    position: relative;
+    z-index: 10;
 }
 
 .btn {
@@ -90,15 +92,50 @@ img {
 }
 
 /* Animations */
+/* Animations */
 .reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease-out;
+    transform: translateY(60px) scale(0.9);
+    transition: all 1s cubic-bezier(0.3, 1.5, 0.3, 1);
+}
+
+.reveal-left {
+    transform: translateX(-150px) scale(0.9);
+}
+
+.reveal-right {
+    transform: translateX(150px) scale(0.9);
 }
 
 .reveal.active {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate(0, 0) scale(1) !important;
+}
+
+/* Floating Decor */
+.floating-decor {
+    position: fixed;
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0.3;
+    transition: transform 0.1s ease-out;
+}
+
+.shape-1 { top: 15%; left: 3%; width: 60px; animation: float 8s ease-in-out infinite; color: var(--primary-color); }
+.shape-2 { top: 45%; right: 4%; width: 70px; animation: float 10s ease-in-out infinite reverse; color: var(--secondary-color); }
+.shape-3 { top: 75%; left: 2%; width: 45px; animation: rotateSlow 15s linear infinite; color: var(--primary-color); }
+.shape-4 { top: 25%; right: 6%; width: 55px; animation: float 9s ease-in-out infinite; color: var(--secondary-color); }
+.shape-5 { top: 85%; right: 3%; width: 50px; animation: rotateSlow 20s linear infinite reverse; color: var(--primary-color); }
+.shape-6 { top: 55%; left: 5%; width: 40px; animation: float 7s ease-in-out infinite; color: var(--secondary-color); }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(-30px) rotate(15deg); }
+}
+
+@keyframes rotateSlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 /* Preloader */
@@ -107,13 +144,13 @@ img {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
-    background: var(--white);
+    height: 100%;
+    background: #fff;
     z-index: 9999;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
 }
 
 #preloader.hidden {
@@ -213,10 +250,22 @@ nav {
 /* Hero Section */
 .hero {
     position: relative;
-    height: 75vh;
+    height: 85vh;
     display: flex;
     overflow: hidden;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    background: #000;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 50%, rgba(29, 99, 220, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(250, 204, 21, 0.2) 0%, transparent 40%);
+    z-index: 1;
 }
 
 .hero-left {
@@ -224,7 +273,7 @@ nav {
     display: flex;
     align-items: center;
     padding-left: 5%;
-    z-index: 10;
+    z-index: 15;
     color: var(--white);
     position: relative;
     width: 50%;
@@ -280,6 +329,12 @@ nav {
     height: 100%;
     background-size: cover;
     background-position: center;
+    animation: heroZoom 20s infinite alternate;
+}
+
+@keyframes heroZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
 }
 
 .hero-content {
@@ -1482,9 +1537,23 @@ footer {
 
 .teachers-grid-new {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 3rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
     margin-top: 8rem;
+}
+
+@media (max-width: 1200px) {
+    .teachers-grid-new {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .teachers-grid-new {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
 }
 
 .teacher-card-new {
@@ -1517,10 +1586,14 @@ footer {
 }
 
 .teacher-card-new h3 {
-    font-size: 1.4rem;
+    font-size: 1.25rem;
     font-weight: 700;
     margin-bottom: 0.4rem;
     color: var(--text-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 1rem;
 }
 
 .teacher-card-new .role {
@@ -2033,7 +2106,7 @@ footer {
     display: flex;
     align-items: center;
     gap: 5rem;
-    padding: 6rem 0;
+    padding: 3rem 0;
 }
 
 .escul-left {
@@ -2043,11 +2116,11 @@ footer {
 
 .image-grid-escul {
     position: relative;
-    height: 550px;
+    height: 450px;
     width: 100%;
 }
 
-.escul-img-1, .escul-img-2, .escul-img-3 {
+.escul-img-1, .escul-img-2 {
     position: absolute;
     border-radius: 30px;
     background-size: cover;
@@ -2058,26 +2131,18 @@ footer {
 .escul-img-1 {
     top: 0;
     left: 0;
-    width: 50%;
-    height: 45%;
+    width: 70%;
+    height: 75%;
     z-index: 1;
 }
 
 .escul-img-2 {
-    bottom: 10%;
-    left: 20%;
-    width: 55%;
-    height: 55%;
-    z-index: 2;
-    border: 10px solid var(--white);
-}
-
-.escul-img-3 {
     bottom: 0;
     right: 0;
-    width: 45%;
-    height: 50%;
-    z-index: 3;
+    width: 60%;
+    height: 65%;
+    z-index: 2;
+    border: 10px solid var(--white);
 }
 
 .student-badge-escul {

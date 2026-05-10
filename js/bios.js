@@ -3,7 +3,7 @@ const mentorsData = [
         id: "dina",
         name: "Dr. Dina El Odessy",
         role: "Educational Director",
-        image: "assets/hero-student-2.png", // Placeholder image
+        image: "identity/Logo/SVG/Blue.svg", // Branded logo placeholder
         stats: {
             courses: 5,
             reviews: "150 (4.9)",
@@ -25,7 +25,7 @@ const mentorsData = [
         id: "omar",
         name: "Eng. Omar El Odessy",
         role: "Chairman of the Board of Directors",
-        image: "assets/hero-student-1.png", // Placeholder image
+        image: "identity/Logo/SVG/Blue.svg", // Branded logo placeholder
         stats: {
             courses: 3,
             reviews: "95 (4.8)",
@@ -49,7 +49,7 @@ const mentorsData = [
         id: "karim",
         name: "Mr. Karim El Sarnagawi",
         role: "CEO of Pyramakerz",
-        image: "assets/hero-student-1.png", // Placeholder image
+        image: "identity/Logo/SVG/Blue.svg", // Branded logo placeholder
         stats: {
             courses: 8,
             reviews: "320 (4.9)",
@@ -73,7 +73,7 @@ const mentorsData = [
         id: "nourhan",
         name: "Mrs. Nourhan Soudan",
         role: "CEO of LOIS Company",
-        image: "assets/hero-student-2.png", // Placeholder image
+        image: "identity/Logo/SVG/Blue.svg", // Branded logo placeholder
         stats: {
             courses: 4,
             reviews: "110 (4.8)",

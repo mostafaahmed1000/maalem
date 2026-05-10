@@ -181,6 +181,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll(); // Trigger once on load
+
+    // Parallax effect for floating decor
+    document.addEventListener('mousemove', (e) => {
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+        const shapes = document.querySelectorAll('.floating-decor');
+        
+        shapes.forEach((shape, index) => {
+            const speed = (index + 1) * 2;
+            const x = (window.innerWidth / 2 - mouseX) * speed / 100;
+            const y = (window.innerHeight / 2 - mouseY) * speed / 100;
+            shape.style.transform = `translate(${x}px, ${y}px)`;
+        });
+    });
 });
     // FAQ Accordion
     const faqItems = document.querySelectorAll('.faq-item');

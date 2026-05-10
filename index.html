@@ -9,7 +9,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-
+    <!-- Floating Decor Shapes -->
+    <div class="floating-decor shape-1"><svg viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="40"/></svg></div>
+    <div class="floating-decor shape-2"><svg viewBox="0 0 100 100" fill="currentColor"><rect x="20" y="20" width="60" height="60" rx="10"/></svg></div>
+    <div class="floating-decor shape-3"><svg viewBox="0 0 100 100" fill="currentColor"><path d="M50 10 L90 90 L10 90 Z"/></svg></div>
+    <div class="floating-decor shape-4"><svg viewBox="0 0 100 100" fill="currentColor"><path d="M30 50 L70 50 M50 30 L50 70" stroke="currentColor" stroke-width="15" stroke-linecap="round"/></svg></div>
+    <div class="floating-decor shape-5"><svg viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="8" fill="none"/></svg></div>
+    <div class="floating-decor shape-6"><svg viewBox="0 0 100 100" fill="currentColor"><rect x="30" y="30" width="40" height="40" rotate="45" fill="currentColor" opacity="0.5"/></svg></div>
+    
     <!-- Preloader -->
     <div id="preloader">
         <video autoplay muted playsinline id="preloaderVideo">
@@ -61,7 +68,7 @@
                 <!-- Slide 1 -->
                 <div class="hero-slide active">
                     <div class="hero-left">
-                        <div class="hero-content">
+                        <div class="hero-content reveal reveal-left active">
                             <h1 data-i18n="hero_title_1">Shaping Tomorrow’s <span>Landmarks</span></h1>
                             <p data-i18n="hero_desc_1">Education is the most powerful weapon which you can use to change the world.</p>
                             <a href="#courses" class="btn btn-primary btn-lg" data-i18n="hero_cta">GET STARTED <i class="fas fa-arrow-right"></i></a>
@@ -73,7 +80,7 @@
                 <!-- Slide 2 -->
                 <div class="hero-slide">
                     <div class="hero-left">
-                        <div class="hero-content">
+                        <div class="hero-content reveal reveal-left active">
                             <h1 data-i18n="hero_title_2">Unlock Your Potential with <span>Expert Mentors</span></h1>
                             <p data-i18n="hero_desc_2">Learn from industry leaders and gain practical skills that prepare you for the real world.</p>
                             <a href="#courses" class="btn btn-primary btn-lg" data-i18n="hero_cta">GET STARTED <i class="fas fa-arrow-right"></i></a>
@@ -88,14 +95,14 @@
         <!-- Vision & Mission -->
         <section class="section vision-section">
             <div class="container vision-container">
-                <div class="vision-left reveal">
+                <div class="vision-left reveal reveal-left">
                     <div class="image-stack">
                         <div class="img-back" style="background-image: url('assets/Mision-1.jpeg');"></div>
                         <div class="img-front" style="background-image: url('assets/Mission-2.jpeg');"></div>
                         <div class="dotted-pattern"></div>
                     </div>
                 </div>
-                <div class="vision-right reveal">
+                <div class="vision-right reveal reveal-right">
                     <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
                         <i class="fas fa-book-open" style="color: var(--primary-color); font-size: 1.2rem;"></i>
                         <span data-i18n="vision_subtitle" style="font-weight: 700; color: var(--primary-color); text-transform: uppercase; letter-spacing: 1px;">Get To Know About Us</span>
@@ -119,7 +126,7 @@
         </section>
 
         <!-- Core Values -->
-        <section class="section category-section" style="padding: 6rem 0; background-color: var(--bg-alt);">
+        <section class="section category-section reveal reveal-right" style="padding: 6rem 0; background-color: var(--bg-alt);">
             <div class="container">
                 <div class="category-header reveal" style="text-align: center; margin-bottom: 4rem;">
                     <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 10px;">
@@ -182,7 +189,7 @@
         </section>
 
         <!-- Core Challenges -->
-        <section class="challenges-section" id="challenges">
+        <section class="challenges-section reveal reveal-left" id="challenges">
             <div class="container">
                 <div class="challenges-header reveal">
                     <div class="challenges-subtitle">
@@ -239,7 +246,7 @@
             <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(at 0% 0%, hsla(210,100%,95%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(225,100%,98%,1) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(339,49%,90%,1) 0, transparent 50%); opacity: 0.8; z-index: 1;"></div>
             
             <div class="container" style="position: relative; z-index: 2; text-align: center;">
-                <div class="section-title reveal">
+                <div class="section-title reveal reveal-right">
                     <span data-i18n="why_subtitle" style="font-weight: 800; color: #1d63dc; text-transform: uppercase; letter-spacing: 2px; font-size: 1rem; display: block; margin-bottom: 1rem;">Why Maalem Education</span>
                     <h2 data-i18n="why_title" style="font-size: 3.5rem; font-weight: 900; color: #1f2937; line-height: 1.1; margin-bottom: 2rem;">Maalem is not only an <span>operator</span></h2>
                     <div style="width: 80px; height: 4px; background: #1d63dc; margin: 2rem auto; border-radius: 2px;"></div>
@@ -309,13 +316,12 @@
         </section>
 
         <!-- Service 1: Running & Operating Schools -->
-        <section class="services-section" id="service-1" style="padding: 8rem 0; background: var(--white);">
+        <section class="services-section reveal reveal-left" id="service-1" style="padding: 4rem 0; background: var(--white);">
             <div class="container escul-container">
-                <div class="escul-left reveal">
+                <div class="escul-left reveal reveal-left">
                     <div class="image-grid-escul">
                         <div class="escul-img-1" style="background-image: url('assets/Hero-2.jpeg');"></div>
                         <div class="escul-img-2" style="background-image: url('assets/Hero-4.jpeg');"></div>
-                        <div class="escul-img-3" style="background-image: url('assets/Pic1.jpeg');"></div>
                         <div class="student-badge-escul">
                             <div class="badge-inner">
                                 <h3 data-i18n="faq_students_count">50k</h3>
@@ -324,7 +330,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="escul-right reveal">
+                <div class="escul-right reveal reveal-right">
                     <div class="escul-badge">
                         <i class="fas fa-school-flag"></i>
                         <span data-i18n="services_subtitle">OUR EXPERTISE</span>
@@ -343,16 +349,15 @@
         </section>
 
         <!-- Service 2: Educational Consulting Services -->
-        <section class="services-section" id="service-2" style="padding: 8rem 0; background: var(--bg-alt);">
+        <section class="services-section reveal reveal-right" id="service-2" style="padding: 4rem 0; background: var(--bg-alt);">
             <div class="container escul-container" style="flex-direction: row-reverse;">
-                <div class="escul-left reveal">
+                <div class="escul-left reveal reveal-right">
                     <div class="image-grid-escul">
                         <div class="escul-img-1" style="background-image: url('assets/Mission-2.jpeg');"></div>
                         <div class="escul-img-2" style="background-image: url('assets/Mision-1.jpeg');"></div>
-                        <div class="escul-img-3" style="background-image: url('assets/hero-student-1.png');"></div>
                     </div>
                 </div>
-                <div class="escul-right reveal">
+                <div class="escul-right reveal reveal-left">
                     <div class="escul-badge">
                         <i class="fas fa-chess"></i>
                         <span data-i18n="services_subtitle">OUR EXPERTISE</span>
@@ -372,16 +377,15 @@
         </section>
 
         <!-- Service 3: Teacher Training Diploma -->
-        <section class="services-section" id="service-3" style="padding: 8rem 0; background: var(--white);">
+        <section class="services-section reveal reveal-left" id="service-3" style="padding: 4rem 0; background: var(--white);">
             <div class="container escul-container">
-                <div class="escul-left reveal">
+                <div class="escul-left reveal reveal-left">
                     <div class="image-grid-escul">
                         <div class="escul-img-1" style="background-image: url('assets/hero-student-1.png');"></div>
                         <div class="escul-img-2" style="background-image: url('assets/hero-student-2.png');"></div>
-                        <div class="escul-img-3" style="background-image: url('assets/faq_student_1_1778408799723.png');"></div>
                     </div>
                 </div>
-                <div class="escul-right reveal">
+                <div class="escul-right reveal reveal-right">
                     <div class="escul-badge">
                         <i class="fas fa-certificate"></i>
                         <span data-i18n="services_subtitle">OUR EXPERTISE</span>
@@ -399,7 +403,7 @@
         </section>
 
         <!-- Featured Courses -->
-        <section id="courses" class="section bg-alt" style="padding: 6rem 0;">
+        <section id="courses" class="section bg-alt reveal reveal-right" style="padding: 6rem 0;">
             <div class="container">
                 <div class="section-title reveal" style="text-align: center; margin-bottom: 4rem;">
                     <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 10px;">
@@ -416,7 +420,6 @@
                         <div class="new-course-card">
                             <div class="course-img-wrap">
                                 <div class="course-img" style="background-image: url('assets/teaching_excellence_pathway_1778411860463.png');"></div>
-                                <div class="course-badge">Diploma</div>
                             </div>
                             <div class="course-content">
                                 <h3 data-i18n="course1_name">Pathway One: Teaching Excellence</h3>
@@ -452,7 +455,6 @@
                         <div class="new-course-card">
                             <div class="course-img-wrap">
                                 <div class="course-img" style="background-image: url('assets/educational_leadership_pathway_1778411874245.png');"></div>
-                                <div class="course-badge">Executive</div>
                             </div>
                             <div class="course-content">
                                 <h3 data-i18n="course2_name">Pathway Two: Educational Leadership</h3>
@@ -488,7 +490,6 @@
                         <div class="new-course-card">
                             <div class="course-img-wrap">
                                 <div class="course-img" style="background-image: url('assets/school_operations_pathway_1778411887223.png');"></div>
-                                <div class="course-badge">Operational</div>
                             </div>
                             <div class="course-content">
                                 <h3 data-i18n="course3_name">Pathway Three: School Operations & Administration</h3>
@@ -570,7 +571,7 @@
         </section>
 
         <!-- Mentors -->
-        <section id="mentors" class="mentors-section">
+        <section id="mentors" class="mentors-section reveal reveal-left">
             <!-- Decorative Elements -->
 
             <div class="container">
@@ -611,7 +612,7 @@
         </section>
 
         <!-- Pricing -->
-        <section id="pricing" class="section" style="padding: 6rem 0; position: relative; overflow: hidden; background: #fdfdfd;">
+        <section id="pricing" class="section reveal reveal-right" style="padding: 6rem 0; position: relative; overflow: hidden; background: #fdfdfd;">
             <!-- Decorative Elements -->
           
 
@@ -708,7 +709,7 @@
         </section>
 
         <!-- FAQ Section -->
-        <section class="faq-section" id="faq">
+        <section class="faq-section reveal reveal-left" id="faq">
             <!-- Decorative Yellow Wavy -->
             <div class="decor-wavy-yellow">
                 <svg viewBox="0 0 40 200" fill="none" stroke="#facc15" stroke-width="4">
@@ -719,7 +720,7 @@
             <div class="container">
                 <div class="faq-container">
                     <!-- Left Images -->
-                    <div class="faq-images-left reveal">
+                    <div class="faq-images-left reveal reveal-left">
                         <div class="faq-img-card faq-img-1">
                             <img src="assets/faq_student_2_1778408826051.png" alt="Student studying">
                         </div>
@@ -742,7 +743,7 @@
                     </div>
 
                     <!-- Right Accordion -->
-                    <div class="faq-content-right reveal">
+                    <div class="faq-content-right reveal reveal-right">
                         <div class="faq-label">
                             <i class="fas fa-book"></i>
                             <span data-i18n="faq_label">Faq's</span>
@@ -788,7 +789,7 @@
 
     <footer>
         <div class="container">
-            <div class="footer-grid">
+            <div class="footer-grid reveal">
                 <div>
                     <img src="identity/Logo/SVG/White.svg" alt="Maalem Logo" class="logo-img" style="margin-bottom: 1rem; filter: brightness(0) invert(1);">
                     <p data-i18n="footer_desc">Maalem is the leading platform for professional education in the region.</p>

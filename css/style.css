@@ -1,10 +1,271 @@
 @import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&family=Cairo:wght@300;400;600;700&display=swap');
 
+/* ═══════════════════════════════════════════════════════════════
+   3D FULL-PAGE SCROLL ENGINE – UI LAYER
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Body perspective is set on the main body rule below */
+
+/* Sections – only scroll-related helpers; layout is set by JS at runtime */
+main > section,
+section#home {
+  min-height: 100vh;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(29, 99, 220, 0.25) transparent;
+  box-sizing: border-box;
+}
+
+main > section::-webkit-scrollbar       { width: 4px; }
+main > section::-webkit-scrollbar-track { background: transparent; }
+main > section::-webkit-scrollbar-thumb { background: rgba(29,99,220,0.25); border-radius: 4px; }
+
+/* ─── Navigation Dots ─────────────────────────────────────── */
+#scroll3d-ui {
+  position: fixed;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+}
+
+#s3d-dots {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: all;
+}
+
+.s3d-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border: 2px solid rgba(29, 99, 220, 0.5);
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
+  display: block;
+  position: relative;
+  backdrop-filter: blur(4px);
+}
+
+.s3d-dot::after {
+  content: attr(title);
+  position: absolute;
+  right: calc(100% + 14px);
+  top: 50%;
+  transform: translateY(-50%) translateX(6px);
+  background: rgba(15, 15, 15, 0.85);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 4px 10px;
+  border-radius: 20px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  backdrop-filter: blur(8px);
+  letter-spacing: 0.3px;
+}
+
+.s3d-dot:hover::after {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+.s3d-dot.active {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  transform: scale(1.45);
+  box-shadow: 0 0 12px rgba(29, 99, 220, 0.6);
+}
+
+.s3d-dot:hover:not(.active) {
+  background: rgba(29, 99, 220, 0.35);
+  border-color: var(--primary-color);
+  transform: scale(1.2);
+}
+
+/* ─── Section Label ───────────────────────────────────────── */
+#s3d-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: rgba(29, 99, 220, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  max-height: 140px;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.8;
+  margin-top: 6px;
+}
+
+/* ─── Up / Down Arrows ────────────────────────────────────── */
+#s3d-arrows {
+  position: fixed;
+  right: 20px;
+  bottom: 28px;
+  z-index: 9000;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: all;
+}
+
+#s3d-arrows button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(29, 99, 220, 0.2);
+  color: var(--primary-color);
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  backdrop-filter: blur(8px);
+}
+
+#s3d-arrows button:hover {
+  background: var(--primary-color);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(29, 99, 220, 0.35);
+  transform: scale(1.1);
+}
+
+/* ─── Section Progress Bar (top of viewport) ──────────────── */
+#s3d-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  z-index: 9001;
+  transition: width 0.5s cubic-bezier(0.77,0,0.175,1);
+  border-radius: 0 3px 3px 0;
+}
+
+/* ─── Scroll Hint (first load) ────────────────────────────── */
+#s3d-scroll-hint {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: hintPulse 2.5s ease-in-out infinite;
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+#s3d-scroll-hint span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--primary-color);
+}
+
+#s3d-scroll-hint .hint-arrow {
+  width: 28px;
+  height: 28px;
+  border-right: 2.5px solid var(--primary-color);
+  border-bottom: 2.5px solid var(--primary-color);
+  transform: rotate(45deg);
+  margin-top: -8px;
+}
+
+@keyframes hintPulse {
+  0%, 100% { opacity: 0.5; transform: translateX(-50%) translateY(0); }
+  50%       { opacity: 1;   transform: translateX(-50%) translateY(8px); }
+}
+
+/* ─── Mobile: disable 3D engine, restore normal scroll ───── */
+@media (max-width: 767px) {
+  #scroll3d-ui,
+  #s3d-arrows,
+  #s3d-progress-bar,
+  #s3d-scroll-hint { display: none !important; }
+
+  html { overflow: auto !important; }
+  body { overflow: auto !important; height: auto !important; perspective: none !important; }
+
+  main > section,
+  section#home {
+    position: relative !important;
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: all !important;
+    height: auto !important;
+    min-height: 100vh;
+    overflow: visible !important;
+  }
+}
+/* ════════════════════════════════════════════════════════════ */
+
+/* ── 3D Engine active state ──────────────────────────────── */
+
+/* Keep header always above fixed sections */
+body.s3d-active header {
+  z-index: 9500 !important;
+}
+
+/* Hide the standalone <footer> — it's been moved inside the last section */
+body.s3d-active #site-footer {
+  display: none !important;
+}
+
+/* Footer embedded inside the last section */
+.section-footer {
+  background: var(--bg-dark, #0f0f0f);
+  color: #fff;
+  padding: 4rem 0 3.5rem;
+  margin-top: 4rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.section-footer .footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.section-footer .footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 1.5rem;
+  text-align: center;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.85rem;
+}
+
+.section-footer a { color: rgba(255,255,255,0.7); }
+.section-footer a:hover { color: #fff; }
+.section-footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.section-footer p { color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.6; }
+/* ════════════════════════════════════════════════════════════ */
+
+
+
 :root {
     --primary-color: #1d63dc;
     --primary-light: #77A1EA;
     --primary-dark: #154cb3;
-    --secondary-color: #f1b400;
+    --secondary-color: #154cb3;
     --text-color: #1F2937;
     --text-light: #6B7280;
     --bg-color: #FFFFFF;
@@ -32,6 +293,9 @@ body {
     background-color: var(--bg-color);
     line-height: 1.6;
     overflow-x: hidden;
+    /* 3D perspective stage – used by scroll3d.js */
+    perspective: 1200px;
+    perspective-origin: 50% 50%;
 }
 
 [dir="rtl"] body {
@@ -79,6 +343,14 @@ img {
 .btn-primary:hover {
     background-color: var(--primary-dark);
     transform: translateY(-2px);
+}
+
+.btn-lg {
+    padding: 1.2rem 2.5rem;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .btn-secondary {
@@ -143,25 +415,52 @@ img {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: #fff;
+    right: 0;
+    bottom: 0;
+    background: #f7edf6;
     z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
+    overflow: hidden;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
 }
 
 #preloader.hidden {
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
 }
 
+/* Video fills the full viewport — position:fixed so it's immune to parent layout */
 #preloader video {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
-    object-fit: cover;
+    object-fit: contain;
+    z-index: 9999;
+}
+
+/* Progress bar fixed to the bottom of the viewport */
+.preloader-overlay {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10000;
+    pointer-events: none;
+}
+
+.preloader-bar-wrap {
+    width: 100%;
+    height: 4px;
+    background: rgba(29, 99, 220, 0.15);
+}
+
+.preloader-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #1d63dc, #f1b400);
+    transition: width 0.3s linear;
 }
 
 /* Header */
@@ -250,7 +549,7 @@ nav {
 /* Hero Section */
 .hero {
     position: relative;
-    height: 85vh;
+    height: 100vh;
     display: flex;
     overflow: hidden;
     background: #000;
@@ -263,9 +562,8 @@ nav {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 20% 50%, rgba(29, 99, 220, 0.4) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(250, 204, 21, 0.2) 0%, transparent 40%);
-    z-index: 1;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 100%);
+    z-index: 10; /* Above the image but below the content */
 }
 
 .hero-left {
@@ -273,17 +571,19 @@ nav {
     display: flex;
     align-items: center;
     padding-left: 5%;
-    z-index: 15;
+    z-index: 20;
     color: var(--white);
     position: relative;
-    width: 50%;
+    max-width: 800px;
 }
 
 .hero-right {
-    flex: 1;
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: 5;
-    width: 50%;
 }
 
 .hero-slider {
@@ -292,6 +592,7 @@ nav {
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: 15;
 }
 
 .hero-slide {
@@ -313,12 +614,10 @@ nav {
 
 .hero-image-container {
     position: absolute;
-    top: 0;
-    right: 0;
-    width: 120%;
-    height: 100%;
-    clip-path: ellipse(80% 100% at 100% 50%);
-    border-left: 10px solid var(--secondary-color);
+    top: 90px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 90px);
 }
 
 .hero-image {
@@ -329,12 +628,6 @@ nav {
     height: 100%;
     background-size: cover;
     background-position: center;
-    animation: heroZoom 20s infinite alternate;
-}
-
-@keyframes heroZoom {
-    from { transform: scale(1); }
-    to { transform: scale(1.1); }
 }
 
 .hero-content {
@@ -342,20 +635,26 @@ nav {
 }
 
 .hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
-    font-weight: 700;
+    font-size: 4.5rem;
+    margin-bottom: 2rem;
+    line-height: 1.1;
+    font-weight: 900;
+    letter-spacing: -1px;
+    color: #fff;
 }
 
 .hero h1 span {
-    color: var(--primary-light);
+    color: var(--secondary-color);
+    display: block;
 }
 
 .hero p {
-    font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 2.5rem;
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 3rem;
+    line-height: 1.6;
+    max-width: 500px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 /* Decorative Elements */
@@ -526,6 +825,7 @@ nav {
     border-radius: 20px;
     background-size: cover;
     background-position: center;
+    border: 10px solid var(--white);
     z-index: 2;
     box-shadow: -10px 10px 30px rgba(0,0,0,0.1);
 }
@@ -714,9 +1014,12 @@ nav {
     display: none;
 }
 
+#courses .container {
+    max-width: 1400px;
+}
+
 .new-course-card {
     flex: 0 0 calc((100% - 4rem) / 3);
-    min-width: 300px;
     background: #ffffff;
     border-radius: 20px;
     overflow: hidden;

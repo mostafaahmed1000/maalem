@@ -3,7 +3,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('header');
     let lastScrollY = window.scrollY;
 
+    // Header – in 3D scroll mode window.scrollY is always 0,
+    // so only run hide/show logic when normal scrolling is active
     window.addEventListener('scroll', () => {
+        const is3D = document.body.style.overflow === 'hidden';
+        if (is3D) {
+            header.style.background = 'rgba(255, 255, 255, 0.85)';
+            header.style.boxShadow  = '0 4px 20px rgba(0, 0, 0, 0.03)';
+            header.style.transform  = 'translateY(0)';
+            return;
+        }
+
         if (window.scrollY > 50) {
             header.style.background = 'rgba(255, 255, 255, 0.9)';
             header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.05)';
@@ -12,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
             header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.03)';
         }
 
-        // Hide on scroll down, show on scroll up
         if (window.scrollY > lastScrollY && window.scrollY > 150) {
             header.style.transform = 'translateY(-100%)';
         } else {
@@ -21,25 +30,56 @@ document.addEventListener('DOMContentLoaded', () => {
         lastScrollY = window.scrollY;
     });
 
-    // Preloader Logic
-    const preloader = document.getElementById('preloader');
+
+    // ── Video Preloader ──────────────────────────────────────
+    const preloader      = document.getElementById('preloader');
     const preloaderVideo = document.getElementById('preloaderVideo');
+    const preloaderBar   = document.getElementById('preloaderBar');
+
     if (preloader && preloaderVideo) {
-        preloaderVideo.addEventListener('ended', () => {
-            preloader.classList.add('hidden');
+        let dismissed = false;
+
+        const dismiss = () => {
+            if (dismissed) return;
+            dismissed = true;
+            if (preloaderBar) preloaderBar.style.width = '100%';
             setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 500); // wait for fade out transition
-        });
-        
-        // Fallback just in case video fails to play/end
-        setTimeout(() => {
-            if (!preloader.classList.contains('hidden')) {
                 preloader.classList.add('hidden');
-                setTimeout(() => preloader.style.display = 'none', 500);
-            }
-        }, 5000);
+                setTimeout(() => { preloader.style.display = 'none'; }, 650);
+            }, 200); // brief pause at 100% before fading
+        };
+
+        // Drive the progress bar from actual video time
+        preloaderVideo.addEventListener('timeupdate', () => {
+            if (!preloaderBar || !preloaderVideo.duration) return;
+            const pct = (preloaderVideo.currentTime / preloaderVideo.duration) * 100;
+            preloaderBar.style.width = pct + '%';
+        });
+
+        // Dismiss when video finishes naturally
+        preloaderVideo.addEventListener('ended', dismiss);
+
+        // Dismiss if video fails to load
+        preloaderVideo.addEventListener('error', () => {
+            console.error('[Preloader] Video load error:', preloaderVideo.currentSrc);
+            dismiss();
+        });
+
+        // Wait until buffered and ready, then start from frame 0
+        preloaderVideo.addEventListener('canplay', () => {
+            preloaderVideo.currentTime = 0;
+            preloaderVideo.play().catch(err => {
+                console.warn('[Preloader] Autoplay blocked:', err.message);
+                dismiss();
+            });
+        }, { once: true });
+
+        // Hard fallback
+        setTimeout(dismiss, 8000);
     }
+    // ────────────────────────────────────────────────────────
+
+
 
     const langToggle = document.getElementById('langToggle');
     const htmlTag = document.documentElement;
@@ -167,8 +207,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Scroll Reveal Animation
+    // Note: in 3D scroll mode, sections are position:fixed so scrollY is always 0.
+    // scroll3d.js calls triggerReveals() itself; this handles the fallback (mobile/normal scroll).
     const revealElements = document.querySelectorAll('.reveal');
     const revealOnScroll = () => {
+        if (document.body.style.overflow === 'hidden') return; // 3D mode active
         const windowHeight = window.innerHeight;
         revealElements.forEach(el => {
             const elTop = el.getBoundingClientRect().top;
@@ -181,6 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll(); // Trigger once on load
+
 
     // Parallax effect for floating decor
     document.addEventListener('mousemove', (e) => {

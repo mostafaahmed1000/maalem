@@ -19,9 +19,15 @@
     
     <!-- Preloader -->
     <div id="preloader">
-        <video autoplay muted playsinline id="preloaderVideo">
-            <source src="identity/Logo Animation/Maalem.mp4" type="video/mp4">
+        <video id="preloaderVideo" muted playsinline preload="auto">
+            <source src="identity/Logo%20Animation/Maalem.mp4" type="video/mp4">
         </video>
+        <!-- Overlay shown during white/blank video frames -->
+        <div class="preloader-overlay">
+            <div class="preloader-bar-wrap">
+                <div class="preloader-bar-fill" id="preloaderBar"></div>
+            </div>
+        </div>
     </div>
 
     <header>
@@ -57,14 +63,14 @@
             </div>
 
             <!-- Static Right Image -->
-            <div class="hero-right" style="position: absolute; top: 0; right: 0; height: 100%; width: 50%; z-index: 5;">
+            <div class="hero-right">
                 <div class="hero-image-container">
-                    <div class="hero-image" style="background-image: url('assets/Pic1.jpeg');"></div>
+                    <div class="hero-image" style="background-image: url('assets/Hero-1.jpeg');"></div>
                 </div>
             </div>
 
             <!-- Slides (Text Only) -->
-            <div class="hero-slider" id="heroSlider" style="z-index: 6;">
+            <div class="hero-slider" id="heroSlider">
                 <!-- Slide 1 -->
                 <div class="hero-slide active">
                     <div class="hero-left">
@@ -381,8 +387,8 @@
             <div class="container escul-container">
                 <div class="escul-left reveal reveal-left">
                     <div class="image-grid-escul">
-                        <div class="escul-img-1" style="background-image: url('assets/hero-student-1.png');"></div>
-                        <div class="escul-img-2" style="background-image: url('assets/hero-student-2.png');"></div>
+                        <div class="escul-img-1" style="background-image: url('assets/hero-student-2.png');"></div>
+                        <div class="escul-img-2" style="background-image: url('assets/Hero-1.jpeg');"></div>
                     </div>
                 </div>
                 <div class="escul-right reveal reveal-right">
@@ -529,42 +535,41 @@
         <section class="mooc-section" id="mooc" style="padding: 10rem 0; background: var(--white);">
             <div class="container mooc-container" style="display: flex; align-items: center; gap: 5rem;">
                 <div class="mooc-content reveal" style="flex: 1.2; text-align: left;">
-                    <div class="mooc-header" style="margin-bottom: 3rem;">
-                        <h2 class="mooc-title" data-i18n="mooc_title" style="font-size: 3rem; margin-bottom: 1.5rem;">MOOC Integration Model</h2>
-                        <p class="mooc-desc" data-i18n="mooc_desc" style="font-size: 1.1rem; line-height: 1.7; color: var(--text-light);">Integrating facilitated MOOC study groups to enhance technology and AI learning tracks.</p>
+                    <div class="mooc-header" style="margin-bottom: 2.5rem;">
+                        <span style="font-weight: 800; color: #1d63dc; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; display: block; margin-bottom: 0.8rem;">Strategic Innovation Component</span>
+                        <h2 class="mooc-title" data-i18n="mooc_title" style="font-size: 2.8rem; margin-bottom: 1.5rem; font-weight: 800;">MOOC Integration Model</h2>
+                        <p class="mooc-desc" data-i18n="mooc_desc" style="font-size: 1.1rem; line-height: 1.7; color: var(--text-light); margin-bottom: 1.5rem;">As part of the strategic educational development model, MAALEM integrates facilitated MOOC (Massive Open Online Course) study groups to enhance technology and AI learning tracks while maintaining cost efficiency and international exposure.</p>
+                        <h4 style="font-weight: 700; margin-bottom: 1rem; color: #1f2937;">MOOC Integration Model Includes:</h4>
                     </div>
                     
-                    <div class="mooc-list" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem;">
-                        <div class="mooc-item">
-                            <i class="fas fa-globe"></i>
-                            <span data-i18n="mooc_item1">Curated Coursera / EdX courses</span>
+                    <div class="mooc-list" style="display: grid; grid-template-columns: repeat(1, 1fr); gap: 1rem; margin-bottom: 2rem;">
+                        <div class="mooc-item" style="display: flex; align-items: center; gap: 1rem; background: #f8fafc; padding: 1rem 1.5rem; border-radius: 15px; border: 1px solid #f1f5f9;">
+                            <i class="fas fa-check-circle" style="color: #1d63dc;"></i>
+                            <span data-i18n="mooc_item1">Curated Coursera / EdX courses aligned with diploma modules</span>
                         </div>
-                        <div class="mooc-item">
-                            <i class="fas fa-users"></i>
-                            <span data-i18n="mooc_item2">Facilitated study groups</span>
+                        <div class="mooc-item" style="display: flex; align-items: center; gap: 1rem; background: #f8fafc; padding: 1rem 1.5rem; border-radius: 15px; border: 1px solid #f1f5f9;">
+                            <i class="fas fa-check-circle" style="color: #1d63dc;"></i>
+                            <span data-i18n="mooc_item2">Facilitated study groups with structured discussion</span>
                         </div>
-                        <div class="mooc-item">
-                            <i class="fas fa-language"></i>
-                            <span data-i18n="mooc_item3">Arabic academic support</span>
+                        <div class="mooc-item" style="display: flex; align-items: center; gap: 1rem; background: #f8fafc; padding: 1rem 1.5rem; border-radius: 15px; border: 1px solid #f1f5f9;">
+                            <i class="fas fa-check-circle" style="color: #1d63dc;"></i>
+                            <span data-i18n="mooc_item3">Arabic-language academic support for complex content</span>
                         </div>
-                        <div class="mooc-item">
-                            <i class="fas fa-tasks"></i>
-                            <span data-i18n="mooc_item4">Assignment guidance</span>
+                        <div class="mooc-item" style="display: flex; align-items: center; gap: 1rem; background: #f8fafc; padding: 1rem 1.5rem; border-radius: 15px; border: 1px solid #f1f5f9;">
+                            <i class="fas fa-check-circle" style="color: #1d63dc;"></i>
+                            <span data-i18n="mooc_item4">Assignment guidance and accountability systems</span>
                         </div>
-                        <div class="mooc-item">
-                            <i class="fas fa-certificate"></i>
-                            <span data-i18n="mooc_item5">International certification</span>
-                        </div>
-                        <div class="mooc-item">
-                            <i class="fas fa-chart-line"></i>
-                            <span data-i18n="mooc_footer">Global benchmarking exposure</span>
+                        <div class="mooc-item" style="display: flex; align-items: center; gap: 1rem; background: #f8fafc; padding: 1rem 1.5rem; border-radius: 15px; border: 1px solid #f1f5f9;">
+                            <i class="fas fa-check-circle" style="color: #1d63dc;"></i>
+                            <span data-i18n="mooc_item5">Optional international certification (approx. $45 per course)</span>
                         </div>
                     </div>
+                    <p style="font-size: 1rem; color: #64748b; font-style: italic; line-height: 1.6;">This approach reduces content development costs, increases global benchmarking exposure, and strengthens accreditation alignment with international CPD standards.</p>
                 </div>
 
                 <div class="mooc-visual reveal" style="flex: 0.8;">
-                    <div class="mooc-image-card" style="border-radius: 40px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.1);">
-                        <img src="assets/mooc_integration_visual_1778412150376.png" alt="MOOC Integration" style="width: 100%; height: auto; display: block;">
+                    <div class="mooc-image-card" style="border-radius: 40px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.1); height: auto; background: transparent;">
+                        <img src="assets/mooc_integration_visual_1778412150376.png" alt="MOOC Integration" style="width: 100%; height: 100%; display: block; object-fit: cover;">
                     </div>
                 </div>
             </div>
@@ -784,32 +789,13 @@
                     </div>
                 </div>
             </div>
+
         </section>
     </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-grid reveal">
-                <div>
-                    <img src="identity/Logo/SVG/White.svg" alt="Maalem Logo" class="logo-img" style="margin-bottom: 1rem; filter: brightness(0) invert(1);">
-                    <p data-i18n="footer_desc">Maalem is the leading platform for professional education in the region.</p>
-                </div>
-                <div>
-                    <h4 style="margin-bottom: 1rem;">Quick Links</h4>
-                    <ul>
-                        <li><a href="#" data-i18n="nav_home">Home</a></li>
-                        <li><a href="#" data-i18n="nav_courses">Courses</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p data-i18n="footer_copy">© 2026 Maalem Education. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
 
     <script src="js/translations.js"></script>
     <script src="js/bios.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/scroll3d.js"></script>
 </body>
 </html>

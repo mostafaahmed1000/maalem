@@ -121,7 +121,9 @@
     const applyScaling = () => {
       const vh = window.innerHeight;
       sections.forEach((s, i) => {
-        const container = s.querySelector('.container');
+        if (s.id === 'footer-section') return;
+
+        const container = Array.from(s.children).find(child => child.classList?.contains('container'));
         if (!container) return;
         
         // Reset scale to measure natural height

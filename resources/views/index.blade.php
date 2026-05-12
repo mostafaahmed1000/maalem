@@ -589,7 +589,7 @@
                 </div>
             </div>
         </section>
-    <section id="footer-section" class="footer-slide">
+    <section id="footer-section" class="footer-slide section-footer">
         @include('partials.footer')
     </section>
 </main>
@@ -614,4 +614,3 @@
     </script>
 </body>
 </html>
-

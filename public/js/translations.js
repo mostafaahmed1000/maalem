@@ -127,6 +127,8 @@ const translations = {
         why_title: "Maalem is not only an <span>operator</span>",
         why_desc: "It is a complete <strong>education ecosystem.</strong>",
         
+        footer_kicker: "Maalem Education",
+        footer_title: "Building Better Learning Systems",
         footer_desc: "Maalem is the leading platform for professional education and school operation in the region.",
         footer_copy: "© 2026 Maalem Education. All rights reserved."
     },
@@ -281,6 +283,8 @@ const translations = {
         course_tag2: "مشروع تخرج",
         course_tag3: "قيادة خبراء",
         
+        footer_kicker: "معلم للتعليم",
+        footer_title: "نبني أنظمة تعليمية أفضل",
         footer_desc: "معلم هي المنصة الرائدة للتعليم المهني وتشغيل المدارس في المنطقة.",
         footer_copy: "© 2026 معلم للتعليم. جميع الحقوق محفوظة."
     }

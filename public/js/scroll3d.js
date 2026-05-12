@@ -121,7 +121,7 @@
     const applyScaling = () => {
       const vh = window.innerHeight;
       sections.forEach((s, i) => {
-        if (s.id === 'footer-section') return;
+        if (s.classList.contains('footer-slide')) return;
 
         const container = Array.from(s.children).find(child => child.classList?.contains('container'));
         if (!container) return;
@@ -156,6 +156,7 @@
 
     // Show first section immediately (no animation)
     showFirst();
+    goToHash(window.location.hash);
   }
 
 
@@ -322,13 +323,29 @@
     });
 
     // ── Nav hash links ──
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
+    document.querySelectorAll('a[href*="#"]').forEach(a => {
       a.addEventListener('click', e => {
-        const id  = a.getAttribute('href').slice(1);
-        const idx = sections.findIndex(s => s.id === id);
-        if (idx !== -1) { e.preventDefault(); if (canGo()) goTo(idx); }
+        const href = a.getAttribute('href');
+        const target = new URL(href, window.location.href);
+        const currentPath = window.location.pathname.replace(/\/$/, '');
+        const targetPath = target.pathname.replace(/\/$/, '');
+
+        if (target.origin !== window.location.origin || targetPath !== currentPath) return;
+        if (goToHash(target.hash, canGo)) e.preventDefault();
       });
     });
+  }
+
+  function goToHash(hash, guard) {
+    const id = hash && hash.startsWith('#') ? hash.slice(1) : '';
+    if (!id) return false;
+
+    const idx = sections.findIndex(s => s.id === id);
+    if (idx === -1) return false;
+    if (guard && !guard()) return true;
+
+    goTo(idx);
+    return true;
   }
 
   /* ── UI ─────────────────────────────────────────────────────── */

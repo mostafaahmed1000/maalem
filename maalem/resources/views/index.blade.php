@@ -87,7 +87,13 @@
         <!-- 2. Get To Know About Us -->
         <section class="section vision-section" id="about">
             <div class="container vision-container">
-                
+                <div class="vision-left reveal reveal-left">
+                    <div class="image-stack">
+                        <div class="img-back" style="background-image: url('{{ asset('assets/Mision-1.jpeg') }}');"></div>
+                        <div class="img-front" style="background-image: url('{{ asset('assets/Mission-2.jpeg') }}');"></div>
+                        <div class="dotted-pattern"></div>
+                    </div>
+                </div>
                 <div class="vision-right reveal reveal-right">
                     <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
                         <i class="fas fa-book-open" style="color: var(--primary-color); font-size: 1.2rem;"></i>

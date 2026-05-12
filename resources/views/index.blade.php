@@ -589,9 +589,6 @@
                 </div>
             </div>
         </section>
-    <section id="contact" class="footer-slide section-footer">
-        @include('partials.footer')
-    </section>
 </main>
     @include('partials.scripts')
     <script src="{{ asset('js/scroll3d.js') }}"></script>

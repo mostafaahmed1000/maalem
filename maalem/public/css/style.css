@@ -224,17 +224,7 @@ body.s3d-active header {
   z-index: 9500 !important;
 }
 
-/* Hide the standalone <footer> — it's been moved inside the last section */
-body.s3d-active #site-footer {
-  display: block !important;
-}
-body.s3d-active #site-footer {
-  position: relative !important;
-  min-height: auto;
-  width: 100%;
-  z-index: 1;
-}
-/* Footer embedded inside the last section */
+
 
 
 .section-footer .footer-grid {
@@ -242,11 +232,6 @@ body.s3d-active #site-footer {
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   margin-bottom: 2rem;
-}
-.footer-slide {
-    min-height: auto !important;
-    padding: 0 !important;
-    background: #111827;
 }
 
 .footer-slide footer {
@@ -3533,4 +3518,39 @@ footer {
         max-width: 600px;
         margin: 0 auto;
     }
+}
+/* Footer as the last 3D slide */
+body.s3d-active #footer-section.footer-slide {
+    min-height: 100vh !important;
+    height: 100vh !important;
+    padding: 0 !important;
+    background: #111827 !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+}
+
+body.s3d-active #footer-section.footer-slide #site-footer {
+    position: relative !important;
+    width: 100% !important;
+    background: #111827 !important;
+    color: #fff !important;
+    padding: 4rem 0 2rem !important;
+    margin: 0 !important;
+    z-index: 1 !important;
+}
+
+body.s3d-active #footer-section.footer-slide #site-footer .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+body.s3d-active #footer-section.footer-slide #site-footer .footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid #374151;
+    color: #9CA3AF;
 }

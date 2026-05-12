@@ -226,17 +226,16 @@ body.s3d-active header {
 
 /* Hide the standalone <footer> — it's been moved inside the last section */
 body.s3d-active #site-footer {
-  display: none !important;
+  display: block !important;
 }
-
+body.s3d-active #site-footer {
+  position: relative !important;
+  min-height: auto;
+  width: 100%;
+  z-index: 1;
+}
 /* Footer embedded inside the last section */
-.section-footer {
-  background: var(--bg-dark, #0f0f0f);
-  color: #fff;
-  padding: 4rem 0 3.5rem;
-  margin-top: 4rem;
-  border-top: 1px solid rgba(255,255,255,0.08);
-}
+
 
 .section-footer .footer-grid {
   display: grid;
@@ -244,7 +243,17 @@ body.s3d-active #site-footer {
   gap: 2rem;
   margin-bottom: 2rem;
 }
+.footer-slide {
+    min-height: auto !important;
+    padding: 0 !important;
+    background: #111827;
+}
 
+.footer-slide footer {
+    position: relative !important;
+    width: 100%;
+    padding: 4rem 0 2rem;
+}
 .section-footer .footer-bottom {
   border-top: 1px solid rgba(255,255,255,0.08);
   padding-top: 1.5rem;

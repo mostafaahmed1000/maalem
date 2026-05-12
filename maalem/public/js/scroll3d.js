@@ -89,22 +89,33 @@
 
     // Hide all sections, lock page scroll
     sections.forEach((s, i) => {
-      s.style.cssText += `
-        position:fixed !important; top:0 !important; left:0 !important; 
-        width:100% !important; height:100vh !important;
-        margin:0 !important; border-radius:0 !important; border:none !important;
-        overflow:hidden !important;
-        opacity:0; pointer-events:none; z-index:${i + 1};
-        will-change:transform,opacity; backface-visibility:hidden;
-        transform:${FX.fromBottom[0]};
-        transition:none;
-      `;
-      // Push content below the fixed header + extra breathing room (except hero which is full-bleed)
-      if (i !== 0) {
-        s.style.paddingTop = (headerH + 40) + 'px';
-        s.style.paddingBottom = '60px'; // Reduced from 100px to gain space
-      }
-    });
+  s.style.cssText += `
+    position:fixed !important;
+    top:0 !important;
+    left:0 !important;
+    width:100% !important;
+    height:100vh !important;
+    margin:0 !important;
+    border-radius:0 !important;
+    border:none !important;
+    overflow:hidden !important;
+    opacity:0 !important;
+    visibility:hidden !important;
+    pointer-events:none !important;
+    z-index:${i + 1} !important;
+    will-change:transform,opacity;
+    backface-visibility:hidden;
+    transform:${FX.fromBottom[0]};
+    transition:none;
+  `;
+
+  s.classList.remove('s3d-current');
+
+  if (i !== 0) {
+    s.style.paddingTop = (headerH + 40) + 'px';
+    s.style.paddingBottom = '60px';
+  }
+});
 
     // Auto-scale long sections to fit the screen
     const applyScaling = () => {
@@ -147,16 +158,23 @@
 
 
   function showFirst() {
-    const s = sections[0];
-    s.style.transition   = 'none';
-    s.style.transform    = 'none';
-    s.style.opacity      = '1';
-    s.style.pointerEvents = 'all';
-    s.style.zIndex       = String(sections.length + 2);
-    cur = 0;
-    updateUI();
-    triggerReveals(s);
-  }
+  sections.forEach((s, i) => {
+    const isActive = i === 0;
+
+    s.style.transition = 'none';
+    s.style.transform = isActive ? 'none' : FX.fromBottom[0];
+    s.style.opacity = isActive ? '1' : '0';
+    s.style.visibility = isActive ? 'visible' : 'hidden';
+    s.style.pointerEvents = isActive ? 'all' : 'none';
+    s.style.zIndex = isActive ? String(sections.length + 2) : String(i + 1);
+
+    s.classList.toggle('s3d-current', isActive);
+  });
+
+  cur = 0;
+  updateUI();
+  triggerReveals(sections[0]);
+}
 
   /* ── NAVIGATION ─────────────────────────────────────────────── */
   function canGo() {
@@ -210,25 +228,41 @@
 
     // 5. Animate in next frame
     requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        inSec.style.transform     = enterFX[1];
-        inSec.style.opacity       = '1';
-        inSec.style.pointerEvents = 'all';
+  requestAnimationFrame(() => {
+    inSec.style.visibility = 'visible';
+    inSec.style.transform = enterFX[1];
+    inSec.style.opacity = '1';
+    inSec.style.pointerEvents = 'all';
+    inSec.classList.add('s3d-current');
 
-        outSec.style.transform    = leaveFX[1];
-        outSec.style.opacity      = '0';
-        outSec.style.pointerEvents = 'none';
-      });
-    });
+    outSec.style.transform = leaveFX[1];
+    outSec.style.opacity = '0';
+    outSec.style.pointerEvents = 'none';
+    outSec.classList.remove('s3d-current');
+  });
+});
 
     // 6. Cleanup
     setTimeout(() => {
-      outSec.style.zIndex = String(prev + 1);
-      cur  = next;
-      busy = false;
-      updateUI();
-      triggerReveals(inSec);
-    }, DUR + 60);
+  outSec.style.visibility = 'hidden';
+  outSec.style.zIndex = String(prev + 1);
+
+  sections.forEach((s, i) => {
+    const isActive = i === next;
+
+    s.style.opacity = isActive ? '1' : '0';
+    s.style.visibility = isActive ? 'visible' : 'hidden';
+    s.style.pointerEvents = isActive ? 'all' : 'none';
+    s.style.zIndex = isActive ? String(sections.length + 2) : String(i + 1);
+
+    s.classList.toggle('s3d-current', isActive);
+  });
+
+  cur = next;
+  busy = false;
+  updateUI();
+  triggerReveals(inSec);
+}, DUR + 60);
   }
 
   // Reverse helpers for backward navigation

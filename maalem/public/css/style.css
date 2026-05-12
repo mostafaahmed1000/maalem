@@ -3554,3 +3554,31 @@ body.s3d-active #footer-section.footer-slide #site-footer .footer-bottom {
     border-top: 1px solid #374151;
     color: #9CA3AF;
 }
+body.s3d-active main > section:not(.s3d-current) {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+body.s3d-active main > section.s3d-current {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+}
+
+body.s3d-active #footer-section.footer-slide {
+    background: #111827 !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
+    padding: 0 !important;
+}
+
+body.s3d-active #footer-section #site-footer {
+    width: 100% !important;
+    background: #111827 !important;
+    color: #fff !important;
+    margin: 0 !important;
+    padding: 4rem 0 2rem !important;
+    position: relative !important;
+}

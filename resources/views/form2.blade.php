@@ -160,10 +160,10 @@
                             <div class="form-group full">
                                 <label>School Type</label>
                                 <div class="checkbox-group">
-                                    <label class="check-item"><input type="checkbox" name="schoolType" value="National"> National</label>
-                                    <label class="check-item"><input type="checkbox" name="schoolType" value="International"> International</label>
-                                    <label class="check-item"><input type="checkbox" name="schoolType" value="Language"> Language School</label>
-                                    <label class="check-item"><input type="checkbox" name="schoolType" value="Private"> Private</label>
+                                    <label class="check-item"><input type="checkbox" name="schoolType[]" value="National"> National</label>
+                                    <label class="check-item"><input type="checkbox" name="schoolType[]" value="International"> International</label>
+                                    <label class="check-item"><input type="checkbox" name="schoolType[]" value="Language"> Language School</label>
+                                    <label class="check-item"><input type="checkbox" name="schoolType[]" value="Private"> Private</label>
                                 </div>
                                 <input type="text" name="schoolTypeOther" style="margin-top: 10px;" placeholder="Other type...">
                             </div>

@@ -15,7 +15,23 @@
                 </label>
                 <div style="font-weight: 600; color: var(--text-main); font-size: 1rem;">
                     @if(is_array($value) || is_object($value))
-                        {{ is_array($value) ? implode(', ', $value) : json_encode($value) }}
+                        @if(is_array($value) && count($value) > 0 && (is_array(reset($value)) || is_object(reset($value))))
+                            <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                                @foreach($value as $subItem)
+                                    <li>
+                                        @if(is_array($subItem) || is_object($subItem))
+                                            @foreach((array)$subItem as $subKey => $subVal)
+                                                <strong>{{ ucfirst($subKey) }}:</strong> {{ is_array($subVal) ? json_encode($subVal) : $subVal }}<br>
+                                            @endforeach
+                                        @else
+                                            {{ $subItem }}
+                                        @endif
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @else
+                            {{ is_array($value) ? implode(', ', $value) : json_encode($value) }}
+                        @endif
                     @else
                         {{ $value ?: 'N/A' }}
                     @endif

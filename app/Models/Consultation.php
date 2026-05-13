@@ -7,4 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Consultation extends Model
 {
     protected $guarded = [];
+
+    protected $casts = [
+        'school_type' => 'array',
+    ];
 }

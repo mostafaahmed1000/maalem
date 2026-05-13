@@ -38,7 +38,7 @@
             <i class="fas fa-briefcase"></i>
         </div>
         <div class="stat-info">
-            <h3>0</h3>
+            <h3>{{ $stats['jobs'] }}</h3>
             <p>Open Jobs</p>
         </div>
     </div>

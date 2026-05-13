@@ -16,8 +16,8 @@ class DashboardController extends Controller
             'partnerships' => Partnership::count(),
             'consultations' => Consultation::count(),
             'training_apps' => Application::count(),
-            // 'jobs' => JobListing::count(),
-            // 'job_apps' => JobApplication::count(),
+            'jobs' => \App\Models\JobListing::count(),
+            'job_apps' => \App\Models\JobApplication::count(),
         ];
 
         $recent_partnerships = Partnership::latest()->take(5)->get();

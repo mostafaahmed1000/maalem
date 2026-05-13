@@ -258,14 +258,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Basic field capture
             formData.forEach((value, key) => {
-                // Handle multiple checkboxes with same name
-                if (data[key]) {
-                    if (!Array.isArray(data[key])) {
-                        data[key] = [data[key]];
+                // Normalize keys ending with [] (strip the brackets)
+                const cleanKey = key.endsWith('[]') ? key.slice(0, -2) : key;
+                
+                // Handle multiple checkboxes with same name (or explicit arrays)
+                if (data[cleanKey]) {
+                    if (!Array.isArray(data[cleanKey])) {
+                        data[cleanKey] = [data[cleanKey]];
                     }
-                    data[key].push(value);
+                    data[cleanKey].push(value);
                 } else {
-                    data[key] = value;
+                    // If it was explicitly named as an array, make it one even if single value
+                    data[cleanKey] = key.endsWith('[]') ? [value] : value;
                 }
             });
 
@@ -336,7 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     handleFormSubmission('partnershipForm', '/partnership');
-    handleFormSubmission('consultationForm', '/consultation');
+    handleFormSubmission('consultingForm', '/consultation');
     handleFormSubmission('applicationForm', '/application');
 });
     // FAQ Accordion

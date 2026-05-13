@@ -277,7 +277,7 @@
                             <li><span>Language</span> <strong>English / Arabic</strong></li>
                             <li><span>Access</span> <strong>Lifetime</strong></li>
                         </ul>
-                        <a href="{{ url('/form3') }}" class="btn-enroll">ENROLL IN THIS PATHWAY</a>
+                        <a href="{{ url('/training') }}" class="btn-enroll">ENROLL IN THIS PATHWAY</a>
                     </div>
                 </div>
             </div>

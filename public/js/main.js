@@ -299,15 +299,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 const result = await response.json();
 
                 if (response.ok) {
-                    alert(result.message || 'Submitted successfully!');
+                    Swal.fire({
+                        title: 'Success!',
+                        text: result.message || 'Submitted successfully!',
+                        icon: 'success',
+                        confirmButtonColor: '#1d63dc',
+                        borderRadius: '20px'
+                    });
                     form.reset();
                 } else {
                     console.error('Validation Errors:', result.errors);
-                    alert(result.message || 'Submission failed. Please check your data.');
+                    let errorMessage = result.message || 'Submission failed.';
+                    if (result.errors) {
+                        errorMessage = Object.values(result.errors).flat().join('<br>');
+                    }
+                    Swal.fire({
+                        title: 'Oops...',
+                        html: errorMessage,
+                        icon: 'error',
+                        confirmButtonColor: '#1d63dc'
+                    });
                 }
             } catch (error) {
                 console.error('Fetch Error:', error);
-                alert('An error occurred. Please try again later.');
+                Swal.fire({
+                    title: 'Error',
+                    text: 'An error occurred. Please try again later.',
+                    icon: 'error',
+                    confirmButtonColor: '#1d63dc'
+                });
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalBtnText;

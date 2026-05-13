@@ -55,7 +55,7 @@
                         <div class="hero-content reveal reveal-left active">
                             <h1 data-i18n="hero_title_1">Excellence in <span>School Operation</span></h1>
                             <p data-i18n="hero_desc_1">Comprehensive management models that drive 300%+ growth and academic excellence through strategic governance.</p>
-                            <a href="{{ url('/form1') }}" class="btn btn-primary btn-lg" data-i18n="hero_cta1">Enquire Now <i class="fas fa-arrow-right"></i></a>
+                            <a href="{{ url('/partnerships') }}" class="btn btn-primary btn-lg" data-i18n="hero_cta1">Enquire Now <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                         <div class="hero-content reveal reveal-left active">
                             <h1 data-i18n="hero_title_2">Strategic <span>Educational Consulting</span></h1>
                             <p data-i18n="hero_desc_2">Partnering with schools to achieve international accreditation, strategic planning, and sustainable institutional success.</p>
-                            <a href="{{ url('/form2') }}" class="btn btn-primary btn-lg" data-i18n="hero_cta2">Consult With Us <i class="fas fa-arrow-right"></i></a>
+                            <a href="{{ url('/consultation') }}" class="btn btn-primary btn-lg" data-i18n="hero_cta2">Consult With Us <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -77,7 +77,7 @@
                         <div class="hero-content reveal reveal-left active">
                             <h1 data-i18n="hero_title_3">Expert <span>Teacher Training</span></h1>
                             <p data-i18n="hero_desc_3">Empowering educators with four-pathway diploma programs designed for the next generation of teaching excellence.</p>
-                            <a href="{{ url('/form3') }}" class="btn btn-primary btn-lg" data-i18n="hero_cta3">Get Certified <i class="fas fa-arrow-right"></i></a>
+                            <a href="{{ url('/training') }}" class="btn btn-primary btn-lg" data-i18n="hero_cta3">Get Certified <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -135,7 +135,7 @@
                             <li><i class="fas fa-check"></i> <span data-i18n="service1_f2">Governance & quality assurance</span></li>
                             <li><i class="fas fa-check"></i> <span data-i18n="service1_f4">300%+ growth success rate</span></li>
                         </ul>
-                        <a href="{{ url('/form1') }}" class="btn-service-new">Enquire Now <i class="fas fa-arrow-right"></i></a>
+                        <a href="{{ url('/partnerships') }}" class="btn-service-new">Enquire Now <i class="fas fa-arrow-right"></i></a>
                     </div>
                     <div class="service-card-new reveal">
                         <div class="service-icon-new"><i class="fas fa-chess"></i></div>
@@ -145,7 +145,7 @@
                             <li><i class="fas fa-check"></i> <span data-i18n="service2_f3">Accreditation readiness</span></li>
                             <li><i class="fas fa-check"></i> <span data-i18n="service2_f6">Growth marketing strategies</span></li>
                         </ul>
-                        <a href="{{ url('/form2') }}" class="btn-service-new">Consult With Us <i class="fas fa-arrow-right"></i></a>
+                        <a href="{{ url('/consultation') }}" class="btn-service-new">Consult With Us <i class="fas fa-arrow-right"></i></a>
                     </div>
                     <div class="service-card-new reveal">
                         <div class="service-icon-new"><i class="fas fa-certificate"></i></div>
@@ -155,7 +155,7 @@
                             <li><i class="fas fa-check"></i> <span data-i18n="service3_f2">Four development pathways</span></li>
                             <li><i class="fas fa-check"></i> <span data-i18n="service3_f3">Practical, applied training</span></li>
                         </ul>
-                        <a href="{{ url('/form3') }}" class="btn-service-new">Get Certified <i class="fas fa-arrow-right"></i></a>
+                        <a href="{{ url('/training') }}" class="btn-service-new">Get Certified <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -239,7 +239,7 @@
                     <span class="badge"><i class="fas fa-briefcase" style="margin-right: 8px;"></i> <span data-i18n="careers_subtitle">Join Our Team</span></span>
                     <h2 data-i18n="careers_title" style="font-size: 3rem; font-weight: 800; margin-bottom: 1.5rem;">Shape the Future of Education With Us</h2>
                     <p data-i18n="careers_desc" style="max-width: 800px; margin: 0 auto 3rem; font-size: 1.2rem; color: var(--text-light);">We are always looking for passionate educators, consultants, and leaders to join our global network.</p>
-                    <a href="{{ url('/') }}#contact" class="btn btn-primary btn-lg" style="padding: 1.2rem 3rem; border-radius: 50px; font-weight: 800;">VIEW OPEN POSITIONS <i class="fas fa-arrow-right"></i></a>
+                    <a href="{{ route('careers.index') }}" class="btn btn-primary btn-lg" style="padding: 1.2rem 3rem; border-radius: 50px; font-weight: 800;">VIEW OPEN POSITIONS <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </section>

@@ -58,6 +58,12 @@
                 </select>
             </div>
 
+            <div class="form-group">
+                <label>Expiration Date (Optional)</label>
+                <input type="datetime-local" name="expires_at" value="{{ old('expires_at') }}">
+                <small style="color: var(--text-muted); font-size: 0.75rem;">Job will automatically become inactive after this date.</small>
+            </div>
+
             <div class="form-group" style="grid-column: span 2;">
                 <label>Job Description</label>
                 <textarea name="description" rows="6" placeholder="Describe the roles and responsibilities...">{{ old('description') }}</textarea>

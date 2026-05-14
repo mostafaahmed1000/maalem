@@ -12,7 +12,7 @@ class PublicJobController extends Controller
 {
     public function index(Request $request)
     {
-        $query = JobListing::where('is_active', true)->latest();
+        $query = JobListing::active()->latest();
         $locations = JobLocation::orderBy('name')->get();
         $schools = JobSchool::orderBy('name')->get();
 
@@ -48,16 +48,19 @@ class PublicJobController extends Controller
     {
         $job = null;
         if ($job_id) {
-            $job = JobListing::where('is_active', true)->findOrFail($job_id);
+            $job = JobListing::active()->findOrFail($job_id);
         }
         
-        return view('careers.apply', compact('job'));
+        $jobTitles = JobListing::active()->pluck('title')->unique()->sort();
+        
+        return view('careers.apply', compact('job', 'jobTitles'));
     }
 
     public function storeApplication(Request $request)
     {
         $validated = $request->validate([
             'job_id' => 'nullable|exists:job_listings,id',
+            'job_title' => 'required|string|max:255',
             'full_name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'phone' => 'required|string|max:255',

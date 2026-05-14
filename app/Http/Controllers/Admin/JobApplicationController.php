@@ -21,6 +21,10 @@ class JobApplicationController extends Controller
             });
         }
 
+        if ($request->filled('job_title')) {
+            $query->where('job_title', $request->job_title);
+        }
+
         if ($request->filled('job_id')) {
             if ($request->job_id == '0') {
                 $query->whereNull('job_id');
@@ -37,9 +41,10 @@ class JobApplicationController extends Controller
 
         $submissions = $query->paginate(15);
         $jobs = JobListing::orderBy('title')->get();
+        $jobTitles = JobApplication::whereNotNull('job_title')->pluck('job_title')->unique()->sort();
         $schools = JobSchool::orderBy('name')->get();
 
-        return view('admin.job_applications.index', compact('submissions', 'jobs', 'schools'));
+        return view('admin.job_applications.index', compact('submissions', 'jobs', 'schools', 'jobTitles'));
     }
 
     public function show($id)

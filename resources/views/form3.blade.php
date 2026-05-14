@@ -151,12 +151,21 @@
         <div class="container">
             <div class="form-container">
                 <img src="{{ asset('assets/services/form_header_training.png') }}" alt="Teacher Training" class="form-visual-header">
-                <div class="form-header">
-                    <p>MAALEM Integrated Educational Development Diploma</p>
-                    <h1>Individual Participant Application</h1>
+                
+                <!-- Application Tabs -->
+                <div class="form-tabs" style="display: flex; gap: 10px; margin-bottom: 2rem; background: #f1f5f9; padding: 5px; border-radius: 15px;">
+                    <button type="button" class="tab-btn active" data-type="individual" style="flex: 1; padding: 1rem; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; transition: all 0.3s;">Individual Application</button>
+                    <button type="button" class="tab-btn" data-type="bulk" style="flex: 1; padding: 1rem; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; transition: all 0.3s; background: transparent; color: var(--text-muted);">Bulk / Organization Application</button>
                 </div>
 
-                <form id="applicationForm">
+                <div class="form-header">
+                    <p>MAALEM Integrated Educational Development Diploma</p>
+                    <h1 id="formTitle">Individual Participant Application</h1>
+                </div>
+
+                <form id="applicationForm" action="{{ route('training.store') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="application_type" id="applicationType" value="individual">
                     <!-- Personal Information -->
                     <div class="form-section">
                         <h2><i class="fas fa-user"></i> Personal Information</h2>
@@ -165,13 +174,17 @@
                                 <label for="fullName">Full Name</label>
                                 <input type="text" id="fullName" name="fullName" required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group individual-only">
                                 <label for="dob">Date of Birth</label>
-                                <input type="date" id="dob" name="dob" required>
+                                <input type="date" id="dob" name="dob">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group individual-only">
                                 <label for="nationality">Nationality</label>
-                                <input type="text" id="nationality" name="nationality" required>
+                                <input type="text" id="nationality" name="nationality">
+                            </div>
+                            <div class="form-group bulk-only" style="display: none;">
+                                <label for="participantCount">Expected Number of Participants</label>
+                                <input type="number" id="participantCount" name="participant_count" min="1">
                             </div>
                             <div class="form-group">
                                 <label for="mobile">Mobile Number</label>
@@ -207,7 +220,7 @@
                                 <label for="orgName">School / Organization Name</label>
                                 <input type="text" id="orgName" name="orgName" required>
                             </div>
-                            <div class="form-group full">
+                            <div class="form-group full individual-only">
                                 <label>Years of Experience</label>
                                 <div class="radio-group">
                                     <label class="check-item"><input type="radio" name="experience" value="0-2"> 0–2 Years</label>
@@ -216,11 +229,11 @@
                                     <label class="check-item"><input type="radio" name="experience" value="10+"> 10+ Years</label>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group individual-only">
                                 <label for="qualification">Educational Qualification</label>
                                 <input type="text" id="qualification" name="qualification">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group individual-only">
                                 <label for="specialization">Subject / Specialization</label>
                                 <input type="text" id="specialization" name="specialization">
                             </div>
@@ -290,7 +303,7 @@
                     </div>
 
                     <!-- Motivation -->
-                    <div class="form-section">
+                    <div class="form-section individual-only">
                         <h2><i class="fas fa-pencil-alt"></i> Professional Motivation</h2>
                         <div class="form-group">
                             <label>Why are you interested in joining this diploma program?</label>
@@ -303,7 +316,7 @@
                     </div>
 
                     <!-- Technology & AI -->
-                    <div class="form-section">
+                    <div class="form-section individual-only">
                         <h2><i class="fas fa-microchip"></i> Technology & AI Readiness</h2>
                         <div class="form-group">
                             <label>Have you previously used educational technology or AI tools?</label>
@@ -324,7 +337,7 @@
                         <p style="margin-bottom: 1.5rem; font-size: 0.95rem; color: var(--text-light);">I confirm that all information provided is accurate and complete.</p>
                         <div class="grid-inputs">
                             <div class="form-group">
-                                <label>Applicant Signature (Type Full Name)</label>
+                                <label id="signatureLabel">Applicant Signature (Type Full Name)</label>
                                 <input type="text" name="signature" required>
                             </div>
                             <div class="form-group">
@@ -342,6 +355,109 @@
 
     @include('partials.footer')
     @include('partials.scripts')
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const applicationType = document.getElementById('applicationType');
+            const formTitle = document.getElementById('formTitle');
+            const signatureLabel = document.getElementById('signatureLabel');
+            const individualOnly = document.querySelectorAll('.individual-only');
+            const bulkOnly = document.querySelectorAll('.bulk-only');
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update tabs UI
+                    tabBtns.forEach(b => {
+                        b.classList.remove('active');
+                        b.style.background = 'transparent';
+                        b.style.color = 'var(--text-muted)';
+                    });
+                    btn.classList.add('active');
+                    btn.style.background = '#fff';
+                    btn.style.color = 'var(--primary-color)';
+                    btn.style.boxShadow = '0 4px 12px rgba(0,0,0,0.05)';
+
+                    const type = btn.getAttribute('data-type');
+                    applicationType.value = type;
+
+                    if (type === 'bulk') {
+                        formTitle.innerText = 'Bulk / Organization Application';
+                        signatureLabel.innerText = 'Representative Signature (Type Full Name)';
+                        individualOnly.forEach(el => el.style.display = 'none');
+                        bulkOnly.forEach(el => el.style.display = 'block');
+                        
+                        // Remove required from hidden fields
+                        document.getElementById('dob').required = false;
+                        document.getElementById('nationality').required = false;
+                    } else {
+                        formTitle.innerText = 'Individual Participant Application';
+                        signatureLabel.innerText = 'Applicant Signature (Type Full Name)';
+                        individualOnly.forEach(el => el.style.display = 'block');
+                        bulkOnly.forEach(el => el.style.display = 'none');
+                        
+                        // Restore required
+                        document.getElementById('dob').required = true;
+                        document.getElementById('nationality').required = true;
+                    }
+                });
+            });
+
+            // Handle form submission
+            const form = document.getElementById('applicationForm');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(form);
+                
+                // Show loading
+                Swal.fire({
+                    title: 'Submitting...',
+                    text: 'Please wait while we process your application',
+                    allowOutsideClick: false,
+                    didOpen: () => {
+                        Swal.showLoading();
+                    }
+                });
+
+                fetch("{{ route('training.store') }}", {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Your application has been submitted successfully.',
+                            icon: 'success',
+                            confirmButtonColor: '#1d63dc'
+                        }).then(() => {
+                            window.location.href = "{{ url('/') }}";
+                        });
+                    } else {
+                        Swal.fire({
+                            title: 'Error',
+                            text: data.message || 'Something went wrong. Please try again.',
+                            icon: 'error'
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    Swal.fire({
+                        title: 'Error',
+                        text: 'A server error occurred. Please try again later.',
+                        icon: 'error'
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>
 

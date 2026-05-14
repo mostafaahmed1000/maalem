@@ -194,6 +194,13 @@
                                 <input type="text" name="schoolTypeOther" style="margin-top: 10px;" placeholder="Other type...">
                             </div>
                             <div class="form-group full">
+                                <label>School Status</label>
+                                <div class="radio-group">
+                                    <label class="check-item"><input type="radio" name="schoolStatus" value="New" required> New School</label>
+                                    <label class="check-item"><input type="radio" name="schoolStatus" value="Contracted" required> Contracted School</label>
+                                </div>
+                            </div>
+                            <div class="form-group full">
                                 <label for="schoolAddress">School Address</label>
                                 <input type="text" id="schoolAddress" name="schoolAddress" required placeholder="Street address">
                             </div>

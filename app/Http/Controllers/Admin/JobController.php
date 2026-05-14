@@ -33,6 +33,7 @@ class JobController extends Controller
             'department' => 'required|string|max:255',
             'work_type' => 'required|in:Full-time,Part-time,Freelance,Contract',
             'description' => 'nullable|string',
+            'expires_at' => 'nullable|date',
             'is_active' => 'boolean',
         ]);
 
@@ -64,6 +65,7 @@ class JobController extends Controller
             'department' => 'required|string|max:255',
             'work_type' => 'required|in:Full-time,Part-time,Freelance,Contract',
             'description' => 'nullable|string',
+            'expires_at' => 'nullable|date',
             'is_active' => 'boolean',
         ]);
 
@@ -82,5 +84,11 @@ class JobController extends Controller
     {
         $job->delete();
         return redirect()->route('admin.jobs.index')->with('success', 'Job deleted successfully!');
+    }
+
+    public function toggleStatus(JobListing $job)
+    {
+        $job->update(['is_active' => !$job->is_active]);
+        return back()->with('success', 'Job status updated!');
     }
 }

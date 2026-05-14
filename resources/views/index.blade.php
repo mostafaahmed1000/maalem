@@ -46,6 +46,7 @@
             <div class="hero-right">
                 <div class="hero-logo-container">
                     <img src="{{ asset('identity/Logo/PNG/Blue.png') }}" alt="Maalem Logo" class="hero-main-logo">
+                    <p class="hero-slogan">Shaping Tomorrow's Landmark</p>
                 </div>
             </div>
             <div class="hero-slider" id="heroSlider">
@@ -235,6 +236,50 @@
             </div>
         </section>
 
+        <!-- 9. MOOC Section -->
+        <section class="mooc-section" id="mooc">
+            <div class="container mooc-container" style="display: flex; align-items: center; gap: 5rem;">
+                <div class="mooc-content reveal" style="flex: 1.2;">
+                    <div class="mooc-header">
+                        <span data-i18n="mooc_subtitle">Strategic Innovation Component</span>
+                        <h2 data-i18n="mooc_title">MOOC Integration Model</h2>
+                        <p data-i18n="mooc_desc">As part of the strategic educational development model, MAALEM integrates facilitated MOOC (Massive Open Online Course) study groups to enhance technology and AI learning tracks while maintaining cost efficiency and international exposure.</p>
+                    </div>
+                    
+                    <div class="mooc-list">
+                        <div class="mooc-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span data-i18n="mooc_item1">Curated Coursera / EdX courses aligned with diploma modules</span>
+                        </div>
+                        <div class="mooc-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span data-i18n="mooc_item2">Facilitated study groups with structured discussion</span>
+                        </div>
+                        <div class="mooc-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span data-i18n="mooc_item3">Arabic-language academic support for complex content</span>
+                        </div>
+                        <div class="mooc-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span data-i18n="mooc_item4">Assignment guidance and accountability systems</span>
+                        </div>
+                        <div class="mooc-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span data-i18n="mooc_item5">Optional international certification (approx. $45 per course)</span>
+                        </div>
+                    </div>
+
+                    <p class="mooc-footer-text" data-i18n="mooc_footer">
+                        This approach reduces content development costs, increases global benchmarking exposure, and strengthens accreditation alignment with international CPD standards.
+                    </p>
+                </div>
+
+                <div class="mooc-visual reveal" style="flex: 0.8;">
+                    <img src="{{ asset('assets/mooc_integration_visual_1778412150376.png') }}" alt="MOOC Integration">
+                </div>
+            </div>
+        </section>
+
         <!-- 5. Careers Section -->
         <section id="careers" class="section careers-section reveal">
             <div class="container" style="text-align: center;">
@@ -334,51 +379,47 @@
             </div>
         </section>
 
-        <!-- 9. MOOC Section -->
-        <section class="mooc-section" id="mooc">
-            <div class="container mooc-container" style="display: flex; align-items: center; gap: 5rem;">
-                <div class="mooc-content reveal" style="flex: 1.2;">
-                    <div class="mooc-header">
-                        <span data-i18n="mooc_subtitle">Strategic Innovation Component</span>
-                        <h2 data-i18n="mooc_title">MOOC Integration Model</h2>
-                        <p data-i18n="mooc_desc">As part of the strategic educational development model, MAALEM integrates facilitated MOOC (Massive Open Online Course) study groups to enhance technology and AI learning tracks while maintaining cost efficiency and international exposure.</p>
-                    </div>
-                    
-                    <div class="mooc-list">
-                        <div class="mooc-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span data-i18n="mooc_item1">Curated Coursera / EdX courses aligned with diploma modules</span>
-                        </div>
-                        <div class="mooc-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span data-i18n="mooc_item2">Facilitated study groups with structured discussion</span>
-                        </div>
-                        <div class="mooc-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span data-i18n="mooc_item3">Arabic-language academic support for complex content</span>
-                        </div>
-                        <div class="mooc-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span data-i18n="mooc_item4">Assignment guidance and accountability systems</span>
-                        </div>
-                        <div class="mooc-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span data-i18n="mooc_item5">Optional international certification (approx. $45 per course)</span>
-                        </div>
-                    </div>
 
-                    <p class="mooc-footer-text" data-i18n="mooc_footer">
-                        This approach reduces content development costs, increases global benchmarking exposure, and strengthens accreditation alignment with international CPD standards.
-                    </p>
+
+        <!-- 10. Our Instructors -->
+        <section id="instructors" class="section bg-white reveal" style="padding: 6rem 0;">
+            <div class="container">
+                <div class="section-title reveal" style="text-align: center; margin-bottom: 4rem;">
+                    <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 10px;">
+                        <i class="fas fa-chalkboard-teacher" style="color: var(--primary-color); font-size: 1.2rem;"></i>
+                        <span data-i18n="instructors_subtitle" style="font-weight: 700; color: var(--primary-color); text-transform: uppercase; letter-spacing: 1px;">Our Experts</span>
+                    </div>
+                    <h2 data-i18n="instructors_title" style="font-size: 2.5rem; font-weight: 700;">Our Instructors</h2>
                 </div>
-
-                <div class="mooc-visual reveal" style="flex: 0.8;">
-                    <img src="{{ asset('assets/mooc_integration_visual_1778412150376.png') }}" alt="MOOC Integration">
+                
+                <div class="instructors-grid">
+                    @forelse($instructors as $instructor)
+                        <div class="instructor-card-premium reveal">
+                            <div class="instructor-img-box">
+                                @if($instructor->image)
+                                    <img src="{{ asset('storage/' . $instructor->image) }}" alt="{{ $instructor->name }}">
+                                @else
+                                    <img src="{{ asset('identity/Logo/PNG/Blue.png') }}" alt="Maalem Logo" class="placeholder-logo">
+                                @endif
+                                <div class="instructor-rating">
+                                    @for($i = 1; $i <= 5; $i++)
+                                        <i class="{{ $i <= $instructor->rating ? 'fas' : 'far' }} fa-star"></i>
+                                    @endfor
+                                </div>
+                            </div>
+                            <div class="instructor-info">
+                                <h3>{{ $instructor->name }}</h3>
+                                <p>{{ $instructor->title }}</p>
+                            </div>
+                        </div>
+                    @empty
+                        <p style="text-align: center; width: 100%; color: var(--text-light);">Stay tuned! Our expert instructors will be listed here soon.</p>
+                    @endforelse
                 </div>
             </div>
         </section>
 
-        <!-- 10. Mentors -->
+        <!-- 11. Mentors -->
         <section id="mentors" class="mentors-section reveal">
             <div class="container">
                 <div class="section-title reveal" style="text-align: center; margin-bottom: 8rem;">
@@ -412,6 +453,13 @@
                         <div class="teacher-avatar-new" style="background-image: url('{{ asset('identity/Logo/SVG/Blue.svg') }}');"></div>
                         <h3 data-i18n="mentor4_name">Mrs. Nourhan Soudan</h3>
                         <span class="role" data-i18n="mentor4_role">CEO of LOIS Company</span>
+                    </a>
+
+                    <!-- Teacher 5 -->
+                    <a href="{{ url('/mentor-details?id=magie') }}" class="teacher-card-new reveal">
+                        <div class="teacher-avatar-new" style="background-image: url('{{ asset('identity/Logo/SVG/Blue.svg') }}');"></div>
+                        <h3 data-i18n="mentor5_name">Eng. Magie S. Ginidy</h3>
+                        <span class="role" data-i18n="mentor5_role">Operations Director</span>
                     </a>
                 </div>
             </div>

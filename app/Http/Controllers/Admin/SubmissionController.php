@@ -22,9 +22,15 @@ class SubmissionController extends Controller
         return view('admin.submissions.consultations', compact('submissions'));
     }
 
-    public function trainingApplications()
+    public function trainingApplications(Request $request)
     {
-        $submissions = Application::latest()->paginate(15);
+        $query = Application::latest();
+        
+        if ($request->filled('type')) {
+            $query->where('application_type', $request->type);
+        }
+        
+        $submissions = $query->paginate(15);
         return view('admin.submissions.training_applications', compact('submissions'));
     }
 

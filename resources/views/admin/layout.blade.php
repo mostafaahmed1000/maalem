@@ -204,6 +204,29 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         }
 
+        .badge {
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-new {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+        }
+
+        .badge-contracted {
+            background: rgba(29, 99, 220, 0.1);
+            color: #1d63dc;
+        }
+
+        .badge-default {
+            background: rgba(148, 163, 184, 0.1);
+            color: #64748b;
+        }
+
         @yield('styles')
     </style>
 </head>
@@ -227,6 +250,9 @@
             </a>
             <a href="{{ route('admin.training_applications') }}" class="nav-item {{ request()->routeIs('admin.training_applications') ? 'active' : '' }}">
                 <i class="fas fa-graduation-cap"></i> Training Apps
+            </a>
+            <a href="{{ route('admin.instructors.index') }}" class="nav-item {{ request()->routeIs('admin.instructors.*') ? 'active' : '' }}">
+                <i class="fas fa-chalkboard-teacher"></i> Instructors
             </a>
 
             <div class="nav-label">Human Resources</div>

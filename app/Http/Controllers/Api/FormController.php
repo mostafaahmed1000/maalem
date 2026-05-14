@@ -15,6 +15,7 @@ class FormController extends Controller
         $validated = $request->validate([
             'schoolName' => 'required|string|max:255',
             'schoolType' => 'nullable|array',
+            'schoolStatus' => 'required|string|max:255',
             'schoolAddress' => 'required|string|max:255',
             'cityCountry' => 'required|string|max:255',
             'website' => 'nullable|url',
@@ -41,6 +42,7 @@ class FormController extends Controller
         $data = [
             'school_name' => $validated['schoolName'],
             'school_type' => $validated['schoolType'] ?? null,
+            'school_status' => $validated['schoolStatus'],
             'address' => $validated['schoolAddress'],
             'city_country' => $validated['cityCountry'],
             'website' => $validated['website'] ?? null,
@@ -76,6 +78,7 @@ class FormController extends Controller
         $validated = $request->validate([
             'schoolName' => 'required|string|max:255',
             'schoolType' => 'nullable|array',
+            'schoolStatus' => 'required|string|max:255',
             'schoolAddress' => 'required|string|max:255',
             'cityCountry' => 'required|string|max:255',
             'website' => 'nullable|url',
@@ -88,6 +91,7 @@ class FormController extends Controller
         $data = [
             'school_name' => $validated['schoolName'],
             'school_type' => $validated['schoolType'] ?? null,
+            'school_status' => $validated['schoolStatus'],
             'address' => $validated['schoolAddress'],
             'city_country' => $validated['cityCountry'],
             'website' => $validated['website'] ?? null,
@@ -107,50 +111,55 @@ class FormController extends Controller
 
     public function storeApplication(Request $request)
     {
-        $validated = $request->validate([
+        $rules = [
+            'application_type' => 'required|string|in:individual,bulk',
             'fullName' => 'required|string|max:255',
-            'dob' => 'required|date',
-            'nationality' => 'required|string|max:255',
             'mobile' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'cityCountry' => 'required|string|max:255',
             'position' => 'required|string|max:255',
             'orgName' => 'required|string|max:255',
-            'experience' => 'required|string|max:255',
-            'qualification' => 'nullable|string|max:255',
-            'specialization' => 'nullable|string|max:255',
             'pathway' => 'required|string|max:255',
             'levels' => 'nullable|array',
             'mode' => 'required|string|max:255',
             'schedule' => 'required|string|max:255',
-            'motivation' => 'nullable|string',
-            'goals' => 'nullable|string',
-            'ai' => 'required|string|max:255',
-            'aiDetails' => 'nullable|string|max:255',
             'signature' => 'required|string|max:255',
             'date' => 'required|date',
-        ]);
+        ];
+
+        if ($request->application_type === 'bulk') {
+            $rules['participant_count'] = 'required|integer|min:1';
+        } else {
+            $rules['dob'] = 'required|date';
+            $rules['nationality'] = 'required|string|max:255';
+            $rules['experience'] = 'required|string|max:255';
+            $rules['ai'] = 'required|string|max:255';
+        }
+
+        $validated = $request->validate($rules);
 
         $data = [
+            'application_type' => $validated['application_type'],
             'full_name' => $validated['fullName'],
-            'dob' => $validated['dob'],
-            'nationality' => $validated['nationality'],
+            'dob' => $validated['dob'] ?? null,
+            'nationality' => $validated['nationality'] ?? null,
             'mobile' => $validated['mobile'],
             'email' => $validated['email'],
             'city_country' => $validated['cityCountry'],
             'position' => $validated['position'],
             'organization' => $validated['orgName'],
-            'experience' => $validated['experience'],
-            'qualification' => $validated['qualification'] ?? null,
-            'specialization' => $validated['specialization'] ?? null,
+            'participant_count' => $validated['participant_count'] ?? null,
+            'experience' => $validated['experience'] ?? 'N/A',
+            'qualification' => $request->qualification ?? null,
+            'specialization' => $request->specialization ?? null,
             'pathway' => $validated['pathway'],
             'levels' => $validated['levels'] ?? null,
             'learning_mode' => $validated['mode'],
             'schedule' => $validated['schedule'],
-            'motivation' => $validated['motivation'] ?? null,
-            'goals' => $validated['goals'] ?? null,
-            'ai_experience' => $validated['ai'],
-            'ai_details' => $validated['aiDetails'] ?? null,
+            'motivation' => $request->motivation ?? null,
+            'goals' => $request->goals ?? null,
+            'ai_experience' => $validated['ai'] ?? 'N/A',
+            'ai_details' => $request->aiDetails ?? null,
             'signature' => $validated['signature'],
             'application_date' => $validated['date'],
         ];
@@ -158,6 +167,7 @@ class FormController extends Controller
         $application = Application::create($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Application submitted successfully!',
             'data' => $application
         ], 201);

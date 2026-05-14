@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 
 Route::get('/', function () {
-    return view('index');
+    $instructors = \App\Models\Instructor::where('is_active', true)->get();
+    return view('index', compact('instructors'));
 });
 
 Route::get('/about', function () {
@@ -57,6 +58,8 @@ use App\Http\Controllers\Admin\SubmissionController;
 
 use App\Http\Controllers\Admin\JobController;
 
+use App\Http\Controllers\Admin\InstructorController;
+
 use App\Http\Controllers\Admin\JobApplicationController;
 
 // Protected Admin Routes
@@ -71,6 +74,10 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
     // Jobs
     Route::resource('jobs', JobController::class)->names('admin.jobs');
+    Route::post('/jobs/{job}/toggle-status', [JobController::class, 'toggleStatus'])->name('admin.jobs.toggle-status');
+
+    // Instructors
+    Route::resource('instructors', InstructorController::class)->names('admin.instructors');
 
     // Job Applications
     Route::get('/job-applications', [JobApplicationController::class, 'index'])->name('admin.job_applications.index');

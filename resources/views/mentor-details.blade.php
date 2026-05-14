@@ -256,6 +256,31 @@
                 Nourhan holds a Diploma in Educational Leadership and Management from Notting Hill College and a Diploma in Finnish Educational Training from the Innovative Education Center of Finland. She also earned a B.A. in English and Literature from the University of Alexandria. Her professional journey spans roles from English teacher to CEO. Achieving high standards of educational quality, she has successfully led six accreditation processes, including Cognia and Cambridge.
                 <br><br>
                 Nourhan\'s expertise includes succession planning, crisis management, talent development, operational excellence, and digital transformation. Enhancing the skills of educators and administrative staff, she has delivered numerous professional development programs. She has a proven record in curriculum development, performance management, and fostering stakeholder relationships, making her a dynamic and influential figure in the education sector.'
+            ],
+            'magie' => [
+                'name' => 'Eng. Magie S. Ginidy',
+                'role' => 'Operations Director',
+                'image' => 'identity/Logo/SVG/Blue.svg',
+                'stats' => [
+                    'courses' => 6,
+                    'reviews' => '185 (4.9)',
+                    'experience' => '17+ Years',
+                    'subject' => 'Educational Leadership & Data Analytics'
+                ],
+                'contact' => [
+                    'address' => 'Alexandria, Egypt',
+                    'email' => 'magie.ginidy@maalem.edu',
+                    'phone' => '+20 123 456 7893'
+                ],
+                'bio' => 'Eng. Magie S. Ginidy is an experienced educational leader and administrator with over 17 years of expertise spanning teaching, school leadership, data analytics, educational technology, and strategic educational development. With a Bachelor’s degree in Computer Engineering and eight years of professional experience in networking and computer maintenance—including positions within multinational companies—she brings a strong technical foundation that has significantly enhanced her capabilities in data-driven decision-making and educational innovation.
+                <br><br>
+                In 2017, she was promoted to Assistant Superintendent at a leading school in Alexandria offering both American and British curricula. In this role, she led the Data Analysis Committee, successfully transforming the school into a data-driven institution. To further strengthen her expertise, she earned a Professional Diploma in Data Analysis. She also served as the Standardized Testing Coordinator, contributed to three successful reaccreditation cycles, and played an active role on the school’s steering committee. Additionally, she is a British Council IT-certified examiner, reflecting her commitment to high standards in assessment and quality assurance.
+                <br><br>
+                Since 2015, Magie has been an active member of Cognia (formerly AdvancED), participating in both national and international accreditation review visits, including assignments in the UAE and Jordan. She completed the Cognia STEM Lead Evaluator Course and has taken part in multiple STEM accreditation reviews. Her expertise in STEM education is further reinforced by her certification as a STEM Master Trainer from STEM.org, along with additional technology credentials, including an Internet of Things (IoT) certification from Coursera.
+                <br><br>
+                Her leadership journey also includes serving as Chief Academic Officer at Pyramakerz Technologies, an EdTech company specializing in STEAM solutions, where she was later promoted to Chief Strategic Partnerships Officer. She currently serves as Operations Director at Maalem Educational Services, leading strategic, academic, and operational initiatives aimed at driving excellence across diverse educational platforms and partnerships.
+                <br><br>
+                Magie’s career is distinguished by continuous professional growth, cross-sector expertise, and a strong commitment to advancing educational practices locally, regionally, and internationally.'
             ]
         ];
 

@@ -109,6 +109,15 @@
 
                     <div class="form-section">
                         <div class="form-group">
+                            <label>Position / Job Title</label>
+                            <input type="text" name="job_title" list="job_titles" required placeholder="Choose or type your desired position" value="{{ $job ? $job->title : old('job_title') }}">
+                            <datalist id="job_titles">
+                                @foreach($jobTitles as $title)
+                                    <option value="{{ $title }}">
+                                @endforeach
+                            </datalist>
+                        </div>
+                        <div class="form-group">
                             <label>Full Name</label>
                             <input type="text" name="full_name" required placeholder="Your full name">
                         </div>

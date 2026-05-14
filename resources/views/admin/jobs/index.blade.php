@@ -26,6 +26,7 @@
                     <th style="padding: 1.2rem; color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase;">Department</th>
                     <th style="padding: 1.2rem; color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase;">Location</th>
                     <th style="padding: 1.2rem; color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase;">School</th>
+                    <th style="padding: 1.2rem; color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase;">Expires At</th>
                     <th style="padding: 1.2rem; color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase;">Status</th>
                     <th style="padding: 1.2rem; color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; text-align: right;">Actions</th>
                 </tr>
@@ -40,12 +41,28 @@
                     <td style="padding: 1.2rem;">{{ $job->department }}</td>
                     <td style="padding: 1.2rem;">{{ $job->location }}</td>
                     <td style="padding: 1.2rem;">{{ $job->school }}</td>
+                    <td style="padding: 1.2rem; color: var(--text-muted); font-size: 0.9rem;">
+                        {{ $job->expires_at ? $job->expires_at->format('M d, Y') : 'No Expiry' }}
+                    </td>
                     <td style="padding: 1.2rem;">
-                        @if($job->is_active)
-                            <span style="background: #dcfce7; color: #166534; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;">Active</span>
-                        @else
-                            <span style="background: #fee2e2; color: #991b1b; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;">Inactive</span>
-                        @endif
+                        <form action="{{ route('admin.jobs.toggle-status', $job) }}" method="POST">
+                            @csrf
+                            <button type="submit" style="background: none; border: none; cursor: pointer; padding: 0;">
+                                @if($job->is_active && (!$job->expires_at || $job->expires_at->isFuture()))
+                                    <span style="background: #dcfce7; color: #166534; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; display: inline-flex; align-items: center; gap: 5px;">
+                                        <i class="fas fa-check-circle"></i> Active
+                                    </span>
+                                @elseif(!$job->is_active)
+                                    <span style="background: #fee2e2; color: #991b1b; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; display: inline-flex; align-items: center; gap: 5px;">
+                                        <i class="fas fa-times-circle"></i> Inactive
+                                    </span>
+                                @else
+                                    <span style="background: #fef3c7; color: #92400e; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; display: inline-flex; align-items: center; gap: 5px;">
+                                        <i class="fas fa-clock"></i> Expired
+                                    </span>
+                                @endif
+                            </button>
+                        </form>
                     </td>
                     <td style="padding: 1.2rem; text-align: right;">
                         <div style="display: flex; justify-content: flex-end; gap: 10px;">

@@ -343,12 +343,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
 
             try {
-                const response = await fetch(`/api${endpoint}`, {
+                const response = await fetch(`https://cloud-pyramakerz.com/maalem/public/api${endpoint}`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Accept': 'application/json',
-                        'X-CSRF-TOKEN': csrfToken
+                        'Accept': 'application/json'
                     },
                     body: JSON.stringify(data)
                 });

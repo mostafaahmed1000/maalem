@@ -5,7 +5,7 @@
 @section('page_subtitle', 'Detailed information for submission #' . $item->id)
 
 @section('content')
-<div class="card" style="max-width: 900px;">
+<div class="card" style="max-width: 900px; margin: 0 auto;">
     <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
         @foreach($item->toArray() as $key => $value)
             @if(!in_array($key, ['id', 'updated_at', 'created_at']))

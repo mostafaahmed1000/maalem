@@ -150,6 +150,7 @@
     <main class="form-page">
         <div class="container">
             <div class="form-container">
+                <img src="{{ asset('assets/services/form_header_training.png') }}" alt="Teacher Training" class="form-visual-header">
                 <div class="form-header">
                     <p>MAALEM Integrated Educational Development Diploma</p>
                     <h1>Individual Participant Application</h1>

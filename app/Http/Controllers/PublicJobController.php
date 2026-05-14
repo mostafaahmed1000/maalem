@@ -6,6 +6,7 @@ use App\Models\JobApplication;
 use App\Models\JobListing;
 use Illuminate\Http\Request;
 use App\Models\JobLocation;
+use App\Models\JobSchool;
 
 class PublicJobController extends Controller
 {
@@ -13,14 +14,34 @@ class PublicJobController extends Controller
     {
         $query = JobListing::where('is_active', true)->latest();
         $locations = JobLocation::orderBy('name')->get();
+        $schools = JobSchool::orderBy('name')->get();
 
-        // Simple filtering if needed (can be expanded later)
-        if ($request->has('search')) {
+        if ($request->filled('search')) {
             $query->where('title', 'like', '%' . $request->search . '%');
         }
 
+        if ($request->filled('location')) {
+            $query->where('location', $request->location);
+        }
+
+        if ($request->filled('school')) {
+            $query->where('school', $request->school);
+        }
+
+        if ($request->filled('workplace_type')) {
+            $query->where('workplace_type', $request->workplace_type);
+        }
+
+        if ($request->filled('work_type')) {
+            $query->where('work_type', $request->work_type);
+        }
+
+        if ($request->filled('department')) {
+            $query->where('department', $request->department);
+        }
+
         $jobs = $query->get();
-        return view('careers.index', compact('jobs', 'locations'));
+        return view('careers.index', compact('jobs', 'locations', 'schools'));
     }
 
     public function showApplyForm($job_id = null)

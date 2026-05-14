@@ -13,9 +13,9 @@
             --secondary: #0f172a;
             --accent: #38bdf8;
             --bg: #f8fafc;
-            --sidebar-bg: #0f172a;
-            --sidebar-text: #94a3b8;
-            --sidebar-active: #fff;
+            --sidebar-bg: #ffffff;
+            --sidebar-text: #64748b;
+            --sidebar-active: #1d63dc;
             --card-bg: #ffffff;
             --text-main: #1e293b;
             --text-muted: #64748b;
@@ -76,7 +76,7 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #475569;
+            color: #94a3b8;
         }
 
         .nav-item {
@@ -99,19 +99,19 @@
         }
 
         .nav-item:hover {
-            background: rgba(255, 255, 255, 0.05);
-            color: #fff;
+            background: #f1f5f9;
+            color: var(--primary);
         }
 
         .nav-item.active {
-            background: var(--primary);
-            color: #fff;
-            box-shadow: 0 10px 20px rgba(29, 99, 220, 0.2);
+            background: rgba(29, 99, 220, 0.08);
+            color: var(--primary);
+            box-shadow: none;
         }
 
         .sidebar-footer {
             padding: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid var(--border);
         }
 
         .user-info {
@@ -135,11 +135,12 @@
 
         .user-details h4 {
             font-size: 0.9rem;
-            color: #fff;
+            color: var(--text-main);
         }
 
         .user-details p {
             font-size: 0.75rem;
+            color: var(--text-muted);
         }
 
         .btn-logout {
@@ -169,6 +170,12 @@
             margin-left: 280px;
             padding: 2rem 3rem;
             min-width: 0;
+        }
+
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
         }
 
         .header-top {
@@ -201,9 +208,9 @@
     </style>
 </head>
 <body>
-    <aside class="sidebar">
+    <aside class="sidebar" style="border-right: 1px solid var(--border);">
         <div class="sidebar-header">
-            <img src="{{ asset('identity/Logo/PNG/White.png') }}" alt="Maalem Logo" style="height: 100px; width: auto; margin: 0 auto;">
+            <img src="{{ asset('identity/Logo/PNG/Blue.png') }}" alt="Maalem Logo" style="height: 100px; width: auto; margin: 0 auto;">
         </div>
 
         <nav class="sidebar-nav">
@@ -248,15 +255,17 @@
     </aside>
 
     <main class="main-content">
-        <div class="header-top">
-            <div class="page-title">
-                <h2>@yield('page_title', 'Dashboard')</h2>
-                <p>@yield('page_subtitle', 'Welcome back to Maalem Admin')</p>
+        <div class="content-container">
+            <div class="header-top">
+                <div class="page-title">
+                    <h2>@yield('page_title', 'Dashboard')</h2>
+                    <p>@yield('page_subtitle', 'Welcome back to Maalem Admin')</p>
+                </div>
+                @yield('header_actions')
             </div>
-            @yield('header_actions')
-        </div>
 
-        @yield('content')
+            @yield('content')
+        </div>
     </main>
 
     @yield('scripts')

@@ -1,4 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    // ── Mobile Hamburger Menu ────────────────────────────────
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    if (hamburgerBtn && navLinks) {
+        // Create overlay element
+        const overlay = document.createElement('div');
+        overlay.className = 'nav-overlay';
+        document.body.appendChild(overlay);
+
+        const toggleMenu = () => {
+            hamburgerBtn.classList.toggle('active');
+            navLinks.classList.toggle('open');
+            overlay.classList.toggle('active');
+        };
+
+        hamburgerBtn.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+
+        // Close menu when a link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('open')) {
+                    toggleMenu();
+                }
+            });
+        });
+    }
+
     // Header Glassmorphism and Show/Hide on Scroll
     const header = document.querySelector('header');
     let lastScrollY = window.scrollY;
@@ -39,14 +69,37 @@ document.addEventListener('DOMContentLoaded', () => {
     if (preloader && preloaderVideo) {
         let dismissed = false;
 
+        // Hide Hero Logo initially (only if preloader exists)
+        const heroLogo = document.querySelector('.hero-logo-container');
+        if (heroLogo) {
+            heroLogo.style.opacity = '0';
+            heroLogo.style.visibility = 'hidden';
+        }
+
         const dismiss = () => {
             if (dismissed) return;
             dismissed = true;
             if (preloaderBar) preloaderBar.style.width = '100%';
+            
+            // Trigger Hero Logo Entrance
+            const heroLogo = document.querySelector('.hero-logo-container');
+            if (heroLogo) heroLogo.classList.add('animate-entrance');
+
             setTimeout(() => {
                 preloader.classList.add('hidden');
                 setTimeout(() => { preloader.style.display = 'none'; }, 650);
             }, 200); // brief pause at 100% before fading
+        };
+
+        const startVideo = () => {
+            if (dismissed) return;
+            preloaderVideo.currentTime = 0;
+            preloaderVideo.play().catch(err => {
+                console.warn('[Preloader] Autoplay blocked or failed:', err.message);
+                // If autoplay is blocked, we still want to dismiss after a bit or allow user to skip
+                // but for a preloader, we usually just dismiss if it fails.
+                dismiss();
+            });
         };
 
         // Drive the progress bar from actual video time
@@ -65,17 +118,17 @@ document.addEventListener('DOMContentLoaded', () => {
             dismiss();
         });
 
-        // Wait until buffered and ready, then start from frame 0
-        preloaderVideo.addEventListener('canplay', () => {
-            preloaderVideo.currentTime = 0;
-            preloaderVideo.play().catch(err => {
-                console.warn('[Preloader] Autoplay blocked:', err.message);
-                dismiss();
-            });
-        }, { once: true });
+        // Use a more robust check for video readiness
+        if (preloaderVideo.readyState >= 3) {
+            startVideo();
+        } else {
+            preloaderVideo.addEventListener('canplaythrough', startVideo, { once: true });
+            // Fallback for canplaythrough if it takes too long
+            preloaderVideo.addEventListener('canplay', startVideo, { once: true });
+        }
 
-        // Hard fallback
-        setTimeout(dismiss, 8000);
+        // Hard fallback: ensure the site is accessible even if the video hangs
+        setTimeout(dismiss, 6000);
     }
     // ────────────────────────────────────────────────────────
 

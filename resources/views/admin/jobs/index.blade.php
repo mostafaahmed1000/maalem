@@ -25,6 +25,7 @@
                     <th style="padding: 1.2rem; color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase;">Job Title</th>
                     <th style="padding: 1.2rem; color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase;">Department</th>
                     <th style="padding: 1.2rem; color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase;">Location</th>
+                    <th style="padding: 1.2rem; color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase;">School</th>
                     <th style="padding: 1.2rem; color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase;">Status</th>
                     <th style="padding: 1.2rem; color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; text-align: right;">Actions</th>
                 </tr>
@@ -38,6 +39,7 @@
                     </td>
                     <td style="padding: 1.2rem;">{{ $job->department }}</td>
                     <td style="padding: 1.2rem;">{{ $job->location }}</td>
+                    <td style="padding: 1.2rem;">{{ $job->school }}</td>
                     <td style="padding: 1.2rem;">
                         @if($job->is_active)
                             <span style="background: #dcfce7; color: #166534; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;">Active</span>

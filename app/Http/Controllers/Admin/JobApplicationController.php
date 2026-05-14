@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\JobApplication;
+use App\Models\JobListing;
+use App\Models\JobSchool;
 use Illuminate\Http\Request;
 
 class JobApplicationController extends Controller
@@ -12,7 +14,14 @@ class JobApplicationController extends Controller
     {
         $query = JobApplication::with('job')->latest();
 
-        if ($request->has('job_id')) {
+        if ($request->filled('search')) {
+            $query->where(function($q) use ($request) {
+                $q->where('full_name', 'like', '%' . $request->search . '%')
+                  ->orWhere('email', 'like', '%' . $request->search . '%');
+            });
+        }
+
+        if ($request->filled('job_id')) {
             if ($request->job_id == '0') {
                 $query->whereNull('job_id');
             } else {
@@ -20,8 +29,17 @@ class JobApplicationController extends Controller
             }
         }
 
+        if ($request->filled('school')) {
+            $query->whereHas('job', function($q) use ($request) {
+                $q->where('school', $request->school);
+            });
+        }
+
         $submissions = $query->paginate(15);
-        return view('admin.job_applications.index', compact('submissions'));
+        $jobs = JobListing::orderBy('title')->get();
+        $schools = JobSchool::orderBy('name')->get();
+
+        return view('admin.job_applications.index', compact('submissions', 'jobs', 'schools'));
     }
 
     public function show($id)

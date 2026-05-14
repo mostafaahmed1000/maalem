@@ -49,7 +49,7 @@
             @if($item->job)
                 <div style="background: #eff6ff; padding: 1rem; border-radius: 12px; border: 1px solid #dbeafe;">
                     <h4 style="color: var(--primary); font-weight: 800;">{{ $item->job->title }}</h4>
-                    <p style="font-size: 0.85rem; color: var(--text-muted);">{{ $item->job->department }} • {{ $item->job->location }}</p>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">{{ $item->job->school }} • {{ $item->job->department }} • {{ $item->job->location }}</p>
                 </div>
             @else
                 <div style="background: #f8fafc; padding: 1rem; border-radius: 12px; border: 1px solid #f1f5f9;">

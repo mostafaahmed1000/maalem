@@ -9,12 +9,13 @@
     <style>
         :root {
             --primary: #1d63dc;
-            --secondary: #0f172a;
-            --accent: #38bdf8;
-            --bg: #020617;
-            --card-bg: rgba(15, 23, 42, 0.8);
-            --text: #f8fafc;
-            --text-muted: #94a3b8;
+            --secondary: #f8fafc;
+            --accent: #1d63dc;
+            --bg: #f1f5f9;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
         }
 
         * {
@@ -27,8 +28,8 @@
         body {
             background-color: var(--bg);
             background-image: 
-                radial-gradient(at 0% 0%, rgba(29, 99, 220, 0.15) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(56, 189, 248, 0.1) 0px, transparent 50%);
+                radial-gradient(at 0% 0%, rgba(29, 99, 220, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(29, 99, 220, 0.05) 0px, transparent 50%);
             height: 100vh;
             display: flex;
             align-items: center;
@@ -46,11 +47,10 @@
 
         .login-card {
             background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border);
             border-radius: 30px;
             padding: 3rem 2.5rem;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
             animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -68,9 +68,7 @@
             font-size: 2rem;
             font-weight: 800;
             letter-spacing: -1px;
-            background: linear-gradient(to right, #fff, var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--primary);
         }
 
         .logo p {
@@ -99,10 +97,10 @@
         input {
             width: 100%;
             padding: 1rem 1.2rem 1rem 3rem;
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: #fff;
+            border: 1px solid var(--border);
             border-radius: 12px;
-            color: #fff;
+            color: var(--text);
             font-size: 1rem;
             transition: all 0.3s;
         }
@@ -167,9 +165,9 @@
         }
 
         .error-msg {
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.2);
-            color: #fca5a5;
+            background: #fef2f2;
+            border: 1px solid #fee2e2;
+            color: #991b1b;
             padding: 0.8rem;
             border-radius: 10px;
             font-size: 0.85rem;
@@ -213,7 +211,7 @@
         
         <div class="login-card">
             <div class="logo">
-                <img src="{{ asset('identity/Logo/PNG/White.png') }}" alt="Maalem Logo" style="height: 80px; width: auto; margin-bottom: 1rem;">
+                <img src="{{ asset('identity/Logo/PNG/Blue.png') }}" alt="Maalem Logo" style="height: 80px; width: auto; margin-bottom: 1rem;">
                 <p>Admin Portal</p>
             </div>
 

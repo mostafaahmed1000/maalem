@@ -55,7 +55,7 @@
         }
         .filters-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(5, 1fr);
             gap: 1rem;
             margin-bottom: 3rem;
         }
@@ -80,7 +80,7 @@
             padding: 2.5rem 0;
             border-top: 1px solid #f1f5f9;
             display: grid;
-            grid-template-columns: 2fr 1fr 2fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1.5fr 1.5fr 1fr 1fr;
             align-items: center;
             gap: 2rem;
             transition: all 0.3s;
@@ -184,28 +184,34 @@
                             <input type="text" name="search" placeholder="Search jobs..." value="{{ request('search') }}">
                         </div>
                         <div class="filters-grid">
-                            <select class="filter-select">
-                                <option>Workplace type</option>
-                                <option>On-site</option>
-                                <option>Remote</option>
-                                <option>Hybrid</option>
+                            <select name="workplace_type" class="filter-select" onchange="this.form.submit()">
+                                <option value="">Workplace type</option>
+                                <option value="On-site" {{ request('workplace_type') == 'On-site' ? 'selected' : '' }}>On-site</option>
+                                <option value="Remote" {{ request('workplace_type') == 'Remote' ? 'selected' : '' }}>Remote</option>
+                                <option value="Hybrid" {{ request('workplace_type') == 'Hybrid' ? 'selected' : '' }}>Hybrid</option>
                             </select>
-                            <select class="filter-select">
-                                <option>Location</option>
+                            <select name="location" class="filter-select" onchange="this.form.submit()">
+                                <option value="">Location</option>
                                 @foreach($locations as $loc)
-                                    <option value="{{ $loc->name }}">{{ $loc->name }}</option>
+                                    <option value="{{ $loc->name }}" {{ request('location') == $loc->name ? 'selected' : '' }}>{{ $loc->name }}</option>
                                 @endforeach
                             </select>
-                            <select class="filter-select">
-                                <option>Department</option>
-                                <option>Teaching</option>
-                                <option>Operations</option>
-                                <option>Administration</option>
+                            <select name="school" class="filter-select" onchange="this.form.submit()">
+                                <option value="">School</option>
+                                @foreach($schools as $sch)
+                                    <option value="{{ $sch->name }}" {{ request('school') == $sch->name ? 'selected' : '' }}>{{ $sch->name }}</option>
+                                @endforeach
                             </select>
-                            <select class="filter-select">
-                                <option>Work type</option>
-                                <option>Full time</option>
-                                <option>Part time</option>
+                            <select name="department" class="filter-select" onchange="this.form.submit()">
+                                <option value="">Department</option>
+                                <option value="Teaching" {{ request('department') == 'Teaching' ? 'selected' : '' }}>Teaching</option>
+                                <option value="Operations" {{ request('department') == 'Operations' ? 'selected' : '' }}>Operations</option>
+                                <option value="Administration" {{ request('department') == 'Administration' ? 'selected' : '' }}>Administration</option>
+                            </select>
+                            <select name="work_type" class="filter-select" onchange="this.form.submit()">
+                                <option value="">Work type</option>
+                                <option value="Full-time" {{ request('work_type') == 'Full-time' ? 'selected' : '' }}>Full-time</option>
+                                <option value="Part-time" {{ request('work_type') == 'Part-time' ? 'selected' : '' }}>Part-time</option>
                             </select>
                         </div>
                     </form>
@@ -221,6 +227,7 @@
                             </div>
                             <div class="job-meta">{{ $job->workplace_type }}</div>
                             <div class="job-location-details">{{ $job->location }}</div>
+                            <div class="job-location-details">{{ $job->school }}</div>
                             <div class="job-org">{{ $job->department }}</div>
                             <div class="job-type">{{ $job->work_type }}</div>
                         </div>

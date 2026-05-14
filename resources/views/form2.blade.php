@@ -143,6 +143,7 @@
     <main class="form-page">
         <div class="container">
             <div class="form-container">
+                <img src="{{ asset('assets/services/form_header_consulting.png') }}" alt="Educational Consulting" class="form-visual-header">
                 <div class="form-header">
                     <p>Educational Consulting Services</p>
                     <h1>Consulting Inquiry Form</h1>

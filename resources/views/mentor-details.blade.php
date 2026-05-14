@@ -83,25 +83,34 @@
         }
         .mentor-stats {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
             margin: 2rem 0;
             padding: 1.5rem 0;
-            border-top: 1px solid #f1f5f9;
-            border-bottom: 1px solid #f1f5f9;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .stat-box {
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         .stat-box .label {
-            display: block;
-            font-size: 0.8rem;
-            color: var(--text-light);
+            font-size: 0.85rem;
+            color: #94a3b8;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            margin-bottom: 0;
         }
         .stat-box .value {
-            font-size: 1.2rem;
+            display: block;
+            font-size: 1.15rem;
             font-weight: 800;
             color: var(--primary-color);
+            line-height: 1.3;
+            word-break: keep-all;
         }
         .mentor-contact-info {
             text-align: left;

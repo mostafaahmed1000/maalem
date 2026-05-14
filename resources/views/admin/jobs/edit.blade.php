@@ -5,7 +5,7 @@
 @section('page_subtitle', 'Updating: ' . $job->title)
 
 @section('content')
-<div class="card" style="max-width: 800px;">
+<div class="card" style="max-width: 800px; margin: 0 auto;">
     <form action="{{ route('admin.jobs.update', $job) }}" method="POST">
         @csrf
         @method('PUT')
@@ -26,6 +26,16 @@
                 <datalist id="locationList">
                     @foreach($locations as $loc)
                         <option value="{{ $loc->name }}">
+                    @endforeach
+                </datalist>
+            </div>
+
+            <div class="form-group">
+                <label>School</label>
+                <input type="text" name="school" list="schoolList" required placeholder="e.g. Maalem International School" value="{{ old('school', $job->school) }}">
+                <datalist id="schoolList">
+                    @foreach($schools as $sch)
+                        <option value="{{ $sch->name }}">
                     @endforeach
                 </datalist>
             </div>

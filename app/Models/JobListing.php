@@ -12,6 +12,7 @@ class JobListing extends Model
     protected $fillable = [
         'title',
         'location',
+        'school',
         'workplace_type',
         'department',
         'work_type',

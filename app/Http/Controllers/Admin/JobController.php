@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\JobListing;
 use App\Models\JobLocation;
+use App\Models\JobSchool;
 use Illuminate\Http\Request;
 
 class JobController extends Controller
@@ -18,7 +19,8 @@ class JobController extends Controller
     public function create()
     {
         $locations = JobLocation::orderBy('name')->get();
-        return view('admin.jobs.create', compact('locations'));
+        $schools = JobSchool::orderBy('name')->get();
+        return view('admin.jobs.create', compact('locations', 'schools'));
     }
 
     public function store(Request $request)
@@ -26,6 +28,7 @@ class JobController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'location' => 'required|string|max:255',
+            'school' => 'required|string|max:255',
             'workplace_type' => 'required|in:On-site,Remote,Hybrid',
             'department' => 'required|string|max:255',
             'work_type' => 'required|in:Full-time,Part-time,Freelance,Contract',
@@ -35,6 +38,9 @@ class JobController extends Controller
 
         // Ensure location exists in management list
         JobLocation::firstOrCreate(['name' => $validated['location']]);
+        
+        // Ensure school exists in management list
+        JobSchool::firstOrCreate(['name' => $validated['school']]);
 
         JobListing::create($validated);
 
@@ -44,7 +50,8 @@ class JobController extends Controller
     public function edit(JobListing $job)
     {
         $locations = JobLocation::orderBy('name')->get();
-        return view('admin.jobs.edit', compact('job', 'locations'));
+        $schools = JobSchool::orderBy('name')->get();
+        return view('admin.jobs.edit', compact('job', 'locations', 'schools'));
     }
 
     public function update(Request $request, JobListing $job)
@@ -52,6 +59,7 @@ class JobController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'location' => 'required|string|max:255',
+            'school' => 'required|string|max:255',
             'workplace_type' => 'required|in:On-site,Remote,Hybrid',
             'department' => 'required|string|max:255',
             'work_type' => 'required|in:Full-time,Part-time,Freelance,Contract',
@@ -61,6 +69,9 @@ class JobController extends Controller
 
         // Ensure location exists in management list
         JobLocation::firstOrCreate(['name' => $validated['location']]);
+
+        // Ensure school exists in management list
+        JobSchool::firstOrCreate(['name' => $validated['school']]);
 
         $job->update($validated);
 

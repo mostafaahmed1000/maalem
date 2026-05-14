@@ -21,7 +21,7 @@
     <!-- Preloader -->
     <div id="preloader">
         <video id="preloaderVideo" muted playsinline preload="auto">
-            <source src="{{ asset('identity/Logo%20Animation/Maalem.mp4') }}" type="video/mp4">
+            <source src="{{ asset('identity/Logo_Animation/Maalem.mp4') }}" type="video/mp4">
         </video>
         <!-- Overlay shown during white/blank video frames -->
         <div class="preloader-overlay">
@@ -44,18 +44,18 @@
                 </svg>
             </div>
             <div class="hero-right">
-                <div class="hero-image-container">
-                    <div class="hero-image" style="background-image: url('{{ asset('assets/Hero-1.jpeg') }}');"></div>
+                <div class="hero-logo-container">
+                    <img src="{{ asset('identity/Logo/PNG/Blue.png') }}" alt="Maalem Logo" class="hero-main-logo">
                 </div>
             </div>
             <div class="hero-slider" id="heroSlider">
                 <!-- Slide 1: Operating Schools -->
                 <div class="hero-slide active">
                     <div class="hero-left">
-                        <div class="hero-content reveal reveal-left active">
+                        <div class="hero-content-boxed reveal reveal-left active">
                             <h1 data-i18n="hero_title_1">Excellence in <span>School Operation</span></h1>
                             <p data-i18n="hero_desc_1">Comprehensive management models that drive 300%+ growth and academic excellence through strategic governance.</p>
-                            <a href="{{ url('/partnerships') }}" class="btn btn-primary btn-lg" data-i18n="hero_cta1">Enquire Now <i class="fas fa-arrow-right"></i></a>
+                            <a href="{{ url('/partnerships') }}" class="btn btn-white btn-lg" data-i18n="hero_cta1">Enquire Now <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -63,10 +63,10 @@
                 <!-- Slide 2: Consulting -->
                 <div class="hero-slide">
                     <div class="hero-left">
-                        <div class="hero-content reveal reveal-left active">
+                        <div class="hero-content-boxed reveal reveal-left active">
                             <h1 data-i18n="hero_title_2">Strategic <span>Educational Consulting</span></h1>
                             <p data-i18n="hero_desc_2">Partnering with schools to achieve international accreditation, strategic planning, and sustainable institutional success.</p>
-                            <a href="{{ url('/consultation') }}" class="btn btn-primary btn-lg" data-i18n="hero_cta2">Consult With Us <i class="fas fa-arrow-right"></i></a>
+                            <a href="{{ url('/consultation') }}" class="btn btn-white btn-lg" data-i18n="hero_cta2">Consult With Us <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -74,10 +74,10 @@
                 <!-- Slide 3: Teacher Training -->
                 <div class="hero-slide">
                     <div class="hero-left">
-                        <div class="hero-content reveal reveal-left active">
+                        <div class="hero-content-boxed reveal reveal-left active">
                             <h1 data-i18n="hero_title_3">Expert <span>Teacher Training</span></h1>
                             <p data-i18n="hero_desc_3">Empowering educators with four-pathway diploma programs designed for the next generation of teaching excellence.</p>
-                            <a href="{{ url('/training') }}" class="btn btn-primary btn-lg" data-i18n="hero_cta3">Get Certified <i class="fas fa-arrow-right"></i></a>
+                            <a href="{{ url('/training') }}" class="btn btn-white btn-lg" data-i18n="hero_cta3">Get Certified <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -128,6 +128,7 @@
                 </div>
                 <div class="services-grid">
                     <div class="service-card-new reveal">
+                        <div class="service-img-new" style="background-image: url('{{ asset('assets/services/school_operation.png') }}');"></div>
                         <div class="service-icon-new"><i class="fas fa-school-flag"></i></div>
                         <h3 data-i18n="service1_h">Running & Operating Schools</h3>
                         <ul>
@@ -138,6 +139,7 @@
                         <a href="{{ url('/partnerships') }}" class="btn-service-new">Enquire Now <i class="fas fa-arrow-right"></i></a>
                     </div>
                     <div class="service-card-new reveal">
+                        <div class="service-img-new" style="background-image: url('{{ asset('assets/services/educational_consulting.png') }}');"></div>
                         <div class="service-icon-new"><i class="fas fa-chess"></i></div>
                         <h3 data-i18n="service2_h">Educational Consulting</h3>
                         <ul>
@@ -148,6 +150,7 @@
                         <a href="{{ url('/consultation') }}" class="btn-service-new">Consult With Us <i class="fas fa-arrow-right"></i></a>
                     </div>
                     <div class="service-card-new reveal">
+                        <div class="service-img-new" style="background-image: url('{{ asset('assets/services/teacher_training.png') }}');"></div>
                         <div class="service-icon-new"><i class="fas fa-certificate"></i></div>
                         <h3 data-i18n="service3_h">Teacher Training Diploma</h3>
                         <ul>
@@ -233,19 +236,26 @@
         </section>
 
         <!-- 5. Careers Section -->
-        <section id="careers" class="section reveal reveal-left" style="padding: 10rem 0; background: var(--bg-alt); position: relative; overflow: hidden;">
+        <section id="careers" class="section careers-section reveal">
             <div class="container" style="text-align: center;">
-                <div class="merged-services-header reveal">
-                    <span class="badge"><i class="fas fa-briefcase" style="margin-right: 8px;"></i> <span data-i18n="careers_subtitle">Join Our Team</span></span>
-                    <h2 data-i18n="careers_title" style="font-size: 3rem; font-weight: 800; margin-bottom: 1.5rem;">Shape the Future of Education With Us</h2>
-                    <p data-i18n="careers_desc" style="max-width: 800px; margin: 0 auto 3rem; font-size: 1.2rem; color: var(--text-light);">We are always looking for passionate educators, consultants, and leaders to join our global network.</p>
-                    <a href="{{ route('careers.index') }}" class="btn btn-primary btn-lg" style="padding: 1.2rem 3rem; border-radius: 50px; font-weight: 800;">VIEW OPEN POSITIONS <i class="fas fa-arrow-right"></i></a>
+                <div class="careers-wrapper">
+                    <div class="careers-image-container reveal">
+                        <img src="{{ asset('assets/careers_grid.png') }}" alt="Maalem Team">
+                        <div class="careers-text-container reveal">
+                        <span class="badge" style="color: #1d63dc; font-weight: 700;"><i class="fas fa-briefcase" style="margin-right: 8px;"></i> <span data-i18n="careers_subtitle">Join Our Team</span></span>
+                        <h2 data-i18n="careers_title" style="font-size: 3rem; font-weight: 800; margin-bottom: 1.5rem;">Shape the Future of Education With Us</h2>
+                        <p data-i18n="careers_desc" style="max-width: 800px; margin: 0 auto 3rem; font-size: 1.2rem; color: var(--text-light);">We are always looking for passionate educators, consultants, and leaders to join our global network.</p>
+                        <a href="{{ route('careers.index') }}" class="btn btn-primary btn-lg" style="padding: 1.2rem 3rem; border-radius: 50px; font-weight: 800;">VIEW OPEN POSITIONS <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    </div>
+                    
+                    
                 </div>
             </div>
         </section>
 
         <!-- 6. Identity Section -->
-        <section class="merged-services-section" id="ecosystem" style="background: #fff; padding-bottom: 2rem;">
+        <section class="merged-services-section" id="ecosystem" style="background: #f8fafc; padding-bottom: 2rem;">
             <div class="container">
                 <div class="merged-services-header reveal">
                     <span class="badge"><i class="fas fa-fingerprint" style="margin-right: 8px;"></i> <span data-i18n="who_subtitle">Our Identity</span></span>
@@ -286,7 +296,7 @@
 
         <!-- 7. Core Values -->
         <section class="section category-section reveal reveal-right" style="padding: 6rem 0; background-color: var(--bg-alt);">
-            <div class="container">
+            <div class="container" style="margin-top: 8rem;">
                 <div class="category-header reveal" style="text-align: center; margin-bottom: 4rem;">
                     <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 10px;">
                         <i class="fas fa-star" style="color: var(--primary-color); font-size: 1.2rem;"></i>
@@ -310,7 +320,7 @@
 
         <!-- 8. Core Challenges -->
         <section class="challenges-section reveal reveal-left" id="challenges">
-            <div class="container">
+            <div class="container" style="margin-top: 8rem;">
                 <div class="challenges-header reveal">
                     <div class="challenges-subtitle"><i class="fas fa-exclamation-circle"></i><span data-i18n="challenges_subtitle">The Reality</span></div>
                     <h2 data-i18n="challenges_title">Core Problem in Many Schools</h2>

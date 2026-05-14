@@ -168,6 +168,7 @@
     <main class="form-page">
         <div class="container">
             <div class="form-container">
+                <img src="{{ asset('assets/services/form_header_operation.png') }}" alt="School Partnership" class="form-visual-header">
                 <div class="form-header">
                     <p>MAALEM Integrated Educational Development Diploma</p>
                     <h1>School Partnership Form</h1>

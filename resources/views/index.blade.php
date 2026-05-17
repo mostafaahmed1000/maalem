@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maalem Education - Empower Your Future</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -21,7 +20,7 @@
     <!-- Preloader -->
     <div id="preloader">
         <video id="preloaderVideo" muted playsinline preload="auto">
-            <source src="{{ asset('identity/Logo_Animation/Maalem.mp4') }}" type="video/mp4">
+            <source src="{{ secure_asset_v('identity/Logo_Animation/Maalem.mp4') }}" type="video/mp4">
         </video>
         <!-- Overlay shown during white/blank video frames -->
         <div class="preloader-overlay">
@@ -45,7 +44,7 @@
             </div>
             <div class="hero-right">
                 <div class="hero-logo-container">
-                    <img src="{{ asset('identity/Logo/PNG/Blue.png') }}" alt="Maalem Logo" class="hero-main-logo">
+                    <img src="{{ secure_asset_v('identity/Logo/PNG/Blue.png') }}" alt="Maalem Logo" class="hero-main-logo">
                     <p class="hero-slogan">Shaping Tomorrow's Landmark</p>
                 </div>
             </div>
@@ -90,8 +89,8 @@
             <div class="container vision-container">
                 <div class="vision-left reveal reveal-left">
                     <div class="image-stack">
-                        <div class="img-back" style="background-image: url('{{ asset('assets/Mision-1.jpeg') }}');"></div>
-                        <div class="img-front" style="background-image: url('{{ asset('assets/Mission-2.jpeg') }}');"></div>
+                        <div class="img-back" style="background-image: url('{{ secure_asset_v('assets/Mision-1.jpeg') }}');"></div>
+                        <div class="img-front" style="background-image: url('{{ secure_asset_v('assets/Mission-2.jpeg') }}');"></div>
                         <div class="dotted-pattern"></div>
                     </div>
                 </div>
@@ -129,7 +128,7 @@
                 </div>
                 <div class="services-grid">
                     <div class="service-card-new reveal">
-                        <div class="service-img-new" style="background-image: url('{{ asset('assets/services/school_operation.png') }}');"></div>
+                        <div class="service-img-new" style="background-image: url('{{ secure_asset_v('assets/services/school_operation.png') }}');"></div>
                         <div class="service-icon-new"><i class="fas fa-school-flag"></i></div>
                         <h3 data-i18n="service1_h">Running & Operating Schools</h3>
                         <ul>
@@ -140,7 +139,7 @@
                         <a href="{{ url('/partnerships') }}" class="btn-service-new">Enquire Now <i class="fas fa-arrow-right"></i></a>
                     </div>
                     <div class="service-card-new reveal">
-                        <div class="service-img-new" style="background-image: url('{{ asset('assets/services/educational_consulting.png') }}');"></div>
+                        <div class="service-img-new" style="background-image: url('{{ secure_asset_v('assets/services/educational_consulting.png') }}');"></div>
                         <div class="service-icon-new"><i class="fas fa-chess"></i></div>
                         <h3 data-i18n="service2_h">Educational Consulting</h3>
                         <ul>
@@ -151,7 +150,7 @@
                         <a href="{{ url('/consultation') }}" class="btn-service-new">Consult With Us <i class="fas fa-arrow-right"></i></a>
                     </div>
                     <div class="service-card-new reveal">
-                        <div class="service-img-new" style="background-image: url('{{ asset('assets/services/teacher_training.png') }}');"></div>
+                        <div class="service-img-new" style="background-image: url('{{ secure_asset_v('assets/services/teacher_training.png') }}');"></div>
                         <div class="service-icon-new"><i class="fas fa-certificate"></i></div>
                         <h3 data-i18n="service3_h">Teacher Training Diploma</h3>
                         <ul>
@@ -179,7 +178,7 @@
                     <div class="course-carousel" id="courseCarousel">
                         <div class="new-course-card">
                             <div class="course-img-wrap">
-                                <div class="course-img" style="background-image: url('{{ asset('assets/teaching_excellence_pathway_1778411860463.png') }}');"></div>
+                                <div class="course-img" style="background-image: url('{{ secure_asset_v('assets/teaching_excellence_pathway_1778411860463.png') }}');"></div>
                             </div>
                             <div class="course-content">
                                 <h3 data-i18n="course1_name">Pathway One: Teaching Excellence</h3>
@@ -197,7 +196,7 @@
                         </div>
                         <div class="new-course-card">
                             <div class="course-img-wrap">
-                                <div class="course-img" style="background-image: url('{{ asset('assets/educational_leadership_pathway_1778411874245.png') }}');"></div>
+                                <div class="course-img" style="background-image: url('{{ secure_asset_v('assets/educational_leadership_pathway_1778411874245.png') }}');"></div>
                             </div>
                             <div class="course-content">
                                 <h3 data-i18n="course2_name">Pathway Two: Educational Leadership</h3>
@@ -215,7 +214,7 @@
                         </div>
                         <div class="new-course-card">
                             <div class="course-img-wrap">
-                                <div class="course-img" style="background-image: url('{{ asset('assets/school_operations_pathway_1778411887223.png') }}');"></div>
+                                <div class="course-img" style="background-image: url('{{ secure_asset_v('assets/school_operations_pathway_1778411887223.png') }}');"></div>
                             </div>
                             <div class="course-content">
                                 <h3 data-i18n="course3_name">Pathway Three: School Operations</h3>
@@ -275,7 +274,7 @@
                 </div>
 
                 <div class="mooc-visual reveal" style="flex: 0.8;">
-                    <img src="{{ asset('assets/mooc_integration_visual_1778412150376.png') }}" alt="MOOC Integration">
+                    <img src="{{ secure_asset_v('assets/mooc_integration_visual_1778412150376.png') }}" alt="MOOC Integration">
                 </div>
             </div>
         </section>
@@ -285,7 +284,7 @@
             <div class="container" style="text-align: center;">
                 <div class="careers-wrapper">
                     <div class="careers-image-container reveal">
-                        <img src="{{ asset('assets/careers_grid.png') }}" alt="Maalem Team">
+                        <img src="{{ secure_asset_v('assets/careers_grid.png') }}" alt="Maalem Team">
                         <div class="careers-text-container reveal">
                         <span class="badge" style="color: #1d63dc; font-weight: 700;"><i class="fas fa-briefcase" style="margin-right: 8px;"></i> <span data-i18n="careers_subtitle">Join Our Team</span></span>
                         <h2 data-i18n="careers_title" style="font-size: 3rem; font-weight: 800; margin-bottom: 1.5rem;">Shape the Future of Education With Us</h2>
@@ -397,9 +396,9 @@
                         <div class="instructor-card-premium reveal">
                             <div class="instructor-img-box">
                                 @if($instructor->image)
-                                    <img src="{{ asset('storage/' . $instructor->image) }}" alt="{{ $instructor->name }}">
+                                    <img src="{{ secure_asset_v('storage/' . $instructor->image) }}" alt="{{ $instructor->name }}">
                                 @else
-                                    <img src="{{ asset('identity/Logo/PNG/Blue.png') }}" alt="Maalem Logo" class="placeholder-logo">
+                                    <img src="{{ secure_asset_v('identity/Logo/PNG/Blue.png') }}" alt="Maalem Logo" class="placeholder-logo">
                                 @endif
                                 <div class="instructor-rating">
                                     @for($i = 1; $i <= 5; $i++)
@@ -429,35 +428,35 @@
                 <div class="teachers-grid-new">
                     <!-- Teacher 1 -->
                     <a href="{{ url('/mentor-details?id=dina') }}" class="teacher-card-new reveal">
-                        <div class="teacher-avatar-new" style="background-image: url('{{ asset('identity/Logo/SVG/Blue.svg') }}');"></div>
+                        <div class="teacher-avatar-new" style="background-image: url('{{ secure_asset_v('identity/Logo/SVG/Blue.svg') }}');"></div>
                         <h3 data-i18n="mentor1_name">Dr. Dina El Odessy</h3>
                         <span class="role" data-i18n="mentor1_role">Educational Director</span>
                     </a>
 
                     <!-- Teacher 2 -->
                     <a href="{{ url('/mentor-details?id=omar') }}" class="teacher-card-new reveal">
-                        <div class="teacher-avatar-new" style="background-image: url('{{ asset('identity/Logo/SVG/Blue.svg') }}');"></div>
+                        <div class="teacher-avatar-new" style="background-image: url('{{ secure_asset_v('identity/Logo/SVG/Blue.svg') }}');"></div>
                         <h3 data-i18n="mentor2_name">Eng. Omar El Odessy</h3>
                         <span class="role" data-i18n="mentor2_role">Chairman of the Board</span>
                     </a>
 
                     <!-- Teacher 3 -->
                     <a href="{{ url('/mentor-details?id=karim') }}" class="teacher-card-new reveal">
-                        <div class="teacher-avatar-new" style="background-image: url('{{ asset('identity/Logo/SVG/Blue.svg') }}');"></div>
+                        <div class="teacher-avatar-new" style="background-image: url('{{ secure_asset_v('identity/Logo/SVG/Blue.svg') }}');"></div>
                         <h3 data-i18n="mentor3_name">Mr. Karim El Sarnagawi</h3>
                         <span class="role" data-i18n="mentor3_role">CEO of Pyramakerz</span>
                     </a>
 
                     <!-- Teacher 4 -->
                     <a href="{{ url('/mentor-details?id=nourhan') }}" class="teacher-card-new reveal">
-                        <div class="teacher-avatar-new" style="background-image: url('{{ asset('identity/Logo/SVG/Blue.svg') }}');"></div>
+                        <div class="teacher-avatar-new" style="background-image: url('{{ secure_asset_v('identity/Logo/SVG/Blue.svg') }}');"></div>
                         <h3 data-i18n="mentor4_name">Mrs. Nourhan Soudan</h3>
                         <span class="role" data-i18n="mentor4_role">CEO of LOIS Company</span>
                     </a>
 
                     <!-- Teacher 5 -->
                     <a href="{{ url('/mentor-details?id=magie') }}" class="teacher-card-new reveal">
-                        <div class="teacher-avatar-new" style="background-image: url('{{ asset('identity/Logo/SVG/Blue.svg') }}');"></div>
+                        <div class="teacher-avatar-new" style="background-image: url('{{ secure_asset_v('identity/Logo/SVG/Blue.svg') }}');"></div>
                         <h3 data-i18n="mentor5_name">Eng. Magie S. Ginidy</h3>
                         <span class="role" data-i18n="mentor5_role">Operations Director</span>
                     </a>
@@ -584,18 +583,18 @@
                     <!-- Left Images -->
                     <div class="faq-images-left reveal reveal-left">
                         <div class="faq-img-card faq-img-1">
-                            <img src="{{ asset('assets/faq_student_2_1778408826051.png') }}" alt="Student studying">
+                            <img src="{{ secure_asset_v('assets/faq_student_2_1778408826051.png') }}" alt="Student studying">
                         </div>
                         <div class="faq-img-card faq-img-2">
-                            <img src="{{ asset('assets/faq_student_1_1778408799723.png') }}" alt="Student learning online">
+                            <img src="{{ secure_asset_v('assets/faq_student_1_1778408799723.png') }}" alt="Student learning online">
                         </div>
                         
                         <!-- Stats Badge -->
                         <div class="faq-stats-badge">
                             <div class="faq-user-avatars">
-                                <img src="{{ asset('assets/hero-student-1.png') }}" alt="User">
-                                <img src="{{ asset('assets/hero-student-2.png') }}" alt="User">
-                                <img src="{{ asset('assets/hero-student-1.png') }}" alt="User">
+                                <img src="{{ secure_asset_v('assets/hero-student-1.png') }}" alt="User">
+                                <img src="{{ secure_asset_v('assets/hero-student-2.png') }}" alt="User">
+                                <img src="{{ secure_asset_v('assets/hero-student-1.png') }}" alt="User">
                             </div>
                             <div class="faq-stats-text">
                                 <span>10K +</span>
@@ -649,7 +648,7 @@
         </section>
 </main>
     @include('partials.scripts')
-    <script src="{{ asset('js/scroll3d.js') }}"></script>
+    <script src="{{ secure_asset_v('js/scroll3d.js') }}"></script>
     <script>
         function setPricing(period) {
             const btns = document.querySelectorAll('.pricing-toggle button');
@@ -669,3 +668,4 @@
     </script>
 </body>
 </html>
+

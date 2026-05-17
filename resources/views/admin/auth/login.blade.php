@@ -211,7 +211,7 @@
         
         <div class="login-card">
             <div class="logo">
-                <img src="{{ asset('identity/Logo/PNG/Blue.png') }}" alt="Maalem Logo" style="height: 80px; width: auto; margin-bottom: 1rem;">
+                <img src="{{ secure_asset_v('identity/Logo/PNG/Blue.png') }}" alt="Maalem Logo" style="height: 80px; width: auto; margin-bottom: 1rem;">
                 <p>Admin Portal</p>
             </div>
 
@@ -248,3 +248,4 @@
     </div>
 </body>
 </html>
+

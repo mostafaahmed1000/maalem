@@ -1,8 +1,9 @@
+<link rel="stylesheet" href="{{ secure_asset_v('css/style.css') }}">
 <header>
     <div class="container">
         <nav>
             <a href="{{ url('/') }}">
-                <img src="{{ asset('identity/Logo/SVG/Blue.svg') }}" alt="Maalem Logo" class="logo-img">
+                <img src="{{ secure_asset_v('identity/Logo/SVG/Blue.svg') }}" alt="Maalem Logo" class="logo-img">
             </a>
             <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
                 <span></span><span></span><span></span>
@@ -20,3 +21,4 @@
         </nav>
     </div>
 </header>
+

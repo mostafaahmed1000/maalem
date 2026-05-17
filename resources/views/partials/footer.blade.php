@@ -1,3 +1,156 @@
+<style>
+    /* ===== FOOTER ===== */
+#site-footer {
+  background: #fff;
+  border-top: 1px solid #e5e7eb;
+  padding: 3rem 0 0;
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 2.5rem;
+  align-items: start;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-logo {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+}
+
+.footer-kicker {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #2563eb;
+}
+
+.footer-brand h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.footer-brand p {
+  font-size: 0.875rem;
+  color: #64748b;
+  line-height: 1.6;
+  max-width: 320px;
+}
+
+.footer-links h4,
+.footer-contact h4 {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  margin-bottom: 1rem;
+}
+
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-links a {
+  font-size: 0.9rem;
+  color: #374151;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: #2563eb;
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.footer-contact a {
+  font-size: 0.9rem;
+  color: #2563eb;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.footer-contact a:hover {
+  text-decoration: underline;
+}
+
+.footer-contact span {
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.footer-bottom {
+  border-top: 1px solid #f1f5f9;
+  padding: 1.25rem 0;
+  text-align: center;
+}
+
+.footer-bottom p {
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 900px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Mobile */
+@media (max-width: 560px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .footer-brand {
+    grid-column: auto;
+  }
+
+  .footer-brand h2 {
+    font-size: 1.4rem;
+  }
+}
+</style>
+
+
 <footer id="site-footer">
     <div class="container footer-inner">
         <div class="footer-grid">
@@ -28,4 +181,6 @@
         </div>
     </div>
 </footer>
+
+
 

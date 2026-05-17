@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Maalem Education</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -42,7 +43,7 @@
                     </div>
                     <div style="flex: 1; min-width: 300px;" class="reveal reveal-right">
                         <div class="faq-img-card" style="width: 100%; height: 400px;">
-                            <img src="{{ secure_asset_v('assets/Mision-1.jpeg') }}" alt="Board Meeting" style="width: 100%; height: 100%; object-fit: cover;">
+                            <img src="{{ asset('assets/Mision-1.jpeg') }}" alt="Board Meeting" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                     </div>
                 </div>
@@ -91,7 +92,6 @@
     @include('partials.scripts')
 </body>
 </html>
-
 
 
 

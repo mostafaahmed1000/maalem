@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>School Partnership Form - Maalem Education</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .form-page {
@@ -167,7 +168,7 @@
     <main class="form-page">
         <div class="container">
             <div class="form-container">
-                <img src="{{ secure_asset_v('assets/services/form_header_operation.png') }}" alt="School Partnership" class="form-visual-header">
+                <img src="{{ asset('assets/services/form_header_operation.png') }}" alt="School Partnership" class="form-visual-header">
                 <div class="form-header">
                     <p>MAALEM Integrated Educational Development Diploma</p>
                     <h1>School Partnership Form</h1>
@@ -393,7 +394,6 @@
     @include('partials.scripts')
 </body>
 </html>
-
 
 
 

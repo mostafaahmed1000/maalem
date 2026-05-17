@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>School Operations & Administration - Maalem Education</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .course-detail-page {
@@ -199,7 +200,7 @@
             <div class="course-layout">
                 <div class="course-main">
                     <div class="main-card">
-                        <img src="{{ secure_asset_v('assets/school_operations_pathway_1778411887223.png') }}" alt="School Operations" class="main-img">
+                        <img src="{{ asset('assets/school_operations_pathway_1778411887223.png') }}" alt="School Operations" class="main-img">
                         <div class="course-header-content">
                             <h1>Pathway Three: School Operations & Administration</h1>
                             <div class="course-meta-bar">
@@ -292,7 +293,6 @@
     @include('partials.scripts')
 </body>
 </html>
-
 
 
 

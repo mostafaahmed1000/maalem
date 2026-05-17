@@ -2,7 +2,7 @@
     <div class="container footer-inner">
         <div class="footer-grid">
             <div class="footer-brand">
-                <img src="{{ secure_asset_v('identity/Logo/SVG/Blue.svg') }}" alt="Maalem Logo" class="footer-logo">
+                <img src="{{ asset('identity/Logo/SVG/Blue.svg') }}" alt="Maalem Logo" class="footer-logo">
                 <span class="footer-kicker" data-i18n="footer_kicker">Maalem Education</span>
                 <h2 data-i18n="footer_title">Building Better Learning Systems</h2>
                 <p data-i18n="footer_desc">Maalem is the leading platform for professional education in the region.</p>
@@ -28,4 +28,3 @@
         </div>
     </div>
 </footer>
-

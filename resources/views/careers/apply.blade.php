@@ -104,6 +104,39 @@
             text-align: center;
             margin-bottom: 2rem;
         }
+
+        .grid-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .grid-inputs {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .apply-container {
+                padding: 1.25rem;
+                border-radius: 24px;
+            }
+
+            .apply-page {
+                padding: 6rem 0 3rem;
+            }
+
+            .apply-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .btn-submit {
+                padding: 1rem;
+                font-size: 1rem;
+                border-radius: 12px;
+            }
+        }
     </style>
 </head>
 
@@ -140,7 +173,7 @@
                             <label>Full Name</label>
                             <input type="text" name="full_name" required placeholder="Your full name">
                         </div>
-                        <div class="grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <div class="grid-inputs">
                             <div class="form-group">
                                 <label>Email Address</label>
                                 <input type="email" name="email" required placeholder="email@example.com">

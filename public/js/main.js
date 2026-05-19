@@ -67,14 +67,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const preloaderBar   = document.getElementById('preloaderBar');
 
     if (preloader && preloaderVideo) {
-        let dismissed = false;
+        // Skip preloader AND all entrance animations if navigating to a section via navbar
+        if (window.location.hash && window.location.hash !== '#home') {
+            preloader.style.display = 'none';
 
-        // Hide Hero Logo initially (only if preloader exists)
-        const heroLogo = document.querySelector('.hero-logo-container');
-        if (heroLogo) {
-            heroLogo.style.opacity = '0';
-            heroLogo.style.visibility = 'hidden';
-        }
+            // Show hero logo instantly without animation
+            const heroLogo = document.querySelector('.hero-logo-container');
+            if (heroLogo) {
+                heroLogo.style.opacity = '1';
+                heroLogo.style.visibility = 'visible';
+                heroLogo.style.transition = 'none';
+                heroLogo.style.animation = 'none';
+            }
+
+            // Instantly reveal all scroll-reveal elements (no slide-in animation)
+            document.querySelectorAll('.reveal').forEach(el => {
+                el.style.transition = 'none';
+                el.classList.add('active');
+            });
+
+            // Mark body so scroll3d.js knows to skip its entrance animation
+            document.body.setAttribute('data-skip-animations', 'true');
+        } else {
+            let dismissed = false;
+
+            // Hide Hero Logo initially (only if preloader exists)
+            const heroLogo = document.querySelector('.hero-logo-container');
+            if (heroLogo) {
+                heroLogo.style.opacity = '0';
+                heroLogo.style.visibility = 'hidden';
+            }
 
         const dismiss = () => {
             if (dismissed) return;
@@ -129,6 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Hard fallback: ensure the site is accessible even if the video hangs
         setTimeout(dismiss, 6000);
+        }
     }
     // ────────────────────────────────────────────────────────
 

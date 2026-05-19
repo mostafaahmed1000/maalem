@@ -221,6 +221,7 @@
                 flex-direction: column;
                 border-radius: 20px;
                 padding: 10px;
+                gap: 8px !important;
             }
 
             .form-tabs .tab-btn {
@@ -268,6 +269,42 @@
                 max-width: 100%;
                 width: 100%;
                 padding: 0.8rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .form-container {
+                padding: 1.25rem;
+                border-radius: 24px;
+            }
+
+            .form-page {
+                padding: 6rem 0 3rem;
+            }
+
+            .form-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .form-header p {
+                font-size: 0.8rem;
+                letter-spacing: 1px;
+            }
+
+            .form-section h2 {
+                font-size: 1.25rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .checkbox-group,
+            .radio-group {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-submit {
+                padding: 1rem;
+                font-size: 1rem;
+                border-radius: 12px;
             }
         }
 

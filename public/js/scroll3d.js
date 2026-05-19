@@ -152,7 +152,13 @@
 
     // Show first section immediately (no animation)
     showFirst();
-    goToHash(window.location.hash);
+
+    // If coming from navbar with hash, jump directly without animation
+    if (document.body.getAttribute('data-skip-animations') === 'true' && window.location.hash) {
+      jumpToHash(window.location.hash);
+    } else {
+      goToHash(window.location.hash);
+    }
   }
 
 
@@ -334,6 +340,37 @@
         if (goToHash(target.hash, canGo)) e.preventDefault();
       });
     });
+  }
+
+  function jumpTo(next) {
+    if (next < 0 || next >= sections.length) return;
+    // Instantly show the target section with no transition
+    sections.forEach((s, i) => {
+      const isActive = i === next;
+      s.style.transition = 'none';
+      s.style.transform = isActive ? 'none' : FX.fromBottom[0];
+      s.style.opacity = isActive ? '1' : '0';
+      s.style.visibility = isActive ? 'visible' : 'hidden';
+      s.style.pointerEvents = isActive ? 'all' : 'none';
+      s.style.zIndex = isActive ? String(sections.length + 2) : String(i + 1);
+      s.classList.toggle('s3d-current', isActive);
+    });
+    cur = next;
+    updateUI();
+    // Instantly reveal child elements too
+    sections[next].querySelectorAll('.reveal').forEach(el => {
+      el.style.transition = 'none';
+      el.classList.add('active');
+    });
+  }
+
+  function jumpToHash(hash) {
+    const id = hash && hash.startsWith('#') ? hash.slice(1) : '';
+    if (!id) return false;
+    const idx = sections.findIndex(s => s.id === id);
+    if (idx === -1) return false;
+    jumpTo(idx);
+    return true;
   }
 
   function goToHash(hash, guard) {

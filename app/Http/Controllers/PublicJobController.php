@@ -40,8 +40,10 @@ class PublicJobController extends Controller
             $query->where('department', $request->department);
         }
 
+        $departments = JobListing::active()->pluck('department')->unique()->filter()->sort();
+
         $jobs = $query->get();
-        return view('careers.index', compact('jobs', 'locations', 'schools'));
+        return view('careers.index', compact('jobs', 'locations', 'schools', 'departments'));
     }
 
     public function showApplyForm($job_id = null)

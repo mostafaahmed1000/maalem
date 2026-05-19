@@ -258,11 +258,11 @@
                             </select>
                             <select name="department" class="filter-select" onchange="this.form.submit()">
                                 <option value="">Department</option>
-                                <option value="Teaching" {{ request('department') == 'Teaching' ? 'selected' : '' }}>
-                                    Teaching</option>
-                                <option value="Operations" {{ request('department') == 'Operations' ? 'selected' : '' }}>
-                                    Operations</option>
-                                <option value="Administration" {{ request('department') == 'Administration' ? 'selected' : '' }}>Administration</option>
+                                @foreach($departments as $dept)
+                                    <option value="{{ $dept }}" {{ request('department') == $dept ? 'selected' : '' }}>
+                                        {{ $dept }}
+                                    </option>
+                                @endforeach
                             </select>
                             <select name="work_type" class="filter-select" onchange="this.form.submit()">
                                 <option value="">Work type</option>

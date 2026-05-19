@@ -244,6 +244,13 @@ main>section::-webkit-scrollbar-thumb {
         height: auto !important;
         min-height: 100vh;
         overflow: visible !important;
+        max-width: 100vw;
+    }
+
+    html,
+    body {
+        max-width: 100vw;
+        overflow-x: hidden !important;
     }
 }
 
@@ -413,6 +420,7 @@ body.s3d-active header {
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -4618,6 +4626,8 @@ body.s3d-active main>section.s3d-current {
 
     .container {
         padding: 0 1.2rem;
+        max-width: 100%;
+        overflow-x: hidden;
     }
 
     /* Header */

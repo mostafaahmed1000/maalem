@@ -1,48 +1,57 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>School Partnership Form - Maalem Education</title>
+    <link rel="stylesheet" href="{{ secure_asset_v('css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .form-page {
             padding: 10rem 0 6rem;
             background-color: #f8fafc;
         }
+
         .form-container {
             max-width: 900px;
             margin: 0 auto;
             background: #fff;
             padding: 4rem;
             border-radius: 40px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
         }
+
         .form-header {
             text-align: center;
             margin-bottom: 4rem;
         }
+
         .form-header h1 {
             font-size: 2.5rem;
             font-weight: 800;
             color: var(--text-color);
             margin-bottom: 1rem;
         }
+
         .form-header p {
             color: var(--primary-color);
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
+
         .form-section {
             margin-bottom: 3.5rem;
             padding-bottom: 2rem;
             border-bottom: 1px solid #f1f5f9;
         }
+
         .form-section:last-child {
             border-bottom: none;
         }
+
         .form-section h2 {
             font-size: 1.5rem;
             font-weight: 800;
@@ -52,21 +61,26 @@
             align-items: center;
             gap: 12px;
         }
+
         .form-section h2 i {
             font-size: 1.2rem;
             opacity: 0.8;
         }
+
         .grid-inputs {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
         }
+
         .form-group {
             margin-bottom: 1.5rem;
         }
+
         .form-group.full {
             grid-column: span 2;
         }
+
         label {
             display: block;
             font-weight: 700;
@@ -74,6 +88,7 @@
             color: var(--text-color);
             font-size: 0.95rem;
         }
+
         input[type="text"],
         input[type="email"],
         input[type="number"],
@@ -90,17 +105,23 @@
             transition: all 0.3s ease;
             background: #f8fafc;
         }
-        input:focus, select:focus, textarea:focus {
+
+        input:focus,
+        select:focus,
+        textarea:focus {
             outline: none;
             border-color: var(--primary-color);
             background: #fff;
             box-shadow: 0 0 0 4px rgba(29, 99, 220, 0.1);
         }
-        .checkbox-group, .radio-group {
+
+        .checkbox-group,
+        .radio-group {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 1rem;
         }
+
         .check-item {
             display: flex;
             align-items: center;
@@ -111,29 +132,36 @@
             border-radius: 10px;
             transition: all 0.2s ease;
         }
+
         .check-item:hover {
             background: #eff6ff;
             border-color: var(--primary-color);
         }
+
         .check-item input {
             width: 18px;
             height: 18px;
             accent-color: var(--primary-color);
         }
+
         .participants-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 1rem;
         }
-        .participants-table th, .participants-table td {
+
+        .participants-table th,
+        .participants-table td {
             padding: 1rem;
             border: 1px solid #f1f5f9;
             text-align: left;
         }
+
         .participants-table th {
             background: #f8fafc;
             font-weight: 700;
         }
+
         .btn-submit {
             width: 100%;
             padding: 1.5rem;
@@ -149,25 +177,37 @@
             transition: all 0.3s ease;
             margin-top: 2rem;
         }
+
         .btn-submit:hover {
             background: #154ea3;
             transform: translateY(-3px);
             box-shadow: 0 15px 30px rgba(29, 99, 220, 0.3);
         }
+
         @media (max-width: 768px) {
-            .grid-inputs { grid-template-columns: 1fr; }
-            .form-group.full { grid-column: auto; }
-            .form-container { padding: 2rem; }
+            .grid-inputs {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .form-container {
+                padding: 2rem;
+            }
         }
     </style>
 </head>
+
 <body>
     @include('partials.header')
 
     <main class="form-page">
         <div class="container">
             <div class="form-container">
-                <img src="{{ secure_asset_v('assets/services/form_header_operation.png') }}" alt="School Partnership" class="form-visual-header">
+                <img src="{{ secure_asset_v('assets/services/form_header_operation.png') }}" alt="School Partnership"
+                    class="form-visual-header">
                 <div class="form-header">
                     <p>MAALEM Integrated Educational Development Diploma</p>
                     <h1>School Partnership Form</h1>
@@ -180,36 +220,47 @@
                         <div class="grid-inputs">
                             <div class="form-group full">
                                 <label for="schoolName">School Name</label>
-                                <input type="text" id="schoolName" name="schoolName" required placeholder="Enter school name">
+                                <input type="text" id="schoolName" name="schoolName" required
+                                    placeholder="Enter school name">
                             </div>
                             <div class="form-group full">
                                 <label>School Type</label>
                                 <div class="checkbox-group">
-                                    <label class="check-item"><input type="checkbox" name="schoolType[]" value="National"> National</label>
-                                    <label class="check-item"><input type="checkbox" name="schoolType[]" value="International"> International</label>
-                                    <label class="check-item"><input type="checkbox" name="schoolType[]" value="Language"> Language School</label>
-                                    <label class="check-item"><input type="checkbox" name="schoolType[]" value="Private"> Private</label>
+                                    <label class="check-item"><input type="checkbox" name="schoolType[]"
+                                            value="National"> National</label>
+                                    <label class="check-item"><input type="checkbox" name="schoolType[]"
+                                            value="International"> International</label>
+                                    <label class="check-item"><input type="checkbox" name="schoolType[]"
+                                            value="Language"> Language School</label>
+                                    <label class="check-item"><input type="checkbox" name="schoolType[]"
+                                            value="Private"> Private</label>
                                 </div>
-                                <input type="text" name="schoolTypeOther" style="margin-top: 10px;" placeholder="Other type...">
+                                <input type="text" name="schoolTypeOther" style="margin-top: 10px;"
+                                    placeholder="Other type...">
                             </div>
                             <div class="form-group full">
                                 <label>School Status</label>
                                 <div class="radio-group">
-                                    <label class="check-item"><input type="radio" id="statusNew" name="schoolStatus" value="New" required> New School</label>
-                                    <label class="check-item"><input type="radio" id="statusEstablished" name="schoolStatus" value="Established" required> Established School</label>
+                                    <label class="check-item"><input type="radio" id="statusNew" name="schoolStatus"
+                                            value="New" required> New School</label>
+                                    <label class="check-item"><input type="radio" id="statusEstablished"
+                                            name="schoolStatus" value="Established" required> Established School</label>
                                 </div>
                             </div>
                             <div class="form-group full" id="establishedYearsGroup" style="display: none;">
                                 <label for="establishedYears">For how many years?</label>
-                                <input type="number" id="establishedYears" name="establishedYears" min="1" placeholder="Enter number of years">
+                                <input type="number" id="establishedYears" name="establishedYears" min="1"
+                                    placeholder="Enter number of years">
                             </div>
                             <div class="form-group full">
                                 <label for="schoolAddress">School Address</label>
-                                <input type="text" id="schoolAddress" name="schoolAddress" required placeholder="Street address">
+                                <input type="text" id="schoolAddress" name="schoolAddress" required
+                                    placeholder="Street address">
                             </div>
                             <div class="form-group">
                                 <label for="cityCountry">City / Country</label>
-                                <input type="text" id="cityCountry" name="cityCountry" required placeholder="e.g. Cairo, Egypt">
+                                <input type="text" id="cityCountry" name="cityCountry" required
+                                    placeholder="e.g. Cairo, Egypt">
                             </div>
                             <div class="form-group">
                                 <label for="website">Website / Social Media</label>
@@ -250,7 +301,7 @@
     @include('partials.footer')
     @include('partials.scripts')
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const establishedRadio = document.getElementById('statusEstablished');
             const newRadio = document.getElementById('statusNew');
             const establishedYearsGroup = document.getElementById('establishedYearsGroup');
@@ -274,8 +325,5 @@
         });
     </script>
 </body>
+
 </html>
-
-
-
-

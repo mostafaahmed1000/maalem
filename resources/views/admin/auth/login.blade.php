@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +28,7 @@
 
         body {
             background-color: var(--bg);
-            background-image: 
+            background-image:
                 radial-gradient(at 0% 0%, rgba(29, 99, 220, 0.05) 0px, transparent 50%),
                 radial-gradient(at 100% 100%, rgba(29, 99, 220, 0.05) 0px, transparent 50%);
             height: 100vh;
@@ -55,8 +56,15 @@
         }
 
         @keyframes slideUp {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         .logo {
@@ -112,7 +120,7 @@
             box-shadow: 0 0 0 4px rgba(29, 99, 220, 0.1);
         }
 
-        input:focus + i {
+        input:focus+i {
             color: var(--accent);
         }
 
@@ -204,14 +212,16 @@
         }
     </style>
 </head>
+
 <body>
     <div class="login-container">
         <div class="shape shape-1"></div>
         <div class="shape shape-2"></div>
-        
+
         <div class="login-card">
             <div class="logo">
-                <img src="{{ secure_asset_v('identity/Logo/PNG/Blue.png') }}" alt="Maalem Logo" style="height: 80px; width: auto; margin-bottom: 1rem;">
+                <img src="{{ secure_asset_v('identity/Logo/PNG/Blue.png') }}" alt="Maalem Logo"
+                    style="height: 80px; width: auto; margin-bottom: 1rem;">
                 <p>Admin Portal</p>
             </div>
 
@@ -228,7 +238,7 @@
                     <input type="email" name="email" placeholder="Email Address" required value="{{ old('email') }}">
                     <i class="fas fa-envelope"></i>
                 </div>
-                
+
                 <div class="form-group">
                     <input type="password" name="password" placeholder="Password" required>
                     <i class="fas fa-lock"></i>
@@ -247,5 +257,5 @@
         </div>
     </div>
 </body>
-</html>
 
+</html>

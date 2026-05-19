@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -230,36 +231,45 @@
         @yield('styles')
     </style>
 </head>
+
 <body>
     <aside class="sidebar" style="border-right: 1px solid var(--border);">
         <div class="sidebar-header">
-            <img src="{{ secure_asset_v('identity/Logo/PNG/Blue.png') }}" alt="Maalem Logo" style="height: 100px; width: auto; margin: 0 auto;">
+            <img src="{{ secure_asset_v('identity/Logo/PNG/Blue.png') }}" alt="Maalem Logo"
+                style="height: 100px; width: auto; margin: 0 auto;">
         </div>
 
         <nav class="sidebar-nav">
-            <a href="{{ route('admin.dashboard') }}" class="nav-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+            <a href="{{ route('admin.dashboard') }}"
+                class="nav-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                 <i class="fas fa-chart-line"></i> Dashboard
             </a>
 
             <div class="nav-label">Service Submissions</div>
-            <a href="{{ route('admin.partnerships') }}" class="nav-item {{ request()->routeIs('admin.partnerships') ? 'active' : '' }}">
+            <a href="{{ route('admin.partnerships') }}"
+                class="nav-item {{ request()->routeIs('admin.partnerships') ? 'active' : '' }}">
                 <i class="fas fa-handshake"></i> Partnerships
             </a>
-            <a href="{{ route('admin.consultations') }}" class="nav-item {{ request()->routeIs('admin.consultations') ? 'active' : '' }}">
+            <a href="{{ route('admin.consultations') }}"
+                class="nav-item {{ request()->routeIs('admin.consultations') ? 'active' : '' }}">
                 <i class="fas fa-comments"></i> Consultations
             </a>
-            <a href="{{ route('admin.training_applications') }}" class="nav-item {{ request()->routeIs('admin.training_applications') ? 'active' : '' }}">
+            <a href="{{ route('admin.training_applications') }}"
+                class="nav-item {{ request()->routeIs('admin.training_applications') ? 'active' : '' }}">
                 <i class="fas fa-graduation-cap"></i> Training Apps
             </a>
-            <a href="{{ route('admin.instructors.index') }}" class="nav-item {{ request()->routeIs('admin.instructors.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.instructors.index') }}"
+                class="nav-item {{ request()->routeIs('admin.instructors.*') ? 'active' : '' }}">
                 <i class="fas fa-chalkboard-teacher"></i> Instructors
             </a>
 
             <div class="nav-label">Human Resources</div>
-            <a href="{{ route('admin.jobs.index') }}" class="nav-item {{ request()->routeIs('admin.jobs.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.jobs.index') }}"
+                class="nav-item {{ request()->routeIs('admin.jobs.*') ? 'active' : '' }}">
                 <i class="fas fa-briefcase"></i> Job Listings
             </a>
-            <a href="{{ route('admin.job_applications.index') }}" class="nav-item {{ request()->routeIs('admin.job_applications.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.job_applications.index') }}"
+                class="nav-item {{ request()->routeIs('admin.job_applications.*') ? 'active' : '' }}">
                 <i class="fas fa-file-invoice"></i> Job Applications
             </a>
         </nav>
@@ -297,7 +307,7 @@
     @yield('scripts')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             @if(session('success'))
                 Swal.fire({
                     title: 'Success!',
@@ -318,5 +328,5 @@
         });
     </script>
 </body>
-</html>
 
+</html>

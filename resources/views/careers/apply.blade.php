@@ -1,45 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apply for @if($job) {{ $job->title }} @else Career @endif - Maalem Education</title>
+    <link rel="stylesheet" href="{{ secure_asset_v('css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .apply-page {
             padding: 10rem 0 6rem;
             background-color: #f8fafc;
         }
+
         .apply-container {
             max-width: 800px;
             margin: 0 auto;
             background: #fff;
             padding: 4rem;
             border-radius: 40px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
         }
+
         .apply-header {
             text-align: center;
             margin-bottom: 4rem;
         }
+
         .apply-header h1 {
             font-size: 2.5rem;
             font-weight: 800;
             color: #1e293b;
             margin-bottom: 1rem;
         }
+
         .apply-header p {
             color: #1d63dc;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
+
         .form-section {
             margin-bottom: 2.5rem;
         }
+
         .form-group {
             margin-bottom: 1.5rem;
         }
+
         label {
             display: block;
             font-weight: 700;
@@ -47,7 +56,10 @@
             color: #1e293b;
             font-size: 0.95rem;
         }
-        input, textarea, select {
+
+        input,
+        textarea,
+        select {
             width: 100%;
             padding: 1rem 1.2rem;
             border: 2px solid #f1f5f9;
@@ -56,11 +68,14 @@
             background: #f8fafc;
             transition: all 0.3s;
         }
-        input:focus, textarea:focus {
+
+        input:focus,
+        textarea:focus {
             outline: none;
             border-color: #1d63dc;
             background: #fff;
         }
+
         .btn-submit {
             width: 100%;
             padding: 1.5rem;
@@ -74,11 +89,13 @@
             cursor: pointer;
             transition: all 0.3s;
         }
+
         .btn-submit:hover {
             background: #154ea3;
             transform: translateY(-3px);
             box-shadow: 0 15px 30px rgba(29, 99, 220, 0.3);
         }
+
         .success-msg {
             background: #dcfce7;
             color: #166534;
@@ -89,6 +106,7 @@
         }
     </style>
 </head>
+
 <body>
     @include('partials.header')
 
@@ -109,7 +127,9 @@
                     <div class="form-section">
                         <div class="form-group">
                             <label>Position / Job Title</label>
-                            <input type="text" name="job_title" list="job_titles" required placeholder="Choose or type your desired position" value="{{ $job ? $job->title : old('job_title') }}">
+                            <input type="text" name="job_title" list="job_titles" required
+                                placeholder="Choose or type your desired position"
+                                value="{{ $job ? $job->title : old('job_title') }}">
                             <datalist id="job_titles">
                                 @foreach($jobTitles as $title)
                                     <option value="{{ $title }}">
@@ -140,7 +160,8 @@
                         </div>
                         <div class="form-group">
                             <label>Cover Letter / Additional Information</label>
-                            <textarea name="cover_letter" rows="5" placeholder="Tell us why you are a great fit..."></textarea>
+                            <textarea name="cover_letter" rows="5"
+                                placeholder="Tell us why you are a great fit..."></textarea>
                         </div>
                     </div>
 
@@ -154,16 +175,16 @@
     @include('partials.scripts')
 
     @if(session('success'))
-    <script>
-        Swal.fire({
-            title: 'Success!',
-            text: "{{ session('success') }}",
-            icon: 'success',
-            confirmButtonColor: '#1d63dc',
-            borderRadius: '20px'
-        });
-    </script>
+        <script>
+            Swal.fire({
+                title: 'Success!',
+                text: "{{ session('success') }}",
+                icon: 'success',
+                confirmButtonColor: '#1d63dc',
+                borderRadius: '20px'
+            });
+        </script>
     @endif
 </body>
-</html>
 
+</html>

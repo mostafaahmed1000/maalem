@@ -1,34 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Educational Leadership Pathway - Maalem Education</title>
+    <link rel="stylesheet" href="{{ secure_asset_v('css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .course-detail-page {
             padding: 10rem 0 6rem;
             background-color: #f8fafc;
         }
+
         .detail-container {
             max-width: 1200px;
             margin: 0 auto;
         }
+
         .course-layout {
             display: grid;
             grid-template-columns: 1fr 380px;
             gap: 2.5rem;
             align-items: start;
         }
+
         .main-card {
             background: #fff;
             border-radius: 40px;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
             margin-bottom: 2rem;
             padding: 2.5rem;
         }
+
         .main-img {
             width: 100%;
             height: 450px;
@@ -36,6 +42,7 @@
             object-fit: cover;
             margin-bottom: 2rem;
         }
+
         .course-header-content h1 {
             font-size: 2.8rem;
             font-weight: 800;
@@ -43,6 +50,7 @@
             line-height: 1.2;
             color: var(--text-color);
         }
+
         .course-meta-bar {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -51,15 +59,18 @@
             background: #f8fafc;
             border-radius: 25px;
         }
+
         .meta-item {
             display: flex;
             align-items: center;
             gap: 12px;
         }
+
         .meta-item i {
             font-size: 1.5rem;
             color: var(--primary-color);
         }
+
         .meta-text span {
             display: block;
             font-size: 0.8rem;
@@ -67,22 +78,26 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
+
         .meta-text strong {
             font-size: 1rem;
             color: var(--text-color);
         }
+
         .course-tabs {
             background: #fff;
             border-radius: 30px;
             padding: 2.5rem;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
         }
+
         .tabs-nav {
             display: flex;
             gap: 3rem;
             border-bottom: 2px solid #f1f5f9;
             margin-bottom: 2rem;
         }
+
         .tab-btn {
             padding: 1rem 0;
             font-weight: 700;
@@ -91,9 +106,11 @@
             position: relative;
             transition: all 0.3s ease;
         }
+
         .tab-btn.active {
             color: var(--primary-color);
         }
+
         .tab-btn.active::after {
             content: '';
             position: absolute;
@@ -103,26 +120,30 @@
             height: 3px;
             background: var(--primary-color);
         }
+
         .summary-card {
             background: #fff;
             border-radius: 30px;
             padding: 2rem;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 120px;
             border: 1px solid #f1f5f9;
         }
+
         .summary-title {
             font-size: 1.5rem;
             font-weight: 800;
             margin-bottom: 1.5rem;
             color: var(--text-color);
         }
+
         .summary-list {
             list-style: none;
             padding: 0;
             margin-bottom: 2rem;
         }
+
         .summary-list li {
             display: flex;
             justify-content: space-between;
@@ -130,8 +151,15 @@
             border-bottom: 1px solid #f1f5f9;
             font-size: 0.95rem;
         }
-        .summary-list li span { color: var(--text-light); }
-        .summary-list li strong { color: var(--text-color); }
+
+        .summary-list li span {
+            color: var(--text-light);
+        }
+
+        .summary-list li strong {
+            color: var(--text-color);
+        }
+
         .btn-enroll {
             display: block;
             text-align: center;
@@ -144,18 +172,22 @@
             text-decoration: none;
             transition: all 0.3s ease;
         }
+
         .btn-enroll:hover {
             background: #154ea3;
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(29, 99, 220, 0.2);
         }
+
         .curriculum-list {
             list-style: none;
             padding: 0;
         }
+
         .curriculum-section {
             margin-bottom: 2rem;
         }
+
         .curriculum-section h3 {
             font-size: 1.4rem;
             font-weight: 800;
@@ -165,6 +197,7 @@
             align-items: center;
             gap: 10px;
         }
+
         .curriculum-item {
             display: flex;
             align-items: center;
@@ -175,22 +208,38 @@
             margin-bottom: 0.8rem;
             transition: all 0.3s ease;
         }
+
         .curriculum-item:hover {
             background: #eff6ff;
             transform: translateX(10px);
         }
+
         .curriculum-item i {
             color: var(--primary-color);
             font-size: 1.1rem;
         }
+
         @media (max-width: 992px) {
-            .course-layout { grid-template-columns: 1fr; }
-            .course-sidebar { position: static; }
-            .summary-card { position: static; margin-top: 2rem; }
-            .course-meta-bar { grid-template-columns: 1fr; }
+            .course-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .course-sidebar {
+                position: static;
+            }
+
+            .summary-card {
+                position: static;
+                margin-top: 2rem;
+            }
+
+            .course-meta-bar {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
+
 <body>
     @include('partials.header')
 
@@ -199,7 +248,8 @@
             <div class="course-layout">
                 <div class="course-main">
                     <div class="main-card">
-                        <img src="{{ secure_asset_v('assets/educational_leadership_pathway_1778411874245.png') }}" alt="Educational Leadership" class="main-img">
+                        <img src="{{ secure_asset_v('assets/educational_leadership_pathway_1778411874245.png') }}"
+                            alt="Educational Leadership" class="main-img">
                         <div class="course-header-content">
                             <h1>Pathway Two: Educational Leadership</h1>
                             <div class="course-meta-bar">
@@ -227,28 +277,41 @@
                             </div>
                         </div>
 
-                        <div class="course-curriculum" style="margin-top: 3rem; border-top: 1px solid #f1f5f9; padding-top: 3rem;">
+                        <div class="course-curriculum"
+                            style="margin-top: 3rem; border-top: 1px solid #f1f5f9; padding-top: 3rem;">
                             <div class="curriculum-section">
                                 <h3>Core Modules (300 Hours)</h3>
                                 <div class="curriculum-list">
-                                    <div class="curriculum-item"><i class="fas fa-check-circle"></i> Leading Oneself</div>
-                                    <div class="curriculum-item"><i class="fas fa-check-circle"></i> Compassionate Leadership</div>
-                                    <div class="curriculum-item"><i class="fas fa-check-circle"></i> Leading Schools (Strategy & Data)</div>
-                                    <div class="curriculum-item"><i class="fas fa-check-circle"></i> Leading Others (Teams & Coaching)</div>
-                                    <div class="curriculum-item"><i class="fas fa-check-circle"></i> Leading Change</div>
-                                    <div class="curriculum-item"><i class="fas fa-robot"></i> Leveraging AI for Leadership</div>
-                                    <div class="curriculum-item"><i class="fas fa-check-circle"></i> Distributed & Shared Leadership</div>
-                                    <div class="curriculum-item"><i class="fas fa-check-circle"></i> Stakeholder Engagement</div>
-                                    <div class="curriculum-item"><i class="fas fa-trophy"></i> Integrative Capstone Project</div>
+                                    <div class="curriculum-item"><i class="fas fa-check-circle"></i> Leading Oneself
+                                    </div>
+                                    <div class="curriculum-item"><i class="fas fa-check-circle"></i> Compassionate
+                                        Leadership</div>
+                                    <div class="curriculum-item"><i class="fas fa-check-circle"></i> Leading Schools
+                                        (Strategy & Data)</div>
+                                    <div class="curriculum-item"><i class="fas fa-check-circle"></i> Leading Others
+                                        (Teams & Coaching)</div>
+                                    <div class="curriculum-item"><i class="fas fa-check-circle"></i> Leading Change
+                                    </div>
+                                    <div class="curriculum-item"><i class="fas fa-robot"></i> Leveraging AI for
+                                        Leadership</div>
+                                    <div class="curriculum-item"><i class="fas fa-check-circle"></i> Distributed &
+                                        Shared Leadership</div>
+                                    <div class="curriculum-item"><i class="fas fa-check-circle"></i> Stakeholder
+                                        Engagement</div>
+                                    <div class="curriculum-item"><i class="fas fa-trophy"></i> Integrative Capstone
+                                        Project</div>
                                 </div>
                             </div>
 
                             <div class="curriculum-section">
                                 <h3>Program Assessment</h3>
                                 <div class="curriculum-list">
-                                    <div class="curriculum-item"><i class="fas fa-file-invoice"></i> Leadership Portfolio</div>
-                                    <div class="curriculum-item"><i class="fas fa-project-diagram"></i> Applied Strategic Project</div>
-                                    <div class="curriculum-item"><i class="fas fa-chalkboard-teacher"></i> Final Presentation</div>
+                                    <div class="curriculum-item"><i class="fas fa-file-invoice"></i> Leadership
+                                        Portfolio</div>
+                                    <div class="curriculum-item"><i class="fas fa-project-diagram"></i> Applied
+                                        Strategic Project</div>
+                                    <div class="curriculum-item"><i class="fas fa-chalkboard-teacher"></i> Final
+                                        Presentation</div>
                                 </div>
                             </div>
                         </div>
@@ -274,8 +337,5 @@
     @include('partials.footer')
     @include('partials.scripts')
 </body>
+
 </html>
-
-
-
-

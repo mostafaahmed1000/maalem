@@ -7,54 +7,50 @@
   'use strict';
 
   /* ── CONFIG ─────────────────────────────────────────────────── */
-  const DUR     = 800;  // transition ms
-  const COOL    = 950;  // cooldown ms between navigations
+  const DUR = 800;  // transition ms
+  const COOL = 950;  // cooldown ms between navigations
 
   /* ── STATE ──────────────────────────────────────────────────── */
-  let sections   = [];
-  let cur        = 0;
-  let busy       = false;       // true while animating
-  let lastNav    = 0;           // timestamp of last navigation
-  let touchY     = 0;
-  let ready      = false;       // engine fully initialised
+  let sections = [];
+  let cur = 0;
+  let busy = false;       // true while animating
+  let lastNav = 0;           // timestamp of last navigation
+  let touchY = 0;
+  let ready = false;       // engine fully initialised
 
   /* ── TRANSITION PRESETS ─────────────────────────────────────── */
   // [startTransform, endTransform]  — index maps to section order
   const FX = {
-    fromBottom:  ['translateY(60px) scale(0.96)',                           'translateY(0) scale(1)'],
-    toTop:       ['translateY(0) scale(1)',                                'translateY(-60px) scale(0.96)'],
-    fromRight:   ['translateX(100px) rotateY(-10deg) scale(0.9)',          'translateX(0) rotateY(0) scale(1)'],
-    toLeft:      ['translateX(0) rotateY(0) scale(1)',                    'translateX(-100px) rotateY(10deg) scale(0.9)'],
-    fromLeft:    ['translateX(-100px) rotateY(10deg) scale(0.9)',          'translateX(0) rotateY(0) scale(1)'],
-    toRight:     ['translateX(0) rotateY(0) scale(1)',                    'translateX(100px) rotateY(-10deg) scale(0.9)'],
-    fromBtm3d:   ['translateY(80px) rotateX(10deg) scale(0.92)',           'translateY(0) rotateX(0) scale(1)'],
-    toTop3d:     ['translateY(0) rotateX(0) scale(1)',                    'translateY(-80px) rotateX(-10deg) scale(0.92)'],
-    zoomIn:      ['translateZ(-200px) opacity(0)',                         'translateZ(0) opacity(1)'],
-    zoomOut:     ['translateZ(0) opacity(1)',                              'translateZ(150px) opacity(0)'],
-    flipIn:      ['rotateX(20deg) translateY(50px) scale(0.92)',           'rotateX(0) translateY(0) scale(1)'],
-    flipOut:     ['rotateX(0) translateY(0) scale(1)',                    'rotateX(-20deg) translateY(-50px) scale(0.92)'],
-    
+    fromBottom: ['translateY(60px) scale(0.96)', 'translateY(0) scale(1)'],
+    toTop: ['translateY(0) scale(1)', 'translateY(-60px) scale(0.96)'],
+    fromRight: ['translateX(100px) rotateY(-10deg) scale(0.9)', 'translateX(0) rotateY(0) scale(1)'],
+    toLeft: ['translateX(0) rotateY(0) scale(1)', 'translateX(-100px) rotateY(10deg) scale(0.9)'],
+    fromLeft: ['translateX(-100px) rotateY(10deg) scale(0.9)', 'translateX(0) rotateY(0) scale(1)'],
+    toRight: ['translateX(0) rotateY(0) scale(1)', 'translateX(100px) rotateY(-10deg) scale(0.9)'],
+    fromBtm3d: ['translateY(80px) rotateX(10deg) scale(0.92)', 'translateY(0) rotateX(0) scale(1)'],
+    toTop3d: ['translateY(0) rotateX(0) scale(1)', 'translateY(-80px) rotateX(-10deg) scale(0.92)'],
+    zoomIn: ['translateZ(-200px) opacity(0)', 'translateZ(0) opacity(1)'],
+    zoomOut: ['translateZ(0) opacity(1)', 'translateZ(150px) opacity(0)'],
+    flipIn: ['rotateX(20deg) translateY(50px) scale(0.92)', 'rotateX(0) translateY(0) scale(1)'],
+    flipOut: ['rotateX(0) translateY(0) scale(1)', 'rotateX(-20deg) translateY(-50px) scale(0.92)'],
+
     // Reverse helpers
-    fromTop:     ['translateY(-60px) scale(0.96)',                         'translateY(0) scale(1)'],
-    toBottom:    ['translateY(0) scale(1)',                                'translateY(60px) scale(0.96)'],
+    fromTop: ['translateY(-60px) scale(0.96)', 'translateY(0) scale(1)'],
+    toBottom: ['translateY(0) scale(1)', 'translateY(60px) scale(0.96)'],
   };
 
   // Per-section enter/leave pair (forward direction)
   const PRESETS = [
-    { in: 'fromBottom', out: 'toTop'    },   // 0  hero
-    { in: 'fromRight',  out: 'toLeft'   },   // 1  vision
-    { in: 'fromLeft',   out: 'toRight'  },   // 2  values
-    { in: 'fromBtm3d',  out: 'toTop3d'  },   // 3  challenges
-    { in: 'zoomIn',     out: 'zoomOut'  },   // 4  why maalem
-    { in: 'fromRight',  out: 'toLeft'   },   // 5  who we are
-    { in: 'fromLeft',   out: 'toRight'  },   // 6  service 1
-    { in: 'flipIn',     out: 'flipOut'  },   // 7  service 2
-    { in: 'fromBtm3d',  out: 'toTop3d'  },   // 8  service 3
-    { in: 'zoomIn',     out: 'zoomOut'  },   // 9  courses
-    { in: 'fromRight',  out: 'toLeft'   },   // 10 mooc
-    { in: 'flipIn',     out: 'flipOut'  },   // 11 mentors
-    { in: 'fromLeft',   out: 'toRight'  },   // 12 pricing
-    { in: 'fromBtm3d',  out: 'toTop3d'  },   // 13 faq
+    { in: 'fromBottom', out: 'toTop'    },   // 0  hero (#home)
+    { in: 'fromRight',  out: 'toLeft'   },   // 1  vision (#about)
+    { in: 'fromLeft',   out: 'toRight'  },   // 2  services (#services)
+    { in: 'fromBtm3d',  out: 'toTop3d'  },   // 3  courses (#courses)
+    { in: 'zoomIn',     out: 'zoomOut'  },   // 4  mooc (#mooc)
+    { in: 'fromRight',  out: 'toLeft'   },   // 5  careers (#careers)
+    { in: 'fromLeft',   out: 'toRight'  },   // 6  instructors (#instructors)
+    { in: 'flipIn',     out: 'flipOut'  },   // 7  mentors (#mentors)
+    { in: 'fromBtm3d',  out: 'toTop3d'  },   // 8  pricing (#pricing)
+    { in: 'zoomIn',     out: 'zoomOut'  },   // 9  faq (#faq)
   ];
 
   /* ── INIT ───────────────────────────────────────────────────── */
@@ -85,11 +81,11 @@
 
     // Measure header so we can offset section content beneath it
     const headerEl = document.querySelector('header');
-    const headerH  = headerEl ? headerEl.offsetHeight : 0;
+    const headerH = headerEl ? headerEl.offsetHeight : 0;
 
     // Hide all sections, lock page scroll
     sections.forEach((s, i) => {
-  s.style.cssText += `
+      s.style.cssText += `
     position:fixed !important;
     top:0 !important;
     left:0 !important;
@@ -109,13 +105,13 @@
     transition:none;
   `;
 
-  s.classList.remove('s3d-current');
+      s.classList.remove('s3d-current');
 
-  if (i !== 0) {
-    s.style.paddingTop = (headerH + 40) + 'px';
-    s.style.paddingBottom = '60px';
-  }
-});
+      if (i !== 0) {
+        s.style.paddingTop = (headerH + 40) + 'px';
+        s.style.paddingBottom = '60px';
+      }
+    });
 
     // Auto-scale long sections to fit the screen
     const applyScaling = () => {
@@ -125,27 +121,27 @@
 
         const container = Array.from(s.children).find(child => child.classList?.contains('container'));
         if (!container) return;
-        
+
         // Reset scale to measure natural height
         container.style.transform = 'none';
         container.style.transformOrigin = 'top center';
-        
+
         const contentH = container.offsetHeight;
         const availableH = vh - (i === 0 ? 0 : headerH + 140); // 140 for top/bottom padding buffer
-        
+
         if (contentH > availableH) {
           const ratio = availableH / contentH;
           container.style.transform = `scale(${ratio})`; // Removed 0.98 to maximize size
         }
       });
     };
-    
+
     applyScaling();
     window.addEventListener('resize', applyScaling);
 
     document.documentElement.style.overflow = 'hidden';
-    document.body.style.overflow             = 'hidden';
-    document.body.style.height               = '100vh';
+    document.body.style.overflow = 'hidden';
+    document.body.style.height = '100vh';
 
     // Mark body so CSS can target 3D-active state
     document.body.classList.add('s3d-active');
@@ -161,23 +157,23 @@
 
 
   function showFirst() {
-  sections.forEach((s, i) => {
-    const isActive = i === 0;
+    sections.forEach((s, i) => {
+      const isActive = i === 0;
 
-    s.style.transition = 'none';
-    s.style.transform = isActive ? 'none' : FX.fromBottom[0];
-    s.style.opacity = isActive ? '1' : '0';
-    s.style.visibility = isActive ? 'visible' : 'hidden';
-    s.style.pointerEvents = isActive ? 'all' : 'none';
-    s.style.zIndex = isActive ? String(sections.length + 2) : String(i + 1);
+      s.style.transition = 'none';
+      s.style.transform = isActive ? 'none' : FX.fromBottom[0];
+      s.style.opacity = isActive ? '1' : '0';
+      s.style.visibility = isActive ? 'visible' : 'hidden';
+      s.style.pointerEvents = isActive ? 'all' : 'none';
+      s.style.zIndex = isActive ? String(sections.length + 2) : String(i + 1);
 
-    s.classList.toggle('s3d-current', isActive);
-  });
+      s.classList.toggle('s3d-current', isActive);
+    });
 
-  cur = 0;
-  updateUI();
-  triggerReveals(sections[0]);
-}
+    cur = 0;
+    updateUI();
+    triggerReveals(sections[0]);
+  }
 
   /* ── NAVIGATION ─────────────────────────────────────────────── */
   function canGo() {
@@ -192,91 +188,95 @@
     if (next < 0 || next >= sections.length) return;
     if (next === cur) return;
 
-    const prev    = cur;
-    const fwd     = next > prev;
-    const inSec   = sections[next];
-    const outSec  = sections[prev];
+    const prev = cur;
+    const fwd = next > prev;
+    const inSec = sections[next];
+    const outSec = sections[prev];
 
-    const inPreset  = PRESETS[next]  || PRESETS[next  % PRESETS.length];
-    const outPreset = PRESETS[prev]  || PRESETS[prev  % PRESETS.length];
+    const inPreset = PRESETS[next] || PRESETS[next % PRESETS.length];
+    const outPreset = PRESETS[prev] || PRESETS[prev % PRESETS.length];
 
-    const inKey  = fwd ? inPreset.in   : outPreset.in;   // going back: reverse
-    const outKey = fwd ? outPreset.out  : inPreset.out;
+    const inKey = fwd ? inPreset.in : outPreset.in;   // going back: reverse
+    const outKey = fwd ? outPreset.out : inPreset.out;
 
     // Swap: going backward — use opposite directions
-    const enterFX = FX[fwd ? inKey  : reverseOut(outPreset.out)]  || FX.fromBottom;
-    const leaveFX = FX[fwd ? outKey : reverseIn(inPreset.in)]     || FX.toTop;
+    const enterFX = FX[fwd ? inKey : reverseOut(outPreset.out)] || FX.fromBottom;
+    const leaveFX = FX[fwd ? outKey : reverseIn(inPreset.in)] || FX.toTop;
 
     busy = true;
 
-    const ease   = 'cubic-bezier(0.77,0,0.175,1)';
-    const trans  = `transform ${DUR}ms ${ease}, opacity ${DUR}ms ${ease}`;
+    const ease = 'cubic-bezier(0.77,0,0.175,1)';
+    const trans = `transform ${DUR}ms ${ease}, opacity ${DUR}ms ${ease}`;
 
     // 1. Place incoming section at start, invisible, no transition
-    inSec.style.transition    = 'none';
-    inSec.style.transform     = enterFX[0];
-    inSec.style.opacity       = '0';
-    inSec.style.zIndex        = String(sections.length + 2);
+    inSec.style.transition = 'none';
+    inSec.style.transform = enterFX[0];
+    inSec.style.opacity = '0';
+    inSec.style.zIndex = String(sections.length + 2);
 
     // 2. Reset outgoing transition
-    outSec.style.transition   = 'none';
-    outSec.style.zIndex       = String(sections.length + 1);
+    outSec.style.transition = 'none';
+    outSec.style.zIndex = String(sections.length + 1);
 
     // 3. Force reflow
     inSec.getBoundingClientRect();
 
     // 4. Enable transitions on both
-    inSec.style.transition  = trans;
+    inSec.style.transition = trans;
     outSec.style.transition = trans;
 
     // 5. Animate in next frame
     requestAnimationFrame(() => {
-  requestAnimationFrame(() => {
-    inSec.style.visibility = 'visible';
-    inSec.style.transform = enterFX[1];
-    inSec.style.opacity = '1';
-    inSec.style.pointerEvents = 'all';
-    inSec.classList.add('s3d-current');
+      requestAnimationFrame(() => {
+        inSec.style.visibility = 'visible';
+        inSec.style.transform = enterFX[1];
+        inSec.style.opacity = '1';
+        inSec.style.pointerEvents = 'all';
+        inSec.classList.add('s3d-current');
 
-    outSec.style.transform = leaveFX[1];
-    outSec.style.opacity = '0';
-    outSec.style.pointerEvents = 'none';
-    outSec.classList.remove('s3d-current');
-  });
-});
+        outSec.style.transform = leaveFX[1];
+        outSec.style.opacity = '0';
+        outSec.style.pointerEvents = 'none';
+        outSec.classList.remove('s3d-current');
+      });
+    });
 
     // 6. Cleanup
     setTimeout(() => {
-  outSec.style.visibility = 'hidden';
-  outSec.style.zIndex = String(prev + 1);
+      outSec.style.visibility = 'hidden';
+      outSec.style.zIndex = String(prev + 1);
 
-  sections.forEach((s, i) => {
-    const isActive = i === next;
+      sections.forEach((s, i) => {
+        const isActive = i === next;
 
-    s.style.opacity = isActive ? '1' : '0';
-    s.style.visibility = isActive ? 'visible' : 'hidden';
-    s.style.pointerEvents = isActive ? 'all' : 'none';
-    s.style.zIndex = isActive ? String(sections.length + 2) : String(i + 1);
+        s.style.opacity = isActive ? '1' : '0';
+        s.style.visibility = isActive ? 'visible' : 'hidden';
+        s.style.pointerEvents = isActive ? 'all' : 'none';
+        s.style.zIndex = isActive ? String(sections.length + 2) : String(i + 1);
 
-    s.classList.toggle('s3d-current', isActive);
-  });
+        s.classList.toggle('s3d-current', isActive);
+      });
 
-  cur = next;
-  busy = false;
-  updateUI();
-  triggerReveals(inSec);
-}, DUR + 60);
+      cur = next;
+      busy = false;
+      updateUI();
+      triggerReveals(inSec);
+    }, DUR + 60);
   }
 
   // Reverse helpers for backward navigation
   function reverseOut(key) {
-    const map = { toTop:'fromTop', toLeft:'fromLeft', toRight:'fromRight',
-                  toTop3d:'fromTop3d', zoomOut:'zoomIn', flipOut:'flipIn' };
+    const map = {
+      toTop: 'fromTop', toLeft: 'fromLeft', toRight: 'fromRight',
+      toTop3d: 'fromTop3d', zoomOut: 'zoomIn', flipOut: 'flipIn'
+    };
     return map[key] || 'fromTop';
   }
   function reverseIn(key) {
-    const map = { fromBottom:'toBottom', fromRight:'toRight', fromLeft:'toLeft',
-                  fromBtm3d:'toBottom', zoomIn:'zoomOut', flipIn:'flipOut' };
+    const map = {
+      fromBottom: 'toBottom', fromRight: 'toRight', fromLeft: 'toLeft',
+      fromBtm3d: 'toBottom', zoomIn: 'zoomOut', flipIn: 'flipOut'
+    };
     return map[key] || 'toBottom';
   }
 
@@ -301,7 +301,7 @@
       wheelTmr = setTimeout(() => {
         const d = wheelAcc;
         wheelAcc = 0;
-        if (Math.abs(d) < 40) return; 
+        if (Math.abs(d) < 40) return;
         if (!canGo()) return;
         if (d > 0) goTo(cur + 1); else goTo(cur - 1);
       }, 60);
@@ -319,7 +319,7 @@
     // ── Keyboard ──
     window.addEventListener('keydown', e => {
       if (e.key === 'ArrowDown' || e.key === 'PageDown') { e.preventDefault(); if (canGo()) goTo(cur + 1); }
-      if (e.key === 'ArrowUp'   || e.key === 'PageUp'  ) { e.preventDefault(); if (canGo()) goTo(cur - 1); }
+      if (e.key === 'ArrowUp' || e.key === 'PageUp') { e.preventDefault(); if (canGo()) goTo(cur - 1); }
     });
 
     // ── Nav hash links ──
@@ -397,9 +397,9 @@
     hint.innerHTML = `<span>Scroll to explore</span><div class="hint-arrow"></div>`;
     document.body.appendChild(hint);
     const hideHint = () => { hint.style.cssText += 'opacity:0;transition:opacity 0.5s;'; setTimeout(() => hint.remove(), 600); };
-    window.addEventListener('wheel',    hideHint, { once: true });
+    window.addEventListener('wheel', hideHint, { once: true });
     window.addEventListener('touchend', hideHint, { once: true });
-    window.addEventListener('keydown',  hideHint, { once: true });
+    window.addEventListener('keydown', hideHint, { once: true });
   }
 
   function updateUI() {
@@ -418,10 +418,10 @@
   }
 
   /* ── BOOT ───────────────────────────────────────────────────── */
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
+  if (document.readyState === 'complete') {
     init();
+  } else {
+    window.addEventListener('load', init);
   }
 
 })();

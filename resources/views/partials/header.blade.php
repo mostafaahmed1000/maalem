@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="{{ secure_asset_v('css/style.css') }}">
 <header>
     <div class="container">
         <nav>
@@ -16,9 +15,9 @@
                 <li><a href="{{ route('careers.index') }}">Careers</a></li>
             </ul>
             <div class="nav-actions" style="display: none;">
-                <button class="lang-toggle" id="langToggle" title="Toggle Language"><i class="fas fa-globe"></i></button>
+                <button class="lang-toggle" id="langToggle" title="Toggle Language"><i
+                        class="fas fa-globe"></i></button>
             </div>
         </nav>
     </div>
 </header>
-

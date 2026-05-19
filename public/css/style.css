@@ -242,7 +242,7 @@ main>section::-webkit-scrollbar-thumb {
         transform: none !important;
         pointer-events: all !important;
         height: auto !important;
-        min-height: 100vh;
+        min-height: auto !important;
         overflow: visible !important;
         max-width: 100vw;
     }
@@ -4676,17 +4676,130 @@ body.s3d-active main>section.s3d-current {
         width: 120px;
     }
 
-    /* Vision */
+    /* Vision / About Section */
     .vision-section {
         padding-top: 4rem !important;
     }
 
     .vision-container {
+        flex-direction: column !important;
+        gap: 2rem !important;
         margin-top: 2rem !important;
+    }
+
+    .vision-left,
+    .vision-right {
+        flex: none !important;
+        width: 100% !important;
+    }
+
+    .vision-right h2 {
+        font-size: 1.8rem !important;
     }
 
     .image-stack {
         height: 280px;
+    }
+
+    .mission-vision-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Services Section */
+    .merged-services-section {
+        padding-top: 2rem !important;
+    }
+
+    .merged-services-header {
+        margin-bottom: 2rem !important;
+        text-align: center;
+    }
+
+    .merged-services-header h2 {
+        font-size: 1.8rem !important;
+    }
+
+    .merged-services-header p {
+        font-size: 0.95rem !important;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+
+    .service-card-new {
+        padding: 1.2rem;
+        border-radius: 20px;
+    }
+
+    .service-img-new {
+        height: 180px;
+    }
+
+    .service-card-new h3 {
+        font-size: 1.2rem !important;
+    }
+
+    /* Course Cards */
+    .course-carousel-wrapper {
+        flex-direction: column;
+    }
+
+    .course-carousel {
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+        overflow-x: visible !important;
+        padding: 0 !important;
+    }
+
+    .new-course-card {
+        flex: none !important;
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    .course-img {
+        height: 180px !important;
+    }
+
+    .course-content h3 {
+        font-size: 1.2rem !important;
+    }
+
+    .course-stats {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+    }
+
+    .stat-divider {
+        display: none !important;
+    }
+
+    .course-footer {
+        flex-direction: column !important;
+        gap: 0.75rem !important;
+        align-items: flex-start !important;
+    }
+
+    /* Carousel arrows – hide on mobile since cards stack */
+    #coursePrev,
+    #courseNext,
+    #catPrev,
+    #catNext {
+        display: none !important;
+    }
+
+    /* Category carousel */
+    .category-carousel {
+        flex-wrap: wrap !important;
+        overflow-x: visible !important;
+        justify-content: center;
+    }
+
+    .cat-card {
+        min-width: 140px !important;
+        flex: 0 0 calc(50% - 0.75rem) !important;
     }
 
     /* Identity */
@@ -4699,9 +4812,166 @@ body.s3d-active main>section.s3d-current {
         padding: 2rem 1.5rem;
     }
 
-    /* Core Values */
-    .cat-card {
-        min-width: 200px;
+    /* MOOC Section */
+    .mooc-section {
+        padding: 4rem 0 !important;
+    }
+
+    .mooc-container {
+        flex-direction: column !important;
+        gap: 2rem !important;
+    }
+
+    .mooc-content,
+    .mooc-visual {
+        flex: none !important;
+        width: 100% !important;
+    }
+
+    .mooc-visual {
+        order: -1;
+    }
+
+    .mooc-visual img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+    .mooc-header h2 {
+        font-size: 1.8rem !important;
+    }
+
+    /* Careers Section */
+    .careers-section {
+        padding: 4rem 0 !important;
+    }
+
+    .careers-wrapper {
+        min-height: auto !important;
+    }
+
+    .careers-image-container {
+        border-radius: 20px !important;
+        top: 0 !important;
+    }
+
+    .careers-text-container {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        padding: 1.5rem 0 !important;
+    }
+
+    .careers-text-container h2 {
+        font-size: 1.6rem !important;
+    }
+
+    .careers-text-container p {
+        font-size: 0.95rem !important;
+    }
+
+    .careers-section .btn-lg {
+        padding: 0.8rem 1.5rem !important;
+        font-size: 0.85rem !important;
+    }
+
+    /* Instructors Section */
+    .instructors-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+    }
+
+    .instructor-img-box {
+        height: 200px !important;
+    }
+
+    .instructor-info h3 {
+        font-size: 1rem !important;
+    }
+
+    .instructor-info p {
+        font-size: 0.85rem !important;
+    }
+
+    /* Mentors / Biographies */
+    .mentors-section {
+        padding: 4rem 0 !important;
+    }
+
+    .mentors-section .section-title {
+        margin-bottom: 5rem !important;
+    }
+
+    .mentors-section .section-title h2 {
+        font-size: 2rem !important;
+    }
+
+    .teachers-grid-new {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 5rem 1rem !important;
+    }
+
+    .teacher-card-new {
+        padding: 5rem 1rem 1.5rem;
+    }
+
+    .teacher-avatar-new {
+        width: 140px;
+        height: 140px;
+        top: -70px;
+    }
+
+    .teacher-card-new h3 {
+        font-size: 1rem !important;
+    }
+
+    .teacher-card-new .role {
+        font-size: 0.8rem !important;
+    }
+
+    /* Pricing Section */
+    .pricing-section {
+        padding: 4rem 0 !important;
+    }
+
+    .pricing-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+
+    .pricing-card {
+        padding: 2rem;
+    }
+
+    .pricing-header h2 {
+        font-size: 2rem !important;
+    }
+
+    /* FAQ Section */
+    .faq-container {
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .faq-images-left {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .faq-img-1,
+    .faq-img-2 {
+        width: 48% !important;
+        height: 250px !important;
+    }
+
+    .faq-content-right h2 {
+        font-size: 2rem;
+    }
+
+    .faq-header {
+        font-size: 1rem;
+        padding: 1.5rem;
     }
 
     /* Challenges */
@@ -4730,7 +5000,7 @@ body.s3d-active main>section.s3d-current {
         font-size: 1.2rem;
     }
 
-    /* Services */
+    /* Service Card Classic */
     .service-card {
         padding: 2rem 1.5rem;
         border-radius: 25px;
@@ -4744,75 +5014,6 @@ body.s3d-active main>section.s3d-current {
 
     .service-card h3 {
         font-size: 1.4rem;
-    }
-
-    /* MOOC */
-    .mooc-section {
-        padding: 5rem 0;
-    }
-
-    .mooc-header h2 {
-        font-size: 2rem;
-    }
-
-    /* Mentors */
-    .teachers-grid-new {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 5rem 1rem !important;
-    }
-
-    .teacher-card-new {
-        padding: 5rem 1rem 1.5rem;
-    }
-
-    .teacher-avatar-new {
-        width: 140px;
-        height: 140px;
-        top: -70px;
-    }
-
-    /* Pricing */
-    .pricing-grid {
-        grid-template-columns: 1fr !important;
-    }
-
-    .pricing-card {
-        padding: 2rem;
-    }
-
-    /* FAQ */
-    .faq-container {
-        flex-direction: column;
-        gap: 4rem;
-    }
-
-    .faq-images-left {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .faq-img-1,
-    .faq-img-2 {
-        width: 48% !important;
-        height: 250px !important;
-    }
-
-    .faq-content-right h2 {
-        font-size: 2rem;
-    }
-
-    .faq-header {
-        font-size: 1rem;
-        padding: 1.5rem;
-    }
-
-    /* Careers */
-    .careers-section {
-        padding: 5rem 0 !important;
-    }
-
-    .careers-section h2 {
-        font-size: 1.8rem !important;
     }
 
     /* Footer */
@@ -4835,17 +5036,50 @@ body.s3d-active main>section.s3d-current {
     #scroll3d-ui {
         right: 10px;
     }
+
+    /* Inline style overrides for elements with fixed inline sizes */
+    [style*="font-size: 2.5rem"] {
+        font-size: 1.8rem !important;
+    }
+
+    [style*="font-size: 3rem"] {
+        font-size: 2rem !important;
+    }
+
+    [style*="font-size: 3.5rem"] {
+        font-size: 2rem !important;
+    }
+
+    [style*="font-size: 4.5rem"] {
+        font-size: 2.2rem !important;
+    }
+
+    [style*="gap: 5rem"] {
+        gap: 2rem !important;
+    }
+
+    [style*="padding: 6rem 0"] {
+        padding: 3rem 0 !important;
+    }
+
+    [style*="margin-bottom: 8rem"] {
+        margin-bottom: 4rem !important;
+    }
+
+    [style*="margin-bottom: 5rem"] {
+        margin-bottom: 2rem !important;
+    }
 }
 
 /* ── Small Mobile: 480px ──────────────────────────────────── */
 @media (max-width: 480px) {
 
     .hero-content-boxed h1 {
-        font-size: 1.7rem !important;
+        font-size: 1.4rem !important;
     }
 
     .hero-content-boxed p {
-        font-size: 0.9rem !important;
+        font-size: 0.85rem !important;
     }
 
     .hero-logo-container {
@@ -4853,19 +5087,49 @@ body.s3d-active main>section.s3d-current {
     }
 
     .btn-lg {
-        padding: 0.8rem 1.5rem !important;
-        font-size: 0.9rem !important;
+        padding: 0.7rem 1.2rem !important;
+        font-size: 0.85rem !important;
     }
 
+    /* Vision stacks fully */
+    .vision-right h2 {
+        font-size: 1.5rem !important;
+    }
+
+    .image-stack {
+        height: 220px !important;
+    }
+
+    /* Instructors go single column */
+    .instructors-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Mentors go single column */
     .teachers-grid-new {
         grid-template-columns: 1fr !important;
     }
 
+    /* Careers */
+    .careers-text-container h2 {
+        font-size: 1.3rem !important;
+    }
+
+    .careers-text-container p {
+        font-size: 0.85rem !important;
+    }
+
+    /* FAQ */
     .faq-img-1,
     .faq-img-2 {
         height: 180px !important;
     }
 
+    .faq-content-right h2 {
+        font-size: 1.6rem !important;
+    }
+
+    /* Ecosystem */
     .ecosystem-title {
         font-size: 1.8rem;
     }
@@ -4874,11 +5138,33 @@ body.s3d-active main>section.s3d-current {
         font-size: 1rem;
     }
 
+    /* Services */
     .service-card-new h3 {
-        font-size: 1.2rem;
+        font-size: 1.1rem !important;
     }
 
+    .service-card-new {
+        padding: 1rem !important;
+    }
+
+    /* Challenges */
     .challenges-header h2 {
         font-size: 1.8rem;
+    }
+
+    /* Category cards */
+    .cat-card {
+        flex: 0 0 100% !important;
+        min-width: 0 !important;
+    }
+
+    /* MOOC */
+    .mooc-header h2 {
+        font-size: 1.5rem !important;
+    }
+
+    /* Pricing */
+    .pricing-card {
+        padding: 1.5rem !important;
     }
 }

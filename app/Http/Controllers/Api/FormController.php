@@ -16,6 +16,7 @@ class FormController extends Controller
             'schoolName' => 'required|string|max:255',
             'schoolType' => 'nullable|array',
             'schoolStatus' => 'required|string|max:255',
+            'establishedYears' => 'required_if:schoolStatus,Established|nullable|integer|min:1',
             'schoolAddress' => 'required|string|max:255',
             'cityCountry' => 'required|string|max:255',
             'website' => 'nullable|url',
@@ -23,26 +24,13 @@ class FormController extends Controller
             'position' => 'required|string|max:255',
             'mobile' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'totalStaff' => 'nullable|integer',
-            'totalTeachers' => 'nullable|integer',
-            'curriculum' => 'nullable|array',
-            'pathways' => 'nullable|array',
-            'participants' => 'nullable|array',
-            'departments' => 'nullable|array',
-            'delivery' => 'nullable|string',
-            'startDate' => 'nullable|date',
-            'period' => 'nullable|string',
-            'priorities' => 'nullable|array',
-            'notes' => 'nullable|string',
-            'repName' => 'required|string|max:255',
-            'repPosition' => 'required|string|max:255',
         ]);
 
-        // Map frontend fields to DB fields if they differ
         $data = [
             'school_name' => $validated['schoolName'],
             'school_type' => $validated['schoolType'] ?? null,
             'school_status' => $validated['schoolStatus'],
+            'established_years' => $validated['establishedYears'] ?? null,
             'address' => $validated['schoolAddress'],
             'city_country' => $validated['cityCountry'],
             'website' => $validated['website'] ?? null,
@@ -50,19 +38,6 @@ class FormController extends Controller
             'contact_position' => $validated['position'],
             'contact_mobile' => $validated['mobile'],
             'contact_email' => $validated['email'],
-            'total_staff' => $validated['totalStaff'] ?? null,
-            'total_teachers' => $validated['totalTeachers'] ?? null,
-            'curriculum' => $validated['curriculum'] ?? null,
-            'pathways' => $validated['pathways'] ?? null,
-            'participants' => $validated['participants'] ?? null,
-            'departments' => $validated['departments'] ?? null,
-            'delivery_model' => $validated['delivery'] ?? null,
-            'start_date' => $validated['startDate'] ?? null,
-            'training_period' => $validated['period'] ?? null,
-            'priorities' => $validated['priorities'] ?? null,
-            'notes' => $validated['notes'] ?? null,
-            'rep_name' => $validated['repName'],
-            'rep_position' => $validated['repPosition'],
         ];
 
         $partnership = Partnership::create($data);
@@ -79,6 +54,7 @@ class FormController extends Controller
             'schoolName' => 'required|string|max:255',
             'schoolType' => 'nullable|array',
             'schoolStatus' => 'required|string|max:255',
+            'establishedYears' => 'required_if:schoolStatus,Established|nullable|integer|min:1',
             'schoolAddress' => 'required|string|max:255',
             'cityCountry' => 'required|string|max:255',
             'website' => 'nullable|url',
@@ -92,6 +68,7 @@ class FormController extends Controller
             'school_name' => $validated['schoolName'],
             'school_type' => $validated['schoolType'] ?? null,
             'school_status' => $validated['schoolStatus'],
+            'established_years' => $validated['establishedYears'] ?? null,
             'address' => $validated['schoolAddress'],
             'city_country' => $validated['cityCountry'],
             'website' => $validated['website'] ?? null,
@@ -113,56 +90,114 @@ class FormController extends Controller
     {
         $rules = [
             'application_type' => 'required|string|in:individual,bulk',
-            'fullName' => 'required|string|max:255',
-            'mobile' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'cityCountry' => 'required|string|max:255',
-            'position' => 'required|string|max:255',
-            'orgName' => 'required|string|max:255',
-            'pathway' => 'required|string|max:255',
-            'levels' => 'nullable|array',
-            'mode' => 'required|string|max:255',
-            'schedule' => 'required|string|max:255',
             'signature' => 'required|string|max:255',
             'date' => 'required|date',
         ];
 
         if ($request->application_type === 'bulk') {
-            $rules['participant_count'] = 'required|integer|min:1';
+            $rules = array_merge($rules, [
+                'schoolName' => 'required|string|max:255',
+                'schoolType' => 'nullable|array',
+                'schoolStatus' => 'required|string|max:255',
+                'schoolAddress' => 'required|string|max:255',
+                'cityCountry' => 'required|string|max:255',
+                'website' => 'nullable|url',
+                'fullName' => 'required|string|max:255',
+                'position' => 'required|string|max:255',
+                'mobile' => 'required|string|max:255',
+                'email' => 'required|email|max:255',
+                'totalStaff' => 'nullable|integer',
+                'totalTeachers' => 'nullable|integer',
+                'curriculum' => 'nullable|array',
+                'pathways' => 'nullable|array',
+                'participants' => 'nullable|array',
+                'departments' => 'nullable|array',
+                'delivery' => 'nullable|string',
+                'startDate' => 'nullable|date',
+                'period' => 'nullable|string',
+                'priorities' => 'nullable|array',
+                'notes' => 'nullable|string',
+                'repName' => 'required|string|max:255',
+                'repPosition' => 'required|string|max:255',
+            ]);
         } else {
-            $rules['dob'] = 'required|date';
-            $rules['nationality'] = 'required|string|max:255';
-            $rules['experience'] = 'required|string|max:255';
-            $rules['ai'] = 'required|string|max:255';
+            $rules = array_merge($rules, [
+                'fullName' => 'required|string|max:255',
+                'dob' => 'required|date',
+                'nationality' => 'required|string|max:255',
+                'mobile' => 'required|string|max:255',
+                'email' => 'required|email|max:255',
+                'cityCountry' => 'required|string|max:255',
+                'position' => 'required|string|max:255',
+                'orgName' => 'required|string|max:255',
+                'experience' => 'required|string|max:255',
+                'pathway' => 'required|string|max:255',
+                'levels' => 'nullable|array',
+                'mode' => 'required|string|max:255',
+                'schedule' => 'required|string|max:255',
+                'ai' => 'required|string|max:255',
+            ]);
         }
 
         $validated = $request->validate($rules);
 
-        $data = [
-            'application_type' => $validated['application_type'],
-            'full_name' => $validated['fullName'],
-            'dob' => $validated['dob'] ?? null,
-            'nationality' => $validated['nationality'] ?? null,
-            'mobile' => $validated['mobile'],
-            'email' => $validated['email'],
-            'city_country' => $validated['cityCountry'],
-            'position' => $validated['position'],
-            'organization' => $validated['orgName'],
-            'participant_count' => $validated['participant_count'] ?? null,
-            'experience' => $validated['experience'] ?? 'N/A',
-            'qualification' => $request->qualification ?? null,
-            'specialization' => $request->specialization ?? null,
-            'pathway' => $validated['pathway'],
-            'levels' => $validated['levels'] ?? null,
-            'learning_mode' => $validated['mode'],
-            'schedule' => $validated['schedule'],
-            'motivation' => $request->motivation ?? null,
-            'goals' => $request->goals ?? null,
-            'ai_experience' => $validated['ai'] ?? 'N/A',
-            'ai_details' => $request->aiDetails ?? null,
-            'signature' => $validated['signature'],
-            'application_date' => $validated['date'],
-        ];
+        if ($validated['application_type'] === 'bulk') {
+            $data = [
+                'application_type' => 'bulk',
+                'full_name' => $validated['fullName'],
+                'mobile' => $validated['mobile'],
+                'email' => $validated['email'],
+                'city_country' => $validated['cityCountry'],
+                'position' => $validated['position'],
+                'organization' => $validated['schoolName'],
+                'school_name' => $validated['schoolName'],
+                'school_type' => $validated['schoolType'] ?? null,
+                'school_status' => $validated['schoolStatus'],
+                'school_address' => $validated['schoolAddress'],
+                'total_staff' => $validated['totalStaff'] ?? null,
+                'total_teachers' => $validated['totalTeachers'] ?? null,
+                'curriculum' => $validated['curriculum'] ?? null,
+                'participants' => $validated['participants'] ?? null,
+                'departments' => $validated['departments'] ?? null,
+                'start_date' => $validated['startDate'] ?? null,
+                'priorities' => $validated['priorities'] ?? null,
+                'notes' => $validated['notes'] ?? null,
+                'rep_name' => $validated['repName'],
+                'rep_position' => $validated['repPosition'],
+                'signature' => $validated['signature'],
+                'application_date' => $validated['date'],
+                
+                // Map the pathway and schedule etc. as text so list view doesn't complain or break
+                'pathway' => is_array($validated['pathways'] ?? null) ? implode(', ', $validated['pathways']) : ($validated['pathways'] ?? 'Bulk Application'),
+                'learning_mode' => $validated['delivery'] ?? 'N/A',
+                'schedule' => $validated['period'] ?? 'N/A',
+            ];
+        } else {
+            $data = [
+                'application_type' => 'individual',
+                'full_name' => $validated['fullName'],
+                'dob' => $validated['dob'],
+                'nationality' => $validated['nationality'],
+                'mobile' => $validated['mobile'],
+                'email' => $validated['email'],
+                'city_country' => $validated['cityCountry'],
+                'position' => $validated['position'],
+                'organization' => $validated['orgName'],
+                'experience' => $validated['experience'],
+                'qualification' => $request->qualification ?? null,
+                'specialization' => $request->specialization ?? null,
+                'pathway' => $validated['pathway'],
+                'levels' => $validated['levels'] ?? null,
+                'learning_mode' => $validated['mode'],
+                'schedule' => $validated['schedule'],
+                'motivation' => $request->motivation ?? null,
+                'goals' => $request->goals ?? null,
+                'ai_experience' => $validated['ai'],
+                'ai_details' => $request->aiDetails ?? null,
+                'signature' => $validated['signature'],
+                'application_date' => $validated['date'],
+            ];
+        }
 
         $application = Application::create($data);
 

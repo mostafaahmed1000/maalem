@@ -234,8 +234,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Rotating Circle on Scroll
-    const rotatingCircle = document.getElementById('rotatingCircle');
-    if (rotatingCircle) {
+    const rotatingCircles = document.querySelectorAll('.rotating-circle');
+    if (rotatingCircles.length > 0) {
         // Generate concentric dotted circle SVG
         let svgContent = '<svg viewBox="0 0 200 200" width="100%" height="100%"><g fill="var(--secondary-color)">';
         svgContent += '<circle cx="100" cy="100" r="4" />';
@@ -249,13 +249,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         svgContent += '</g></svg>';
-        rotatingCircle.innerHTML = svgContent;
+        
+        rotatingCircles.forEach(circle => {
+            circle.innerHTML = svgContent;
+        });
 
         // Rotation logic
         window.addEventListener('scroll', () => {
             const scrollPosition = window.scrollY;
             const rotation = scrollPosition * 0.5; // Adjust speed as needed
-            rotatingCircle.style.transform = `rotate(${rotation}deg)`;
+            rotatingCircles.forEach(circle => {
+                circle.style.transform = `rotate(${rotation}deg)`;
+            });
         });
     }
 

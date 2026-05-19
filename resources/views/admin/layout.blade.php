@@ -217,7 +217,7 @@
             color: #10b981;
         }
 
-        .badge-contracted {
+        .badge-established {
             background: rgba(29, 99, 220, 0.1);
             color: #1d63dc;
         }

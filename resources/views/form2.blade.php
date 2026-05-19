@@ -170,9 +170,13 @@
                             <div class="form-group full">
                                 <label>School Status</label>
                                 <div class="radio-group">
-                                    <label class="check-item"><input type="radio" name="schoolStatus" value="New" required> New School</label>
-                                    <label class="check-item"><input type="radio" name="schoolStatus" value="Contracted" required> Contracted School</label>
+                                    <label class="check-item"><input type="radio" id="statusNew" name="schoolStatus" value="New" required> New School</label>
+                                    <label class="check-item"><input type="radio" id="statusEstablished" name="schoolStatus" value="Established" required> Established School</label>
                                 </div>
+                            </div>
+                            <div class="form-group full" id="establishedYearsGroup" style="display: none;">
+                                <label for="establishedYears">For how many years?</label>
+                                <input type="number" id="establishedYears" name="establishedYears" min="1" placeholder="Enter number of years">
                             </div>
                             <div class="form-group full">
                                 <label for="schoolAddress">School Address</label>
@@ -220,6 +224,30 @@
 
     @include('partials.footer')
     @include('partials.scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const establishedRadio = document.getElementById('statusEstablished');
+            const newRadio = document.getElementById('statusNew');
+            const establishedYearsGroup = document.getElementById('establishedYearsGroup');
+            const establishedYearsInput = document.getElementById('establishedYears');
+
+            function toggleYearsField() {
+                if (establishedRadio && establishedRadio.checked) {
+                    establishedYearsGroup.style.display = 'block';
+                    establishedYearsInput.required = true;
+                } else {
+                    establishedYearsGroup.style.display = 'none';
+                    establishedYearsInput.required = false;
+                    establishedYearsInput.value = '';
+                }
+            }
+
+            if (establishedRadio && newRadio) {
+                establishedRadio.addEventListener('change', toggleYearsField);
+                newRadio.addEventListener('change', toggleYearsField);
+            }
+        });
+    </script>
 </body>
 </html>
 

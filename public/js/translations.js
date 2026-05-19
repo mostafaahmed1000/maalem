@@ -46,9 +46,13 @@ const translations = {
         challenges_title: "Core Problem in Many Schools",
         challenges_desc: "Identifying the structural and operational hurdles that prevent schools from reaching their full potential.",
         prob1_h: "High cost vs Limited quality",
+        prob1_p: "High expenses without the expected return.",
         prob2_h: "No system dependency",
+        prob2_p: "Over-reliance on specific individuals.",
         prob3_h: "Owner involvement in operations",
+        prob3_p: "Micromanagement distracts from strategy.",
         prob4_h: "High teacher turnover",
+        prob4_p: "Frequent staff changes disrupt learning.",
 
         // Who We Are Section (Formerly Admission)
         who_title: "Who We Are",
@@ -127,6 +131,65 @@ const translations = {
         why_title: "Maalem is not only an <span>operator</span>",
         why_desc: "It is a complete <strong>education ecosystem.</strong>",
         
+        // Partnerships / Operating Schools Page
+        partnerships_title: "Running & Operating Schools",
+        partnerships_subtitle: "Curriculum, Operations & Strategic Governance",
+        partnerships_desc: "Setting the standard for school management, academic pathways, and operational excellence through a complete educational ecosystem.",
+        
+        edu_philosophy_h: "Educational Philosophy",
+        edu_philosophy_p1_h: "Student-centered inquiry learning",
+        edu_philosophy_p2_h: "Balanced academics and well-being",
+        edu_philosophy_p3_h: "Experiential & project-based learning",
+        edu_philosophy_quote: "“We embrace Education 5.0 by fostering holistic student development that integrates academic excellence, innovation, character, and real-world skills.”",
+        
+        pathways_h: "Academic Pathways & Programs",
+        
+        british_curr_h: "British Curriculum",
+        british_curr_p: "Maalem IG Schools deliver a rigorous British-based education that emphasizes deep subject mastery, academic discipline, and international benchmarking in the Cambridge, Oxford & Edexcel boards.",
+        british_curr_f1: "British / IG pathways",
+        british_curr_f2: "International benchmarking",
+        
+        american_curr_h: "American Curriculum",
+        american_curr_p: "Maalem American Schools provide a rigorous American curriculum enriched with activity-based learning, literacy excellence, and character development, preparing students for local and global success.",
+        american_curr_f1: "American Curriculum",
+        american_curr_f2: "Literacy & Activity-based",
+        
+        ib_curr_h: "IB Curriculum",
+        ib_curr_p: "An IB-aligned framework promoting intercultural understanding, critical thinking, and student agency to foster globally competent citizens.",
+        ib_curr_f1: "Strong leadership committed to IB philosophy and pedagogy",
+        ib_curr_f2: "Comprehensive professional development for all staff",
+        ib_curr_f3: "Robust assessment and data systems",
+        ib_curr_f4: "Financial resources and sustainable funding model",
+        
+        national_curr_h: "National Compliance",
+        national_curr_p: "Fully aligned with local education ministry regulations, national standards, and compliance frameworks to ensure seamless certification and integration.",
+        national_curr_f1: "National compliance",
+        national_curr_f2: "Ministry alignment",
+        
+        teaching_excellence_h: "Teaching & Learning Excellence",
+        teaching_f1_h: "Activity-Based Learning",
+        teaching_f1_p: "Practical learning experiences aligned with rigorous international curriculum standards.",
+        teaching_f2_h: "STEM-Focused Instruction",
+        teaching_f2_p: "Integrating science, technology, engineering, and mathematics into a cohesive learning model.",
+        teaching_f3_h: "Strong ELA Foundation",
+        teaching_f3_p: "Comprehensive English Language Arts development from early years to advanced levels.",
+        teaching_f4_h: "Data-Driven Teaching",
+        teaching_f4_p: "Empowering educators with real-time student insights to tailor teaching methodologies.",
+        
+        assessment_culture_h: "Assessment & Data Culture",
+        assessment_f1_h: "Formative & Summative",
+        assessment_f1_p: "Continuous progress tracking combined with thorough final performance reviews.",
+        assessment_f2_h: "Standardized Benchmarking",
+        assessment_f2_p: "Aligning school progress against leading international academic frameworks.",
+        assessment_f3_h: "Intervention Planning",
+        assessment_f3_p: "Targeted strategic support pathways for student segments requiring additional focus.",
+        assessment_f4_h: "Continuous Improvement",
+        assessment_f4_p: "Self-assessing cycles ensuring consistent enhancement of school operational quality.",
+        
+        cta_partnerships_h: "Interested in Partnering With Us?",
+        cta_partnerships_p: "Build a sustainable model of academic excellence and operational efficiency. Submit your details to begin the partnership inquiry.",
+        btn_partnerships_cta: "Submit Partnership Interest",
+
         footer_kicker: "Maalem Education",
         footer_title: "Building Better Learning Systems",
         footer_desc: "Maalem is the leading platform for professional education and school operation in the region.",
@@ -184,9 +247,13 @@ const translations = {
         challenges_title: "المشكلة الجوهرية في المدارس",
         challenges_desc: "تحديد العقبات الهيكلية والتشغيلية التي تمنع المدارس من الوصول إلى كامل إمكانياتها.",
         prob1_h: "التكلفة العالية مقابل جودة محدودة",
+        prob1_p: "مصاريف مرتفعة دون تحقيق العائد المتوقع.",
         prob2_h: "عدم وجود نظام مؤسسي متكامل",
+        prob2_p: "الاعتماد المفرط على أفراد معينين بدلاً من النظام.",
         prob3_h: "تدخل الملاك في العمليات اليومية",
+        prob3_p: "الإدارة التفصيلية تشتت الانتباه عن التخطيط الاستراتيجي.",
         prob4_h: "ارتفاع معدل دوران المعلمين",
+        prob4_p: "التغييرات المتكررة في الكادر التعليمي تعطل عملية التعلم.",
         
         // Who We Are Section
         who_title: "من نحن",
@@ -283,6 +350,65 @@ const translations = {
         course_tag2: "مشروع تخرج",
         course_tag3: "قيادة خبراء",
         
+        // Partnerships / Operating Schools Page
+        partnerships_title: "تشغيل وإدارة المدارس",
+        partnerships_subtitle: "المناهج والعمليات والحوكمة الاستراتيجية",
+        partnerships_desc: "وضع معايير لإدارة المدارس والمسارات الأكاديمية والتميز التشغيلي من خلال نظام بيئي تعليمي متكامل.",
+        
+        edu_philosophy_h: "الفلسفة التعليمية",
+        edu_philosophy_p1_h: "التعلم القائم على الاستقصاء المرتكز على الطالب",
+        edu_philosophy_p2_h: "توازن الأكاديميين والرفاهية",
+        edu_philosophy_p3_h: "التعلم التجريبي والقائم على المشاريع",
+        edu_philosophy_quote: "“نحن نتبنى التعليم 5.0 من خلال تعزيز التنمية الطلابية الشاملة التي تدمج التميز الأكاديمي، والابتكار، وبناء الشخصية، والمهارات الحياتية الواقعية.”",
+        
+        pathways_h: "المسارات والبرامج الأكاديمية",
+        
+        british_curr_h: "المنهج البريطاني",
+        british_curr_p: "تقدم مدارس معلم الدولية للشهادة البريطانية (IG) تعليماً بريطانياً صارماً يركز على إتقان المواد بعمق، والانضباط الأكاديمي، والمقارنة المرجعية الدولية في مجالس كامبريدج وأكسفورد وإيديكسل.",
+        british_curr_f1: "مسارات الشهادة البريطانية / IG",
+        british_curr_f2: "مقارنة مرجعية دولية",
+        
+        american_curr_h: "المنهج الأمريكي",
+        american_curr_p: "تقدم مدارس معلم الأمريكية منهجاً أمريكياً صارماً غنياً بالتعلم القائم على الأنشطة، والتميز في القراءة والكتابة، وتطوير الشخصية، مما يعد الطلاب للنجاح محلياً وعالمياً.",
+        american_curr_f1: "المنهج الأمريكي",
+        american_curr_f2: "تعلم قائم على الأنشطة والقراءة",
+        
+        ib_curr_h: "منهج البكالوريا الدولية (IB)",
+        ib_curr_p: "إطار عمل متوافق مع البكالوريا الدولية يعزز التفاهم بين الثقافات، والتفكير النقدي، والوكالة الطلابية لتنشئة مواطنين مؤهلين عالمياً.",
+        ib_curr_f1: "قيادة قوية ملتزمة بفلسفة وطرق تدريس البكالوريا الدولية",
+        ib_curr_f2: "تطوير مهني شامل لجميع الموظفين",
+        ib_curr_f3: "أنظمة تقييم وبيانات قوية",
+        ib_curr_f4: "الموارد المالية ونموذج تمويل مستدام",
+        
+        national_curr_h: "الامتثال الوطني والترخيص",
+        national_curr_p: "متوافق تماماً مع لوائح وزارة التربية والتعليم المحلية، والمعايير الوطنية، وأطر الامتثال لضمان التكامل والاعتماد السلس.",
+        national_curr_f1: "الامتثال الوطني للمدارس",
+        national_curr_f2: "التوافق مع متطلبات الوزارة",
+        
+        teaching_excellence_h: "التميز في التدريس والتعلم",
+        teaching_f1_h: "التعلم القائم على الأنشطة",
+        teaching_f1_p: "تجارب تعلم عملية متوافقة مع معايير المناهج الدولية الصارمة.",
+        teaching_f2_h: "التعليم المرتكز على STEM",
+        teaching_f2_p: "دمج العلوم والتكنولوجيا والهندسة والرياضيات في نموذج تعليمي متماسك.",
+        teaching_f3_h: "أساس قوي للغة الإنجليزية (ELA)",
+        teaching_f3_p: "تطوير شامل لفنون اللغة الإنجليزية من السنوات الأولى إلى المستويات المتقدمة.",
+        teaching_f4_h: "التدريس القائم على البيانات",
+        teaching_f4_p: "تمكين المعلمين برؤى طلابية فورية لتخصيص منهجيات التدريس.",
+        
+        assessment_culture_h: "ثقافة التقييم والبيانات",
+        assessment_f1_h: "التقييم التكويني والختامي",
+        assessment_f1_p: "متابعة مستمرة لتقدم الطلاب مدمجة مع مراجعات أداء نهائية شاملة.",
+        assessment_f2_h: "المقارنة المرجعية المعيارية",
+        assessment_f2_p: "مواءمة تقدم المدرسة مع الأطر الأكاديمية الدولية الرائدة.",
+        assessment_f3_h: "تخطيط التدخلات العلاجية",
+        assessment_f3_p: "مسارات دعم استراتيجية مستهدفة للطلاب الذين يحتاجون إلى تركيز إضافي.",
+        assessment_f4_h: "دورات التحسين المستمر",
+        assessment_f4_p: "حلقات تقييم ذاتي تضمن التعزيز المستمر لجودة العمليات المدرسية.",
+        
+        cta_partnerships_h: "هل ترغب في الشراكة معنا؟",
+        cta_partnerships_p: "ابنِ نموذجاً مستداماً للتميز الأكاديمي والكفاءة التشغيلية. قدم تفاصيلك لبدء استفسار الشراكة.",
+        btn_partnerships_cta: "تقديم طلب الشراكة",
+
         footer_kicker: "معلم للتعليم",
         footer_title: "نبني أنظمة تعليمية أفضل",
         footer_desc: "معلم هي المنصة الرائدة للتعليم المهني وتشغيل المدارس في المنطقة.",

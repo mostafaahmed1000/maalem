@@ -23,9 +23,12 @@
                 <tr style="border-bottom: 1px solid var(--border); transition: background 0.2s;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='transparent'">
                     <td style="padding: 1.2rem; font-weight: 600;">{{ $item->school_name }}</td>
                     <td style="padding: 1.2rem;">
-                        <span class="badge {{ $item->school_status == 'New' ? 'badge-new' : ($item->school_status == 'Contracted' ? 'badge-contracted' : 'badge-default') }}">
+                        <span class="badge {{ $item->school_status == 'New' ? 'badge-new' : ($item->school_status == 'Established' ? 'badge-established' : 'badge-default') }}">
                             {{ $item->school_status ?? 'N/A' }}
                         </span>
+                        @if($item->school_status == 'Established' && $item->established_years)
+                            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">{{ $item->established_years }} Years</div>
+                        @endif
                     </td>
                     <td style="padding: 1.2rem;">
                         <div style="font-weight: 600;">{{ $item->contact_name }}</div>

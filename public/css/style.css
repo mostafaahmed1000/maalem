@@ -764,7 +764,7 @@ nav {
     left: 10%;
     width: 200px;
     height: 200px;
-    z-index: 100;
+    z-index: -1; /* behind text and button */
     pointer-events: none;
     display: flex;
     align-items: center;

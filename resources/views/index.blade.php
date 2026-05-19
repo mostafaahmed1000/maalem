@@ -35,7 +35,6 @@
     <main>
         <!-- 1. Hero Section -->
         <section id="home" class="hero">
-            <div class="rotating-circle" id="rotatingCircle"></div>
             <div class="decor-wavy">
                 <svg viewBox="0 0 100 100" fill="none" stroke="var(--secondary-color)" stroke-width="1">
                     <path d="M10,50 Q20,40 30,50 T50,50 T70,50 T90,50" />
@@ -53,6 +52,7 @@
                 <div class="hero-slide active">
                     <div class="hero-left">
                         <div class="hero-content-boxed reveal reveal-left active">
+                            <div class="rotating-circle"></div>
                             <h1 data-i18n="hero_title_1">Excellence in <span>School Operation</span></h1>
                             <p data-i18n="hero_desc_1">Comprehensive management models that drive 300%+ growth and academic excellence through strategic governance.</p>
                             <a href="{{ url('/partnerships') }}" class="btn btn-white btn-lg" data-i18n="hero_cta1">Enquire Now <i class="fas fa-arrow-right"></i></a>
@@ -64,6 +64,7 @@
                 <div class="hero-slide">
                     <div class="hero-left">
                         <div class="hero-content-boxed reveal reveal-left active">
+                            <div class="rotating-circle"></div>
                             <h1 data-i18n="hero_title_2">Strategic <span>Educational Consulting</span></h1>
                             <p data-i18n="hero_desc_2">Partnering with schools to achieve international accreditation, strategic planning, and sustainable institutional success.</p>
                             <a href="{{ url('/consultation') }}" class="btn btn-white btn-lg" data-i18n="hero_cta2">Consult With Us <i class="fas fa-arrow-right"></i></a>
@@ -75,6 +76,7 @@
                 <div class="hero-slide">
                     <div class="hero-left">
                         <div class="hero-content-boxed reveal reveal-left active">
+                            <div class="rotating-circle"></div>
                             <h1 data-i18n="hero_title_3">Expert <span>Teacher Training</span></h1>
                             <p data-i18n="hero_desc_3">Empowering educators with four-pathway diploma programs designed for the next generation of teaching excellence.</p>
                             <a href="{{ url('/training') }}" class="btn btn-white btn-lg" data-i18n="hero_cta3">Get Certified <i class="fas fa-arrow-right"></i></a>
@@ -361,23 +363,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- 8. Core Challenges -->
-        <section class="challenges-section reveal reveal-left" id="challenges">
-            <div class="container" style="margin-top: 8rem;">
-                <div class="challenges-header reveal">
-                    <div class="challenges-subtitle"><i class="fas fa-exclamation-circle"></i><span data-i18n="challenges_subtitle">The Reality</span></div>
-                    <h2 data-i18n="challenges_title">Core Problem in Many Schools</h2>
-                </div>
-                <div class="challenges-grid reveal">
-                    <div class="challenge-card"><div class="challenge-icon"><i class="fas fa-money-bill-wave"></i></div><h3 data-i18n="prob1_h">High cost vs Limited quality</h3><p>High expenses without the expected return.</p></div>
-                    <div class="challenge-card"><div class="challenge-icon"><i class="fas fa-project-diagram"></i></div><h3 data-i18n="prob2_h">No system dependency</h3><p>Over-reliance on specific individuals.</p></div>
-                    <div class="challenge-card"><div class="challenge-icon"><i class="fas fa-users-cog"></i></div><h3 data-i18n="prob3_h">Owner involvement</h3><p>Micromanagement distracts from strategy.</p></div>
-                    <div class="challenge-card"><div class="challenge-icon"><i class="fas fa-user-clock"></i></div><h3 data-i18n="prob4_h">High teacher turnover</h3><p>Frequent staff changes disrupt learning.</p></div>
-                </div>
-            </div>
-        </section>
-
 
 
         <!-- 10. Our Instructors -->

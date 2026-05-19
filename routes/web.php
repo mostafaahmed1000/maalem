@@ -14,6 +14,10 @@ Route::get('/about', function () {
 });
 
 Route::get('/partnerships', function () {
+    return view('partnerships');
+});
+
+Route::get('/partnerships/form', function () {
     return view('form1');
 });
 

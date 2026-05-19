@@ -165,172 +165,384 @@
                 <form id="applicationForm" action="{{ route('training.store') }}" method="POST">
                     @csrf
                     <input type="hidden" name="application_type" id="applicationType" value="individual">
-                    <!-- Personal Information -->
-                    <div class="form-section">
-                        <h2><i class="fas fa-user"></i> Personal Information</h2>
-                        <div class="grid-inputs">
-                            <div class="form-group full">
-                                <label for="fullName">Full Name</label>
-                                <input type="text" id="fullName" name="fullName" required>
+                    
+                    <!-- INDIVIDUAL FORM FIELDS -->
+                    <div class="individual-only">
+                        <!-- Personal Information -->
+                        <div class="form-section">
+                            <h2><i class="fas fa-user"></i> Personal Information</h2>
+                            <div class="grid-inputs">
+                                <div class="form-group full">
+                                    <label for="fullName">Full Name</label>
+                                    <input type="text" id="fullName" name="fullName" data-required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="dob">Date of Birth</label>
+                                    <input type="date" id="dob" name="dob" data-required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nationality">Nationality</label>
+                                    <input type="text" id="nationality" name="nationality" data-required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="mobile">Mobile Number</label>
+                                    <input type="text" id="mobile" name="mobile" data-required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" name="email" data-required>
+                                </div>
+                                <div class="form-group full">
+                                    <label for="cityCountry">Current City / Country</label>
+                                    <input type="text" id="cityCountry" name="cityCountry" data-required>
+                                </div>
                             </div>
-                            <div class="form-group individual-only">
-                                <label for="dob">Date of Birth</label>
-                                <input type="date" id="dob" name="dob">
+                        </div>
+
+                        <!-- Professional Information -->
+                        <div class="form-section">
+                            <h2><i class="fas fa-briefcase"></i> Professional Information</h2>
+                            <div class="grid-inputs">
+                                <div class="form-group full">
+                                    <label>Current Position</label>
+                                    <div class="checkbox-group">
+                                        <label class="check-item"><input type="radio" name="position" value="Teacher"> Teacher</label>
+                                        <label class="check-item"><input type="radio" name="position" value="Coordinator"> Coordinator</label>
+                                        <label class="check-item"><input type="radio" name="position" value="HOD"> Head of Department</label>
+                                        <label class="check-item"><input type="radio" name="position" value="Leader"> School Leader</label>
+                                        <label class="check-item"><input type="radio" name="position" value="Staff"> HR/Operations Staff</label>
+                                    </div>
+                                    <input type="text" name="positionOther" style="margin-top: 10px;" placeholder="Other position...">
+                                </div>
+                                <div class="form-group full">
+                                    <label for="orgName">School / Organization Name</label>
+                                    <input type="text" id="orgName" name="orgName" data-required>
+                                </div>
+                                <div class="form-group full">
+                                    <label>Years of Experience</label>
+                                    <div class="radio-group">
+                                        <label class="check-item"><input type="radio" name="experience" value="0-2"> 0–2 Years</label>
+                                        <label class="check-item"><input type="radio" name="experience" value="3-5"> 3–5 Years</label>
+                                        <label class="check-item"><input type="radio" name="experience" value="6-10"> 6–10 Years</label>
+                                        <label class="check-item"><input type="radio" name="experience" value="10+"> 10+ Years</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="qualification">Educational Qualification</label>
+                                    <input type="text" id="qualification" name="qualification">
+                                </div>
+                                <div class="form-group">
+                                    <label for="specialization">Subject / Specialization</label>
+                                    <input type="text" id="specialization" name="specialization">
+                                </div>
                             </div>
-                            <div class="form-group individual-only">
-                                <label for="nationality">Nationality</label>
-                                <input type="text" id="nationality" name="nationality">
-                            </div>
-                            <div class="form-group bulk-only" style="display: none;">
-                                <label for="participantCount">Expected Number of Participants</label>
-                                <input type="number" id="participantCount" name="participant_count" min="1">
+                        </div>
+
+                        <!-- Program Selection -->
+                        <div class="form-section">
+                            <h2><i class="fas fa-graduation-cap"></i> Program Selection</h2>
+                            <div class="form-group">
+                                <label>Preferred Pathway</label>
+                                <div class="checkbox-group" style="grid-template-columns: 1fr;">
+                                    <label class="check-item"><input type="radio" name="pathway" value="Teaching"> Teaching Excellence Pathway</label>
+                                    <label class="check-item"><input type="radio" name="pathway" value="Leadership"> Educational Leadership Pathway</label>
+                                    <label class="check-item"><input type="radio" name="pathway" value="Operations"> School Operations & Administration Pathway</label>
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label for="mobile">Mobile Number</label>
-                                <input type="text" id="mobile" name="mobile" required>
+                                <label>Preferred Level / Track</label>
+                                <div style="margin-bottom: 1.5rem;">
+                                    <p style="font-weight: 700; font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--text-light);">Teaching Pathway</p>
+                                    <div class="checkbox-group">
+                                        <label class="check-item"><input type="checkbox" name="levels[]" value="T1"> Level 1 – Certified Practitioner</label>
+                                        <label class="check-item"><input type="checkbox" name="levels[]" value="T2"> Level 2 – Advanced Practitioner</label>
+                                        <label class="check-item"><input type="checkbox" name="levels[]" value="T3"> Level 3 – Instructional Leader</label>
+                                    </div>
+                                </div>
+                                <div style="margin-bottom: 1.5rem;">
+                                    <p style="font-weight: 700; font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--text-light);">Leadership Pathway</p>
+                                    <div class="checkbox-group">
+                                        <label class="check-item"><input type="checkbox" name="levels[]" value="LD"> Educational Leadership Diploma</label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p style="font-weight: 700; font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--text-light);">School Operations Pathway</p>
+                                    <div class="checkbox-group">
+                                        <label class="check-item"><input type="checkbox" name="levels[]" value="HR"> HR for Schools</label>
+                                        <label class="check-item"><input type="checkbox" name="levels[]" value="FIN"> Finance & Budgeting</label>
+                                        <label class="check-item"><input type="checkbox" name="levels[]" value="SA"> Student Affairs & Culture</label>
+                                        <label class="check-item"><input type="checkbox" name="levels[]" value="MKT"> Marketing & Admissions</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Learning Preferences -->
+                        <div class="form-section">
+                            <h2><i class="fas fa-clock"></i> Learning Preferences</h2>
+                            <div class="grid-inputs">
+                                <div class="form-group">
+                                    <label>Preferred Learning Mode</label>
+                                    <select name="mode">
+                                        <option value="Hybrid">Hybrid</option>
+                                        <option value="Online">Online</option>
+                                        <option value="Face-to-Face">Face-to-Face</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Preferred Schedule</label>
+                                    <select name="schedule">
+                                        <option value="Weekdays">Weekdays</option>
+                                        <option value="Weekends">Weekends</option>
+                                        <option value="Evening">Evening Sessions</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Motivation -->
+                        <div class="form-section">
+                            <h2><i class="fas fa-pencil-alt"></i> Professional Motivation</h2>
+                            <div class="form-group">
+                                <label>Why are you interested in joining this diploma program?</label>
+                                <textarea name="motivation" rows="4"></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="email">Email Address</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-group full">
-                                <label for="cityCountry">Current City / Country</label>
-                                <input type="text" id="cityCountry" name="cityCountry" required>
+                                <label>What professional goals do you hope to achieve?</label>
+                                <textarea name="goals" rows="4"></textarea>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Professional Information -->
-                    <div class="form-section">
-                        <h2><i class="fas fa-briefcase"></i> Professional Information</h2>
-                        <div class="grid-inputs">
-                            <div class="form-group full">
-                                <label>Current Position</label>
-                                <div class="checkbox-group">
-                                    <label class="check-item"><input type="radio" name="position" value="Teacher"> Teacher</label>
-                                    <label class="check-item"><input type="radio" name="position" value="Coordinator"> Coordinator</label>
-                                    <label class="check-item"><input type="radio" name="position" value="HOD"> Head of Department</label>
-                                    <label class="check-item"><input type="radio" name="position" value="Leader"> School Leader</label>
-                                    <label class="check-item"><input type="radio" name="position" value="Staff"> HR/Operations Staff</label>
-                                </div>
-                                <input type="text" name="positionOther" style="margin-top: 10px;" placeholder="Other position...">
-                            </div>
-                            <div class="form-group full">
-                                <label for="orgName">School / Organization Name</label>
-                                <input type="text" id="orgName" name="orgName" required>
-                            </div>
-                            <div class="form-group full individual-only">
-                                <label>Years of Experience</label>
-                                <div class="radio-group">
-                                    <label class="check-item"><input type="radio" name="experience" value="0-2"> 0–2 Years</label>
-                                    <label class="check-item"><input type="radio" name="experience" value="3-5"> 3–5 Years</label>
-                                    <label class="check-item"><input type="radio" name="experience" value="6-10"> 6–10 Years</label>
-                                    <label class="check-item"><input type="radio" name="experience" value="10+"> 10+ Years</label>
-                                </div>
-                            </div>
-                            <div class="form-group individual-only">
-                                <label for="qualification">Educational Qualification</label>
-                                <input type="text" id="qualification" name="qualification">
-                            </div>
-                            <div class="form-group individual-only">
-                                <label for="specialization">Subject / Specialization</label>
-                                <input type="text" id="specialization" name="specialization">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Program Selection -->
-                    <div class="form-section">
-                        <h2><i class="fas fa-graduation-cap"></i> Program Selection</h2>
-                        <div class="form-group">
-                            <label>Preferred Pathway</label>
-                            <div class="checkbox-group" style="grid-template-columns: 1fr;">
-                                <label class="check-item"><input type="radio" name="pathway" value="Teaching"> Teaching Excellence Pathway</label>
-                                <label class="check-item"><input type="radio" name="pathway" value="Leadership"> Educational Leadership Pathway</label>
-                                <label class="check-item"><input type="radio" name="pathway" value="Operations"> School Operations & Administration Pathway</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Preferred Level / Track</label>
-                            <div style="margin-bottom: 1.5rem;">
-                                <p style="font-weight: 700; font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--text-light);">Teaching Pathway</p>
-                                <div class="checkbox-group">
-                                    <label class="check-item"><input type="checkbox" name="levels[]" value="T1"> Level 1 – Certified Practitioner</label>
-                                    <label class="check-item"><input type="checkbox" name="levels[]" value="T2"> Level 2 – Advanced Practitioner</label>
-                                    <label class="check-item"><input type="checkbox" name="levels[]" value="T3"> Level 3 – Instructional Leader</label>
-                                </div>
-                            </div>
-                            <div style="margin-bottom: 1.5rem;">
-                                <p style="font-weight: 700; font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--text-light);">Leadership Pathway</p>
-                                <div class="checkbox-group">
-                                    <label class="check-item"><input type="checkbox" name="levels[]" value="LD"> Educational Leadership Diploma</label>
-                                </div>
-                            </div>
-                            <div>
-                                <p style="font-weight: 700; font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--text-light);">School Operations Pathway</p>
-                                <div class="checkbox-group">
-                                    <label class="check-item"><input type="checkbox" name="levels[]" value="HR"> HR for Schools</label>
-                                    <label class="check-item"><input type="checkbox" name="levels[]" value="FIN"> Finance & Budgeting</label>
-                                    <label class="check-item"><input type="checkbox" name="levels[]" value="SA"> Student Affairs & Culture</label>
-                                    <label class="check-item"><input type="checkbox" name="levels[]" value="MKT"> Marketing & Admissions</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Learning Preferences -->
-                    <div class="form-section">
-                        <h2><i class="fas fa-clock"></i> Learning Preferences</h2>
-                        <div class="grid-inputs">
+                        <!-- Technology & AI -->
+                        <div class="form-section">
+                            <h2><i class="fas fa-microchip"></i> Technology & AI Readiness</h2>
                             <div class="form-group">
-                                <label>Preferred Learning Mode</label>
-                                <select name="mode">
-                                    <option value="Hybrid">Hybrid</option>
-                                    <option value="Online">Online</option>
-                                    <option value="Face-to-Face">Face-to-Face</option>
-                                </select>
+                                <label>Have you previously used educational technology or AI tools?</label>
+                                <div class="radio-group" style="width: 200px;">
+                                    <label class="check-item"><input type="radio" name="ai" value="Yes"> Yes</label>
+                                    <label class="check-item"><input type="radio" name="ai" value="No"> No</label>
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label>Preferred Schedule</label>
-                                <select name="schedule">
-                                    <option value="Weekdays">Weekdays</option>
-                                    <option value="Weekends">Weekends</option>
-                                    <option value="Evening">Evening Sessions</option>
-                                </select>
+                                <label>If yes, please specify:</label>
+                                <input type="text" name="aiDetails" placeholder="e.g. ChatGPT, Canvas, Google Classroom...">
                             </div>
                         </div>
                     </div>
 
-                    <!-- Motivation -->
-                    <div class="form-section individual-only">
-                        <h2><i class="fas fa-pencil-alt"></i> Professional Motivation</h2>
-                        <div class="form-group">
-                            <label>Why are you interested in joining this diploma program?</label>
-                            <textarea name="motivation" rows="4"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>What professional goals do you hope to achieve?</label>
-                            <textarea name="goals" rows="4"></textarea>
-                        </div>
-                    </div>
-
-                    <!-- Technology & AI -->
-                    <div class="form-section individual-only">
-                        <h2><i class="fas fa-microchip"></i> Technology & AI Readiness</h2>
-                        <div class="form-group">
-                            <label>Have you previously used educational technology or AI tools?</label>
-                            <div class="radio-group" style="width: 200px;">
-                                <label class="check-item"><input type="radio" name="ai" value="Yes"> Yes</label>
-                                <label class="check-item"><input type="radio" name="ai" value="No"> No</label>
+                    <!-- BULK FORM FIELDS -->
+                    <div class="bulk-only" style="display: none;">
+                        <!-- School Information -->
+                        <div class="form-section">
+                            <h2><i class="fas fa-school"></i> School Information</h2>
+                            <div class="grid-inputs">
+                                <div class="form-group full">
+                                    <label for="bulkSchoolName">School Name</label>
+                                    <input type="text" id="bulkSchoolName" name="schoolName" placeholder="Enter school name" data-required>
+                                </div>
+                                <div class="form-group full">
+                                    <label>School Type</label>
+                                    <div class="checkbox-group">
+                                        <label class="check-item"><input type="checkbox" name="schoolType[]" value="National"> National</label>
+                                        <label class="check-item"><input type="checkbox" name="schoolType[]" value="International"> International</label>
+                                        <label class="check-item"><input type="checkbox" name="schoolType[]" value="Language"> Language School</label>
+                                        <label class="check-item"><input type="checkbox" name="schoolType[]" value="Private"> Private</label>
+                                    </div>
+                                    <input type="text" name="schoolTypeOther" style="margin-top: 10px;" placeholder="Other type...">
+                                </div>
+                                <div class="form-group full">
+                                    <label>School Status</label>
+                                    <div class="radio-group">
+                                        <label class="check-item"><input type="radio" name="schoolStatus" value="New"> New School</label>
+                                        <label class="check-item"><input type="radio" name="schoolStatus" value="Established"> Established School</label>
+                                    </div>
+                                </div>
+                                <div class="form-group full">
+                                    <label for="bulkSchoolAddress">School Address</label>
+                                    <input type="text" id="bulkSchoolAddress" name="schoolAddress" placeholder="Street address" data-required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="bulkCityCountry">City / Country</label>
+                                    <input type="text" id="bulkCityCountry" name="cityCountry" placeholder="e.g. Cairo, Egypt" data-required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="bulkWebsite">Website / Social Media</label>
+                                    <input type="url" id="bulkWebsite" name="website" placeholder="https://...">
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label>If yes, please specify:</label>
-                            <input type="text" name="aiDetails" placeholder="e.g. ChatGPT, Canvas, Google Classroom...">
+
+                        <!-- Primary Contact -->
+                        <div class="form-section">
+                            <h2><i class="fas fa-user-tie"></i> Primary Contact Person</h2>
+                            <div class="grid-inputs">
+                                <div class="form-group">
+                                    <label for="bulkFullName">Full Name</label>
+                                    <input type="text" id="bulkFullName" name="fullName" data-required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="bulkPosition">Position</label>
+                                    <input type="text" id="bulkPosition" name="position" data-required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="bulkMobile">Mobile Number</label>
+                                    <input type="text" id="bulkMobile" name="mobile" data-required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="bulkEmail">Email Address</label>
+                                    <input type="email" id="bulkEmail" name="email" data-required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- School Profile -->
+                        <div class="form-section">
+                            <h2><i class="fas fa-chart-pie"></i> School Profile</h2>
+                            <div class="grid-inputs">
+                                <div class="form-group">
+                                    <label for="bulkTotalStaff">Total Number of Staff</label>
+                                    <input type="number" id="bulkTotalStaff" name="totalStaff">
+                                </div>
+                                <div class="form-group">
+                                    <label for="bulkTotalTeachers">Total Number of Teachers</label>
+                                    <input type="number" id="bulkTotalTeachers" name="totalTeachers">
+                                </div>
+                                <div class="form-group full">
+                                    <label>Current Educational Curriculum</label>
+                                    <div class="checkbox-group">
+                                        <label class="check-item"><input type="checkbox" name="curriculum[]" value="National"> National</label>
+                                        <label class="check-item"><input type="checkbox" name="curriculum[]" value="British"> British</label>
+                                        <label class="check-item"><input type="checkbox" name="curriculum[]" value="American"> American</label>
+                                        <label class="check-item"><input type="checkbox" name="curriculum[]" value="IB"> IB</label>
+                                    </div>
+                                    <input type="text" name="curriculumOther" style="margin-top: 10px;" placeholder="Other curriculum...">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Partnership Interest -->
+                        <div class="form-section">
+                            <h2><i class="fas fa-handshake"></i> Partnership Interest</h2>
+                            <div class="form-group">
+                                <label>Requested Pathways</label>
+                                <div class="checkbox-group" style="grid-template-columns: 1fr;">
+                                    <label class="check-item"><input type="checkbox" name="pathways[]" value="Teaching"> Teaching Excellence Pathway</label>
+                                    <label class="check-item"><input type="checkbox" name="pathways[]" value="Leadership"> Educational Leadership Pathway</label>
+                                    <label class="check-item"><input type="checkbox" name="pathways[]" value="Operations"> School Operations & Administration Pathway</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Estimated Number of Participants</label>
+                                <table class="participants-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Program</th>
+                                            <th>Number of Participants</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Teaching Pathway</td>
+                                            <td><input type="number" name="participants[Teaching]" min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Leadership Pathway</td>
+                                            <td><input type="number" name="participants[Leadership]" min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Operations Pathway</td>
+                                            <td><input type="number" name="participants[Operations]" min="0"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Target Departments -->
+                        <div class="form-section">
+                            <h2><i class="fas fa-sitemap"></i> Target Departments</h2>
+                            <div class="checkbox-group">
+                                <label class="check-item"><input type="checkbox" name="departments[]" value="Teachers"> Teachers</label>
+                                <label class="check-item"><input type="checkbox" name="departments[]" value="Coordinators"> Coordinators</label>
+                                <label class="check-item"><input type="checkbox" name="departments[]" value="Middle Leadership"> Middle Leadership</label>
+                                <label class="check-item"><input type="checkbox" name="departments[]" value="Senior Leadership"> Senior Leadership</label>
+                                <label class="check-item"><input type="checkbox" name="departments[]" value="HR"> HR Department</label>
+                                <label class="check-item"><input type="checkbox" name="departments[]" value="Finance"> Finance Department</label>
+                                <label class="check-item"><input type="checkbox" name="departments[]" value="Admissions"> Admissions & Marketing</label>
+                                <label class="check-item"><input type="checkbox" name="departments[]" value="Student Affairs"> Student Affairs</label>
+                            </div>
+                        </div>
+
+                        <!-- Preferred Delivery Model -->
+                        <div class="form-section">
+                            <h2><i class="fas fa-truck-fast"></i> Preferred Delivery Model</h2>
+                            <div class="radio-group">
+                                <label class="check-item"><input type="radio" name="delivery" value="On-Site"> On-Site Training</label>
+                                <label class="check-item"><input type="radio" name="delivery" value="Online"> Online Training</label>
+                                <label class="check-item"><input type="radio" name="delivery" value="Hybrid"> Hybrid Model</label>
+                            </div>
+                        </div>
+
+                        <!-- Preferred Timeline -->
+                        <div class="form-section">
+                            <h2><i class="fas fa-calendar-alt"></i> Preferred Timeline</h2>
+                            <div class="grid-inputs">
+                                <div class="form-group">
+                                    <label for="bulkStartDate">Preferred Start Date</label>
+                                    <input type="date" id="bulkStartDate" name="startDate">
+                                </div>
+                                <div class="form-group">
+                                    <label>Preferred Training Period</label>
+                                    <select name="period">
+                                        <option value="Summer">Summer</option>
+                                        <option value="Academic Year">Academic Year</option>
+                                        <option value="Mid-Year">Mid-Year</option>
+                                        <option value="Flexible">Flexible</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Priorities -->
+                        <div class="form-section">
+                            <h2><i class="fas fa-star"></i> School Development Priorities</h2>
+                            <div class="checkbox-group">
+                                <label class="check-item"><input type="checkbox" name="priorities[]" value="Teaching"> Teaching & Learning</label>
+                                <label class="check-item"><input type="checkbox" name="priorities[]" value="Leadership"> Leadership</label>
+                                <label class="check-item"><input type="checkbox" name="priorities[]" value="AI"> AI Integration</label>
+                                <label class="check-item"><input type="checkbox" name="priorities[]" value="HR"> Recruitment & HR</label>
+                                <label class="check-item"><input type="checkbox" name="priorities[]" value="Operations"> School Operations</label>
+                                <label class="check-item"><input type="checkbox" name="priorities[]" value="Finance"> Financial Planning</label>
+                                <label class="check-item"><input type="checkbox" name="priorities[]" value="Parent"> Parent Experience</label>
+                                <label class="check-item"><input type="checkbox" name="priorities[]" value="Student"> Student Culture</label>
+                                <label class="check-item"><input type="checkbox" name="priorities[]" value="Accreditation"> Accreditation</label>
+                            </div>
+                        </div>
+
+                        <!-- Notes -->
+                        <div class="form-section">
+                            <h2><i class="fas fa-comment-alt"></i> Additional Notes</h2>
+                            <textarea name="notes" rows="4" placeholder="Any custom requests or additional information..."></textarea>
+                        </div>
+
+                        <!-- Declaration -->
+                        <div class="form-section">
+                            <h2><i class="fas fa-file-contract"></i> Declaration</h2>
+                            <p style="margin-bottom: 1.5rem; font-size: 0.95rem; color: var(--text-light);">We confirm our interest in participating in the MAALEM Integrated Educational Development Diploma programs.</p>
+                            <div class="grid-inputs">
+                                <div class="form-group">
+                                    <label>Authorized Representative Name</label>
+                                    <input type="text" id="bulkRepName" name="repName" data-required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Position</label>
+                                    <input type="text" id="bulkRepPosition" name="repPosition" data-required>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Declaration -->
+                    <!-- Declaration (Common/Dynamic Signature) -->
                     <div class="form-section">
                         <h2><i class="fas fa-file-contract"></i> Declaration</h2>
                         <p style="margin-bottom: 1.5rem; font-size: 0.95rem; color: var(--text-light);">I confirm that all information provided is accurate and complete.</p>
@@ -365,6 +577,28 @@
             const individualOnly = document.querySelectorAll('.individual-only');
             const bulkOnly = document.querySelectorAll('.bulk-only');
 
+            // Dynamic required validation toggle function
+            const toggleRequiredFields = (activeType) => {
+                if (activeType === 'bulk') {
+                    document.querySelectorAll('.individual-only [required], .individual-only [data-required]').forEach(el => {
+                        el.removeAttribute('required');
+                    });
+                    document.querySelectorAll('.bulk-only [data-required]').forEach(el => {
+                        el.setAttribute('required', 'required');
+                    });
+                } else {
+                    document.querySelectorAll('.bulk-only [required], .bulk-only [data-required]').forEach(el => {
+                        el.removeAttribute('required');
+                    });
+                    document.querySelectorAll('.individual-only [data-required]').forEach(el => {
+                        el.setAttribute('required', 'required');
+                    });
+                }
+            };
+
+            // Set initial validation state
+            toggleRequiredFields('individual');
+
             tabBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
                     // Update tabs UI
@@ -381,24 +615,18 @@
                     const type = btn.getAttribute('data-type');
                     applicationType.value = type;
 
+                    toggleRequiredFields(type);
+
                     if (type === 'bulk') {
                         formTitle.innerText = 'Bulk / Organization Application';
                         signatureLabel.innerText = 'Representative Signature (Type Full Name)';
                         individualOnly.forEach(el => el.style.display = 'none');
                         bulkOnly.forEach(el => el.style.display = 'block');
-                        
-                        // Remove required from hidden fields
-                        document.getElementById('dob').required = false;
-                        document.getElementById('nationality').required = false;
                     } else {
                         formTitle.innerText = 'Individual Participant Application';
                         signatureLabel.innerText = 'Applicant Signature (Type Full Name)';
                         individualOnly.forEach(el => el.style.display = 'block');
                         bulkOnly.forEach(el => el.style.display = 'none');
-                        
-                        // Restore required
-                        document.getElementById('dob').required = true;
-                        document.getElementById('nationality').required = true;
                     }
                 });
             });
@@ -408,7 +636,34 @@
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
+                // Collect and serialize form data, including tables
                 const formData = new FormData(form);
+                const data = {};
+
+                formData.forEach((value, key) => {
+                    const cleanKey = key.endsWith('[]') ? key.slice(0, -2) : key;
+                    if (data[cleanKey]) {
+                        if (!Array.isArray(data[cleanKey])) {
+                            data[cleanKey] = [data[cleanKey]];
+                        }
+                        data[cleanKey].push(value);
+                    } else {
+                        data[cleanKey] = key.endsWith('[]') ? [value] : value;
+                    }
+                });
+
+                // Special handling for participant count table in bulk training
+                if (applicationType.value === 'bulk') {
+                    const participants = [];
+                    form.querySelectorAll('.participants-table tbody tr').forEach(row => {
+                        const program = row.cells[0].innerText;
+                        const count = row.querySelector('input').value;
+                        if (count > 0) {
+                            participants.push({ program, count });
+                        }
+                    });
+                    data.participants = participants;
+                }
                 
                 // Show loading
                 Swal.fire({
@@ -422,14 +677,16 @@
 
                 fetch("{{ route('training.store') }}", {
                     method: 'POST',
-                    body: formData,
                     headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
                         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-                    }
+                    },
+                    body: JSON.stringify(data)
                 })
                 .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
+                .then(result => {
+                    if (result.success) {
                         Swal.fire({
                             title: 'Success!',
                             text: 'Your application has been submitted successfully.',
@@ -439,9 +696,13 @@
                             window.location.href = "{{ url('/') }}";
                         });
                     } else {
+                        let errorMessage = result.message || 'Something went wrong. Please try again.';
+                        if (result.errors) {
+                            errorMessage = Object.values(result.errors).flat().join('<br>');
+                        }
                         Swal.fire({
                             title: 'Error',
-                            text: data.message || 'Something went wrong. Please try again.',
+                            html: errorMessage,
                             icon: 'error'
                         });
                     }

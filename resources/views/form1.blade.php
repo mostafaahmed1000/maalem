@@ -195,9 +195,13 @@
                             <div class="form-group full">
                                 <label>School Status</label>
                                 <div class="radio-group">
-                                    <label class="check-item"><input type="radio" name="schoolStatus" value="New" required> New School</label>
-                                    <label class="check-item"><input type="radio" name="schoolStatus" value="Contracted" required> Contracted School</label>
+                                    <label class="check-item"><input type="radio" id="statusNew" name="schoolStatus" value="New" required> New School</label>
+                                    <label class="check-item"><input type="radio" id="statusEstablished" name="schoolStatus" value="Established" required> Established School</label>
                                 </div>
+                            </div>
+                            <div class="form-group full" id="establishedYearsGroup" style="display: none;">
+                                <label for="establishedYears">For how many years?</label>
+                                <input type="number" id="establishedYears" name="establishedYears" min="1" placeholder="Enter number of years">
                             </div>
                             <div class="form-group full">
                                 <label for="schoolAddress">School Address</label>
@@ -237,152 +241,6 @@
                         </div>
                     </div>
 
-                    <!-- School Profile -->
-                    <div class="form-section">
-                        <h2><i class="fas fa-chart-pie"></i> School Profile</h2>
-                        <div class="grid-inputs">
-                            <div class="form-group">
-                                <label for="totalStaff">Total Number of Staff</label>
-                                <input type="number" id="totalStaff" name="totalStaff">
-                            </div>
-                            <div class="form-group">
-                                <label for="totalTeachers">Total Number of Teachers</label>
-                                <input type="number" id="totalTeachers" name="totalTeachers">
-                            </div>
-                            <div class="form-group full">
-                                <label>Current Educational Curriculum</label>
-                                <div class="checkbox-group">
-                                    <label class="check-item"><input type="checkbox" name="curriculum[]" value="National"> National</label>
-                                    <label class="check-item"><input type="checkbox" name="curriculum[]" value="British"> British</label>
-                                    <label class="check-item"><input type="checkbox" name="curriculum[]" value="American"> American</label>
-                                    <label class="check-item"><input type="checkbox" name="curriculum[]" value="IB"> IB</label>
-                                </div>
-                                <input type="text" name="curriculumOther" style="margin-top: 10px;" placeholder="Other curriculum...">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Partnership Interest -->
-                    <div class="form-section">
-                        <h2><i class="fas fa-handshake"></i> Partnership Interest</h2>
-                        <div class="form-group">
-                            <label>Requested Pathways</label>
-                            <div class="checkbox-group" style="grid-template-columns: 1fr;">
-                                <label class="check-item"><input type="checkbox" name="pathways[]" value="Teaching"> Teaching Excellence Pathway</label>
-                                <label class="check-item"><input type="checkbox" name="pathways[]" value="Leadership"> Educational Leadership Pathway</label>
-                                <label class="check-item"><input type="checkbox" name="pathways[]" value="Operations"> School Operations & Administration Pathway</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Estimated Number of Participants</label>
-                            <table class="participants-table">
-                                <thead>
-                                    <tr>
-                                        <th>Program</th>
-                                        <th>Number of Participants</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Teaching Pathway</td>
-                                        <td><input type="number" name="participants[Teaching]" min="0"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Leadership Pathway</td>
-                                        <td><input type="number" name="participants[Leadership]" min="0"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Operations Pathway</td>
-                                        <td><input type="number" name="participants[Operations]" min="0"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- Target Departments -->
-                    <div class="form-section">
-                        <h2><i class="fas fa-sitemap"></i> Target Departments</h2>
-                        <div class="checkbox-group">
-                            <label class="check-item"><input type="checkbox" name="departments[]" value="Teachers"> Teachers</label>
-                            <label class="check-item"><input type="checkbox" name="departments[]" value="Coordinators"> Coordinators</label>
-                            <label class="check-item"><input type="checkbox" name="departments[]" value="Middle Leadership"> Middle Leadership</label>
-                            <label class="check-item"><input type="checkbox" name="departments[]" value="Senior Leadership"> Senior Leadership</label>
-                            <label class="check-item"><input type="checkbox" name="departments[]" value="HR"> HR Department</label>
-                            <label class="check-item"><input type="checkbox" name="departments[]" value="Finance"> Finance Department</label>
-                            <label class="check-item"><input type="checkbox" name="departments[]" value="Admissions"> Admissions & Marketing</label>
-                            <label class="check-item"><input type="checkbox" name="departments[]" value="Student Affairs"> Student Affairs</label>
-                        </div>
-                    </div>
-
-                    <!-- Delivery Model -->
-                    <div class="form-section">
-                        <h2><i class="fas fa-truck-fast"></i> Preferred Delivery Model</h2>
-                        <div class="radio-group">
-                            <label class="check-item"><input type="radio" name="delivery" value="On-Site"> On-Site Training</label>
-                            <label class="check-item"><input type="radio" name="delivery" value="Online"> Online Training</label>
-                            <label class="check-item"><input type="radio" name="delivery" value="Hybrid"> Hybrid Model</label>
-                        </div>
-                    </div>
-
-                    <!-- Timeline -->
-                    <div class="form-section">
-                        <h2><i class="fas fa-calendar-alt"></i> Preferred Timeline</h2>
-                        <div class="grid-inputs">
-                            <div class="form-group">
-                                <label for="startDate">Preferred Start Date</label>
-                                <input type="date" id="startDate" name="startDate">
-                            </div>
-                            <div class="form-group">
-                                <label>Preferred Training Period</label>
-                                <select name="period">
-                                    <option value="Summer">Summer</option>
-                                    <option value="Academic Year">Academic Year</option>
-                                    <option value="Mid-Year">Mid-Year</option>
-                                    <option value="Flexible">Flexible</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Priorities -->
-                    <div class="form-section">
-                        <h2><i class="fas fa-star"></i> School Development Priorities</h2>
-                        <div class="checkbox-group">
-                            <label class="check-item"><input type="checkbox" name="priorities[]" value="Teaching"> Teaching & Learning</label>
-                            <label class="check-item"><input type="checkbox" name="priorities[]" value="Leadership"> Leadership</label>
-                            <label class="check-item"><input type="checkbox" name="priorities[]" value="AI"> AI Integration</label>
-                            <label class="check-item"><input type="checkbox" name="priorities[]" value="HR"> Recruitment & HR</label>
-                            <label class="check-item"><input type="checkbox" name="priorities[]" value="Operations"> School Operations</label>
-                            <label class="check-item"><input type="checkbox" name="priorities[]" value="Finance"> Financial Planning</label>
-                            <label class="check-item"><input type="checkbox" name="priorities[]" value="Parent"> Parent Experience</label>
-                            <label class="check-item"><input type="checkbox" name="priorities[]" value="Student"> Student Culture</label>
-                            <label class="check-item"><input type="checkbox" name="priorities[]" value="Accreditation"> Accreditation</label>
-                        </div>
-                    </div>
-
-                    <!-- Notes -->
-                    <div class="form-section">
-                        <h2><i class="fas fa-comment-alt"></i> Additional Notes</h2>
-                        <textarea name="notes" rows="4" placeholder="Any custom requests or additional information..."></textarea>
-                    </div>
-
-                    <!-- Declaration -->
-                    <div class="form-section">
-                        <h2><i class="fas fa-file-contract"></i> Declaration</h2>
-                        <p style="margin-bottom: 1.5rem; font-size: 0.95rem; color: var(--text-light);">We confirm our interest in participating in the MAALEM Integrated Educational Development Diploma programs.</p>
-                        <div class="grid-inputs">
-                            <div class="form-group">
-                                <label>Authorized Representative Name</label>
-                                <input type="text" name="repName" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Position</label>
-                                <input type="text" name="repPosition" required>
-                            </div>
-                        </div>
-                    </div>
-
                     <button type="submit" class="btn-submit">Submit Partnership Interest</button>
                 </form>
             </div>
@@ -391,6 +249,30 @@
 
     @include('partials.footer')
     @include('partials.scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const establishedRadio = document.getElementById('statusEstablished');
+            const newRadio = document.getElementById('statusNew');
+            const establishedYearsGroup = document.getElementById('establishedYearsGroup');
+            const establishedYearsInput = document.getElementById('establishedYears');
+
+            function toggleYearsField() {
+                if (establishedRadio && establishedRadio.checked) {
+                    establishedYearsGroup.style.display = 'block';
+                    establishedYearsInput.required = true;
+                } else {
+                    establishedYearsGroup.style.display = 'none';
+                    establishedYearsInput.required = false;
+                    establishedYearsInput.value = '';
+                }
+            }
+
+            if (establishedRadio && newRadio) {
+                establishedRadio.addEventListener('change', toggleYearsField);
+                newRadio.addEventListener('change', toggleYearsField);
+            }
+        });
+    </script>
 </body>
 </html>
 

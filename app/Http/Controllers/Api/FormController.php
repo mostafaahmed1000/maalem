@@ -143,7 +143,7 @@ class FormController extends Controller
                 'website' => 'nullable|url',
                 'fullName' => 'required|string|max:255',
                 'position' => 'required|string|max:255',
-                'mobile' => 'required|string|max:255',
+                'mobile' => ['required', 'string', 'max:255', 'regex:/^[\+]?[0-9\s\-\(\)]{7,20}$/'],
                 'email' => 'required|email|max:255',
                 'totalStaff' => 'nullable|integer',
                 'totalTeachers' => 'nullable|integer',
@@ -165,7 +165,7 @@ class FormController extends Controller
                 'fullName' => 'required|string|max:255',
                 'dob' => 'required|date',
                 'nationality' => 'required|string|max:255',
-                'mobile' => 'required|string|max:255',
+                'mobile' => ['required', 'string', 'max:255', 'regex:/^[\+]?[0-9\s\-\(\)]{7,20}$/'],
                 'email' => 'required|email|max:255',
                 'cityCountry' => 'required|string|max:255',
                 'position' => 'required|string|max:255',
@@ -218,7 +218,11 @@ class FormController extends Controller
             'date' => 'Date',
         ];
 
-        $validated = $request->validate($rules, [], $attributes);
+        $messages = [
+            'mobile.regex' => 'Please enter a valid phone number (e.g. +20 123 456 7890).',
+        ];
+
+        $validated = $request->validate($rules, $messages, $attributes);
 
         if ($validated['application_type'] === 'bulk') {
             $totalParticipants = 0;

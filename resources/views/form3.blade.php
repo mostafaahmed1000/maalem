@@ -1073,17 +1073,23 @@
                                     }
                                 });
 
-                                // Scroll to first error
+                                // Scroll to first error immediately
                                 const firstError = form.querySelector('.has-error');
                                 if (firstError) {
                                     firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
                                 }
 
+                                // Show a non-blocking toast instead of a full-screen modal
                                 Swal.fire({
                                     title: 'Validation Error',
-                                    text: 'Please correct the highlighted fields in the form.',
+                                    text: 'Please correct the highlighted fields.',
                                     icon: 'error',
-                                    confirmButtonColor: '#1d63dc'
+                                    confirmButtonColor: '#1d63dc',
+                                    toast: true,
+                                    position: 'top-end',
+                                    timer: 4000,
+                                    timerProgressBar: true,
+                                    showConfirmButton: false
                                 });
                             } else {
                                 Swal.fire({

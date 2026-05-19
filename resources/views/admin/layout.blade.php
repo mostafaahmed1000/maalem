@@ -233,7 +233,7 @@
 <body>
     <aside class="sidebar" style="border-right: 1px solid var(--border);">
         <div class="sidebar-header">
-            <img src="{{ asset('identity/Logo/PNG/Blue.png') }}" alt="Maalem Logo" style="height: 100px; width: auto; margin: 0 auto;">
+            <img src="{{ secure_asset_v('identity/Logo/PNG/Blue.png') }}" alt="Maalem Logo" style="height: 100px; width: auto; margin: 0 auto;">
         </div>
 
         <nav class="sidebar-nav">
@@ -319,3 +319,4 @@
     </script>
 </body>
 </html>
+

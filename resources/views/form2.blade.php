@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consulting Inquiry - Maalem Education</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .form-page {
@@ -143,7 +142,7 @@
     <main class="form-page">
         <div class="container">
             <div class="form-container">
-                <img src="{{ asset('assets/services/form_header_consulting.png') }}" alt="Educational Consulting" class="form-visual-header">
+                <img src="{{ secure_asset_v('assets/services/form_header_consulting.png') }}" alt="Educational Consulting" class="form-visual-header">
                 <div class="form-header">
                     <p>Educational Consulting Services</p>
                     <h1>Consulting Inquiry Form</h1>
@@ -223,6 +222,7 @@
     @include('partials.scripts')
 </body>
 </html>
+
 
 
 

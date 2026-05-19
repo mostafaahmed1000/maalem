@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mentor Details - Maalem Education</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .mentor-details-page {
@@ -306,7 +305,7 @@
                     <div class="mentor-sidebar reveal reveal-right active" style="opacity: 1; transform: translateX(0);">
                         <div class="mentor-card">
                             <div class="mentor-img-wrapper">
-                                <img src="{{ asset($mentor['image']) }}" alt="{{ $mentor['name'] }}" class="logo-placeholder">
+                                <img src="{{ secure_asset_v($mentor['image']) }}" alt="{{ $mentor['name'] }}" class="logo-placeholder">
                             </div>
                             
                             <div class="mentor-stats">
@@ -357,6 +356,7 @@
     @include('partials.scripts')
 </body>
 </html>
+
 
 
 

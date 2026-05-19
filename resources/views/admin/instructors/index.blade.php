@@ -29,9 +29,9 @@
                         <div style="display: flex; align-items: center; gap: 15px;">
                             <div style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden; background: #f1f5f9; display: flex; align-items: center; justify-content: center;">
                                 @if($instructor->image)
-                                    <img src="{{ asset('storage/' . $instructor->image) }}" style="width: 100%; height: 100%; object-fit: cover;">
+                                    <img src="{{ secure_asset_v('storage/' . $instructor->image) }}" style="width: 100%; height: 100%; object-fit: cover;">
                                 @else
-                                    <img src="{{ asset('identity/Logo/PNG/Blue.png') }}" style="width: 70%; height: auto; opacity: 0.5;">
+                                    <img src="{{ secure_asset_v('identity/Logo/PNG/Blue.png') }}" style="width: 70%; height: auto; opacity: 0.5;">
                                 @endif
                             </div>
                             <div>
@@ -78,3 +78,4 @@
     </div>
 </div>
 @endsection
+

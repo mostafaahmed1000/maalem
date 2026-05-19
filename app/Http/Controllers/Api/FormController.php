@@ -168,7 +168,8 @@ class FormController extends Controller
                 'mobile' => ['required', 'string', 'max:255', 'regex:/^[\+]?[0-9\s\-\(\)]{7,20}$/'],
                 'email' => 'required|email|max:255',
                 'cityCountry' => 'required|string|max:255',
-                'position' => 'required|string|max:255',
+                'position' => 'nullable|string|max:255',
+                'positionOther' => 'nullable|string|max:255|required_without:position',
                 'orgName' => 'required|string|max:255',
                 'experience' => 'required|string|max:255',
                 'pathway' => 'required|string|max:255',
@@ -187,6 +188,7 @@ class FormController extends Controller
             'email' => 'Email Address',
             'cityCountry' => 'City / Country',
             'position' => 'Position',
+            'positionOther' => 'Position',
             'orgName' => 'Organization Name',
             'experience' => 'Total Years of Experience',
             'pathway' => 'Preferred Pathway',
@@ -220,6 +222,7 @@ class FormController extends Controller
 
         $messages = [
             'mobile.regex' => 'Please enter a valid phone number (e.g. +20 123 456 7890).',
+            'positionOther.required_without' => 'Please select a position or type one in the "Other" field.',
         ];
 
         $validated = $request->validate($rules, $messages, $attributes);
@@ -285,7 +288,7 @@ class FormController extends Controller
                 'mobile' => $validated['mobile'],
                 'email' => $validated['email'],
                 'city_country' => $validated['cityCountry'],
-                'position' => $validated['position'],
+                'position' => !empty($validated['positionOther']) ? $validated['positionOther'] : ($validated['position'] ?? ''),
                 'organization' => $validated['orgName'],
                 'experience' => $validated['experience'],
                 'qualification' => $request->qualification ?? null,

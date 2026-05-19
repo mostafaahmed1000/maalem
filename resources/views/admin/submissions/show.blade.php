@@ -6,9 +6,47 @@
 
 @section('content')
 <div class="card" style="max-width: 900px; margin: 0 auto;">
+    @php
+        $skipKeys = ['id', 'updated_at', 'created_at'];
+        if ($type === 'training') {
+            if ($item->application_type === 'individual') {
+                $skipKeys = array_merge($skipKeys, [
+                    'school_name',
+                    'school_type',
+                    'school_status',
+                    'school_address',
+                    'participant_count',
+                    'total_staff',
+                    'total_teachers',
+                    'curriculum',
+                    'participants',
+                    'departments',
+                    'start_date',
+                    'priorities',
+                    'notes',
+                    'rep_name',
+                    'rep_position'
+                ]);
+            } elseif ($item->application_type === 'bulk') {
+                $skipKeys = array_merge($skipKeys, [
+                    'dob',
+                    'nationality',
+                    'organization',
+                    'experience',
+                    'qualification',
+                    'specialization',
+                    'levels',
+                    'motivation',
+                    'goals',
+                    'ai_experience',
+                    'ai_details'
+                ]);
+            }
+        }
+    @endphp
     <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
         @foreach($item->toArray() as $key => $value)
-            @if(!in_array($key, ['id', 'updated_at', 'created_at']))
+            @if(!in_array($key, $skipKeys))
             <div class="detail-group">
                 <label style="display: block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem;">
                     {{ str_replace('_', ' ', $key) }}

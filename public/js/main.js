@@ -347,8 +347,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // Get CSRF Token
             const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
 
+            const apiBase = window.apiBaseUrl || 'https://cloud-pyramakerz.com/maalem/public/api';
+
             try {
-                const response = await fetch(`https://cloud-pyramakerz.com/maalem/public/api${endpoint}`, {
+                const response = await fetch(`${apiBase}${endpoint}`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -398,7 +400,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     handleFormSubmission('partnershipForm', '/partnership');
     handleFormSubmission('consultingForm', '/consultation');
-    handleFormSubmission('applicationForm', '/application');
 });
     // FAQ Accordion
     const faqItems = document.querySelectorAll('.faq-item');

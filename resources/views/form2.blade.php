@@ -87,6 +87,7 @@
 
         input[type="text"],
         input[type="email"],
+        input[type="number"],
         input[type="url"],
         select {
             width: 100%;
@@ -99,7 +100,8 @@
             background: #f8fafc;
         }
 
-        input:focus {
+        input:focus,
+        select:focus {
             outline: none;
             border-color: var(--primary-color);
             background: #fff;
@@ -266,6 +268,30 @@
 
     @include('partials.footer')
     @include('partials.scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const establishedRadio = document.getElementById('statusEstablished');
+            const newRadio = document.getElementById('statusNew');
+            const establishedYearsGroup = document.getElementById('establishedYearsGroup');
+            const establishedYearsInput = document.getElementById('establishedYears');
+
+            function toggleYearsField() {
+                if (establishedRadio && establishedRadio.checked) {
+                    establishedYearsGroup.style.display = 'block';
+                    establishedYearsInput.required = true;
+                } else {
+                    establishedYearsGroup.style.display = 'none';
+                    establishedYearsInput.required = false;
+                    establishedYearsInput.value = '';
+                }
+            }
+
+            if (establishedRadio && newRadio) {
+                establishedRadio.addEventListener('change', toggleYearsField);
+                newRadio.addEventListener('change', toggleYearsField);
+            }
+        });
+    </script>
 </body>
 
 </html>

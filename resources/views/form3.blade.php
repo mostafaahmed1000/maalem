@@ -88,6 +88,7 @@
         input[type="email"],
         input[type="number"],
         input[type="date"],
+        input[type="url"],
         select,
         textarea {
             width: 100%;
@@ -161,6 +162,46 @@
             box-shadow: 0 15px 30px rgba(29, 99, 220, 0.3);
         }
 
+        .participants-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border: 2px solid #f1f5f9;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .participants-table th,
+        .participants-table td {
+            padding: 1rem 1.2rem;
+            text-align: left;
+        }
+
+        .participants-table th {
+            background: #f8fafc;
+            font-weight: 700;
+            color: var(--text-color);
+            border-bottom: 2px solid #f1f5f9;
+        }
+
+        .participants-table td {
+            border-bottom: 1px solid #f1f5f9;
+            background: #fff;
+        }
+
+        .participants-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .participants-table input[type="number"] {
+            padding: 0.6rem 0.8rem;
+            border-radius: 8px;
+            border: 2px solid #f1f5f9;
+            width: 100%;
+            max-width: 150px;
+        }
+
         @media (max-width: 768px) {
             .grid-inputs {
                 grid-template-columns: 1fr;
@@ -173,6 +214,84 @@
             .form-container {
                 padding: 2rem;
             }
+        }
+
+        @media (max-width: 600px) {
+            .form-tabs {
+                flex-direction: column;
+                border-radius: 20px;
+                padding: 10px;
+            }
+
+            .form-tabs .tab-btn {
+                padding: 0.8rem !important;
+                font-size: 0.9rem;
+            }
+
+            .participants-table,
+            .participants-table thead,
+            .participants-table tbody,
+            .participants-table tr,
+            .participants-table td {
+                display: block;
+                width: 100%;
+            }
+
+            .participants-table thead {
+                display: none;
+            }
+
+            .participants-table tr {
+                border-bottom: 2px solid #f1f5f9;
+                padding: 1.25rem 1rem;
+                background: #fff;
+            }
+
+            .participants-table tr:last-child {
+                border-bottom: none;
+            }
+
+            .participants-table td:first-child {
+                font-weight: 700;
+                font-size: 1.05rem;
+                color: var(--text-color);
+                padding: 0 0 0.5rem 0;
+                border: none;
+            }
+
+            .participants-table td:last-child {
+                padding: 0;
+                border: none;
+            }
+
+            .participants-table input[type="number"] {
+                max-width: 100%;
+                width: 100%;
+                padding: 0.8rem 1rem;
+            }
+        }
+
+        /* Validation style rules */
+        .form-group.has-error input[type="text"],
+        .form-group.has-error input[type="email"],
+        .form-group.has-error input[type="number"],
+        .form-group.has-error input[type="date"],
+        .form-group.has-error select,
+        .form-group.has-error textarea {
+            border-color: #ef4444 !important;
+            background-color: #fef2f2 !important;
+        }
+
+        .form-group.has-error .check-item {
+            border-color: #ef4444 !important;
+        }
+
+        .error-message {
+            color: #ef4444;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            display: block;
         }
     </style>
 </head>
@@ -303,8 +422,8 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>Preferred Level / Track</label>
-                                <div style="margin-bottom: 1.5rem;">
+                                <label id="levelLabel">Preferred Level / Track</label>
+                                <div id="track-Teaching" style="margin-bottom: 1.5rem;">
                                     <p
                                         style="font-weight: 700; font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--text-light);">
                                         Teaching Pathway</p>
@@ -317,7 +436,7 @@
                                             Level 3 – Instructional Leader</label>
                                     </div>
                                 </div>
-                                <div style="margin-bottom: 1.5rem;">
+                                <div id="track-Leadership" style="margin-bottom: 1.5rem;">
                                     <p
                                         style="font-weight: 700; font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--text-light);">
                                         Leadership Pathway</p>
@@ -326,7 +445,7 @@
                                             Educational Leadership Diploma</label>
                                     </div>
                                 </div>
-                                <div>
+                                <div id="track-Operations">
                                     <p
                                         style="font-weight: 700; font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--text-light);">
                                         School Operations Pathway</p>
@@ -424,15 +543,7 @@
                                     <input type="text" name="schoolTypeOther" style="margin-top: 10px;"
                                         placeholder="Other type...">
                                 </div>
-                                <div class="form-group full">
-                                    <label>School Status</label>
-                                    <div class="radio-group">
-                                        <label class="check-item"><input type="radio" name="schoolStatus" value="New">
-                                            New School</label>
-                                        <label class="check-item"><input type="radio" name="schoolStatus"
-                                                value="Established"> Established School</label>
-                                    </div>
-                                </div>
+
                                 <div class="form-group full">
                                     <label for="bulkSchoolAddress">School Address</label>
                                     <input type="text" id="bulkSchoolAddress" name="schoolAddress"
@@ -528,16 +639,19 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Teaching Pathway</td>
-                                            <td><input type="number" name="participants[Teaching]" min="0"></td>
+                                            <td data-label="Program">Teaching Pathway</td>
+                                            <td data-label="Number of Participants"><input type="number"
+                                                    name="participants[Teaching]" min="0"></td>
                                         </tr>
                                         <tr>
-                                            <td>Leadership Pathway</td>
-                                            <td><input type="number" name="participants[Leadership]" min="0"></td>
+                                            <td data-label="Program">Leadership Pathway</td>
+                                            <td data-label="Number of Participants"><input type="number"
+                                                    name="participants[Leadership]" min="0"></td>
                                         </tr>
                                         <tr>
-                                            <td>Operations Pathway</td>
-                                            <td><input type="number" name="participants[Operations]" min="0"></td>
+                                            <td data-label="Program">Operations Pathway</td>
+                                            <td data-label="Number of Participants"><input type="number"
+                                                    name="participants[Operations]" min="0"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -572,7 +686,7 @@
                             <h2><i class="fas fa-truck-fast"></i> Preferred Delivery Model</h2>
                             <div class="radio-group">
                                 <label class="check-item"><input type="radio" name="delivery" value="On-Site"> On-Site
-                                    Training</label>
+                                    Training at School</label>
                                 <label class="check-item"><input type="radio" name="delivery" value="Online"> Online
                                     Training</label>
                                 <label class="check-item"><input type="radio" name="delivery" value="Hybrid"> Hybrid
@@ -588,14 +702,18 @@
                                     <label for="bulkStartDate">Preferred Start Date</label>
                                     <input type="date" id="bulkStartDate" name="startDate">
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group full">
                                     <label>Preferred Training Period</label>
-                                    <select name="period">
-                                        <option value="Summer">Summer</option>
-                                        <option value="Academic Year">Academic Year</option>
-                                        <option value="Mid-Year">Mid-Year</option>
-                                        <option value="Flexible">Flexible</option>
-                                    </select>
+                                    <div class="checkbox-group">
+                                        <label class="check-item"><input type="checkbox" name="period[]" value="Summer">
+                                            Summer</label>
+                                        <label class="check-item"><input type="checkbox" name="period[]"
+                                                value="Academic Year"> Academic Year</label>
+                                        <label class="check-item"><input type="checkbox" name="period[]"
+                                                value="Mid-Year"> Mid-Year</label>
+                                        <label class="check-item"><input type="checkbox" name="period[]"
+                                                value="Flexible"> Flexible</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -605,13 +723,13 @@
                             <h2><i class="fas fa-star"></i> School Development Priorities</h2>
                             <div class="checkbox-group">
                                 <label class="check-item"><input type="checkbox" name="priorities[]" value="Teaching">
-                                    Teaching & Learning</label>
+                                    Teaching & Learning Quality</label>
                                 <label class="check-item"><input type="checkbox" name="priorities[]" value="Leadership">
-                                    Leadership</label>
+                                    Leadership Development</label>
                                 <label class="check-item"><input type="checkbox" name="priorities[]" value="AI"> AI
                                     Integration</label>
                                 <label class="check-item"><input type="checkbox" name="priorities[]" value="HR">
-                                    Recruitment & HR</label>
+                                    Recruitment & HR Systems</label>
                                 <label class="check-item"><input type="checkbox" name="priorities[]" value="Operations">
                                     School Operations</label>
                                 <label class="check-item"><input type="checkbox" name="priorities[]" value="Finance">
@@ -619,9 +737,11 @@
                                 <label class="check-item"><input type="checkbox" name="priorities[]" value="Parent">
                                     Parent Experience</label>
                                 <label class="check-item"><input type="checkbox" name="priorities[]" value="Student">
-                                    Student Culture</label>
+                                    Student Culture & Safeguarding</label>
+                                <label class="check-item"><input type="checkbox" name="priorities[]" value="Curriculum">
+                                    Curriculum Leadership</label>
                                 <label class="check-item"><input type="checkbox" name="priorities[]"
-                                        value="Accreditation"> Accreditation</label>
+                                        value="Accreditation"> Accreditation Readiness</label>
                             </div>
                         </div>
 
@@ -632,31 +752,23 @@
                                 placeholder="Any custom requests or additional information..."></textarea>
                         </div>
 
-                        <!-- Declaration -->
-                        <div class="form-section">
-                            <h2><i class="fas fa-file-contract"></i> Declaration</h2>
-                            <p style="margin-bottom: 1.5rem; font-size: 0.95rem; color: var(--text-light);">We confirm
-                                our interest in participating in the MAALEM Integrated Educational Development Diploma
-                                programs.</p>
-                            <div class="grid-inputs">
-                                <div class="form-group">
-                                    <label>Authorized Representative Name</label>
-                                    <input type="text" id="bulkRepName" name="repName" data-required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Position</label>
-                                    <input type="text" id="bulkRepPosition" name="repPosition" data-required>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     <!-- Declaration (Common/Dynamic Signature) -->
                     <div class="form-section">
                         <h2><i class="fas fa-file-contract"></i> Declaration</h2>
-                        <p style="margin-bottom: 1.5rem; font-size: 0.95rem; color: var(--text-light);">I confirm that
+                        <p id="declarationText"
+                            style="margin-bottom: 1.5rem; font-size: 0.95rem; color: var(--text-light);">I confirm that
                             all information provided is accurate and complete.</p>
                         <div class="grid-inputs">
+                            <div class="form-group bulk-only" style="display: none;">
+                                <label>Authorized Representative Name</label>
+                                <input type="text" id="bulkRepName" name="repName" data-required>
+                            </div>
+                            <div class="form-group bulk-only" style="display: none;">
+                                <label>Position</label>
+                                <input type="text" id="bulkRepPosition" name="repPosition" data-required>
+                            </div>
                             <div class="form-group">
                                 <label id="signatureLabel">Applicant Signature (Type Full Name)</label>
                                 <input type="text" name="signature" required>
@@ -690,24 +802,91 @@
             // Dynamic required validation toggle function
             const toggleRequiredFields = (activeType) => {
                 if (activeType === 'bulk') {
-                    document.querySelectorAll('.individual-only [required], .individual-only [data-required]').forEach(el => {
+                    // Disable all individual fields so they are excluded from submission
+                    document.querySelectorAll('.individual-only input, .individual-only select, .individual-only textarea').forEach(el => {
+                        el.disabled = true;
                         el.removeAttribute('required');
                     });
-                    document.querySelectorAll('.bulk-only [data-required]').forEach(el => {
-                        el.setAttribute('required', 'required');
+                    // Enable all bulk fields
+                    document.querySelectorAll('.bulk-only input, .bulk-only select, .bulk-only textarea').forEach(el => {
+                        el.disabled = false;
+                        if (el.hasAttribute('data-required')) {
+                            el.setAttribute('required', 'required');
+                        }
                     });
                 } else {
-                    document.querySelectorAll('.bulk-only [required], .bulk-only [data-required]').forEach(el => {
+                    // Disable all bulk fields so they are excluded from submission
+                    document.querySelectorAll('.bulk-only input, .bulk-only select, .bulk-only textarea').forEach(el => {
+                        el.disabled = true;
                         el.removeAttribute('required');
                     });
-                    document.querySelectorAll('.individual-only [data-required]').forEach(el => {
-                        el.setAttribute('required', 'required');
+                    // Enable all individual fields
+                    document.querySelectorAll('.individual-only input, .individual-only select, .individual-only textarea').forEach(el => {
+                        el.disabled = false;
+                        if (el.hasAttribute('data-required')) {
+                            el.setAttribute('required', 'required');
+                        }
                     });
                 }
             };
 
             // Set initial validation state
             toggleRequiredFields('individual');
+
+            // Pathway selection toggle logic for levels
+            const pathwayRadios = document.querySelectorAll('input[name="pathway"]');
+            const trackTeaching = document.getElementById('track-Teaching');
+            const trackLeadership = document.getElementById('track-Leadership');
+            const trackOperations = document.getElementById('track-Operations');
+            const levelLabel = document.getElementById('levelLabel');
+
+            function updateLevelsVisibility() {
+                let selectedValue = '';
+                pathwayRadios.forEach(radio => {
+                    if (radio.checked) {
+                        selectedValue = radio.value;
+                    }
+                });
+
+                // Hide all initially
+                if (trackTeaching) trackTeaching.style.display = 'none';
+                if (trackLeadership) trackLeadership.style.display = 'none';
+                if (trackOperations) trackOperations.style.display = 'none';
+                if (levelLabel) levelLabel.style.display = 'none';
+
+                // Show selected track and the main label
+                if (selectedValue === 'Teaching') {
+                    if (trackTeaching) trackTeaching.style.display = 'block';
+                    if (levelLabel) levelLabel.style.display = 'block';
+                } else if (selectedValue === 'Leadership') {
+                    if (trackLeadership) trackLeadership.style.display = 'block';
+                    if (levelLabel) levelLabel.style.display = 'block';
+                } else if (selectedValue === 'Operations') {
+                    if (trackOperations) trackOperations.style.display = 'block';
+                    if (levelLabel) levelLabel.style.display = 'block';
+                }
+
+                // Uncheck checkboxes in hidden tracks
+                const tracks = {
+                    'Teaching': trackTeaching,
+                    'Leadership': trackLeadership,
+                    'Operations': trackOperations
+                };
+                Object.keys(tracks).forEach(key => {
+                    if (key !== selectedValue && tracks[key]) {
+                        tracks[key].querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                            cb.checked = false;
+                        });
+                    }
+                });
+            }
+
+            pathwayRadios.forEach(radio => {
+                radio.addEventListener('change', updateLevelsVisibility);
+            });
+
+            // Initialize on load
+            updateLevelsVisibility();
 
             tabBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
@@ -727,14 +906,17 @@
 
                     toggleRequiredFields(type);
 
+                    const decText = document.getElementById('declarationText');
                     if (type === 'bulk') {
                         formTitle.innerText = 'Bulk / Organization Application';
                         signatureLabel.innerText = 'Representative Signature (Type Full Name)';
+                        if (decText) decText.innerText = 'We confirm our interest in participating in the MAALEM Integrated Educational Development Diploma programs and confirm that all information provided is accurate and complete.';
                         individualOnly.forEach(el => el.style.display = 'none');
                         bulkOnly.forEach(el => el.style.display = 'block');
                     } else {
                         formTitle.innerText = 'Individual Participant Application';
                         signatureLabel.innerText = 'Applicant Signature (Type Full Name)';
+                        if (decText) decText.innerText = 'I confirm that all information provided is accurate and complete.';
                         individualOnly.forEach(el => el.style.display = 'block');
                         bulkOnly.forEach(el => el.style.display = 'none');
                     }
@@ -745,6 +927,28 @@
             const form = document.getElementById('applicationForm');
             form.addEventListener('submit', function (e) {
                 e.preventDefault();
+
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn ? submitBtn.innerHTML : 'Submit Application';
+
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+                }
+
+                const restoreSubmitBtn = () => {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnText;
+                    }
+                };
+
+                // Clear previous errors
+                form.querySelectorAll('.form-group').forEach(group => {
+                    group.classList.remove('has-error');
+                    const errEl = group.querySelector('.error-message');
+                    if (errEl) errEl.remove();
+                });
 
                 // Collect and serialize form data, including tables
                 const formData = new FormData(form);
@@ -796,6 +1000,7 @@
                 })
                     .then(response => response.json())
                     .then(result => {
+                        restoreSubmitBtn();
                         if (result.success) {
                             Swal.fire({
                                 title: 'Success!',
@@ -806,18 +1011,55 @@
                                 window.location.href = "{{ url('/') }}";
                             });
                         } else {
-                            let errorMessage = result.message || 'Something went wrong. Please try again.';
-                            if (result.errors) {
-                                errorMessage = Object.values(result.errors).flat().join('<br>');
-                            }
-                            Swal.fire({
-                                title: 'Error',
-                                html: errorMessage,
-                                icon: 'error'
+                            // Clear previous errors just in case
+                            form.querySelectorAll('.form-group').forEach(group => {
+                                group.classList.remove('has-error');
+                                const errEl = group.querySelector('.error-message');
+                                if (errEl) errEl.remove();
                             });
+
+                            if (result.errors) {
+                                Object.keys(result.errors).forEach(key => {
+                                    const input = form.querySelector(`[name="${key}"], [name="${key}[]"]`);
+                                    if (input) {
+                                        const formGroup = input.closest('.form-group');
+                                        if (formGroup) {
+                                            formGroup.classList.add('has-error');
+                                            let errorSpan = formGroup.querySelector('.error-message');
+                                            if (!errorSpan) {
+                                                errorSpan = document.createElement('span');
+                                                errorSpan.className = 'error-message';
+                                                formGroup.appendChild(errorSpan);
+                                            }
+                                            errorSpan.innerHTML = result.errors[key].join('<br>');
+                                        }
+                                    }
+                                });
+
+                                // Scroll to first error
+                                const firstError = form.querySelector('.has-error');
+                                if (firstError) {
+                                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                }
+
+                                Swal.fire({
+                                    title: 'Validation Error',
+                                    text: 'Please correct the highlighted fields in the form.',
+                                    icon: 'error',
+                                    confirmButtonColor: '#1d63dc'
+                                });
+                            } else {
+                                Swal.fire({
+                                    title: 'Error',
+                                    text: result.message || 'Something went wrong. Please try again.',
+                                    icon: 'error',
+                                    confirmButtonColor: '#1d63dc'
+                                });
+                            }
                         }
                     })
                     .catch(error => {
+                        restoreSubmitBtn();
                         console.error('Error:', error);
                         Swal.fire({
                             title: 'Error',

@@ -15,6 +15,7 @@ class FormController extends Controller
         $validated = $request->validate([
             'schoolName' => 'required|string|max:255',
             'schoolType' => 'nullable|array',
+            'schoolTypeOther' => 'nullable|string|max:255',
             'schoolStatus' => 'required|string|max:255',
             'establishedYears' => 'required_if:schoolStatus,Established|nullable|integer|min:1',
             'schoolAddress' => 'required|string|max:255',
@@ -24,11 +25,29 @@ class FormController extends Controller
             'position' => 'required|string|max:255',
             'mobile' => 'required|string|max:255',
             'email' => 'required|email|max:255',
+        ], [], [
+            'schoolName' => 'School Name',
+            'schoolType' => 'School Type',
+            'schoolTypeOther' => 'Other School Type',
+            'schoolStatus' => 'School Status',
+            'establishedYears' => 'Number of Established Years',
+            'schoolAddress' => 'School Address',
+            'cityCountry' => 'City / Country',
+            'website' => 'Website / Social Media',
+            'fullName' => 'Full Name',
+            'position' => 'Position',
+            'mobile' => 'Mobile Number',
+            'email' => 'Email Address',
         ]);
+
+        $schoolTypes = $validated['schoolType'] ?? [];
+        if (!empty($validated['schoolTypeOther'])) {
+            $schoolTypes[] = $validated['schoolTypeOther'];
+        }
 
         $data = [
             'school_name' => $validated['schoolName'],
-            'school_type' => $validated['schoolType'] ?? null,
+            'school_type' => $schoolTypes,
             'school_status' => $validated['schoolStatus'],
             'established_years' => $validated['establishedYears'] ?? null,
             'address' => $validated['schoolAddress'],
@@ -53,6 +72,7 @@ class FormController extends Controller
         $validated = $request->validate([
             'schoolName' => 'required|string|max:255',
             'schoolType' => 'nullable|array',
+            'schoolTypeOther' => 'nullable|string|max:255',
             'schoolStatus' => 'required|string|max:255',
             'establishedYears' => 'required_if:schoolStatus,Established|nullable|integer|min:1',
             'schoolAddress' => 'required|string|max:255',
@@ -62,11 +82,29 @@ class FormController extends Controller
             'position' => 'required|string|max:255',
             'mobile' => 'required|string|max:255',
             'email' => 'required|email|max:255',
+        ], [], [
+            'schoolName' => 'School Name',
+            'schoolType' => 'School Type',
+            'schoolTypeOther' => 'Other School Type',
+            'schoolStatus' => 'School Status',
+            'establishedYears' => 'Number of Established Years',
+            'schoolAddress' => 'School Address',
+            'cityCountry' => 'City / Country',
+            'website' => 'Website / Social Media',
+            'fullName' => 'Full Name',
+            'position' => 'Position',
+            'mobile' => 'Mobile Number',
+            'email' => 'Email Address',
         ]);
+
+        $schoolTypes = $validated['schoolType'] ?? [];
+        if (!empty($validated['schoolTypeOther'])) {
+            $schoolTypes[] = $validated['schoolTypeOther'];
+        }
 
         $data = [
             'school_name' => $validated['schoolName'],
-            'school_type' => $validated['schoolType'] ?? null,
+            'school_type' => $schoolTypes,
             'school_status' => $validated['schoolStatus'],
             'established_years' => $validated['establishedYears'] ?? null,
             'address' => $validated['schoolAddress'],
@@ -98,7 +136,8 @@ class FormController extends Controller
             $rules = array_merge($rules, [
                 'schoolName' => 'required|string|max:255',
                 'schoolType' => 'nullable|array',
-                'schoolStatus' => 'required|string|max:255',
+                'schoolTypeOther' => 'nullable|string|max:255',
+                'schoolStatus' => 'nullable|string|max:255',
                 'schoolAddress' => 'required|string|max:255',
                 'cityCountry' => 'required|string|max:255',
                 'website' => 'nullable|url',
@@ -109,12 +148,13 @@ class FormController extends Controller
                 'totalStaff' => 'nullable|integer',
                 'totalTeachers' => 'nullable|integer',
                 'curriculum' => 'nullable|array',
+                'curriculumOther' => 'nullable|string|max:255',
                 'pathways' => 'nullable|array',
                 'participants' => 'nullable|array',
                 'departments' => 'nullable|array',
                 'delivery' => 'nullable|string',
                 'startDate' => 'nullable|date',
-                'period' => 'nullable|string',
+                'period' => 'nullable|array',
                 'priorities' => 'nullable|array',
                 'notes' => 'nullable|string',
                 'repName' => 'required|string|max:255',
@@ -139,9 +179,68 @@ class FormController extends Controller
             ]);
         }
 
-        $validated = $request->validate($rules);
+        $attributes = [
+            'fullName' => 'Full Name',
+            'dob' => 'Date of Birth',
+            'nationality' => 'Nationality',
+            'mobile' => 'Mobile Number',
+            'email' => 'Email Address',
+            'cityCountry' => 'City / Country',
+            'position' => 'Position',
+            'orgName' => 'Organization Name',
+            'experience' => 'Total Years of Experience',
+            'pathway' => 'Preferred Pathway',
+            'levels' => 'Preferred Level / Track',
+            'mode' => 'Preferred Learning Mode',
+            'schedule' => 'Preferred Schedule',
+            'ai' => 'Technology & AI Readiness',
+            'schoolName' => 'School Name',
+            'schoolType' => 'School Type',
+            'schoolTypeOther' => 'Other School Type',
+            'schoolStatus' => 'School Status',
+            'schoolAddress' => 'School Address',
+            'website' => 'Website / Social Media',
+            'totalStaff' => 'Total Number of Staff',
+            'totalTeachers' => 'Total Number of Teachers',
+            'curriculum' => 'Current Educational Curriculum',
+            'curriculumOther' => 'Other Curriculum',
+            'pathways' => 'Requested Pathways',
+            'participants' => 'Estimated Number of Participants',
+            'departments' => 'Target Departments',
+            'delivery' => 'Preferred Delivery Model',
+            'startDate' => 'Preferred Start Date',
+            'period' => 'Preferred Training Period',
+            'priorities' => 'School Development Priorities',
+            'notes' => 'Additional Notes',
+            'repName' => 'Authorized Representative Name',
+            'repPosition' => 'Representative Position',
+            'signature' => 'Signature',
+            'date' => 'Date',
+        ];
+
+        $validated = $request->validate($rules, [], $attributes);
 
         if ($validated['application_type'] === 'bulk') {
+            $totalParticipants = 0;
+            $participants = $validated['participants'] ?? [];
+            if (is_array($participants)) {
+                foreach ($participants as $p) {
+                    if (is_array($p) && isset($p['count'])) {
+                        $totalParticipants += (int)$p['count'];
+                    }
+                }
+            }
+
+            $schoolTypes = $validated['schoolType'] ?? [];
+            if (!empty($validated['schoolTypeOther'])) {
+                $schoolTypes[] = $validated['schoolTypeOther'];
+            }
+
+            $curriculum = $validated['curriculum'] ?? [];
+            if (!empty($validated['curriculumOther'])) {
+                $curriculum[] = $validated['curriculumOther'];
+            }
+
             $data = [
                 'application_type' => 'bulk',
                 'full_name' => $validated['fullName'],
@@ -151,12 +250,13 @@ class FormController extends Controller
                 'position' => $validated['position'],
                 'organization' => $validated['schoolName'],
                 'school_name' => $validated['schoolName'],
-                'school_type' => $validated['schoolType'] ?? null,
-                'school_status' => $validated['schoolStatus'],
+                'school_type' => $schoolTypes,
+                'school_status' => $validated['schoolStatus'] ?? null,
                 'school_address' => $validated['schoolAddress'],
+                'participant_count' => $totalParticipants,
                 'total_staff' => $validated['totalStaff'] ?? null,
                 'total_teachers' => $validated['totalTeachers'] ?? null,
-                'curriculum' => $validated['curriculum'] ?? null,
+                'curriculum' => $curriculum,
                 'participants' => $validated['participants'] ?? null,
                 'departments' => $validated['departments'] ?? null,
                 'start_date' => $validated['startDate'] ?? null,
@@ -170,7 +270,7 @@ class FormController extends Controller
                 // Map the pathway and schedule etc. as text so list view doesn't complain or break
                 'pathway' => is_array($validated['pathways'] ?? null) ? implode(', ', $validated['pathways']) : ($validated['pathways'] ?? 'Bulk Application'),
                 'learning_mode' => $validated['delivery'] ?? 'N/A',
-                'schedule' => $validated['period'] ?? 'N/A',
+                'schedule' => is_array($validated['period'] ?? null) ? implode(', ', $validated['period']) : ($validated['period'] ?? 'N/A'),
             ];
         } else {
             $data = [

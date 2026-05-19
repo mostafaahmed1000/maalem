@@ -252,7 +252,8 @@
                                 <option value="">School</option>
                                 @foreach($schools as $sch)
                                     <option value="{{ $sch->name }}" {{ request('school') == $sch->name ? 'selected' : '' }}>
-                                        {{ $sch->name }}</option>
+                                        {{ $sch->name }}
+                                    </option>
                                 @endforeach
                             </select>
                             <select name="department" class="filter-select" onchange="this.form.submit()">

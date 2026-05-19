@@ -10,5 +10,10 @@ class Application extends Model
 
     protected $casts = [
         'levels' => 'array',
+        'school_type' => 'array',
+        'curriculum' => 'array',
+        'participants' => 'array',
+        'departments' => 'array',
+        'priorities' => 'array',
     ];
 }

@@ -41,16 +41,16 @@
 
   // Per-section enter/leave pair (forward direction)
   const PRESETS = [
-    { in: 'fromBottom', out: 'toTop'    },   // 0  hero (#home)
-    { in: 'fromRight',  out: 'toLeft'   },   // 1  vision (#about)
-    { in: 'fromLeft',   out: 'toRight'  },   // 2  services (#services)
-    { in: 'fromBtm3d',  out: 'toTop3d'  },   // 3  courses (#courses)
-    { in: 'zoomIn',     out: 'zoomOut'  },   // 4  mooc (#mooc)
-    { in: 'fromRight',  out: 'toLeft'   },   // 5  careers (#careers)
-    { in: 'fromLeft',   out: 'toRight'  },   // 6  instructors (#instructors)
-    { in: 'flipIn',     out: 'flipOut'  },   // 7  mentors (#mentors)
-    { in: 'fromBtm3d',  out: 'toTop3d'  },   // 8  pricing (#pricing)
-    { in: 'zoomIn',     out: 'zoomOut'  },   // 9  faq (#faq)
+    { in: 'fromBottom', out: 'toTop' },   // 0  hero (#home)
+    { in: 'fromRight', out: 'toLeft' },   // 1  vision (#about)
+    { in: 'fromLeft', out: 'toRight' },   // 2  services (#services)
+    { in: 'fromBtm3d', out: 'toTop3d' },   // 3  courses (#courses)
+    { in: 'zoomIn', out: 'zoomOut' },   // 4  mooc (#mooc)
+    { in: 'fromRight', out: 'toLeft' },   // 5  careers (#careers)
+    { in: 'fromLeft', out: 'toRight' },   // 6  instructors (#instructors)
+    { in: 'flipIn', out: 'flipOut' },   // 7  mentors (#mentors)
+    { in: 'fromBtm3d', out: 'toTop3d' },   // 8  pricing (#pricing)
+    { in: 'zoomIn', out: 'zoomOut' },   // 9  faq (#faq)
   ];
 
   /* ── INIT ───────────────────────────────────────────────────── */
@@ -94,7 +94,8 @@
     margin:0 !important;
     border-radius:0 !important;
     border:none !important;
-    overflow:hidden !important;
+    overflow-y:auto !important;
+    overflow-x:hidden !important;
     opacity:0 !important;
     visibility:hidden !important;
     pointer-events:none !important;
@@ -108,7 +109,7 @@
       s.classList.remove('s3d-current');
 
       if (i !== 0) {
-        s.style.paddingTop = (headerH + 40) + 'px';
+        s.style.paddingTop = (headerH + 10) + 'px';
         s.style.paddingBottom = '60px';
       }
     });
@@ -127,7 +128,7 @@
         container.style.transformOrigin = 'top center';
 
         const contentH = container.offsetHeight;
-        const availableH = vh - (i === 0 ? 0 : headerH + 140); // 140 for top/bottom padding buffer
+        const availableH = vh - (i === 0 ? 0 : headerH + 20); // 140 for top/bottom padding buffer
 
         if (contentH > availableH) {
           const ratio = availableH / contentH;

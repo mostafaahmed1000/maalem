@@ -454,7 +454,7 @@ img {
 }
 
 .container {
-    width: 95%;
+    width: 80%;
     max-width: 1600px;
     margin: 0 auto;
     position: relative;
@@ -775,7 +775,7 @@ nav {
     pointer-events: none;
 }
 
-.hero-right > * {
+.hero-right>* {
     pointer-events: auto;
 }
 
@@ -2661,7 +2661,6 @@ footer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2.5rem;
-    margin-top: 4rem;
 }
 
 .service-card {
@@ -2940,7 +2939,6 @@ footer {
 
 /* MOOC Section */
 .mooc-section {
-    padding: 10rem 0;
     background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
     position: relative;
     overflow: hidden;
@@ -3087,7 +3085,6 @@ footer {
 
 .merged-services-header {
     text-align: center;
-    margin-bottom: 5rem;
     position: relative;
     z-index: 2;
 }
@@ -3356,8 +3353,8 @@ footer {
 
 /* MOOC Integration Section */
 .mooc-section {
-    padding: 120px 0;
     background: #fff;
+    padding: 3rem 0;
 }
 
 .mooc-header span {
@@ -3365,74 +3362,74 @@ footer {
     color: var(--primary-color);
     text-transform: uppercase;
     letter-spacing: 1px;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     display: block;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.5rem;
 }
 
 .mooc-header h2 {
-    font-size: 3.5rem;
+    font-size: 2.2rem;
     font-weight: 800;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.8rem;
     color: var(--text-color);
-    line-height: 1.1;
+    line-height: 1.15;
 }
 
 .mooc-header p {
-    font-size: 1.15rem;
+    font-size: 0.95rem;
     color: var(--text-light);
-    line-height: 1.8;
-    margin-bottom: 2rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
 }
 
 .mooc-list {
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
-    margin: 2.5rem 0;
+    gap: 0.6rem;
+    margin: 1rem 0;
 }
 
 .mooc-item {
     display: flex;
     align-items: center;
-    gap: 1.2rem;
-    padding: 1.2rem 1.8rem;
+    gap: 0.8rem;
+    padding: 0.7rem 1.2rem;
     background: #f8fafc;
-    border-radius: 20px;
+    border-radius: 12px;
     border: 1px solid #f1f5f9;
     transition: all 0.3s ease;
 }
 
 .mooc-item:hover {
-    transform: translateX(10px);
+    transform: translateX(5px);
     background: #fff;
-    box-shadow: 0 10px 30px rgba(29, 99, 220, 0.08);
+    box-shadow: 0 5px 15px rgba(29, 99, 220, 0.08);
     border-color: var(--primary-color);
 }
 
 .mooc-item i {
     color: var(--primary-color);
-    font-size: 1.3rem;
+    font-size: 1rem;
 }
 
 .mooc-item span {
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 600;
     color: var(--text-color);
 }
 
 .mooc-footer-text {
-    font-size: 1rem;
+    font-size: 0.85rem;
     color: #64748b;
     font-style: italic;
-    line-height: 1.6;
-    margin-top: 2rem;
+    line-height: 1.5;
+    margin-top: 1rem;
 }
 
 .mooc-visual img {
     width: 100%;
-    border-radius: 60px;
-    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.15);
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
     transition: transform 0.5s ease;
 }
 
@@ -3444,7 +3441,7 @@ footer {
     .mooc-container {
         flex-direction: column;
         text-align: center;
-        gap: 3rem;
+        gap: 2rem;
     }
 
     .mooc-item {
@@ -3452,30 +3449,30 @@ footer {
     }
 
     .mooc-header h2 {
-        font-size: 2.8rem;
+        font-size: 1.8rem;
     }
 }
 
 /* Biographies Section (Mentors) */
 .mentors-section {
-    padding: 120px 0;
+    padding: 80px 0;
     background: #f0f7ff;
 }
 
 .teachers-grid-new {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 1.5rem;
-    padding-top: 6rem;
+    gap: 1.2rem;
+    padding-top: 4rem;
     /* space for overlapping avatars */
 }
 
 .teacher-card-new {
     background: #fff;
-    border-radius: 30px;
-    padding: 3rem 1.5rem 2.5rem;
+    border-radius: 24px;
+    padding: 2rem 1rem 1.5rem;
     text-align: center;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     text-decoration: none;
     color: inherit;
@@ -3486,54 +3483,57 @@ footer {
 }
 
 .teacher-card-new:hover {
-    transform: translateY(-15px);
-    box-shadow: 0 30px 60px rgba(29, 99, 220, 0.1);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(29, 99, 220, 0.1);
 }
 
 .teacher-avatar-new {
-    width: 180px;
-    height: 180px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     background-color: #fff;
     background-size: 65%;
     background-position: center;
     background-repeat: no-repeat;
-    margin-bottom: 2rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    border: 8px solid #fff;
+    margin-bottom: 1rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border: 5px solid #fff;
     position: absolute;
-    top: -90px;
+    top: -60px;
     left: 50%;
     transform: translateX(-50%);
 }
 
 .teacher-card-new h3 {
-    font-size: 1.3rem;
+    font-size: 1rem;
     font-weight: 800;
     color: var(--text-color);
-    margin-bottom: 0.8rem;
-    margin-top: 80px;
+    margin-bottom: 0.4rem;
+    margin-top: 55px;
     /* offset for the absolute avatar */
 }
 
 .teacher-card-new .role {
-    font-size: 0.95rem;
+    font-size: 0.8rem;
     color: #64748b;
     font-weight: 600;
 }
 
 @media (max-width: 1366px) {
     .teachers-grid-new {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 7rem 1.5rem;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1rem;
     }
+
     .teacher-avatar-new {
-        width: 150px;
-        height: 150px;
-        top: -75px;
+        width: 100px;
+        height: 100px;
+        top: -50px;
     }
+
     .teacher-card-new h3 {
-        margin-top: 70px;
+        margin-top: 45px;
+        font-size: 0.9rem;
     }
 }
 
@@ -3558,7 +3558,7 @@ footer {
 }
 
 .pricing-section .section-title h2 {
-    font-size: 4.5rem;
+    font-size: 2.5rem;
     font-weight: 900;
     letter-spacing: -2px;
     margin-bottom: 2.5rem;
@@ -3622,40 +3622,40 @@ footer {
 .pricing-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2.5rem;
-    margin-top: 4rem;
+    gap: 1.5rem;
+    margin-top: 2rem;
 }
 
 .pricing-card {
     background: #fff;
-    border-radius: 30px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s ease;
     display: flex;
     flex-direction: column;
+    border: 1px solid #e5e7eb;
 }
 
 .pricing-card:hover {
-    transform: translateY(-15px);
-    box-shadow: 0 30px 60px rgba(29, 99, 220, 0.12);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(29, 99, 220, 0.1);
 }
 
 .pricing-header {
     background: #f6fdfa;
-    /* Mint green */
-    padding: 3.5rem 2.5rem;
+    padding: 1.5rem 1.25rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.02);
 }
 
 .plan-name {
     display: inline-block;
     background: #ffffff;
-    padding: 0.4rem 1.2rem;
-    border-radius: 20px;
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
     font-weight: 700;
-    font-size: 0.85rem;
-    margin-bottom: 1.5rem;
+    font-size: 0.75rem;
+    margin-bottom: 0.8rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     color: var(--text-color);
     text-transform: uppercase;
@@ -3663,7 +3663,7 @@ footer {
 }
 
 .plan-rec {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-weight: 700;
     color: var(--text-color);
 }
@@ -3671,12 +3671,12 @@ footer {
 .plan-price {
     display: flex;
     align-items: baseline;
-    gap: 0.4rem;
-    margin-bottom: 1rem;
+    gap: 0.3rem;
+    margin-bottom: 0.5rem;
 }
 
 .plan-price h2 {
-    font-size: 3.2rem;
+    font-size: 2rem;
     font-weight: 900;
     color: var(--text-color);
     letter-spacing: -1px;
@@ -3685,13 +3685,13 @@ footer {
 .plan-price span {
     color: #94a3b8;
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 0.85rem;
 }
 
 .plan-desc {
     color: #64748b;
-    font-size: 0.95rem;
-    margin-bottom: 2rem;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
     font-weight: 500;
 }
 
@@ -3701,12 +3701,12 @@ footer {
     text-align: center;
     background: #1e293b;
     color: #ffffff;
-    padding: 1.2rem;
-    border-radius: 50px;
+    padding: 0.75rem;
+    border-radius: 12px;
     font-weight: 800;
     transition: all 0.3s ease;
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -3718,7 +3718,7 @@ footer {
 }
 
 .pricing-body {
-    padding: 3rem 2.5rem;
+    padding: 1.5rem 1.25rem;
     flex: 1;
     background: #ffffff;
 }
@@ -3726,7 +3726,7 @@ footer {
 .plan-features {
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
+    gap: 0.7rem;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -3735,15 +3735,15 @@ footer {
 .plan-features li {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.6rem;
     color: #475569;
-    font-size: 0.95rem;
+    font-size: 0.8rem;
     font-weight: 600;
 }
 
 .plan-features li i {
     color: var(--primary-color);
-    font-size: 1.1rem;
+    font-size: 0.9rem;
 }
 
 @media (max-width: 1200px) {
@@ -3761,10 +3761,8 @@ footer {
 
 /* FAQ Section */
 .faq-section {
-    padding: 15rem 0;
-    /* Keeping it bigger as requested */
+    padding: 5rem 0;
     background-color: #f6fdfa;
-    /* Mint green from snippet */
     position: relative;
     overflow: hidden;
 }
@@ -3772,21 +3770,21 @@ footer {
 .faq-container {
     display: flex;
     align-items: center;
-    gap: 6rem;
+    gap: 3rem;
 }
 
 .faq-images-left {
     flex: 1;
     position: relative;
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem;
     align-items: flex-end;
 }
 
 .faq-img-card {
-    border-radius: 40px;
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
     position: relative;
 }
 
@@ -3798,12 +3796,12 @@ footer {
 
 .faq-img-1 {
     width: 45%;
-    height: 450px;
+    height: 320px;
 }
 
 .faq-img-2 {
     width: 55%;
-    height: 550px;
+    height: 400px;
 }
 
 .faq-img-card.faq-img-1 img,
@@ -3813,15 +3811,15 @@ footer {
 
 .faq-stats-badge {
     position: absolute;
-    bottom: -30px;
-    left: 20px;
+    bottom: -20px;
+    left: 15px;
     background: #ffffff;
-    padding: 1.5rem 2rem;
-    border-radius: 25px;
+    padding: 1rem 1.5rem;
+    border-radius: 16px;
     display: flex;
     align-items: center;
-    gap: 1.5rem;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    gap: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
     z-index: 10;
 }
 
@@ -3830,22 +3828,22 @@ footer {
 }
 
 .faq-user-avatars img {
-    width: 45px;
-    height: 45px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
-    border: 4px solid #fff;
-    margin-right: -15px;
+    border: 3px solid #fff;
+    margin-right: -10px;
 }
 
 .faq-stats-text span {
     display: block;
     font-weight: 900;
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     color: var(--primary-color);
 }
 
 .faq-stats-text p {
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     color: var(--text-light);
     margin: 0;
     white-space: nowrap;
@@ -3859,56 +3857,58 @@ footer {
 .faq-label {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     color: var(--primary-color);
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 2rem;
-    font-size: 0.9rem;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
 }
 
 .faq-content-right h2 {
-    font-size: 4rem;
+    font-size: 2.2rem;
     font-weight: 900;
-    line-height: 1.1;
-    margin-bottom: 4rem;
+    line-height: 1.2;
+    margin-bottom: 2rem;
     color: var(--text-color);
-    letter-spacing: -2px;
+    letter-spacing: -1px;
 }
 
 .faq-accordion {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
 .faq-item {
     background: #ffffff;
-    border-radius: 25px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
     transition: all 0.3s ease;
+    border: 1px solid #e5e7eb;
 }
 
 .faq-header {
-    padding: 2.2rem;
+    padding: 1.2rem 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    font-weight: 800;
+    font-weight: 700;
     color: var(--text-color);
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .faq-header i {
-    font-size: 1rem;
+    font-size: 0.9rem;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .faq-item.active {
-    box-shadow: 0 15px 40px rgba(29, 99, 220, 0.08);
+    box-shadow: 0 10px 25px rgba(29, 99, 220, 0.05);
+    border-color: rgba(29, 99, 220, 0.15);
 }
 
 .faq-item.active .faq-header i {
@@ -3917,17 +3917,17 @@ footer {
 }
 
 .faq-body {
-    padding: 0 2.2rem 2.2rem;
+    padding: 0 1.5rem 1.2rem;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s;
     color: #64748b;
-    line-height: 1.8;
-    font-size: 1.05rem;
+    line-height: 1.6;
+    font-size: 0.875rem;
 }
 
 .faq-item.active .faq-body {
-    max-height: 400px;
+    max-height: 250px;
 }
 
 /* Decorative Wavy Line */
@@ -4021,87 +4021,87 @@ body.s3d-active main>section.s3d-current {
 /* New Service Cards with Images */
 .service-card-new {
     background: var(--white);
-    padding: 1.5rem;
-    border-radius: 35px;
-    box-shadow: 0 10px 30px rgba(29, 99, 220, 0.08);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 1.25rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s ease;
     display: flex;
     flex-direction: column;
     height: 100%;
-    border: 1px solid rgba(29, 99, 220, 0.05);
+    border: 1px solid #e5e7eb;
 }
 
 .service-card-new:hover {
-    transform: translateY(-15px);
-    box-shadow: 0 30px 70px rgba(29, 99, 220, 0.1);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(29, 99, 220, 0.1);
     border-color: rgba(29, 99, 220, 0.2);
 }
 
 .service-img-new {
     width: 100%;
-    height: 200px;
-    border-radius: 25px;
+    height: 180px;
+    border-radius: 12px;
     background-size: cover;
     background-position: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .service-icon-new {
-    width: 50px;
-    height: 50px;
+    width: 42px;
+    height: 42px;
     background: var(--primary-color);
     color: var(--white);
-    border-radius: 12px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
-    margin-bottom: 1.2rem;
-    margin-top: -40px;
-    margin-left: 20px;
-    border: 4px solid #fff;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+    margin-top: -32px;
+    margin-left: 12px;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .service-card-new h3 {
-    font-size: 1.4rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
     color: var(--text-color);
-    padding: 0 0.5rem;
+    padding: 0 0.25rem;
 }
 
 .service-card-new ul {
     list-style: none;
-    padding: 0 0.5rem;
-    margin-bottom: 2rem;
+    padding: 0 0.25rem;
+    margin-bottom: 1rem;
     flex-grow: 1;
 }
 
 .service-card-new ul li {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 0.9rem;
+    gap: 8px;
+    font-size: 0.875rem;
     color: var(--text-light);
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.5rem;
     line-height: 1.4;
 }
 
 .service-card-new ul li i {
     color: var(--primary-color);
-    font-size: 0.75rem;
+    font-size: 0.7rem;
 }
 
 .btn-service-new {
-    margin: 0 0.5rem 0.5rem;
-    padding: 0.9rem 1.5rem;
+    margin: 0 0.25rem 0.25rem;
+    padding: 0.75rem 1.2rem;
     background: var(--primary-color);
     color: var(--white);
-    border-radius: 20px;
+    border-radius: 12px;
     text-align: center;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     transition: var(--transition);
     box-shadow: 0 4px 12px rgba(29, 99, 220, 0.15);
 }

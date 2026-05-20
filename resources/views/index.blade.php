@@ -13,24 +13,12 @@
 
 <body>
     <!-- Floating Decor Shapes -->
-    <div class="floating-decor shape-1"><svg viewBox="0 0 100 100" fill="currentColor">
-            <circle cx="50" cy="50" r="40" />
-        </svg></div>
-    <div class="floating-decor shape-2"><svg viewBox="0 0 100 100" fill="currentColor">
-            <rect x="20" y="20" width="60" height="60" rx="10" />
-        </svg></div>
-    <div class="floating-decor shape-3"><svg viewBox="0 0 100 100" fill="currentColor">
-            <path d="M50 10 L90 90 L10 90 Z" />
-        </svg></div>
-    <div class="floating-decor shape-4"><svg viewBox="0 0 100 100" fill="currentColor">
-            <path d="M30 50 L70 50 M50 30 L50 70" stroke="currentColor" stroke-width="15" stroke-linecap="round" />
-        </svg></div>
-    <div class="floating-decor shape-5"><svg viewBox="0 0 100 100" fill="currentColor">
-            <circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="8" fill="none" />
-        </svg></div>
-    <div class="floating-decor shape-6"><svg viewBox="0 0 100 100" fill="currentColor">
-            <rect x="30" y="30" width="40" height="40" rotate="45" fill="currentColor" opacity="0.5" />
-        </svg></div>
+    <div class="floating-decor shape-1"><svg viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="40"/></svg></div>
+    <div class="floating-decor shape-2"><svg viewBox="0 0 100 100" fill="currentColor"><rect x="20" y="20" width="60" height="60" rx="10"/></svg></div>
+    <div class="floating-decor shape-3"><svg viewBox="0 0 100 100" fill="currentColor"><path d="M50 10 L90 90 L10 90 Z"/></svg></div>
+    <div class="floating-decor shape-4"><svg viewBox="0 0 100 100" fill="currentColor"><path d="M30 50 L70 50 M50 30 L50 70" stroke="currentColor" stroke-width="15" stroke-linecap="round"/></svg></div>
+    <div class="floating-decor shape-5"><svg viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="8" fill="none"/></svg></div>
+    <div class="floating-decor shape-6"><svg viewBox="0 0 100 100" fill="currentColor"><rect x="30" y="30" width="40" height="40" rotate="45" fill="currentColor" opacity="0.5"/></svg></div>
 
     <!-- Preloader -->
     <div id="preloader">
@@ -46,7 +34,331 @@
     </div>
 
     @include('partials.header')
+<style>
 
+/* ===== COURSES SECTION - RESPONSIVE FIX ===== */
+
+#courses {
+  padding: 4rem 0;
+}
+
+#courses .section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 0 1rem;
+}
+
+.course-carousel-wrapper {
+  position: relative;
+  overflow: hidden;
+  padding: 0 1rem;
+}
+
+.course-carousel {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 1rem;
+}
+
+.course-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* ===== COURSE CARD ===== */
+.new-course-card {
+  flex: 0 0 calc(33.333% - 1rem);
+  min-width: 0;
+  scroll-snap-align: start;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Course Image */
+.course-img-wrap {
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.course-img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.4s ease;
+}
+
+.new-course-card:hover .course-img {
+  transform: scale(1.05);
+}
+
+/* Course Content */
+.course-content {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.course-content h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.course-content p {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  flex: 1;
+}
+
+/* ===== STATS ROW - THE BROKEN PART ===== */
+.course-stats {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.stat-box {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.stat-box i {
+  font-size: 1rem;
+  color: #2563eb;
+  flex-shrink: 0;
+}
+
+.stat-box > div {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+.stat-val {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #0f172a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 28px;
+  background: #e5e7eb;
+  flex-shrink: 0;
+}
+
+/* Course Footer */
+.course-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #f1f5f9;
+  flex-wrap: wrap;
+}
+
+.instructor {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: #374151;
+  min-width: 0;
+}
+
+.instructor i {
+  flex-shrink: 0;
+}
+
+.instructor span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.view-details {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #2563eb;
+  text-decoration: none;
+  white-space: nowrap;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.view-details:hover {
+  text-decoration: underline;
+}
+
+
+@media (max-width: 1024px) {
+  .new-course-card {
+    flex: 0 0 calc(50% - 0.75rem);
+  }
+}
+
+@media (max-width: 640px) {
+    #courses {
+         padding: 4rem 0;
+        }
+     #courses .container
+       {
+         padding: 0;
+        }
+    .course-carousel
+    {
+        gap: 1rem;
+         padding: 1rem 1rem 2rem;
+          justify-content: flex-start;
+         }
+        .new-course-card
+          {
+             flex: 0 0 92vw;
+              min-width: unset;
+               max-width: unset;
+                border-radius: 20px;
+             }
+         .course-content
+               {
+                 padding: 1.2rem;
+                 }
+         .course-content h3
+         {
+         font-size: 1.15rem;
+         }
+         .course-content p
+         {
+         font-size: 0.95rem; line-height: 1.7;
+         }
+         .course-stats {
+         padding: 0.8rem;
+         gap: 0.7rem;
+         }
+         .stat-val {
+         font-size: 0.8rem;
+         }
+         .stat-label {
+         font-size: 0.68rem;
+         }
+         .course-footer {
+         flex-direction: column;
+         align-items: flex-start;
+         gap: 0.8rem;
+         }
+         #courses .section-title h2
+          {
+             font-size: 1.9rem;
+          }
+ }
+
+
+@media (max-width: 380px) {
+  .new-course-card {
+    flex: 0 0 90vw;
+  }
+
+  .course-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+}
+
+
+/* ── SERVICES GRID ── */
+.services-grid {
+  grid-template-columns: repeat(3, 1fr) !important;
+}
+
+@media (max-width: 1100px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 640px) {
+
+  .services-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem;
+    padding: 0 2.5rem !important;
+  }
+
+  .service-card-new {
+    width: 100%;
+    max-width: 100% !important;
+    padding: 1.5rem !important;
+    border-radius:   22px;
+  }
+
+  .service-img-new {
+    height: 240px !important;
+    border-radius: 18px;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .services-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1.75rem !important;
+    padding: 0 1rem !important;
+    width: 100% !important;
+  }
+.service-img-new {
+    height: 240px !important;
+    border-radius: 18px;
+  }
+
+  .service-card-new {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
+</style>
     <main>
         <!-- 1. Hero Section -->
         <section id="home" class="hero">
@@ -58,8 +370,7 @@
             </div>
             <div class="hero-right">
                 <div class="hero-logo-container">
-                    <img src="{{ secure_asset_v('identity/Logo/PNG/Blue.png') }}" alt="Maalem Logo"
-                        class="hero-main-logo">
+                    <img src="{{ secure_asset_v('identity/Logo/PNG/Blue.png') }}" alt="Maalem Logo" class="hero-main-logo">
                     <p class="hero-slogan">Shaping Tomorrow's Landmark</p>
                 </div>
             </div>
@@ -113,12 +424,8 @@
             <div class="container vision-container">
                 <div class="vision-left reveal reveal-left">
                     <div class="image-stack">
-                        <div class="img-back"
-                            style="background-image: url('{{ secure_asset_v('assets/Mision-1.jpeg') }}');">
-                        </div>
-                        <div class="img-front"
-                            style="background-image: url('{{ secure_asset_v('assets/Mission-2.jpeg') }}');">
-                        </div>
+                        <div class="img-back" style="background-image: url('{{ secure_asset_v('assets/Mision-1.jpeg') }}');"></div>
+                        <div class="img-front" style="background-image: url('{{ secure_asset_v('assets/Mission-2.jpeg') }}');"></div>
                         <div class="dotted-pattern"></div>
                     </div>
                 </div>
@@ -129,12 +436,8 @@
                             style="font-weight: 700; color: var(--primary-color); text-transform: uppercase; letter-spacing: 1px;">Get
                             To Know About Us</span>
                     </div>
-                    <h2 data-i18n="vision_title"
-                        style="font-size: 2.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 1.5rem;">Benefit
-                        From Our Educational Expertise</h2>
-                    <p data-i18n="vision_desc" style="color: var(--text-light); margin-bottom: 2rem;">Maalem Education
-                        Services is dedicated to transforming education through strategic operations, continuous
-                        professional development, and global accreditation support.</p>
+                    <h2 data-i18n="vision_title" style="font-size: 2.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 1.5rem;">Benefit From Our Educational Expertise</h2>
+                    <p data-i18n="vision_desc" style="color: var(--text-light); margin-bottom: 2rem;">Maalem Education Services is dedicated to transforming education through strategic operations, continuous professional development, and global accreditation support.</p>
 
                     <div class="mission-vision-grid" style="margin-bottom: 2.5rem;">
                         <div class="mv-item">
@@ -175,9 +478,7 @@
                 </div>
                 <div class="services-grid">
                     <div class="service-card-new reveal">
-                        <div class="service-img-new"
-                            style="background-image: url('{{ secure_asset_v('assets/services/school_operation.png') }}');">
-                        </div>
+                        <div class="service-img-new" style="background-image: url('{{ secure_asset_v('assets/services/school_operation.png') }}');"></div>
                         <div class="service-icon-new"><i class="fas fa-school-flag"></i></div>
                         <h3 data-i18n="service1_h">Running & Operating Schools</h3>
                         <ul>
@@ -192,9 +493,7 @@
                                 class="fas fa-arrow-right"></i></a>
                     </div>
                     <div class="service-card-new reveal">
-                        <div class="service-img-new"
-                            style="background-image: url('{{ secure_asset_v('assets/services/educational_consulting.png') }}');">
-                        </div>
+                        <div class="service-img-new" style="background-image: url('{{ secure_asset_v('assets/services/educational_consulting.png') }}');"></div>
                         <div class="service-icon-new"><i class="fas fa-chess"></i></div>
                         <h3 data-i18n="service2_h">Educational Consulting</h3>
                         <ul>
@@ -209,9 +508,7 @@
                                 class="fas fa-arrow-right"></i></a>
                     </div>
                     <div class="service-card-new reveal">
-                        <div class="service-img-new"
-                            style="background-image: url('{{ secure_asset_v('assets/services/teacher_training.png') }}');">
-                        </div>
+                        <div class="service-img-new" style="background-image: url('{{ secure_asset_v('assets/services/teacher_training.png') }}');"></div>
                         <div class="service-icon-new"><i class="fas fa-certificate"></i></div>
                         <h3 data-i18n="service3_h">Teacher Training Diploma</h3>
                         <ul>
@@ -246,9 +543,7 @@
                     <div class="course-carousel" id="courseCarousel">
                         <div class="new-course-card">
                             <div class="course-img-wrap">
-                                <div class="course-img"
-                                    style="background-image: url('{{ secure_asset_v('assets/teaching_excellence_pathway_1778411860463.png') }}');">
-                                </div>
+                                <div class="course-img" style="background-image: url('{{ secure_asset_v('assets/teaching_excellence_pathway_1778411860463.png') }}');"></div>
                             </div>
                             <div class="course-content">
                                 <h3 data-i18n="course1_name">Pathway One: Teaching Excellence</h3>
@@ -277,9 +572,7 @@
                         </div>
                         <div class="new-course-card">
                             <div class="course-img-wrap">
-                                <div class="course-img"
-                                    style="background-image: url('{{ secure_asset_v('assets/educational_leadership_pathway_1778411874245.png') }}');">
-                                </div>
+                                <div class="course-img" style="background-image: url('{{ secure_asset_v('assets/educational_leadership_pathway_1778411874245.png') }}');"></div>
                             </div>
                             <div class="course-content">
                                 <h3 data-i18n="course2_name">Pathway Two: Educational Leadership</h3>
@@ -307,9 +600,7 @@
                         </div>
                         <div class="new-course-card">
                             <div class="course-img-wrap">
-                                <div class="course-img"
-                                    style="background-image: url('{{ secure_asset_v('assets/school_operations_pathway_1778411887223.png') }}');">
-                                </div>
+                                <div class="course-img" style="background-image: url('{{ secure_asset_v('assets/school_operations_pathway_1778411887223.png') }}');"></div>
                             </div>
                             <div class="course-content">
                                 <h3 data-i18n="course3_name">Pathway Three: School Operations</h3>
@@ -384,8 +675,7 @@
                 </div>
 
                 <div class="mooc-visual reveal" style="flex: 0.8;">
-                    <img src="{{ secure_asset_v('assets/mooc_integration_visual_1778412150376.png') }}"
-                        alt="MOOC Integration">
+                    <img src="{{ secure_asset_v('assets/mooc_integration_visual_1778412150376.png') }}" alt="MOOC Integration">
                 </div>
             </div>
         </section>
@@ -439,11 +729,9 @@
                         <div class="instructor-card-premium reveal">
                             <div class="instructor-img-box">
                                 @if($instructor->image)
-                                    <img src="{{ secure_asset_v('storage/' . $instructor->image) }}"
-                                        alt="{{ $instructor->name }}">
+                                    <img src="{{ secure_asset_v('storage/' . $instructor->image) }}" alt="{{ $instructor->name }}">
                                 @else
-                                    <img src="{{ secure_asset_v('identity/Logo/PNG/Blue.png') }}" alt="Maalem Logo"
-                                        class="placeholder-logo">
+                                    <img src="{{ secure_asset_v('identity/Logo/PNG/Blue.png') }}" alt="Maalem Logo" class="placeholder-logo">
                                 @endif
                                 <div class="instructor-rating">
                                     @for($i = 1; $i <= 5; $i++)
@@ -474,40 +762,35 @@
                 <div class="teachers-grid-new">
                     <!-- Teacher 1 -->
                     <a href="{{ url('/mentor-details?id=dina') }}" class="teacher-card-new reveal">
-                        <div class="teacher-avatar-new"
-                            style="background-image: url('{{ secure_asset_v('identity/Logo/SVG/Blue.svg') }}');"></div>
+                        <div class="teacher-avatar-new" style="background-image: url('{{ secure_asset_v('identity/Logo/SVG/Blue.svg') }}');"></div>
                         <h3 data-i18n="mentor1_name">Dr. Dina El Odessy</h3>
                         <span class="role" data-i18n="mentor1_role">Educational Director</span>
                     </a>
 
                     <!-- Teacher 2 -->
                     <a href="{{ url('/mentor-details?id=omar') }}" class="teacher-card-new reveal">
-                        <div class="teacher-avatar-new"
-                            style="background-image: url('{{ secure_asset_v('identity/Logo/SVG/Blue.svg') }}');"></div>
+                        <div class="teacher-avatar-new" style="background-image: url('{{ secure_asset_v('identity/Logo/SVG/Blue.svg') }}');"></div>
                         <h3 data-i18n="mentor2_name">Eng. Omar El Odessy</h3>
                         <span class="role" data-i18n="mentor2_role">Chairman of the Board</span>
                     </a>
 
                     <!-- Teacher 3 -->
                     <a href="{{ url('/mentor-details?id=karim') }}" class="teacher-card-new reveal">
-                        <div class="teacher-avatar-new"
-                            style="background-image: url('{{ secure_asset_v('identity/Logo/SVG/Blue.svg') }}');"></div>
+                        <div class="teacher-avatar-new" style="background-image: url('{{ secure_asset_v('identity/Logo/SVG/Blue.svg') }}');"></div>
                         <h3 data-i18n="mentor3_name">Mr. Karim El Sarnagawi</h3>
                         <span class="role" data-i18n="mentor3_role">CEO of Pyramakerz</span>
                     </a>
 
                     <!-- Teacher 4 -->
                     <a href="{{ url('/mentor-details?id=nourhan') }}" class="teacher-card-new reveal">
-                        <div class="teacher-avatar-new"
-                            style="background-image: url('{{ secure_asset_v('identity/Logo/SVG/Blue.svg') }}');"></div>
+                        <div class="teacher-avatar-new" style="background-image: url('{{ secure_asset_v('identity/Logo/SVG/Blue.svg') }}');"></div>
                         <h3 data-i18n="mentor4_name">Mrs. Nourhan Soudan</h3>
                         <span class="role" data-i18n="mentor4_role">CEO of LOIS Company</span>
                     </a>
 
                     <!-- Teacher 5 -->
                     <a href="{{ url('/mentor-details?id=magie') }}" class="teacher-card-new reveal">
-                        <div class="teacher-avatar-new"
-                            style="background-image: url('{{ secure_asset_v('identity/Logo/SVG/Blue.svg') }}');"></div>
+                        <div class="teacher-avatar-new" style="background-image: url('{{ secure_asset_v('identity/Logo/SVG/Blue.svg') }}');"></div>
                         <h3 data-i18n="mentor5_name">Eng. Magie S. Ginidy</h3>
                         <span class="role" data-i18n="mentor5_role">Operations Director</span>
                     </a>
@@ -658,12 +941,10 @@
                     <!-- Left Images -->
                     <div class="faq-images-left reveal reveal-left">
                         <div class="faq-img-card faq-img-1">
-                            <img src="{{ secure_asset_v('assets/faq_student_2_1778408826051.png') }}"
-                                alt="Student studying">
+                            <img src="{{ secure_asset_v('assets/faq_student_2_1778408826051.png') }}" alt="Student studying">
                         </div>
                         <div class="faq-img-card faq-img-2">
-                            <img src="{{ secure_asset_v('assets/faq_student_1_1778408799723.png') }}"
-                                alt="Student learning online">
+                            <img src="{{ secure_asset_v('assets/faq_student_1_1778408799723.png') }}" alt="Student learning online">
                         </div>
 
                         <!-- Stats Badge -->

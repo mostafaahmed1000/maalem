@@ -6,13 +6,10 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::table('job_applications', function (Blueprint $table) {
-            //
+            $table->string('job_title')->nullable()->after('job_id');
         });
     }
 
@@ -22,7 +19,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('job_applications', function (Blueprint $table) {
-            //
+            $table->dropColumn('job_title');
         });
     }
 };

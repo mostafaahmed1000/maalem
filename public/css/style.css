@@ -1209,9 +1209,8 @@ nav {
 }
 
 .cat-card:hover {
-    background: var(--primary-color);
     transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(29, 99, 220, 0.2);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
 }
 
 .cat-icon {
@@ -1255,7 +1254,8 @@ nav {
     transition: var(--transition);
 }
 
-/* Hover State Colors */
+/* Hover State Colors - disabled to prevent white text on hover */
+/*
 .cat-card:hover h3 {
     color: var(--white);
 }
@@ -1263,6 +1263,7 @@ nav {
 .cat-card:hover p {
     color: rgba(255, 255, 255, 0.9);
 }
+*/
 
 .cat-icon i {
     transition: transform 0.3s ease;
@@ -4231,6 +4232,7 @@ body.s3d-active main>section.s3d-current {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 .instructor-img-box img {
@@ -4240,7 +4242,9 @@ body.s3d-active main>section.s3d-current {
 }
 
 .instructor-img-box img.placeholder-logo {
-    width: 60%;
+    max-width: 60%;
+    max-height: 75%;
+    width: auto;
     height: auto;
     object-fit: contain;
     opacity: 0.6;

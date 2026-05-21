@@ -412,7 +412,7 @@
                             <li><span>Outcome</span> <strong>Applied Project</strong></li>
                             <li><span>Access</span> <strong>Professional Network</strong></li>
                         </ul>
-                        <a href="{{ url('/training') }}" class="btn-enroll">ENROLL IN TRACK</a>
+                        <a href="{{ url('/training/apply') }}" class="btn-enroll">ENROLL IN TRACK</a>
                     </div>
                 </div>
             </div>

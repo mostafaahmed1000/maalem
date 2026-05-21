@@ -669,55 +669,7 @@
             </div>
         </section>
 
-        <!-- 9. MOOC Section -->
-        <section class="mooc-section" id="mooc">
-            <div class="container mooc-container" style="display: flex; align-items: center; gap: 5rem;">
-                <div class="mooc-content reveal" style="flex: 1.2;">
-                    <div class="mooc-header">
-                        <span data-i18n="mooc_subtitle">Strategic Innovation Component</span>
-                        <h2 data-i18n="mooc_title">MOOC Integration Model</h2>
-                        <p data-i18n="mooc_desc">As part of the strategic educational development model, MAALEM
-                            integrates facilitated MOOC (Massive Open Online Course) study groups to enhance technology
-                            and AI learning tracks while maintaining cost efficiency and international exposure.</p>
-                    </div>
 
-                    <div class="mooc-list">
-                        <div class="mooc-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span data-i18n="mooc_item1">Curated Coursera / EdX courses aligned with diploma
-                                modules</span>
-                        </div>
-                        <div class="mooc-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span data-i18n="mooc_item2">Facilitated study groups with structured discussion</span>
-                        </div>
-                        <div class="mooc-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span data-i18n="mooc_item3">Arabic-language academic support for complex content</span>
-                        </div>
-                        <div class="mooc-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span data-i18n="mooc_item4">Assignment guidance and accountability systems</span>
-                        </div>
-                        <div class="mooc-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span data-i18n="mooc_item5">Optional international certification (approx. $45 per
-                                course)</span>
-                        </div>
-                    </div>
-
-                    <p class="mooc-footer-text" data-i18n="mooc_footer">
-                        This approach reduces content development costs, increases global benchmarking exposure, and
-                        strengthens accreditation alignment with international CPD standards.
-                    </p>
-                </div>
-
-                <div class="mooc-visual reveal" style="flex: 0.8;">
-                    <img src="{{ secure_asset_v('assets/mooc_integration_visual_1778412150376.png') }}"
-                        alt="MOOC Integration">
-                </div>
-            </div>
-        </section>
 
         <!-- 5. Careers Section -->
         <section id="careers" class="section careers-section reveal">

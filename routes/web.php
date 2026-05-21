@@ -26,8 +26,12 @@ Route::get('/consultation', function () {
 });
 
 Route::get('/training', function () {
-    return view('form3');
+    return view('training');
 });
+
+Route::get('/training/apply', function () {
+    return view('form3');
+})->name('training.apply');
 
 Route::get('/mentor-details', function () {
     return view('mentor-details');

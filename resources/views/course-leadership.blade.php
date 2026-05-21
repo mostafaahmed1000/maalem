@@ -393,7 +393,7 @@
                             <li><span>Language</span> <strong>English</strong></li>
                             <li><span>Mentorship</span> <strong>Included</strong></li>
                         </ul>
-                        <a href="{{ url('/training') }}" class="btn-enroll">APPLY FOR LEADERSHIP</a>
+                        <a href="{{ url('/training/apply') }}" class="btn-enroll">APPLY FOR LEADERSHIP</a>
                     </div>
                 </div>
             </div>

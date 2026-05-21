@@ -17,12 +17,14 @@
         .detail-container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 1.5rem;
+            box-sizing: border-box;
         }
 
         .course-layout {
             display: grid;
-            grid-template-columns: 1fr 380px;
-            gap: 2.5rem;
+            grid-template-columns: minmax(0, 1fr) 340px;
+            gap: 2rem;
             align-items: start;
         }
 
@@ -219,7 +221,7 @@
             font-size: 1.1rem;
         }
 
-        @media (max-width: 992px) {
+        @media (max-width: 1024px) {
             .course-layout {
                 grid-template-columns: 1fr;
             }
@@ -235,6 +237,70 @@
 
             .course-meta-bar {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .course-detail-page {
+                padding: 6rem 0 4rem;
+            }
+
+            .detail-container {
+                padding: 0 1rem;
+            }
+
+            .main-card {
+                padding: 1.5rem;
+                border-radius: 20px;
+            }
+
+            .main-img {
+                height: 240px;
+                border-radius: 15px;
+                margin-bottom: 1.5rem;
+            }
+
+            .course-header-content h1 {
+                font-size: 1.8rem;
+                margin-bottom: 1rem;
+            }
+
+            .course-meta-bar {
+                padding: 1.2rem;
+                gap: 1rem;
+                border-radius: 15px;
+            }
+
+            .course-tabs {
+                padding: 1.5rem;
+                border-radius: 20px;
+            }
+
+            .tabs-nav {
+                gap: 1.2rem;
+                flex-wrap: wrap;
+                margin-bottom: 1.5rem;
+            }
+
+            .tab-btn {
+                padding: 0.5rem 0;
+                font-size: 0.95rem;
+            }
+
+            .summary-card {
+                padding: 1.5rem;
+                border-radius: 20px;
+            }
+
+            .summary-list li {
+                padding: 0.8rem 0;
+                font-size: 0.9rem;
+            }
+
+            .btn-enroll {
+                padding: 1rem;
+                border-radius: 12px;
+                font-size: 0.95rem;
             }
         }
     </style>

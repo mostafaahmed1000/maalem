@@ -12,13 +12,13 @@ class SubmissionController extends Controller
 {
     public function partnerships()
     {
-        $submissions = Partnership::latest()->paginate(15);
+        $submissions = Partnership::latest()->paginate(15)->withQueryString();
         return view('admin.submissions.partnerships', compact('submissions'));
     }
 
     public function consultations()
     {
-        $submissions = Consultation::latest()->paginate(15);
+        $submissions = Consultation::latest()->paginate(15)->withQueryString();
         return view('admin.submissions.consultations', compact('submissions'));
     }
 
@@ -30,7 +30,7 @@ class SubmissionController extends Controller
             $query->where('application_type', $request->type);
         }
         
-        $submissions = $query->paginate(15);
+        $submissions = $query->paginate(5)->withQueryString();
         return view('admin.submissions.training_applications', compact('submissions'));
     }
 

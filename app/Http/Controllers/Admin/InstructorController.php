@@ -11,7 +11,7 @@ class InstructorController extends Controller
 {
     public function index()
     {
-        $instructors = Instructor::latest()->paginate(10);
+        $instructors = Instructor::latest()->paginate(10)->withQueryString();
         return view('admin.instructors.index', compact('instructors'));
     }
 

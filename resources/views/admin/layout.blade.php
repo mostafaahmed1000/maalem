@@ -35,6 +35,8 @@
             color: var(--text-main);
             display: flex;
             min-height: 100vh;
+            overflow-x: hidden;
+            width: 100%;
         }
 
         /* Sidebar */
@@ -205,6 +207,104 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         }
 
+        .td-content {
+            display: contents;
+        }
+
+        /* Pagination Styling */
+        .pagination-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px dashed var(--border);
+            width: 100%;
+        }
+
+        .pagination-info {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .pagination-info span {
+            font-weight: 700;
+            color: var(--primary);
+            background: rgba(29, 99, 220, 0.06);
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(29, 99, 220, 0.1);
+            display: inline-block;
+            margin: 0 4px;
+            line-height: 1.4;
+        }
+
+        .pagination {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 6px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .pagination .page-item {
+            display: inline-flex;
+        }
+
+        .pagination .page-link,
+        .pagination .page-item span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 40px;
+            height: 40px;
+            padding: 0 14px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: var(--card-bg);
+            color: var(--text-main);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .pagination .page-item.active .page-link,
+        .pagination .page-item.active span {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%) !important;
+            border-color: transparent !important;
+            color: #ffffff !important;
+            box-shadow: 0 4px 12px rgba(29, 99, 220, 0.25);
+            transform: scale(1.05);
+            z-index: 2;
+        }
+
+        .pagination .page-item:not(.active):not(.disabled) .page-link:hover {
+            background: rgba(29, 99, 220, 0.04);
+            border-color: rgba(29, 99, 220, 0.35);
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+        }
+
+        .pagination .page-item:not(.active):not(.disabled) .page-link:active {
+            transform: translateY(0);
+        }
+
+        .pagination .page-item.disabled .page-link,
+        .pagination .page-item.disabled span {
+            opacity: 0.4;
+            background: #f8fafc;
+            border-color: var(--border);
+            color: var(--text-muted);
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
         .badge {
             padding: 0.4rem 0.8rem;
             border-radius: 50px;
@@ -228,12 +328,347 @@
             color: #64748b;
         }
 
+        /* Mobile Header */
+        .mobile-header {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: var(--sidebar-bg);
+            border-bottom: 1px solid var(--border);
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.5rem;
+            z-index: 101;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .mobile-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-logo img {
+            height: 35px;
+            width: auto;
+        }
+
+        .mobile-toggle {
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+        }
+
+        .mobile-spacer {
+            width: 28px;
+        }
+
+        /* Sidebar Close Button */
+        .sidebar-close {
+            display: none;
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--sidebar-text);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 110;
+        }
+
+        .sidebar-close:hover {
+            color: var(--primary);
+        }
+
+        /* Sidebar Overlay */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(4px);
+            z-index: 99;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Responsive Media Queries */
+        @media (max-width: 1024px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 1.5rem 1rem;
+                padding-top: calc(60px + 1.5rem);
+            }
+
+            .mobile-header {
+                display: flex;
+            }
+
+            .sidebar-close {
+                display: block;
+            }
+
+            .sidebar-overlay {
+                display: block;
+            }
+
+            /* Prevent grid items from overflowing on small viewports */
+            *[style*="display: grid"] > *,
+            *[style*="display:grid"] > *,
+            .stats-grid > *,
+            .dashboard-grid > * {
+                min-width: 0 !important;
+            }
+
+            /* Horizontal scrolling for tables */
+            .table-container {
+                width: 100%;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                background: var(--card-bg);
+            }
+
+            .table-container table {
+                min-width: 650px !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* General inline grid layout stack override */
+            *[style*="display: grid"],
+            *[style*="display:grid"] {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+
+            /* Handle inline repeat/fraction definitions */
+            *[style*="grid-template-columns"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Stacking column spans */
+            *[style*="grid-column"] {
+                grid-column: auto !important;
+            }
+
+            /* Specific override for stats grid */
+            .stats-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Card-reflow table styles on mobile to show data without scrolling */
+            .table-container {
+                border: none !important;
+                background: transparent !important;
+                box-shadow: none !important;
+                overflow: visible !important;
+            }
+
+            .table-container table,
+            .table-container tbody,
+            .table-container tr,
+            .table-container td {
+                display: block !important;
+                width: 100% !important;
+                min-width: 0 !important;
+            }
+
+            .table-container thead {
+                display: none !important;
+            }
+
+            .table-container tr {
+                background: var(--card-bg);
+                border: 1px solid var(--border) !important;
+                border-radius: 16px;
+                padding: 1.25rem 1rem !important;
+                margin-bottom: 1.25rem;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            }
+
+            .table-container td {
+                display: flex !important;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.75rem 0 !important;
+                border-bottom: 1px dashed var(--border) !important;
+                text-align: right !important;
+            }
+
+            .table-container td:last-child {
+                border-bottom: none !important;
+                padding-bottom: 0 !important;
+            }
+
+            .table-container td::before {
+                content: attr(data-label);
+                font-weight: 700;
+                color: var(--text-muted);
+                font-size: 0.8rem;
+                text-transform: uppercase;
+                text-align: left;
+                margin-right: 1.5rem;
+                flex-shrink: 0;
+            }
+
+            /* Adjust empty state and colspan cells */
+            .table-container td[colspan] {
+                justify-content: center !important;
+                text-align: center !important;
+                border-bottom: none !important;
+                padding: 1.5rem 0 !important;
+            }
+
+            .table-container td[colspan]::before {
+                display: none !important;
+            }
+
+            /* Align items inside td contents cleanly */
+            .table-container td .td-content {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: flex-end !important;
+                justify-content: center !important;
+                text-align: right !important;
+                gap: 4px !important;
+                width: auto !important;
+                min-width: 0 !important;
+                max-width: 70% !important;
+                word-break: break-word !important;
+                overflow-wrap: break-word !important;
+            }
+
+            .table-container td .td-content > * {
+                max-width: 100% !important;
+                word-break: break-word !important;
+                overflow-wrap: break-word !important;
+                white-space: normal !important;
+                text-align: right !important;
+            }
+
+            /* Header stack */
+            .header-top {
+                flex-direction: column;
+                align-items: flex-start !important;
+                gap: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .header-top > * {
+                width: 100%;
+            }
+
+            /* Header actions alignment */
+            .btn-primary-action,
+            .header-top a,
+            .header-top button {
+                width: 100%;
+                justify-content: center;
+            }
+
+            /* Detail view updates for actions section */
+            div[style*="margin-top: 3rem"] {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: stretch !important;
+                text-align: center;
+            }
+
+            div[style*="margin-top: 3rem"] a {
+                width: 100%;
+                text-align: center;
+            }
+
+            /* Forms filters in lists */
+            form[style*="grid-template-columns"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            form[style*="grid-template-columns"] div {
+                width: 100% !important;
+            }
+
+            form[style*="grid-template-columns"] button,
+            form[style*="grid-template-columns"] a {
+                width: 100% !important;
+                justify-content: center;
+            }
+
+            /* Responsive Pagination Overrides */
+            .pagination-wrapper {
+                flex-direction: column !important;
+                gap: 1rem !important;
+                align-items: center !important;
+                text-align: center !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-title h2 {
+                font-size: 1.5rem;
+            }
+
+            .card {
+                padding: 1.25rem 1rem;
+                border-radius: 16px;
+            }
+
+            .detail-group {
+                padding: 0.8rem;
+            }
+        }
+
         @yield('styles')
     </style>
 </head>
 
 <body>
-    <aside class="sidebar" style="border-right: 1px solid var(--border);">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <header class="mobile-header">
+        <button class="mobile-toggle" id="mobileToggleBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-logo">
+            <img src="{{ secure_asset_v('identity/Logo/PNG/Blue.png') }}" alt="Maalem Logo">
+        </div>
+        <div class="mobile-spacer"></div>
+    </header>
+
+    <aside class="sidebar" id="sidebar" style="border-right: 1px solid var(--border);">
+        <button class="sidebar-close" id="sidebarCloseBtn">
+            <i class="fas fa-times"></i>
+        </button>
         <div class="sidebar-header">
             <img src="{{ secure_asset_v('identity/Logo/PNG/Blue.png') }}" alt="Maalem Logo"
                 style="height: 100px; width: auto; margin: 0 auto;">
@@ -308,6 +743,77 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Mobile Sidebar Toggle Control Logic
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            const toggleBtn = document.getElementById('mobileToggleBtn');
+            const closeBtn = document.getElementById('sidebarCloseBtn');
+
+            function toggleSidebar() {
+                sidebar.classList.toggle('active');
+                overlay.classList.toggle('active');
+                document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+            }
+
+            function closeSidebar() {
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', toggleSidebar);
+            }
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeSidebar);
+            }
+            if (overlay) {
+                overlay.addEventListener('click', closeSidebar);
+            }
+
+            // Auto-close sidebar on mobile if nav links are clicked
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    if (window.innerWidth <= 1024) {
+                        closeSidebar();
+                    }
+                });
+            });
+
+            // Auto-inject table header labels for mobile layout and wrap cell content for clean styling
+            function initMobileTables() {
+                const tables = document.querySelectorAll('.table-container table');
+                tables.forEach(table => {
+                    const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent.trim());
+                    const rows = table.querySelectorAll('tbody tr');
+                    rows.forEach(row => {
+                        const cells = row.querySelectorAll('td');
+                        cells.forEach((cell, index) => {
+                            // Skip empty state and colspan cells
+                            if (cell.hasAttribute('colspan')) {
+                                return;
+                            }
+                            
+                            // Wrap inner content if not already wrapped
+                            if (!cell.querySelector('.td-content')) {
+                                const wrapper = document.createElement('div');
+                                wrapper.className = 'td-content';
+                                while (cell.firstChild) {
+                                    wrapper.appendChild(cell.firstChild);
+                                }
+                                cell.appendChild(wrapper);
+                            }
+
+                            if (headers[index]) {
+                                cell.setAttribute('data-label', headers[index]);
+                            }
+                        });
+                    });
+                });
+            }
+            initMobileTables();
+
             @if(session('success'))
                 Swal.fire({
                     title: 'Success!',

@@ -210,6 +210,24 @@
             right: -50px;
             opacity: 0.15;
         }
+
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 1rem;
+            }
+            .login-card {
+                padding: 2rem 1.5rem;
+            }
+            .logo {
+                margin-bottom: 1.5rem;
+            }
+            .logo h1 {
+                font-size: 1.75rem;
+            }
+            .logo img {
+                height: 60px !important;
+            }
+        }
     </style>
 </head>
 

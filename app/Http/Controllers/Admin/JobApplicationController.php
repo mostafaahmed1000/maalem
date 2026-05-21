@@ -39,7 +39,7 @@ class JobApplicationController extends Controller
             });
         }
 
-        $submissions = $query->paginate(15);
+        $submissions = $query->paginate(15)->withQueryString();
         $jobs = JobListing::orderBy('title')->get();
         $jobTitles = JobApplication::whereNotNull('job_title')->pluck('job_title')->unique()->sort();
         $schools = JobSchool::orderBy('name')->get();

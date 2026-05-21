@@ -251,7 +251,11 @@
             }
 
             #courses .container {
-                padding: 0 1.5rem;
+                padding: 0 0.5rem;
+            }
+
+            .course-carousel-wrapper {
+                padding: 0;
             }
 
             .course-carousel {
@@ -349,13 +353,13 @@
 
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 576px) {
             .services-grid {
                 display: flex !important;
                 flex-direction: column !important;
                 align-items: center !important;
                 gap: 1.75rem !important;
-                padding: 0 1rem !important;
+                padding: 0 !important;
                 width: 100% !important;
             }
 

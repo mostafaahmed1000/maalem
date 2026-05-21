@@ -4629,7 +4629,8 @@ body.s3d-active main>section.s3d-current {
     }
 
     .container {
-        padding: 0 1.2rem;
+        width: 90% !important;
+        padding: 0 1rem;
         max-width: 100%;
         overflow-x: hidden;
     }
@@ -4809,7 +4810,7 @@ body.s3d-active main>section.s3d-current {
     /* Identity */
     .hex-card-wrapper {
         flex: 0 0 100%;
-        max-width: 280px;
+        max-width: 340px;
     }
 
     .hex-card {
@@ -5075,8 +5076,18 @@ body.s3d-active main>section.s3d-current {
     }
 }
 
-/* ── Small Mobile: 480px ──────────────────────────────────── */
-@media (max-width: 480px) {
+/* ── Small Mobile: 576px ──────────────────────────────────── */
+@media (max-width: 576px) {
+
+    .container {
+        width: 90% !important;
+        padding: 0 0.5rem !important;
+    }
+
+    .instructor-img-box {
+        aspect-ratio: 1 / 1 !important;
+        height: auto !important;
+    }
 
     .hero-content-boxed h1 {
         font-size: 1.4rem !important;

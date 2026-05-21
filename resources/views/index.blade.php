@@ -251,17 +251,19 @@
             }
 
             #courses .container {
-                padding: 0;
+                padding: 0 1.5rem;
             }
 
             .course-carousel {
-                gap: 1rem;
-                padding: 1rem 1rem 2rem;
-                justify-content: flex-start;
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 0;
+                overflow-x: visible;
             }
 
             .new-course-card {
-                flex: 0 0 92vw;
+                flex: none;
+                width: 100%;
                 min-width: unset;
                 max-width: unset;
                 border-radius: 20px;
@@ -306,16 +308,11 @@
 
 
         @media (max-width: 380px) {
-            .new-course-card {
-                flex: 0 0 90vw;
-            }
-
             .course-footer {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 0.5rem;
             }
-
         }
 
 
@@ -767,8 +764,8 @@
                         <div class="instructor-card-premium reveal">
                             <div class="instructor-img-box">
                                 @if($instructor->image)
-                                    <img src="{{ secure_asset_v('storage/' . $instructor->image) }}"
-                                        alt="{{ $instructor->name }}">
+                                    <img src="{{ secure_asset_v(file_exists(public_path($instructor->image)) ? $instructor->image : 'storage/' . $instructor->image) }}"
+                                         alt="{{ $instructor->name }}">
                                 @else
                                     <img src="{{ secure_asset_v('identity/Logo/PNG/Blue.png') }}" alt="Maalem Logo"
                                         class="placeholder-logo">

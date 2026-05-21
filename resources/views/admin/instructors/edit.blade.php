@@ -37,7 +37,7 @@
                     @if($instructor->image)
                         <div
                             style="width: 100px; height: 100px; border-radius: 10px; overflow: hidden; margin-bottom: 1rem; border: 1px solid var(--border);">
-                            <img src="{{ secure_asset_v('storage/' . $instructor->image) }}"
+                            <img src="{{ secure_asset_v(file_exists(public_path($instructor->image)) ? $instructor->image : 'storage/' . $instructor->image) }}"
                                 style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                     @endif

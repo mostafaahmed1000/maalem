@@ -39,7 +39,7 @@
                                     <div
                                         style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden; background: #f1f5f9; display: flex; align-items: center; justify-content: center;">
                                         @if($instructor->image)
-                                            <img src="{{ secure_asset_v('storage/' . $instructor->image) }}"
+                                            <img src="{{ secure_asset_v(file_exists(public_path($instructor->image)) ? $instructor->image : 'storage/' . $instructor->image) }}"
                                                 style="width: 100%; height: 100%; object-fit: cover;">
                                         @else
                                             <img src="{{ secure_asset_v('identity/Logo/PNG/Blue.png') }}"

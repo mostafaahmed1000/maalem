@@ -31,8 +31,10 @@ class InstructorController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('instructors', 'public');
-            $validated['image'] = $path;
+            $file = $request->file('image');
+            $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('instructors'), $filename);
+            $validated['image'] = 'instructors/' . $filename;
         }
 
         Instructor::create($validated);
@@ -56,11 +58,13 @@ class InstructorController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            if ($instructor->image) {
-                Storage::disk('public')->delete($instructor->image);
+            if ($instructor->image && file_exists(public_path($instructor->image))) {
+                @unlink(public_path($instructor->image));
             }
-            $path = $request->file('image')->store('instructors', 'public');
-            $validated['image'] = $path;
+            $file = $request->file('image');
+            $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('instructors'), $filename);
+            $validated['image'] = 'instructors/' . $filename;
         }
 
         $instructor->update($validated);
@@ -70,8 +74,8 @@ class InstructorController extends Controller
 
     public function destroy(Instructor $instructor)
     {
-        if ($instructor->image) {
-            Storage::disk('public')->delete($instructor->image);
+        if ($instructor->image && file_exists(public_path($instructor->image))) {
+            @unlink(public_path($instructor->image));
         }
         $instructor->delete();
         return redirect()->route('admin.instructors.index')->with('success', 'Instructor deleted successfully!');

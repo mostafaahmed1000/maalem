@@ -437,6 +437,90 @@
             </div>
         </section>
 
+        <!-- 2. Impact Stats -->
+        <section id="impact-stats" class="impact-stats-section" aria-labelledby="impact-stats-title">
+            <div class="container impact-stats-container">
+                <h2 id="impact-stats-title" class="visually-hidden">Maalem Impact</h2>
+                <div class="impact-stats-grid">
+                    <article class="impact-stat-card reveal">
+                        <div class="impact-stat-icon" aria-hidden="true">
+                            <svg viewBox="0 0 80 80" fill="none">
+                                <path d="M18 64V34h44v30" />
+                                <path d="M24 34V24h32v10" />
+                                <path d="M40 24v-9" />
+                                <path d="M40 15h15l-3.5 5L55 25H40" />
+                                <path d="M32 64V49c0-4.5 3.6-8 8-8s8 3.5 8 8v15" />
+                                <path d="M25 44h8M47 44h8M25 54h5M50 54h5" />
+                                <path d="M12 64h56" />
+                            </svg>
+                        </div>
+                        <div class="impact-stat-copy">
+                            <strong class="impact-stat-value">160+</strong>
+                            <p>Schools Developed<br>and Supported</p>
+                        </div>
+                    </article>
+
+                    <article class="impact-stat-card reveal">
+                        <div class="impact-stat-icon" aria-hidden="true">
+                            <svg viewBox="0 0 80 80" fill="none">
+                                <path d="M15 30l25-13 25 13-25 13-25-13Z" />
+                                <path d="M25 35v13c5.5 6 24.5 6 30 0V35" />
+                                <path d="M62 32v16" />
+                                <path d="M62 48c2.5 1.8 3.5 4.3 3.5 7.5" />
+                                <circle cx="40" cy="49" r="7" />
+                                <path d="M25 67c1.2-8.4 7-12 15-12s13.8 3.6 15 12" />
+                                <circle cx="22" cy="54" r="5.5" />
+                                <path d="M11 67c.8-6.3 5-9.5 11-9.5 3.5 0 6.4 1.1 8.4 3.3" />
+                                <circle cx="58" cy="54" r="5.5" />
+                                <path d="M49.6 60.8c2-2.2 4.9-3.3 8.4-3.3 6 0 10.2 3.2 11 9.5" />
+                            </svg>
+                        </div>
+                        <div class="impact-stat-copy">
+                            <strong class="impact-stat-value">150,000+</strong>
+                            <p>Students Benefiting<br>from Improved Systems</p>
+                        </div>
+                    </article>
+
+                    <article class="impact-stat-card reveal">
+                        <div class="impact-stat-icon" aria-hidden="true">
+                            <svg viewBox="0 0 80 80" fill="none">
+                                <path d="M35 19h42v34H48" />
+                                <path d="M44 31l8 8 14-16" />
+                                <circle cx="24" cy="29" r="8" />
+                                <path d="M15 47c2-6 6.6-9 13-9s11 3 13 9" />
+                                <path d="M16 29h16" />
+                                <path d="M24 21c-4.5 0-8 3.4-8 7.8" />
+                                <circle cx="19" cy="61" r="5.5" />
+                                <path d="M8 71c1-5.8 4.9-8.8 11-8.8s10 3 11 8.8" />
+                                <circle cx="43" cy="61" r="5.5" />
+                                <path d="M32 71c1-5.8 4.9-8.8 11-8.8s10 3 11 8.8" />
+                                <circle cx="65" cy="61" r="5.5" />
+                                <path d="M54 71c1-5.8 4.9-8.8 11-8.8s10 3 11 8.8" />
+                            </svg>
+                        </div>
+                        <div class="impact-stat-copy">
+                            <strong class="impact-stat-value">5,000+</strong>
+                            <p>Teachers Trained,<br>Mentored and<br>Developed</p>
+                        </div>
+                    </article>
+
+                    <article class="impact-stat-card reveal">
+                        <div class="impact-stat-icon" aria-hidden="true">
+                            <svg viewBox="0 0 80 80" fill="none">
+                                <path d="M13 23h18l4 8-4 7 5 8-6 8H13V23Z" />
+                                <path d="M41 21l12 7 8 12 9 5-3 8 4 8-10 5-13-9-4-12-10-7 4-9-4-6 7-2Z" />
+                                <path d="M31 38l8 1M45 45l9 4M56 56l7 4" />
+                            </svg>
+                        </div>
+                        <div class="impact-stat-copy">
+                            <strong class="impact-stat-value impact-stat-value-location">Egypt &<br>Saudi Arabia</strong>
+                            <p>Regional Experience<br>Across Diverse Contexts</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
         <!-- 2. Get To Know About Us -->
         <section class="section vision-section" id="about">
             <div class="container vision-container">
@@ -701,7 +785,7 @@
 
 
         <!-- 10. Our Instructors -->
-        <section id="instructors" class="section bg-white reveal" style="padding: 6rem 0;">
+        <!-- <section id="instructors" class="section bg-white reveal" style="padding: 6rem 0;">
             <div class="container">
                 <div class="section-title reveal" style="text-align: center; margin-bottom: 4rem;">
                     <div
@@ -743,7 +827,7 @@
                     @endforelse
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- 11. Mentors -->
         <section id="mentors" class="mentors-section reveal">
@@ -797,7 +881,7 @@
         </section>
 
         <!-- 11. Pricing -->
-        <section id="pricing" class="pricing-section reveal">
+        <!-- <section id="pricing" class="pricing-section reveal">
             <div class="container">
                 <div class="section-title reveal" style="text-align: center; margin-bottom: 4rem;">
                     <div
@@ -810,7 +894,6 @@
                     <h2 data-i18n="pricing_title">Our Educational Pricing And Membership Plans</h2>
                 </div>
                 <div class="pricing-grid">
-                    <!-- Starter -->
                     <div class="pricing-card reveal">
                         <div class="pricing-header">
                             <span class="plan-name" data-i18n="plan1_name">Starter</span>
@@ -837,7 +920,6 @@
                         </div>
                     </div>
 
-                    <!-- Pro -->
                     <div class="pricing-card reveal">
                         <div class="pricing-header">
                             <div
@@ -868,7 +950,6 @@
                         </div>
                     </div>
 
-                    <!-- Professional -->
                     <div class="pricing-card reveal">
                         <div class="pricing-header">
                             <span class="plan-name" data-i18n="plan3_name">Professional</span>
@@ -895,7 +976,6 @@
                         </div>
                     </div>
 
-                    <!-- Enterprise -->
                     <div class="pricing-card reveal">
                         <div class="pricing-header">
                             <span class="plan-name" data-i18n="plan4_name">Enterprise</span>
@@ -923,11 +1003,10 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- 12. FAQ Section -->
-        <section class="faq-section reveal" id="faq">
-            <!-- Decorative Yellow Wavy -->
+        <!-- <section class="faq-section reveal" id="faq">
             <div class="decor-wavy-yellow">
                 <svg viewBox="0 0 40 200" fill="none" stroke="#facc15" stroke-width="4">
                     <path d="M20,0 Q30,25 20,50 T20,100 T20,150 T20,200" />
@@ -936,7 +1015,6 @@
 
             <div class="container">
                 <div class="faq-container">
-                    <!-- Left Images -->
                     <div class="faq-images-left reveal reveal-left">
                         <div class="faq-img-card faq-img-1">
                             <img src="{{ secure_asset_v('assets/faq_student_2_1778408826051.png') }}"
@@ -947,7 +1025,6 @@
                                 alt="Student learning online">
                         </div>
 
-                        <!-- Stats Badge -->
                         <div class="faq-stats-badge">
                             <div class="faq-user-avatars">
                                 <img src="{{ secure_asset_v('assets/hero-student-1.png') }}" alt="User">
@@ -961,7 +1038,6 @@
                         </div>
                     </div>
 
-                    <!-- Right Accordion -->
                     <div class="faq-content-right reveal reveal-right">
                         <div class="faq-label">
                             <i class="fas fa-book"></i>
@@ -1007,7 +1083,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
     </main>
     @include('partials.scripts')
     <script src="{{ secure_asset_v('js/scroll3d.js') }}"></script>

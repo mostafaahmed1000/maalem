@@ -349,7 +349,7 @@
             ],
             'nourhan' => [
                 'name' => 'Mrs. Nourhan Soudan',
-                'role' => 'CEO of LOIS Company',
+                'role' => 'Chief Executive Officer at Learning Oasis International Company | Founder, New Horizon Educational Company',
                 'image' => 'identity/Logo/SVG/Blue.svg',
                 'stats' => [
                     'courses' => 4,

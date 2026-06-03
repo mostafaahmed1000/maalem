@@ -1059,6 +1059,242 @@ nav {
     box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
 }
 
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* Impact Stats */
+.impact-stats-section {
+    position: relative;
+    min-height: 240px;
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background:
+        linear-gradient(120deg, rgba(255, 255, 255, 0.94), rgba(244, 248, 255, 0.92)),
+        linear-gradient(135deg, transparent 0 31%, rgba(29, 99, 220, 0.12) 31% 42%, transparent 42% 100%),
+        linear-gradient(55deg, transparent 0 64%, rgba(119, 161, 234, 0.18) 64% 72%, transparent 72% 100%),
+        #f7fbff;
+}
+
+.impact-stats-section::before,
+.impact-stats-section::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.impact-stats-section::before {
+    top: -42%;
+    right: 9%;
+    width: 35rem;
+    height: 35rem;
+    background: rgba(29, 99, 220, 0.14);
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    transform: rotate(29deg);
+}
+
+.impact-stats-section::after {
+    left: -4%;
+    bottom: -45%;
+    width: 28rem;
+    height: 28rem;
+    background: rgba(119, 161, 234, 0.11);
+    clip-path: polygon(0 0, 100% 20%, 68% 100%, 12% 76%);
+    transform: rotate(-14deg);
+}
+
+.impact-stats-container {
+    width: min(calc(100% - 1rem), 1540px);
+    max-width: 1540px;
+    z-index: 1;
+}
+
+.impact-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    align-items: stretch;
+}
+
+.impact-stat-card {
+    min-height: 196px;
+    padding: 1.55rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(226, 234, 246, 0.92);
+    border-radius: 20px;
+    box-shadow: 0 18px 42px rgba(29, 99, 220, 0.1);
+}
+
+.impact-stat-icon {
+    width: 112px;
+    height: 112px;
+    flex: 0 0 112px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #eff5ff;
+    color: var(--primary-color);
+}
+
+.impact-stat-icon svg {
+    width: 74px;
+    height: 74px;
+    stroke: currentColor;
+    stroke-width: 2.3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.impact-stat-copy {
+    min-width: 0;
+}
+
+.impact-stat-value {
+    display: block;
+    color: var(--primary-color);
+    font-size: clamp(2.15rem, 2.65vw, 3rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0;
+}
+
+.impact-stat-value-location {
+    font-size: clamp(1.5rem, 1.9vw, 2.05rem);
+    line-height: 1.12;
+    white-space: nowrap;
+}
+
+.impact-stat-copy p {
+    margin: 0.7rem 0 0;
+    color: #14244a;
+    font-size: clamp(0.95rem, 1.08vw, 1.18rem);
+    font-weight: 500;
+    line-height: 1.28;
+}
+
+@media (max-width: 1440px) {
+    .impact-stat-card {
+        padding: 1.5rem;
+        gap: 1.1rem;
+    }
+
+    .impact-stat-icon {
+        width: 94px;
+        height: 94px;
+        flex-basis: 94px;
+    }
+
+    .impact-stat-icon svg {
+        width: 62px;
+        height: 62px;
+    }
+
+    .impact-stat-value {
+        font-size: clamp(1.85rem, 2.35vw, 2.5rem);
+    }
+
+    .impact-stat-value-location {
+        font-size: clamp(1.35rem, 1.8vw, 1.85rem);
+    }
+}
+
+@media (max-width: 1180px) {
+    .impact-stats-section {
+        min-height: 520px;
+    }
+
+    .impact-stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 767px) {
+    .impact-stats-section {
+        min-height: auto !important;
+        padding: 3rem 0;
+    }
+
+    .impact-stats-container {
+        width: 90% !important;
+        padding: 0;
+    }
+
+    .impact-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .impact-stat-card {
+        min-height: 152px;
+        padding: 1.25rem;
+        border-radius: 18px;
+    }
+
+    .impact-stat-icon {
+        width: 82px;
+        height: 82px;
+        flex-basis: 82px;
+    }
+
+    .impact-stat-icon svg {
+        width: 54px;
+        height: 54px;
+    }
+
+    .impact-stat-value {
+        font-size: 2rem;
+    }
+
+    .impact-stat-value-location {
+        font-size: 1.45rem;
+    }
+
+    .impact-stat-copy p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .impact-stat-card {
+        gap: 0.85rem;
+        padding: 1.1rem;
+    }
+
+    .impact-stat-icon {
+        width: 72px;
+        height: 72px;
+        flex-basis: 72px;
+    }
+
+    .impact-stat-icon svg {
+        width: 48px;
+        height: 48px;
+    }
+
+    .impact-stat-value {
+        font-size: 1.75rem;
+    }
+
+    .impact-stat-value-location {
+        font-size: 1.28rem;
+    }
+}
+
 /* Admission Process */
 .section {
     padding: 5rem 0;

@@ -1116,7 +1116,7 @@ nav {
 }
 
 .impact-stats-container {
-    width: min(calc(100% - 1rem), 1540px);
+    width: min(calc(100% - 1rem), 1520px);
     max-width: 1540px;
     z-index: 1;
 }

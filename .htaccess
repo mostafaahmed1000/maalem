@@ -12,6 +12,9 @@
     RewriteCond %{THE_REQUEST} \s/+(.*/)?public/ [NC]
     RewriteRule ^public/(.*)$ $1 [R=301,L]
 
+    # Serve Laravel public-disk files from clean /storage URLs.
+    RewriteRule ^storage/(.*)$ storage/app/public/$1 [L]
+
     # Serve the Laravel public directory without exposing /public in the URL.
     RewriteRule ^(?!public/)(.*)$ public/$1 [L]
 </IfModule>

@@ -7,6 +7,7 @@ use App\Models\JobApplication;
 use App\Models\JobListing;
 use App\Models\JobSchool;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class JobApplicationController extends Controller
 {
@@ -56,9 +57,19 @@ class JobApplicationController extends Controller
     public function downloadResume($id)
     {
         $item = JobApplication::findOrFail($id);
-        if (!$item->resume_path) {
-            abort(404);
+
+        $resumePath = ltrim(trim((string) $item->resume_path), '/');
+
+        if ($resumePath === '' || str_contains($resumePath, '..')) {
+            return back()->with('error', 'No resume file is attached to this application.');
         }
-        return response()->download(storage_path('app/public/' . $item->resume_path));
+
+        $disk = Storage::disk('public');
+
+        if (!$disk->exists($resumePath) || !is_file($disk->path($resumePath))) {
+            return back()->with('error', 'The resume file is missing from storage.');
+        }
+
+        return $disk->download($resumePath);
     }
 }

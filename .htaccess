@@ -1,0 +1,17 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # Canonicalize old /public URLs to the project root URL.
+    RewriteCond %{THE_REQUEST} \s/+(.*/)?public/?(?:[\s?]) [NC]
+    RewriteRule ^public/?$ ./ [R=301,L]
+
+    RewriteCond %{THE_REQUEST} \s/+(.*/)?public/ [NC]
+    RewriteRule ^public/(.*)$ $1 [R=301,L]
+
+    # Serve the Laravel public directory without exposing /public in the URL.
+    RewriteRule ^(?!public/)(.*)$ public/$1 [L]
+</IfModule>

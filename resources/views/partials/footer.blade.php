@@ -2,7 +2,8 @@
   /* ===== FOOTER ===== */
   #site-footer {
     background: #fff;
-    border-top: 1px solid #e5e7asset padding: 3rem 0 0;
+    border-top: 1px solid #e5e7eb;
+    padding: 3rem 0 0;
   }
 
   .footer-inner {
@@ -13,7 +14,7 @@
 
   .footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: minmax(280px, 2fr) minmax(180px, 1fr) minmax(180px, 1fr);
     gap: 3rem;
     padding-bottom: 2.5rem;
     align-items: start;
@@ -26,7 +27,8 @@
   }
 
   .footer-logo {
-    height: 36px;
+    height: clamp(96px, 9vw, 132px);
+    max-width: 260px;
     width: auto;
     object-fit: contain;
   }
@@ -64,6 +66,12 @@
     margin-bottom: 1rem;
   }
 
+  .footer-links,
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
   .footer-links ul {
     list-style: none;
@@ -86,8 +94,6 @@
   }
 
   .footer-contact {
-    display: flex;
-    flex-direction: column;
     gap: 0;
   }
 

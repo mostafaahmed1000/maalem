@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .training-page {
-            padding: 10rem 0 6rem;
+            padding: 10rem 0 0;
             background-color: #f8fafc;
         }
 
@@ -171,7 +171,7 @@
 
         /* Apply CTA Section */
         .apply-cta-section {
-            padding: 8rem 0 4rem;
+            padding: 5rem 0 1.5rem;
             text-align: center;
             background: radial-gradient(circle at top, #eff6ff 0%, #f8fafc 100%);
         }
@@ -239,7 +239,7 @@
 
         @media (max-width: 768px) {
             .training-page {
-                padding: 7rem 0 4rem;
+                padding: 7rem 0 0;
             }
 
             .training-hero {
@@ -288,6 +288,10 @@
                 justify-content: center;
                 padding: 1.25rem 2rem;
                 font-size: 1.1rem;
+            }
+
+            .apply-cta-section {
+                padding: 3rem 0 1rem;
             }
         }
 

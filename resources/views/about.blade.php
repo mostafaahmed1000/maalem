@@ -18,10 +18,26 @@
             background-color: #f8fafc;
         }
 
+        .about-identity-section {
+            padding: 5rem 0 2rem !important;
+        }
+
+        .about-content-section {
+            padding: 3rem 0 6rem !important;
+        }
+
         /* Responsive Improvements */
         @media (max-width: 768px) {
             .section {
                 padding: 4rem 0 2.5rem !important;
+            }
+
+            .about-identity-section {
+                padding: 3.5rem 0 1.5rem !important;
+            }
+
+            .about-content-section {
+                padding: 2rem 0 4rem !important;
             }
 
             .about-hero {
@@ -124,7 +140,8 @@
         </section>
 
         <!-- Who We Are (Identity Section) -->
-        <section class="merged-services-section" id="ecosystem" style="background: #f8fafc; padding: 6rem 0;">
+        <section class="merged-services-section about-identity-section" id="ecosystem"
+            style="background: #f8fafc;">
             <div class="container">
                 <div class="merged-services-header reveal" style="text-align: center; margin-bottom: 4rem;">
                     <span class="badge"
@@ -170,7 +187,7 @@
         </section>
 
         <!-- About Content Section -->
-        <section class="section">
+        <section class="section about-content-section">
             <div class="container">
                 <div style="max-width: 1000px; margin: 0 auto;">
                     <div class="reveal" style="margin-bottom: 4rem;">

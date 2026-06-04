@@ -15,21 +15,20 @@
   .footer-grid {
     display: grid;
     grid-template-columns: minmax(190px, 0.75fr) minmax(0, 1.75fr);
-    gap: clamp(2.5rem, 6vw, 6rem);
-    padding-bottom: 2.5rem;
-    align-items: stretch;
-    min-height: clamp(300px, 32vw, 420px);
+    gap: clamp(2.25rem, 5vw, 5rem);
+    padding-bottom: 2rem;
+    align-items: start;
   }
 
   .footer-logo-panel {
     display: flex;
-    align-items: stretch;
+    align-items: flex-start;
     justify-content: flex-start;
     min-height: 100%;
   }
 
   .footer-logo {
-    height: clamp(260px, 30vw, 400px);
+    height: clamp(190px, 22vw, 300px);
     max-width: 100%;
     width: auto;
     object-fit: contain;
@@ -38,8 +37,7 @@
   .footer-content {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 2.5rem;
+    gap: clamp(2.25rem, 5vw, 4rem);
     min-width: 0;
   }
 
@@ -166,7 +164,7 @@
     }
 
     .footer-logo {
-      height: clamp(150px, 28vw, 220px);
+      height: clamp(130px, 24vw, 180px);
     }
 
     .footer-brand {
@@ -188,7 +186,7 @@
     }
 
     .footer-logo {
-      height: clamp(132px, 40vw, 170px);
+      height: clamp(112px, 32vw, 145px);
     }
 
     .footer-brand h2 {

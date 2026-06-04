@@ -14,16 +14,33 @@
             padding: 8rem 0 6rem;
         }
 
+        .about-page>section {
+            min-height: auto !important;
+        }
+
         .bg-alt {
             background-color: #f8fafc;
         }
 
         .about-identity-section {
-            padding: 5rem 0 2rem !important;
+            padding: 4.5rem 0 0.75rem !important;
+        }
+
+        .about-identity-section .merged-services-header {
+            margin-bottom: 2.5rem !important;
+        }
+
+        .about-identity-section .identity-grid {
+            margin-bottom: 0 !important;
+            padding: 0.5rem 0 0 !important;
+        }
+
+        .about-identity-section .hex-card-wrapper {
+            padding: 0.5rem 0 !important;
         }
 
         .about-content-section {
-            padding: 3rem 0 6rem !important;
+            padding: 1.5rem 0 5rem !important;
         }
 
         /* Responsive Improvements */
@@ -33,11 +50,15 @@
             }
 
             .about-identity-section {
-                padding: 3.5rem 0 1.5rem !important;
+                padding: 3rem 0 0.75rem !important;
+            }
+
+            .about-identity-section .merged-services-header {
+                margin-bottom: 2rem !important;
             }
 
             .about-content-section {
-                padding: 2rem 0 4rem !important;
+                padding: 1.25rem 0 3.5rem !important;
             }
 
             .about-hero {
@@ -107,7 +128,7 @@
 
     @include('partials.header')
 
-    <main>
+    <main class="about-page">
         <!-- About Hero -->
         <section class="section bg-alt about-hero" style="padding: 12rem 0 6rem; position: relative; overflow: hidden;">
             <div class="container">

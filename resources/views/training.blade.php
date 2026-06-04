@@ -14,6 +14,10 @@
             background-color: #f8fafc;
         }
 
+        .training-page>section {
+            min-height: auto !important;
+        }
+
         .training-hero {
             text-align: center;
             margin-bottom: 5rem;
@@ -171,16 +175,16 @@
 
         /* Apply CTA Section */
         .apply-cta-section {
-            padding: 5rem 0 1.5rem;
+            padding: 4.5rem 0 0;
             text-align: center;
             background: radial-gradient(circle at top, #eff6ff 0%, #f8fafc 100%);
         }
 
         .apply-cta-card {
             max-width: 800px;
-            margin: 0 auto;
+            margin: 0 auto 1rem;
             background: #fff;
-            padding: 4rem 3rem;
+            padding: 3.25rem 3rem;
             border-radius: 40px;
             box-shadow: 0 25px 70px rgba(29, 99, 220, 0.08);
             border: 1px solid #e2e8f0;
@@ -270,7 +274,7 @@
             }
 
             .apply-cta-card {
-                padding: 3rem 1.5rem;
+                padding: 2.5rem 1.5rem;
                 border-radius: 30px;
                 margin: 0;
             }
@@ -291,7 +295,7 @@
             }
 
             .apply-cta-section {
-                padding: 3rem 0 1rem;
+                padding: 2.5rem 0 0;
             }
         }
 

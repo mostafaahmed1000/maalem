@@ -112,84 +112,8 @@
             transform: scale(1.05);
         }
 
-        /* Course Content */
-        .course-content {
-            padding: 1.25rem;
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-        }
 
-        .course-content h3 {
-            font-size: 1rem;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 0.5rem;
-            line-height: 1.3;
-        }
 
-        .course-content p {
-            font-size: 0.875rem;
-            color: #64748b;
-            margin-bottom: 1rem;
-            line-height: 1.5;
-            flex: 1;
-        }
-
-        /* ===== STATS ROW - THE BROKEN PART ===== */
-        .course-stats {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            background: #f8fafc;
-            border-radius: 10px;
-            padding: 0.75rem;
-            margin-bottom: 1rem;
-            min-width: 0;
-            overflow: hidden;
-        }
-
-        .stat-box {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            min-width: 0;
-            flex: 1;
-        }
-
-        .stat-box i {
-            font-size: 1rem;
-            color: #2563eb;
-            flex-shrink: 0;
-        }
-
-        .stat-box>div {
-            display: flex;
-            flex-direction: column;
-            min-width: 0;
-        }
-
-        .stat-label {
-            font-size: 0.7rem;
-            color: #94a3b8;
-            white-space: nowrap;
-        }
-
-        .stat-val {
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: #0f172a;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .stat-divider {
-            width: 1px;
-            height: 28px;
-            background: #e5e7eb;
-            flex-shrink: 0;
-        }
 
         /* Course Footer */
         .course-footer {
@@ -202,41 +126,10 @@
             flex-wrap: wrap;
         }
 
-        .instructor {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-size: 0.8rem;
-            color: #374151;
-            min-width: 0;
-        }
 
-        .instructor i {
-            flex-shrink: 0;
-        }
 
-        .instructor span {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
 
-        .view-details {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #2563eb;
-            text-decoration: none;
-            white-space: nowrap;
-            letter-spacing: 0.05em;
-            flex-shrink: 0;
-        }
 
-        .view-details:hover {
-            text-decoration: underline;
-        }
 
 
         @media (max-width: 1024px) {
@@ -438,9 +331,21 @@
         </section>
 
         <!-- 2. Impact Stats -->
-        <section id="impact-stats" class="impact-stats-section" aria-labelledby="impact-stats-title">
+        <section id="impact-stats" class="impact-stats-section" aria-labelledby="impact-stats-title"
+            style="align-content: center">
+            <div class="merged-services-header reveal">
+                <span class="badge"><i class="fas fa-school-flag" style="margin-right: 8px;"></i> <span
+                        data-i18n="why_subtitle">Our Success story</span></span>
+                <h2 data-i18n="why_title">Our <span>Impact</span></h2>
+
+            </div>
+
+            <br>
+
+
             <div class="container impact-stats-container">
-                <h2 id="impact-stats-title" class="visually-hidden">Maalem Impact</h2>
+
+
                 <div class="impact-stats-grid">
                     <article class="impact-stat-card reveal">
                         <div class="impact-stat-icon" aria-hidden="true">
@@ -454,6 +359,8 @@
                                 <path d="M12 64h56" />
                             </svg>
                         </div>
+
+
                         <div class="impact-stat-copy">
                             <strong class="impact-stat-value">160+</strong>
                             <p>Schools Developed<br>and Supported</p>
@@ -513,7 +420,8 @@
                             </svg>
                         </div>
                         <div class="impact-stat-copy">
-                            <strong class="impact-stat-value impact-stat-value-location">Egypt &<br>Saudi Arabia</strong>
+                            <strong class="impact-stat-value impact-stat-value-location">Egypt &<br>Saudi
+                                Arabia</strong>
                             <p>Regional Experience<br>Across Diverse Contexts</p>
                         </div>
                     </article>
@@ -522,7 +430,7 @@
         </section>
 
         <!-- 2. Get To Know About Us -->
-        <section class="section vision-section" id="about">
+        <section class="section vision-section" id="about" style="align-content: center">
             <div class="container vision-container">
                 <div class="vision-left reveal reveal-left">
                     <div class="image-stack">
@@ -554,23 +462,25 @@
                             <h3 data-i18n="mission_h"
                                 style="font-size: 1.2rem; margin-bottom: 0.5rem; text-transform: uppercase;">Our
                                 Mission:</h3>
-                            <p data-i18n="mission_p"
-                                style="color: var(--text-light); font-size: 0.95rem; line-height: 1.6;">We partner with
+                            <p data-i18n="mission_p" style="color: var(--text-light);  line-height: 1.6;">We partner
+                                with
                                 schools to design and implement sustainable models of academic excellence, leadership
                                 growth, and operational efficiency.</p>
                         </div>
                         <div class="mv-item">
                             <h3 data-i18n="vision_h"
-                                style="font-size: 1.2rem; margin-bottom: 0.5rem; text-transform: uppercase;">Our Vision:
+                                style="font-size: 1.2rem; margin-bottom: 0.5rem; text-transform: uppercase;">Our
+                                Vision:
                             </h3>
-                            <p data-i18n="vision_p"
-                                style="color: var(--text-light); font-size: 0.95rem; line-height: 1.6;">To be a leading
+                            <p data-i18n="vision_p" style="color: var(--text-light);  line-height: 1.6;">To be a
+                                leading
                                 educational services provider that empowers schools and educators to achieve
                                 international standards.</p>
                         </div>
                     </div>
 
-                    <a href="{{ url('/about') }}" class="btn btn-primary btn-lg" data-i18n="vision_cta">Learn More About
+                    <a href="{{ url('/about') }}" class="btn btn-primary btn-lg" data-i18n="vision_cta">Learn More
+                        About
                         Us <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -579,12 +489,16 @@
         <!-- 3. Why Maalem Education (Services) -->
         <section class="merged-services-section" id="services" style="background: #fff; padding-top: 4rem;">
             <div class="container">
+
                 <div class="merged-services-header reveal">
                     <span class="badge"><i class="fas fa-school-flag" style="margin-right: 8px;"></i> <span
-                            data-i18n="why_subtitle">Why Maalem Education</span></span>
-                    <h2 data-i18n="why_title">Maalem is not only an <span>operator</span></h2>
-                    <p data-i18n="why_desc">It is a complete <strong>education ecosystem</strong> that empowers schools
-                        and educators to achieve excellence.</p>
+                            data-i18n="why_subtitle">Shaping Tomorrow'sLandmarks</span></span>
+                    <h2 data-i18n="why_title">Our Educational<span> Ecosystem</span></h2>
+                    <p>Maalem is not only an <strong>operator</strong></p>
+                    <p data-i18n="why_title">Maalem provides integrated solutions that support schools academically,
+                        operationally, andstrategically. Our ecosystem is designed to help schools move from daily
+                        management challengesto sustainable excellence.</p>
+                    <br>
                 </div>
                 <div class="services-grid">
                     <div class="service-card-new reveal">
@@ -653,7 +567,8 @@
                             style="font-weight: 700; color: var(--primary-color); text-transform: uppercase; letter-spacing: 1px;">Our
                             Courses</span>
                     </div>
-                    <h2 data-i18n="courses_title" style="font-size: 2.5rem; font-weight: 700;">Our Featured Courses</h2>
+                    <h2 data-i18n="courses_title" style="font-size: 2.5rem; font-weight: 700;">Our Featured Courses
+                    </h2>
                 </div>
                 <div class="course-carousel-wrapper reveal">
                     <div class="course-carousel" id="courseCarousel">
@@ -712,7 +627,8 @@
                                 </div>
                                 <div class="course-footer">
                                     <div class="instructor"><i class="fas fa-award"
-                                            style="color: var(--primary-color);"></i><span>Capstone Project</span></div>
+                                            style="color: var(--primary-color);"></i><span>Capstone Project</span>
+                                    </div>
                                     <a href="{{ url('/course-leadership') }}" class="view-details">VIEW DETAILS <i
                                             class="fas fa-arrow-right"></i></a>
                                 </div>
@@ -762,18 +678,19 @@
                     <div class="careers-image-container reveal">
                         <img src="{{ secure_asset_v('assets/careers_grid.png') }}" alt="Maalem Team">
                         <div class="careers-text-container reveal">
-                            <span class="badge" style="color: #1d63dc; font-weight: 700;"><i class="fas fa-briefcase"
-                                    style="margin-right: 8px;"></i> <span data-i18n="careers_subtitle">Join Our
-                                    Team</span></span>
+                            <h2 data-i18n="why_title"> <span class="badge"
+                                    style="color: #1d63dc; font-weight: 700;"><i class="fas fa-briefcase"
+                                        style="margin-right: 8px;"></i> <span data-i18n="careers_subtitle">Join Our
+                                        Team</span></span></h2>
                             <h2 data-i18n="careers_title"
                                 style="font-size: 3rem; font-weight: 800; margin-bottom: 1.5rem;">Shape the Future of
                                 Education With Us</h2>
-                            <p data-i18n="careers_desc"
-                                style="max-width: 800px; margin: 0 auto 3rem; font-size: 1.2rem; color: var(--text-light);">
+                            <p data-i18n="careers_desc">
                                 We are always looking for passionate educators, consultants, and leaders to join our
                                 global network.</p>
                             <a href="{{ route('careers.index') }}" class="btn btn-primary btn-lg"
-                                style="padding: 1.2rem 3rem; border-radius: 50px; font-weight: 800;">VIEW OPEN POSITIONS
+                                style="padding: 1.2rem 3rem; border-radius: 50px; font-weight: 800;">VIEW OPEN
+                                POSITIONS
                                 <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
@@ -801,19 +718,19 @@
 
                 <div class="instructors-grid">
                     @forelse($instructors as $instructor)
-                        <div class="instructor-card-premium reveal">
+<div class="instructor-card-premium reveal">
                             <div class="instructor-img-box">
-                                @if($instructor->image)
-                                    <img src="{{ secure_asset_v(file_exists(public_path($instructor->image)) ? $instructor->image : 'storage/' . $instructor->image) }}"
+                                @if ($instructor->image)
+<img src="{{ secure_asset_v(file_exists(public_path($instructor->image)) ? $instructor->image : 'storage/' . $instructor->image) }}"
                                          alt="{{ $instructor->name }}">
-                                @else
-                                    <img src="{{ secure_asset_v('identity/Logo/PNG/Blue.png') }}" alt="Maalem Logo"
+@else
+<img src="{{ secure_asset_v('identity/Logo/PNG/Blue.png') }}" alt="Maalem Logo"
                                         class="placeholder-logo">
-                                @endif
+@endif
                                 <div class="instructor-rating">
-                                    @for($i = 1; $i <= 5; $i++)
-                                        <i class="{{ $i <= $instructor->rating ? 'fas' : 'far' }} fa-star"></i>
-                                    @endfor
+                                    @for ($i = 1; $i <= 5; $i++)
+<i class="{{ $i <= $instructor->rating ? 'fas' : 'far' }} fa-star"></i>
+@endfor
                                 </div>
                             </div>
                             <div class="instructor-info">
@@ -821,26 +738,29 @@
                                 <p>{{ $instructor->title }}</p>
                             </div>
                         </div>
-                    @empty
+@empty
                         <p style="text-align: center; width: 100%; color: var(--text-light);">Stay tuned! Our expert
                             instructors will be listed here soon.</p>
-                    @endforelse
+@endforelse
                 </div>
             </div>
         </section> -->
 
         <!-- 11. Mentors -->
-        <section id="mentors" class="mentors-section reveal">
+        <section id="mentors" class="mentors-section reveal" style="align-content: center">
             <div class="container">
                 <div class="section-title reveal" style="text-align: center; margin-bottom: 8rem;">
-                    <h2 data-i18n="teachers_title" style="font-size: 3.5rem; font-weight: 800;">Biographies</h2>
+                    <h2 data-i18n="teachers_title" style="font-size: 3.5rem; font-weight: 800;">
+                        <span>Biographies</span>
+                    </h2>
                 </div>
 
                 <div class="teachers-grid-new">
                     <!-- Teacher 1 -->
                     <a href="{{ url('/mentor-details?id=dina') }}" class="teacher-card-new reveal">
                         <div class="teacher-avatar-new"
-                            style="background-image: url('{{ secure_asset_v('identity/Logo/SVG/Blue.svg') }}');"></div>
+                            style="background-image: url('{{ secure_asset_v('identity/Logo/SVG/Blue.svg') }}');">
+                        </div>
                         <h3 data-i18n="mentor1_name">Dr. Dina El Odessy</h3>
                         <span class="role" data-i18n="mentor1_role">Educational Director</span>
                     </a>
@@ -848,7 +768,8 @@
                     <!-- Teacher 2 -->
                     <a href="{{ url('/mentor-details?id=omar') }}" class="teacher-card-new reveal">
                         <div class="teacher-avatar-new"
-                            style="background-image: url('{{ secure_asset_v('identity/Logo/SVG/Blue.svg') }}');"></div>
+                            style="background-image: url('{{ secure_asset_v('identity/Logo/SVG/Blue.svg') }}');">
+                        </div>
                         <h3 data-i18n="mentor2_name">Eng. Omar El Odessy</h3>
                         <span class="role" data-i18n="mentor2_role">Chairman of the Board</span>
                     </a>
@@ -856,7 +777,8 @@
                     <!-- Teacher 3 -->
                     <a href="{{ url('/mentor-details?id=karim') }}" class="teacher-card-new reveal">
                         <div class="teacher-avatar-new"
-                            style="background-image: url('{{ secure_asset_v('identity/Logo/SVG/Blue.svg') }}');"></div>
+                            style="background-image: url('{{ secure_asset_v('identity/Logo/SVG/Blue.svg') }}');">
+                        </div>
                         <h3 data-i18n="mentor3_name">Mr. Karim El Sarnagawi</h3>
                         <span class="role" data-i18n="mentor3_role">CEO of Pyramakerz</span>
                     </a>
@@ -864,15 +786,18 @@
                     <!-- Teacher 4 -->
                     <a href="{{ url('/mentor-details?id=nourhan') }}" class="teacher-card-new reveal">
                         <div class="teacher-avatar-new"
-                            style="background-image: url('{{ secure_asset_v('identity/Logo/SVG/Blue.svg') }}');"></div>
+                            style="background-image: url('{{ secure_asset_v('identity/Logo/SVG/Blue.svg') }}');">
+                        </div>
                         <h3 data-i18n="mentor4_name">Mrs. Nourhan Soudan</h3>
-                        <span class="role" data-i18n="mentor4_role">CEO of LOIS Company</span>
+                        <span class="role" data-i18n="mentor4_role">Founder of New Horizon Educational
+                            Company</span>
                     </a>
 
                     <!-- Teacher 5 -->
                     <a href="{{ url('/mentor-details?id=magie') }}" class="teacher-card-new reveal">
                         <div class="teacher-avatar-new"
-                            style="background-image: url('{{ secure_asset_v('identity/Logo/SVG/Blue.svg') }}');"></div>
+                            style="background-image: url('{{ secure_asset_v('identity/Logo/SVG/Blue.svg') }}');">
+                        </div>
                         <h3 data-i18n="mentor5_name">Eng. Magie S. Ginidy</h3>
                         <span class="role" data-i18n="mentor5_role">Operations Director</span>
                     </a>

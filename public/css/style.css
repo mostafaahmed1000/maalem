@@ -2517,6 +2517,8 @@ footer {
     overflow: hidden;
     text-overflow: ellipsis;
     padding: 0 1rem;
+    padding-right: 5px;
+    padding-left: 5px;
 }
 
 .teacher-card-new .role {

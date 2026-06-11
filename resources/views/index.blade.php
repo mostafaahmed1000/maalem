@@ -59,11 +59,7 @@
             padding: 0 1rem;
         }
 
-        .course-carousel-wrapper {
-            position: relative;
-            overflow: hidden;
-            padding: 0 1rem;
-        }
+
 
         .course-carousel {
             display: flex;
@@ -144,7 +140,7 @@
             }
 
             #courses .container {
-                padding: 0 0.5rem;
+                /* padding: 0 0.5rem; */
             }
 
             .course-carousel-wrapper {
@@ -557,7 +553,7 @@
         </section>
 
         <!-- 4. Featured Courses -->
-        <section id="courses" class="section bg-alt reveal reveal-right" style="padding: 6rem 0;">
+        <section id="courses" class="section bg-alt reveal reveal-right">
             <div class="container">
                 <div class="section-title reveal" style="text-align: center; margin-bottom: 4rem;">
                     <div

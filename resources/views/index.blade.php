@@ -751,7 +751,13 @@
                     </h2>
                 </div>
 
-                <div class="teachers-grid-new">
+                <div class="teachers-grid-new"
+                    style="
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+    padding: 0 2rem;
+  ">
                     <!-- Teacher 1 -->
                     <a href="{{ url('/mentor-details?id=dina') }}" class="teacher-card-new reveal">
                         <div class="teacher-avatar-new"
